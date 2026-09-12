@@ -21,7 +21,7 @@ vars:
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.74.0
   TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.29.7-cli-1.8.3-debian13@sha256:1097ca30796376b8aa9fff348cd377ee39e7f191dceb3d5b05cc6cd6ba9b9656
-  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.29.7-cli-1.8.3-debian13@sha256:e15fe3418ea1a55761fdb033063de7dfaf180648bdce471e0d80cd4d4891d581
+  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.29.7-cli-1.8.3-debian13@sha256:9bdd409c3df5879bc5624efec0e7196708072ce4bc88287cb593112bd028a82d
   TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.53.3-debian13@sha256:0420db39b0c9cda49c0a0918184fb29a0634e8499b935f4e599229336d7e39a5
   VERSION: 0.74.0
 contents:
@@ -63,7 +63,7 @@ contents:
               description: Docker Hardened Images Helm chart for TemporalIO
               images:
                 - name: temporalio-server
-                  ref: dhi/temporalio-server:1.29.7-cli-1.8.3-debian13@sha256:e15fe3418ea1a55761fdb033063de7dfaf180648bdce471e0d80cd4d4891d581
+                  ref: dhi/temporalio-server:1.29.7-cli-1.8.3-debian13@sha256:9bdd409c3df5879bc5624efec0e7196708072ce4bc88287cb593112bd028a82d
                 - name: temporalio-admin-tools
                   ref: dhi/temporalio-admin-tools:1.29.7-cli-1.8.3-debian13@sha256:1097ca30796376b8aa9fff348cd377ee39e7f191dceb3d5b05cc6cd6ba9b9656
                 - name: temporalio-ui
