@@ -16,7 +16,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.8-debian13@sha256:6aed899264ea93b2d78d387e35aab65390cb70f70712d153a70b78f90f58ab5c
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.8-debian13@sha256:6ced3a6937b7e984c2f27d2766f64fe5849ab4110ac2cbd7f656d8193b11ea1e
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.8-debian13@sha256:26b70c710b6f24f55d462cba125d61500f613d074f96c49fc7407c00a1bd9248
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:d0231ea019a208d8b13ed7803a5ca05b272f4212b53c60c5ae52f38744613413
   SEMVER_MAJOR_MINOR_VERSION: "5.0"
   SEMVER_MAJOR_VERSION: "5"
@@ -67,7 +67,7 @@ contents:
                 - name: kube-webhook-certgen
                   ref: dhi/kube-webhook-certgen:1.8.8-debian13@sha256:6aed899264ea93b2d78d387e35aab65390cb70f70712d153a70b78f90f58ab5c
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.8-debian13@sha256:6ced3a6937b7e984c2f27d2766f64fe5849ab4110ac2cbd7f656d8193b11ea1e
+                  ref: dhi/kubectl:1.35.8-debian13@sha256:26b70c710b6f24f55d462cba125d61500f613d074f96c49fc7407c00a1bd9248
               name: fairwinds-vpa-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
