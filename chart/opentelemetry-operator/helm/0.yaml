@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   APPVERSION: 0.158.0
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:eb0e5b0b63bf4f8570e9d7d1787fc6c3be218dae07035de8fe41497778aa3338
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:502f92867c28bc0eac227b1c7a275b42a3c86dc7bfe4190a9adf02c66166ab0e
   CHART_COMMIT_SHA: b9a6b0597a2a79131a8a065c4e7accc3b232c99a
   CHART_HELM_NAME: opentelemetry-operator-chart
   DHI_NAMESPACE: dhi
@@ -57,7 +57,7 @@ contents:
                 - name: opentelemetry-collector
                   ref: dhi/opentelemetry-collector:0.158.0-debian13@sha256:e4e03f1cb0a5315a952bccbe714954306a00ac2334d23004b8c1da251daaa1c8
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:eb0e5b0b63bf4f8570e9d7d1787fc6c3be218dae07035de8fe41497778aa3338
+                  ref: dhi/busybox:1.37.0-debian13@sha256:502f92867c28bc0eac227b1c7a275b42a3c86dc7bfe4190a9adf02c66166ab0e
                 - name: opentelemetry-autoinstrumentation-go
                   ref: dhi/opentelemetry-autoinstrumentation-go:0.24.0-debian13@sha256:042d017e62447590a48535375468bff1a516e5eaec379f55a92c0ca5ffe61857
               name: opentelemetry-operator-chart
