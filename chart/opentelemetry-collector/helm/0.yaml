@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.160.0-debian13@sha256:0c55b80b203a52c9a8194c07fdddf1e7c4f4cb9a35a47aef1dc6b5c520f9991e
+  OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.160.0-debian13@sha256:1acc527f0787ae2050d5053465251a2f09dd953792cb7b0165c68a61f5dbec0e
   SEMVER_MAJOR_MINOR_VERSION: "0.173"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.173.1
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for OpenTelemetry Collector
               images:
                 - name: opentelemetry-collector
-                  ref: dhi/opentelemetry-collector:0.160.0-debian13@sha256:0c55b80b203a52c9a8194c07fdddf1e7c4f4cb9a35a47aef1dc6b5c520f9991e
+                  ref: dhi/opentelemetry-collector:0.160.0-debian13@sha256:1acc527f0787ae2050d5053465251a2f09dd953792cb7b0165c68a61f5dbec0e
               name: opentelemetry-collector-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/open-telemetry/opentelemetry-helm-charts
