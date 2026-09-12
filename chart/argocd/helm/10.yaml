@@ -11,7 +11,7 @@ vars:
   ARGOCD_REFERENCE: dhi/argocd:3.5.2-debian13@sha256:63b043cfc1184ece55d445e03a750fe8e780ea16ae411c2ee1dee2b6fe0f7a77
   CHART_COMMIT_SHA: 608821158c220ec5b5326b86ab3a950177ae4d26
   CHART_HELM_NAME: argocd-chart
-  DEX_REFERENCE: dhi/dex:2.45.1-debian13@sha256:3bfe08519e358f1709b30335a22b8ec2883f2c90ed781d3d5a70e0545f623a3e
+  DEX_REFERENCE: dhi/dex:2.45.1-debian13@sha256:366bccc1495c4e6d249b918b04549e0dafea2105e3d345aca8dff6dbea56b4a8
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -67,7 +67,7 @@ contents:
                 - name: argocd
                   ref: dhi/argocd:3.5.2-debian13@sha256:63b043cfc1184ece55d445e03a750fe8e780ea16ae411c2ee1dee2b6fe0f7a77
                 - name: dex
-                  ref: dhi/dex:2.45.1-debian13@sha256:3bfe08519e358f1709b30335a22b8ec2883f2c90ed781d3d5a70e0545f623a3e
+                  ref: dhi/dex:2.45.1-debian13@sha256:366bccc1495c4e6d249b918b04549e0dafea2105e3d345aca8dff6dbea56b4a8
                 - name: redis
                   ref: dhi/redis:8.10.1-debian13-compat@sha256:cf0b7e048a3b065ce18afc2d55aff086e446f45f7b307105abb0c6a1c8714058
                 - name: redis-exporter
