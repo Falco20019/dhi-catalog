@@ -25,7 +25,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.23"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.23.1
-  STATIC_REFERENCE: dhi/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  STATIC_REFERENCE: dhi/static:20250419-debian13@sha256:fb0746348bef16d5f2c66836c7048041bf1c2ba8fd0da3c107ad865763f72d8c
   SUFFIX: -dev
   VERSION: 3.23.1
 contents:
@@ -88,7 +88,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:fb0746348bef16d5f2c66836c7048041bf1c2ba8fd0da3c107ad865763f72d8c
       includes:
         - bin
         - etc
