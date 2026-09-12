@@ -4,23 +4,23 @@ name: Valkey Operator Helm chart 0.x
 image: dhi.io/valkey-operator-chart
 variant: helm
 tags:
-  - 0.5.0
+  - 0.6.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: dd2d78213ae4e7b229074d473612999c7324d9be
+  CHART_COMMIT_SHA: a2d8cf876aa81432e248a1ec3787098f7702c613
   CHART_HELM_NAME: valkey-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "0.5"
+  SEMVER_MAJOR_MINOR_VERSION: "0.6"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.5.0
-  VALKEY_OPERATOR_REFERENCE: dhi/valkey-operator:0.5.0-debian13@sha256:02df140a20750312d2f4332b7ed120fdea62f769e71b26dea031003e0b41f236
-  VALKEY_OPERATOR_VERSION_PREFIX: "0.5"
-  VERSION: 0.5.0
+  SEMVER_VERSION: 0.6.0
+  VALKEY_OPERATOR_REFERENCE: dhi/valkey-operator:0.6.0-debian13@sha256:58d2d1d898b7819584fdf452c74cbf9365878b25d3e08e934e22c326587cf186
+  VALKEY_OPERATOR_VERSION_PREFIX: "0.6"
+  VERSION: 0.6.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/valkey-io/valkey-helm.git#valkey-operator-0.5.0
-            checksum: dd2d78213ae4e7b229074d473612999c7324d9be
+          - url: git+https://github.com/valkey-io/valkey-helm.git#valkey-operator-0.6.0
+            checksum: a2d8cf876aa81432e248a1ec3787098f7702c613
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for the Valkey Operator
               images:
                 - name: valkey-operator
-                  ref: dhi/valkey-operator:0.5.0-debian13@sha256:02df140a20750312d2f4332b7ed120fdea62f769e71b26dea031003e0b41f236
+                  ref: dhi/valkey-operator:0.6.0-debian13@sha256:58d2d1d898b7819584fdf452c74cbf9365878b25d3e08e934e22c326587cf186
               name: valkey-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/valkey-io/valkey-helm
