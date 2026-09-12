@@ -4,11 +4,11 @@ name: Tailscale Operator Helm chart 1.x
 image: dhi.io/tailscale-operator-chart
 variant: helm
 tags:
-  - 1.102.3
+  - 1.102.4
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 53a0d659afa51835dd7a9283873cca44261454f8
+  CHART_COMMIT_SHA: bbcd7d1fc2054b9189ebc1531acf74bd880ca0c8
   CHART_HELM_NAME: tailscale-operator-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -17,10 +17,10 @@ vars:
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "1.102"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.102.3
-  TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.102.3-debian13@sha256:8ec7c0e70fa14964ee9ffb41b69dd02001c7400b1c4cd6f96a4d7d141129e8c7
-  TAILSCALE_REFERENCE: dhi/tailscale:1.102.3-debian13@sha256:b48236a8b7a0d94d9780fac543c265bc1d67f8acb5877141b3b20a3d18124147
-  VERSION: 1.102.3
+  SEMVER_VERSION: 1.102.4
+  TAILSCALE_OPERATOR_REFERENCE: dhi/tailscale-operator:1.102.4-debian13@sha256:f7df4e059dad68ab55339310c98e5018a07460a8e7c29b341c958b70e9564562
+  TAILSCALE_REFERENCE: dhi/tailscale:1.102.4-debian13@sha256:e942a0444a6304c466169dca5e5eb597b1e2e2f3be59e7d4a66eefa21f533f8f
+  VERSION: 1.102.4
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/tailscale/tailscale.git#v1.102.3
-            checksum: 53a0d659afa51835dd7a9283873cca44261454f8
+          - url: git+https://github.com/tailscale/tailscale.git#v1.102.4
+            checksum: bbcd7d1fc2054b9189ebc1531acf74bd880ca0c8
             path: ${source.dir}/tailscale
             uid: 0
             gid: 0
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Tailscale Operator
               images:
                 - name: tailscale-operator
-                  ref: dhi/tailscale-operator:1.102.3-debian13@sha256:8ec7c0e70fa14964ee9ffb41b69dd02001c7400b1c4cd6f96a4d7d141129e8c7
+                  ref: dhi/tailscale-operator:1.102.4-debian13@sha256:f7df4e059dad68ab55339310c98e5018a07460a8e7c29b341c958b70e9564562
                 - name: tailscale
-                  ref: dhi/tailscale:1.102.3-debian13@sha256:b48236a8b7a0d94d9780fac543c265bc1d67f8acb5877141b3b20a3d18124147
+                  ref: dhi/tailscale:1.102.4-debian13@sha256:e942a0444a6304c466169dca5e5eb597b1e2e2f3be59e7d4a66eefa21f533f8f
               name: tailscale-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/tailscale/tailscale
