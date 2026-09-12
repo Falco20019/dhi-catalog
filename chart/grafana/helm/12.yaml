@@ -8,11 +8,11 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:efad99ec1f19729f051a893141b25f17be565bfe322fde285534ff7278720cb9
-  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:eb0e5b0b63bf4f8570e9d7d1787fc6c3be218dae07035de8fe41497778aa3338
+  BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:c178598496474e734a0efe253036d0ec30ba2555698eba181e9d55dfcf2979ff
+  BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:502f92867c28bc0eac227b1c7a275b42a3c86dc7bfe4190a9adf02c66166ab0e
   CHART_COMMIT_SHA: ae91d5a1c2cc89a119b06c72488d127baf9af9d0
   CHART_HELM_NAME: grafana-chart
-  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:d4c2b5c86c7619aafab60baf20709e2d0406aa805cc86d527dee21c68e42cbda
+  CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:a4c8a964aade282484431589a8b418e507ab947b1db09bd8f5e480ee8c95d494
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -58,11 +58,11 @@ contents:
                 - name: grafana-image-renderer
                   ref: dhi/grafana-image-renderer:5.12.3-debian13@sha256:cb5ab9b7d0062f72128a58dc377dd3199743735eedf31555c6af5fbb85af3d25
                 - name: bats
-                  ref: dhi/bats:1.14.0-debian13@sha256:efad99ec1f19729f051a893141b25f17be565bfe322fde285534ff7278720cb9
+                  ref: dhi/bats:1.14.0-debian13@sha256:c178598496474e734a0efe253036d0ec30ba2555698eba181e9d55dfcf2979ff
                 - name: busybox
-                  ref: dhi/busybox:1.37.0-debian13@sha256:eb0e5b0b63bf4f8570e9d7d1787fc6c3be218dae07035de8fe41497778aa3338
+                  ref: dhi/busybox:1.37.0-debian13@sha256:502f92867c28bc0eac227b1c7a275b42a3c86dc7bfe4190a9adf02c66166ab0e
                 - name: curl
-                  ref: dhi/curl:8.14.1-debian13@sha256:d4c2b5c86c7619aafab60baf20709e2d0406aa805cc86d527dee21c68e42cbda
+                  ref: dhi/curl:8.14.1-debian13@sha256:a4c8a964aade282484431589a8b418e507ab947b1db09bd8f5e480ee8c95d494
                 - name: k8s-sidecar
                   ref: dhi/k8s-sidecar:2.11.2-debian13@sha256:8caae30eab172418208fc636e0c286fecddaea82e7fda766ad5e0cedaa9d1f10
               name: grafana-chart
