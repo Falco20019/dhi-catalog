@@ -4,9 +4,9 @@ image: dhi.io/pkg-mediawiki
 variant: runtime
 tags:
   - 1.46.0
-  - 1.46.0-r1
+  - 1.46.0-r2
   - 1.46.0-debian13
-  - 1.46.0-r1-debian13
+  - 1.46.0-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,16 +15,16 @@ dates:
 vars:
   COMPOSER_PHAR_SHA256: c86ce603fe836bf0861a38c93ac566c8f1e69ac44b2445d9b7a6a17ea2e9972a
   COMPOSER_VERSION: 2.9.5
-  IMAGEMAGICK_COMMIT_SHA: 360eda553586e389c9c725fc49df94f209a8a3c7
-  IMAGEMAGICK_SOURCE_CHECKSUM: sha256:429ddf8e4235eb09c09b92dbe71f3d79cae3304be8bc7acb5a37bd61ede663d9
-  IMAGEMAGICK_VERSION: 7.1.2-29
+  IMAGEMAGICK_COMMIT_SHA: 344e9056f43764bfdf82456faf3bc2feee98a6fe
+  IMAGEMAGICK_SOURCE_CHECKSUM: sha256:4a2329b539ae60e66e2e1f79e7f471ce5dbf35ef8261873059125248944fb1fc
+  IMAGEMAGICK_VERSION: 7.1.2-30
   PACKAGE_HOME: /usr/share/mediawiki-1.46
   PACKAGE_NAME: mediawiki-1.46
   PHP_MAJOR_MINOR_VERSION: "8.3"
   PHP_SOURCE_CHECKSUM: e293ed620cec74651bb4a071317892a478aa6840fab22db45c72d77cd42f9676
   PHP_UPSTREAM_VERSION: 8.3.33
   PHP_VERSION: 8.3.33-0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.46"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.46.0
@@ -142,15 +142,15 @@ contents:
                   license: PHP-3.01
             uid: 0
             gid: 0
-          - url: https://github.com/ImageMagick/ImageMagick/archive/360eda553586e389c9c725fc49df94f209a8a3c7.tar.gz
-            checksum: sha256:429ddf8e4235eb09c09b92dbe71f3d79cae3304be8bc7acb5a37bd61ede663d9
+          - url: https://github.com/ImageMagick/ImageMagick/archive/344e9056f43764bfdf82456faf3bc2feee98a6fe.tar.gz
+            checksum: sha256:4a2329b539ae60e66e2e1f79e7f471ce5dbf35ef8261873059125248944fb1fc
             path: ${source.dir}/imagemagick.tar.gz
             spdx:
               name: imagemagick
-              version: 7.1.2-29
+              version: 7.1.2-30
               packages:
                 - name: imagemagick
-                  purl: pkg:dhi/imagemagick/imagemagick@7.1.2-29
+                  purl: pkg:dhi/imagemagick/imagemagick@7.1.2-30
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -319,7 +319,7 @@ contents:
               - deb
             license: GPL-2.0-or-later
             name: mediawiki-1.46
-            rel: 1
+            rel: 2
             url: https://www.mediawiki.org
             version: 1.46.0
       paths:
