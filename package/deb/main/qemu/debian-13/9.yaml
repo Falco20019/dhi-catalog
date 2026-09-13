@@ -3,27 +3,27 @@
 image: dhi.io/pkg-qemu
 variant: runtime
 tags:
-  - 1-10.0.11-ds-0-deb13u1-dhi2
-  - 1-10.0.11-ds-0-deb13u1-dhi2-debian13
+  - 1-10.0.13-ds-0-deb13u1-dhi2
+  - 1-10.0.13-ds-0-deb13u1-dhi2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DEBIAN_DEBIAN_CHECKSUM: sha256:695ea56cafcce0c4246662436c359f11c2d4cbb1395157005e4b925d57abafb1
-  DEBIAN_DEBIAN_FILENAME: qemu_10.0.11+ds-0+deb13u1.debian.tar.xz
-  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds-0+deb13u1.debian.tar.xz
-  DEBIAN_DSC_CHECKSUM: sha256:14280e750f809249fe41068b7767c8631f5ee636ece6a50df80c9918d7536581
-  DEBIAN_DSC_FILENAME: qemu_10.0.11+ds-0+deb13u1.dsc
-  DEBIAN_DSC_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds-0+deb13u1.dsc
-  DEBIAN_FILENAME_VERSION: 10.0.11+ds-0+deb13u1
-  DEBIAN_ORIG_CHECKSUM: sha256:c6fbe5322b2b76bbbef583d1d86d0fca433b3a33776cf38ddcb619cb044b61e6
-  DEBIAN_ORIG_FILENAME: qemu_10.0.11+ds.orig.tar.xz
-  DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds.orig.tar.xz
-  DEBIAN_VERSION: 1:10.0.11+ds-0+deb13u1
+  DEBIAN_DEBIAN_CHECKSUM: sha256:da73c092f5684c551b0334d675eb16a3dec91e1edea94759cfb1102fa4a0364e
+  DEBIAN_DEBIAN_FILENAME: qemu_10.0.13+ds-0+deb13u1.debian.tar.xz
+  DEBIAN_DEBIAN_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz
+  DEBIAN_DSC_CHECKSUM: sha256:a426c892e5369058c3423816c8625bc8010bb5a58ece57261f62b64ee4d765ad
+  DEBIAN_DSC_FILENAME: qemu_10.0.13+ds-0+deb13u1.dsc
+  DEBIAN_DSC_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.dsc
+  DEBIAN_FILENAME_VERSION: 10.0.13+ds-0+deb13u1
+  DEBIAN_ORIG_CHECKSUM: sha256:6a0888e806c2ffc0c5f0733e974f9aea55491950d3c47c98669c8b236dde59ae
+  DEBIAN_ORIG_FILENAME: qemu_10.0.13+ds.orig.tar.xz
+  DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds.orig.tar.xz
+  DEBIAN_VERSION: 1:10.0.13+ds-0+deb13u1
   DHI_REL: "2"
-  DHI_VERSION: 1:10.0.11+ds-0+deb13u1+dhi2
-  TAG_VERSION: 1-10.0.11-ds-0-deb13u1-dhi2
-  UPSTREAM_VERSION: 10.0.11+ds
+  DHI_VERSION: 1:10.0.13+ds-0+deb13u1+dhi2
+  TAG_VERSION: 1-10.0.13-ds-0-deb13u1-dhi2
+  UPSTREAM_VERSION: 10.0.13+ds
 contents:
   packages:
     - '!base-files'
@@ -106,61 +106,37 @@ contents:
           - util-linux
           - zlib1g-dev
         files:
-          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds-0+deb13u1.dsc
-            checksum: sha256:14280e750f809249fe41068b7767c8631f5ee636ece6a50df80c9918d7536581
-            path: ${source.dir}/qemu_10.0.11+ds-0+deb13u1.dsc
+          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.dsc
+            checksum: sha256:a426c892e5369058c3423816c8625bc8010bb5a58ece57261f62b64ee4d765ad
+            path: ${source.dir}/qemu_10.0.13+ds-0+deb13u1.dsc
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds.orig.tar.xz
-            checksum: sha256:c6fbe5322b2b76bbbef583d1d86d0fca433b3a33776cf38ddcb619cb044b61e6
-            path: ${source.dir}/qemu_10.0.11+ds.orig.tar.xz
+          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds.orig.tar.xz
+            checksum: sha256:6a0888e806c2ffc0c5f0733e974f9aea55491950d3c47c98669c8b236dde59ae
+            path: ${source.dir}/qemu_10.0.13+ds.orig.tar.xz
             uid: 0
             gid: 0
-          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.11+ds-0+deb13u1.debian.tar.xz
-            checksum: sha256:695ea56cafcce0c4246662436c359f11c2d4cbb1395157005e4b925d57abafb1
-            path: ${source.dir}/qemu_10.0.11+ds-0+deb13u1.debian.tar.xz
+          - url: https://deb.debian.org/debian/pool/main/q/qemu/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz
+            checksum: sha256:da73c092f5684c551b0334d675eb16a3dec91e1edea94759cfb1102fa4a0364e
+            path: ${source.dir}/qemu_10.0.13+ds-0+deb13u1.debian.tar.xz
             uid: 0
             gid: 0
       pipeline:
         - uses: dpkg/source@v1
           work-dir: ${source.dir}
           with:
-            file: qemu_10.0.11+ds-0+deb13u1.dsc
+            file: qemu_10.0.13+ds-0+deb13u1.dsc
             path: qemu
         - uses: dpkg/patch@v1
           with:
             apply: true
             patches:
-              - ${source.dir}/patch/dhi-cve-2026-63318-9pfs-o-trunc-readonly.patch
               - ${source.dir}/patch/dhi-cve-2026-50626-virtio-queue-size-validation.patch
-              - ${source.dir}/patch/dhi-cve-2026-16457-virtio-packed-vring-empty.patch
-              - ${source.dir}/patch/dhi-cve-2026-66021-virtio-gpu-blob-iov-size.patch
-              - ${source.dir}/patch/dhi-cve-2026-15264-vhost-user-gpu-2d-overflow.patch
-              - ${source.dir}/patch/dhi-cve-2026-16288-uefi-setupmode-readonly.patch
-              - ${source.dir}/patch/dhi-cve-2026-17516-vga-panning-oob.patch
-              - ${source.dir}/patch/dhi-cve-2026-18054-virtio-gpu-fence-metadata.patch
-              - ${source.dir}/patch/dhi-cve-2026-50624-virtio-rng-uaf.patch
-              - ${source.dir}/patch/dhi-cve-2026-58581-uefi-vars-size-check.patch
-              - ${source.dir}/patch/dhi-cve-2026-58582-uefi-vars-debug-path.patch
-              - ${source.dir}/patch/dhi-cve-2026-61402-libvduse-vq-size.patch
-              - ${source.dir}/patch/dhi-cve-2026-61404-uefi-vars-post-load.patch
-              - ${source.dir}/patch/dhi-cve-2026-61405-uefi-vars-policy-storage.patch
-              - ${source.dir}/patch/dhi-cve-2026-61406-uefi-vars-zero-siglist.patch
-              - ${source.dir}/patch/dhi-cve-2026-61476-virtio-scsi-request-leak.patch
-              - ${source.dir}/patch/dhi-cve-2026-63109-virtio-gpu-scanout-stride.patch
-              - ${source.dir}/patch/dhi-cve-2026-63110-libvhost-user-inflights.patch
-              - ${source.dir}/patch/dhi-cve-2026-63320-virtio-net-receive-filter.patch
-              - ${source.dir}/patch/dhi-cve-2026-63321-virtio-net-rsc-oob.patch
-              - ${source.dir}/patch/dhi-cve-2026-63322-qxl-teardown-uaf.patch
-              - ${source.dir}/patch/dhi-cve-2026-63323-virtio-pmem-uaf.patch
-              - ${source.dir}/patch/dhi-cve-2026-65928-dmg-udrw-metadata.patch
-              - ${source.dir}/patch/dhi-cve-2026-65929-dmg-search-chunk-oob.patch
-              - ${source.dir}/patch/dhi-cve-2026-66022-virtio-net-dma-reentrancy.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Backport upstream fixes for CVE-2026-15264, CVE-2026-16288, CVE-2026-17516, CVE-2026-18054, CVE-2026-50624, CVE-2026-58581, CVE-2026-58582, CVE-2026-61402, CVE-2026-61404, CVE-2026-61405, CVE-2026-61406, CVE-2026-61476, CVE-2026-63109, CVE-2026-63110, CVE-2026-63320, CVE-2026-63321, CVE-2026-63322, CVE-2026-63323, CVE-2026-65928, CVE-2026-65929, CVE-2026-66022
-            version: 1:10.0.11+ds-0+deb13u1+dhi2
+              - Backport upstream fix for CVE-2026-50626
+            version: 1:10.0.13+ds-0+deb13u1+dhi2
         - uses: dpkg/build@v1
           environment:
             DEB_BUILD_PROFILES: pkg.qemu.omit-system-xen pkg.qemu.omit-user
@@ -169,130 +145,10 @@ contents:
             options: nocheck
       paths:
         - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63318-9pfs-o-trunc-readonly.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63318-9pfs-o-trunc-readonly.patch
-        - type: file
           path: ${source.dir}/patch/dhi-cve-2026-50626-virtio-queue-size-validation.patch
           uid: 0
           gid: 0
           source: package/deb/main/qemu/patch/dhi-cve-2026-50626-virtio-queue-size-validation.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-16457-virtio-packed-vring-empty.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-16457-virtio-packed-vring-empty.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-66021-virtio-gpu-blob-iov-size.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-66021-virtio-gpu-blob-iov-size.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-15264-vhost-user-gpu-2d-overflow.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-15264-vhost-user-gpu-2d-overflow.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-16288-uefi-setupmode-readonly.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-16288-uefi-setupmode-readonly.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-17516-vga-panning-oob.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-17516-vga-panning-oob.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-18054-virtio-gpu-fence-metadata.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-18054-virtio-gpu-fence-metadata.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-50624-virtio-rng-uaf.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-50624-virtio-rng-uaf.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-58581-uefi-vars-size-check.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-58581-uefi-vars-size-check.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-58582-uefi-vars-debug-path.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-58582-uefi-vars-debug-path.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-61402-libvduse-vq-size.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-61402-libvduse-vq-size.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-61404-uefi-vars-post-load.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-61404-uefi-vars-post-load.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-61405-uefi-vars-policy-storage.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-61405-uefi-vars-policy-storage.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-61406-uefi-vars-zero-siglist.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-61406-uefi-vars-zero-siglist.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-61476-virtio-scsi-request-leak.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-61476-virtio-scsi-request-leak.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63109-virtio-gpu-scanout-stride.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63109-virtio-gpu-scanout-stride.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63110-libvhost-user-inflights.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63110-libvhost-user-inflights.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63320-virtio-net-receive-filter.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63320-virtio-net-receive-filter.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63321-virtio-net-rsc-oob.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63321-virtio-net-rsc-oob.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63322-qxl-teardown-uaf.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63322-qxl-teardown-uaf.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-63323-virtio-pmem-uaf.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-63323-virtio-pmem-uaf.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-65928-dmg-udrw-metadata.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-65928-dmg-udrw-metadata.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-65929-dmg-search-chunk-oob.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-65929-dmg-search-chunk-oob.patch
-        - type: file
-          path: ${source.dir}/patch/dhi-cve-2026-66022-virtio-net-dma-reentrancy.patch
-          uid: 0
-          gid: 0
-          source: package/deb/main/qemu/patch/dhi-cve-2026-66022-virtio-net-dma-reentrancy.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
