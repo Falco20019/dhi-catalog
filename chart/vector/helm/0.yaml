@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.58"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.58.0
-  VECTOR_REFERENCE: dhi/vector:0.58.0-debian13@sha256:3c37393949ea2ecb21479e6c7ca6b03e35d5bb7a8c094d5c59242723711bc2b3
+  VECTOR_REFERENCE: dhi/vector:0.58.0-debian13@sha256:1e7936fdd5c6033753da427dc9fa2ea658a7ae44e18024b627f6a86b1b53cc41
   VERSION: 0.58.0
 contents:
   repositories:
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Vector
               images:
                 - name: vector
-                  ref: dhi/vector:0.58.0-debian13@sha256:3c37393949ea2ecb21479e6c7ca6b03e35d5bb7a8c094d5c59242723711bc2b3
+                  ref: dhi/vector:0.58.0-debian13@sha256:1e7936fdd5c6033753da427dc9fa2ea658a7ae44e18024b627f6a86b1b53cc41
                 - name: haproxy
                   ref: dhi/haproxy:3.0.27-debian13@sha256:0798b5a6f2946d6107a2ce28754f08915c9903a1820603f192efeee7f51289e7
               name: vector-chart
