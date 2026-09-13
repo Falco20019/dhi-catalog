@@ -8,8 +8,8 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ADC_REFERENCE: dhi/adc:0.30.3-debian13@sha256:11cf76e96cb23ec84c892a4195f789d65e546c626fd393bcb31b10035cdd235d
-  APISIX_INGRESS_CONTROLLER_REFERENCE: dhi/apisix-ingress-controller:2.2.0-debian13@sha256:659b5e0c2f90effdc4c8cf603670ebd05edc59e706eb090a04ae578408dd08a5
+  ADC_REFERENCE: dhi/adc:0.30.3-debian13@sha256:041c06de132fd957204f98b39f5af962d03626d264c0748daf3f0e945f1f4f13
+  APISIX_INGRESS_CONTROLLER_REFERENCE: dhi/apisix-ingress-controller:2.2.0-debian13@sha256:ca6d0aafbc4ce2db1230a32a0387132bd3e4d9dafec9fed6e15cfe4fd41c1f91
   CHART_COMMIT_SHA: 90b6d6208d9766a0ff2f5d09a30404678431bbb8
   CHART_HELM_NAME: apisix-ingress-controller-chart
   DHI_NAMESPACE: dhi
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for APISIX Ingress Controller
               images:
                 - name: apisix-ingress-controller
-                  ref: dhi/apisix-ingress-controller:2.2.0-debian13@sha256:659b5e0c2f90effdc4c8cf603670ebd05edc59e706eb090a04ae578408dd08a5
+                  ref: dhi/apisix-ingress-controller:2.2.0-debian13@sha256:ca6d0aafbc4ce2db1230a32a0387132bd3e4d9dafec9fed6e15cfe4fd41c1f91
                 - name: adc
-                  ref: dhi/adc:0.30.3-debian13@sha256:11cf76e96cb23ec84c892a4195f789d65e546c626fd393bcb31b10035cdd235d
+                  ref: dhi/adc:0.30.3-debian13@sha256:041c06de132fd957204f98b39f5af962d03626d264c0748daf3f0e945f1f4f13
               name: apisix-ingress-controller-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/apisix-ingress-controller
