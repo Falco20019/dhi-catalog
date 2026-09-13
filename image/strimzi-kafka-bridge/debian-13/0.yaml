@@ -21,7 +21,7 @@ vars:
   JAVA_FIPS_SUFFIX: ""
   JAVA_VARIANT: jre
   JDK_MAJOR_VERSION: "17"
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk17-debian13-dev@sha256:88a4bd41b067289d8d4c741bdd20f552ab9954806f3e30a4b4044c0f274437f9
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk17-debian13-dev@sha256:2a03c252787ad08c92bf9f45be991d11a2090072cf94af9b511390f2f41855ce
   MAVEN_VERSION: 3.9.16
   SEMVER_MAJOR_MINOR_VERSION: "0.33"
   SEMVER_MAJOR_VERSION: "0"
@@ -46,7 +46,7 @@ contents:
     - tini
   builds:
     - name: strimzi-kafka-bridge
-      uses: dhi.io/maven:3.9.16-jdk17-debian13-dev@sha256:88a4bd41b067289d8d4c741bdd20f552ab9954806f3e30a4b4044c0f274437f9
+      uses: dhi.io/maven:3.9.16-jdk17-debian13-dev@sha256:2a03c252787ad08c92bf9f45be991d11a2090072cf94af9b511390f2f41855ce
       contents:
         files:
           - url: git+https://github.com/strimzi/strimzi-kafka-bridge.git#0.33.1
