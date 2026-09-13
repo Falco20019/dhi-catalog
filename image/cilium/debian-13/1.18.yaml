@@ -18,7 +18,7 @@ dates:
 vars:
   BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
   BASE_TAG: 20250419-debian13
-  CILLIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.18.13-debian13@sha256:9ed1f7ec52932ca9d1720c25b06c68693e4de37a0590694996041ab7f2c9b259
+  CILLIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.18.13-debian13@sha256:7d951545063ab65839104965b4a6d950555d45340934813829678d172f9e5755
   CLANG_VERSION: "18"
   CNI_PLUGINS_VERSION: 1.9.1-6
   COMMIT_SHA: 782d4dca211cfd4cdf08dcd089a14bae38eaf25e
@@ -259,7 +259,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/cilium-envoy:1.18.13-debian13@sha256:9ed1f7ec52932ca9d1720c25b06c68693e4de37a0590694996041ab7f2c9b259
+    - name: dhi.io/cilium-envoy:1.18.13-debian13@sha256:7d951545063ab65839104965b4a6d950555d45340934813829678d172f9e5755
       includes:
         - usr/bin/cilium-envoy
         - usr/bin/cilium-envoy-starter
