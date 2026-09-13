@@ -21,7 +21,7 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   COMMIT_SHA: 19a774302c613da9adc4436ab14278ccdca8e0a5
-  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:bb23deb81e8c1c35b8d76a3b9869c1fe792a047c596042bcc6c0d8583d0cc67b
+  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:e9d78a82ddd35580605faddac86c72701fb7a6f26c74f02859d6a4f898d07530
   SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.31.2
@@ -35,7 +35,7 @@ contents:
     - tzdata
   builds:
     - name: temporal-server
-      uses: dhi.io/golang:1.27.1-debian13-dev@sha256:bb23deb81e8c1c35b8d76a3b9869c1fe792a047c596042bcc6c0d8583d0cc67b
+      uses: dhi.io/golang:1.27.1-debian13-dev@sha256:e9d78a82ddd35580605faddac86c72701fb7a6f26c74f02859d6a4f898d07530
       work-dir: /go/src/go.temporal.io/server
       caches:
         - path: /go/pkg/mod
