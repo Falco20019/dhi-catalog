@@ -24,7 +24,7 @@ vars:
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.8.0
   SRC_VERSION: 1.8.0.3
-  VERSION: 1.8.0.3-1
+  VERSION: 1.8.0.3-1+deb13u1
 contents:
   packages:
     - '!libelogind0'
@@ -52,10 +52,10 @@ contents:
             path: ${source.dir}/socat.tar.gz
             spdx:
               name: socat
-              version: 1.8.0.3-1
+              version: 1.8.0.3-1+deb13u1
               packages:
                 - name: socat
-                  purl: pkg:dhi/socat@1.8.0.3-1
+                  purl: pkg:dhi/socat@1.8.0.3-1+deb13u1
                   license: GPL-2.0-only WITH OpenSSL-Exception
             uid: 0
             gid: 0
@@ -107,7 +107,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   PATH: /opt/socat/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-  SOCAT_VERSION: 1.8.0.3-1
+  SOCAT_VERSION: 1.8.0.3-1+deb13u1
 annotations:
   org.opencontainers.image.description: A minimal socat image
   org.opencontainers.image.licenses: GPL-2.0-only WITH OpenSSL-Exception
