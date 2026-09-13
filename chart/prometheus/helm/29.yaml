@@ -4,12 +4,12 @@ name: Prometheus Helm chart 29.x
 image: dhi.io/prometheus-chart
 variant: helm
 tags:
-  - 29.28.1
+  - 29.29.0
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_CHART_REFERENCE: dhi/alertmanager-chart:1.43.1@sha256:c633baa68b3257bd1f3ae3b06e21e4fcccd6f1cea94159e2f5b9f1219131deef
-  CHART_COMMIT_SHA: 23291d0b7682c19c851b38e5095136ee342e34a6
+  ALERTMANAGER_CHART_REFERENCE: dhi/alertmanager-chart:1.43.1@sha256:2b2a9bf4b552561416d640e347efdba997b54c0f2a8e701d2c574bee45a05f61
+  CHART_COMMIT_SHA: 028113f0205a66d11170f72e529e20c09183a2f8
   CHART_HELM_NAME: prometheus-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -18,13 +18,13 @@ vars:
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.4.2@sha256:40a88dffb8439c636e63e366da166de5789ec067b10131083b2d920941f92ca7
   NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.56.3@sha256:94e5aefcb1f73488d8ee946061b26014e239928253931dc7af9fdd7e2709a6f5
-  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:19285404887803490568e8765e311fcb5495d97d11ccc9b258eb477bd74b4b83
-  PROMETHEUS_REFERENCE: dhi/prometheus:3.14.0-debian13@sha256:414a0633472f5dc2f003aadfcd63d77343cd4f4d49461f75e97ecaa8bd7da20b
+  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:6af63b54bad658b6af89f6596a0bea6c26bacc736dfa04a28de8c811d04626ff
+  PROMETHEUS_REFERENCE: dhi/prometheus:3.14.0-debian13@sha256:5700b5e591bde80259e24aceabfb04fcfc099f0190a1a22485a681dc2ef24ffc
   PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.8.0@sha256:f6921bd68744803a09bac650a26c9c0e4ec26fd7c5e2297af618c9ca9ff32dcf
-  SEMVER_MAJOR_MINOR_VERSION: "29.28"
+  SEMVER_MAJOR_MINOR_VERSION: "29.29"
   SEMVER_MAJOR_VERSION: "29"
-  SEMVER_VERSION: 29.28.1
-  VERSION: 29.28.1
+  SEMVER_VERSION: 29.29.0
+  VERSION: 29.29.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.28.1
-            checksum: 23291d0b7682c19c851b38e5095136ee342e34a6
+          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.29.0
+            checksum: 028113f0205a66d11170f72e529e20c09183a2f8
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -55,7 +55,7 @@ contents:
                 - alias: alertmanager
                   condition: alertmanager.enabled
                   name: alertmanager
-                  ref: dhi/alertmanager-chart:1.43.1@sha256:c633baa68b3257bd1f3ae3b06e21e4fcccd6f1cea94159e2f5b9f1219131deef
+                  ref: dhi/alertmanager-chart:1.43.1@sha256:2b2a9bf4b552561416d640e347efdba997b54c0f2a8e701d2c574bee45a05f61
                 - alias: kube-state-metrics
                   condition: kube-state-metrics.enabled
                   name: kube-state-metrics
@@ -71,9 +71,9 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus
               images:
                 - name: prometheus
-                  ref: dhi/prometheus:3.14.0-debian13@sha256:414a0633472f5dc2f003aadfcd63d77343cd4f4d49461f75e97ecaa8bd7da20b
+                  ref: dhi/prometheus:3.14.0-debian13@sha256:5700b5e591bde80259e24aceabfb04fcfc099f0190a1a22485a681dc2ef24ffc
                 - name: prometheus-config-reloader
-                  ref: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:19285404887803490568e8765e311fcb5495d97d11ccc9b258eb477bd74b4b83
+                  ref: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:6af63b54bad658b6af89f6596a0bea6c26bacc736dfa04a28de8c811d04626ff
               name: prometheus-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
