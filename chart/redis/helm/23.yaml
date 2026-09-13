@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:b48f1add4608cb356093c4a65bebc22e409d88d3690fc6796b6863e6c8aa132c
+  BASH_REFERENCE: dhi/bash:5.2.37-debian13@sha256:af99ead6b4912e0fe77a6fe7a309b2103cdc64feaea820208bcb5dea10f0264e
   CHART_COMMIT_SHA: 4f7288e1b226ee2bfc150e507ffdca04a98a0952
   CHART_HELM_NAME: redis-chart
   DHI_NAMESPACE: dhi
@@ -16,9 +16,9 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-debian13-compat@sha256:31e9e5eb37280cee80f78698e16983566438d894887872998cb96f5cfabdb05d
-  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.91.1-debian13-compat@sha256:926575865c522d5cfd53d175cf25b92cdbf8fb9d009e55328af1f521c22f3029
-  REDIS_REFERENCE: dhi/redis:8.10.1-debian13-compat@sha256:cf0b7e048a3b065ce18afc2d55aff086e446f45f7b307105abb0c6a1c8714058
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-debian13-compat@sha256:3aac46d2ac8893b107b0e871aeeb269e24a7b482c8776061e4ecc59a51b05a15
+  REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.91.1-debian13-compat@sha256:db9b0656be0e61961d352aa49ebd8d5031465f79410a64c80e845eb30751162c
+  REDIS_REFERENCE: dhi/redis:8.10.1-debian13-compat@sha256:c903ad2b5b20ad3dd3750a8d26e5a34aebbf92ae6ae9e632a511f37c87b74485
   SEMVER_MAJOR_MINOR_VERSION: "23.0"
   SEMVER_MAJOR_VERSION: "23"
   SEMVER_VERSION: 23.0.7
@@ -52,13 +52,13 @@ contents:
               description: Docker Hardened Images Helm chart for Redis
               images:
                 - name: redis
-                  ref: dhi/redis:8.10.1-debian13-compat@sha256:cf0b7e048a3b065ce18afc2d55aff086e446f45f7b307105abb0c6a1c8714058
+                  ref: dhi/redis:8.10.1-debian13-compat@sha256:c903ad2b5b20ad3dd3750a8d26e5a34aebbf92ae6ae9e632a511f37c87b74485
                 - name: redis-exporter
-                  ref: dhi/redis-exporter:1.91.1-debian13-compat@sha256:926575865c522d5cfd53d175cf25b92cdbf8fb9d009e55328af1f521c22f3029
+                  ref: dhi/redis-exporter:1.91.1-debian13-compat@sha256:db9b0656be0e61961d352aa49ebd8d5031465f79410a64c80e845eb30751162c
                 - name: bash
-                  ref: dhi/bash:5.2.37-debian13@sha256:b48f1add4608cb356093c4a65bebc22e409d88d3690fc6796b6863e6c8aa132c
+                  ref: dhi/bash:5.2.37-debian13@sha256:af99ead6b4912e0fe77a6fe7a309b2103cdc64feaea820208bcb5dea10f0264e
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.11-debian13-compat@sha256:31e9e5eb37280cee80f78698e16983566438d894887872998cb96f5cfabdb05d
+                  ref: dhi/kubectl:1.34.11-debian13-compat@sha256:3aac46d2ac8893b107b0e871aeeb269e24a7b482c8776061e4ecc59a51b05a15
               name: redis-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/docker-hardened-images/helm-charts
