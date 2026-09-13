@@ -20,7 +20,7 @@ dates:
   release: "2026-01-14"
 vars:
   COMMIT_SHA: c135e6335c7158fa26e96b0dc386f825255b47c0
-  GRADLE_REFERENCE: dhi/gradle:8.14.5-jdk21-debian13-dev@sha256:4d4f8c23cbaf24edeedd4722e553cb6985a3e32731d9b896be982c3fa7fe68c2
+  GRADLE_REFERENCE: dhi/gradle:8.14.5-jdk21-debian13-dev@sha256:f7133f772d6bd3b353b3f1b571c93f86eb99702d69c7a131b821f8e192299ae8
   GRADLE_VERSION: 8.14.5
   JAVA_REFERENCE: dhi/eclipse-temurin:21.0.12.8-debian13@sha256:0f8d869a57951cbd51a9e346b7c57decde437f365faab227c818232f7a44045d
   JAVA_VERSION: 21.0.12.8
@@ -54,7 +54,7 @@ contents:
     - util-linux
   builds:
     - name: solr
-      uses: dhi.io/gradle:8.14.5-jdk21-debian13-dev@sha256:4d4f8c23cbaf24edeedd4722e553cb6985a3e32731d9b896be982c3fa7fe68c2
+      uses: dhi.io/gradle:8.14.5-jdk21-debian13-dev@sha256:f7133f772d6bd3b353b3f1b571c93f86eb99702d69c7a131b821f8e192299ae8
       work-dir: ${source.dir}/solr
       contents:
         packages:
