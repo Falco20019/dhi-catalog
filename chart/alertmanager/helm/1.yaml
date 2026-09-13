@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.0-debian13@sha256:a66c13d28e780fa8359c38aebd7f5d5ae50a75e914e582b0c732282d0d55348d
+  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.0-debian13@sha256:14fd92ae7feac25da9a61dab66631853764e1ba936790d8010ad2e6a2cc6fb45
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:d134f6e16dc460d98be2331fc3faa842fc401a5ca35a8ac2c59459e69aa19700
   CHART_COMMIT_SHA: b3a5254971c43010cbb84755bcec060e41cbd26c
   CHART_HELM_NAME: alertmanager-chart
@@ -17,7 +17,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:19285404887803490568e8765e311fcb5495d97d11ccc9b258eb477bd74b4b83
+  PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:6af63b54bad658b6af89f6596a0bea6c26bacc736dfa04a28de8c811d04626ff
   SEMVER_MAJOR_MINOR_VERSION: "1.43"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.43.1
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus AlertManager
               images:
                 - name: alertmanager
-                  ref: dhi/alertmanager:0.34.0-debian13@sha256:a66c13d28e780fa8359c38aebd7f5d5ae50a75e914e582b0c732282d0d55348d
+                  ref: dhi/alertmanager:0.34.0-debian13@sha256:14fd92ae7feac25da9a61dab66631853764e1ba936790d8010ad2e6a2cc6fb45
                 - name: prometheus-config-reloader
-                  ref: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:19285404887803490568e8765e311fcb5495d97d11ccc9b258eb477bd74b4b83
+                  ref: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:6af63b54bad658b6af89f6596a0bea6c26bacc736dfa04a28de8c811d04626ff
                 - name: busybox
                   ref: dhi/busybox:1.37.0-alpine3.22@sha256:d134f6e16dc460d98be2331fc3faa842fc401a5ca35a8ac2c59459e69aa19700
               name: alertmanager-chart
