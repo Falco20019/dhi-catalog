@@ -15,14 +15,14 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   COMMIT_SHA: 50b0b50b75abd47f830b7805ee1b51716eb4065e
-  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:bb23deb81e8c1c35b8d76a3b9869c1fe792a047c596042bcc6c0d8583d0cc67b
+  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:e9d78a82ddd35580605faddac86c72701fb7a6f26c74f02859d6a4f898d07530
   JAVA_FIPS_SUFFIX: ""
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "25"
   JVM_KILL_COMMIT: 8a6ae95b38905f98ce6b7b727efb2dc75da16e11
   LAUNCHER_COMMIT_SHA: 55cda05870182df2be6b7bb081989bbb4253611a
   LAUNCHER_VERSION: "321"
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk25-debian13-dev@sha256:6c317fede30820f07e9a3f8a99fd7c57eca7d59c59d0486db0cc797b8e9e594b
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk25-debian13-dev@sha256:1c24c5dc04885ec50f2ffb7310d8502e95ee9af93cbd1c434c313e31dd524679
   MAVEN_VERSION: 3.9.16
   VERSION: "483"
 contents:
@@ -96,7 +96,7 @@ contents:
           uid: 0
           gid: 0
     - name: trino
-      uses: dhi.io/maven:3.9.16-jdk25-debian13-dev@sha256:6c317fede30820f07e9a3f8a99fd7c57eca7d59c59d0486db0cc797b8e9e594b
+      uses: dhi.io/maven:3.9.16-jdk25-debian13-dev@sha256:1c24c5dc04885ec50f2ffb7310d8502e95ee9af93cbd1c434c313e31dd524679
       work-dir: ${source.dir}/trino
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-25
