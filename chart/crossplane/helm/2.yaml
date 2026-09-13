@@ -10,7 +10,7 @@ platforms:
 vars:
   CHART_COMMIT_SHA: 61fa450c0c14a75bf5632872bd4a5b6945ec5a26
   CHART_HELM_NAME: crossplane-chart
-  CROSSPLANE_REFERENCE: dhi/crossplane:2.4.0-debian13@sha256:ab52f221b10470fe57109202a1a38dafe579da86ca61b9a68a0cbc6f996ee951
+  CROSSPLANE_REFERENCE: dhi/crossplane:2.4.0-debian13@sha256:97aae068c28c54bac6d656c98d58e0e6062779231eb216aa8290b5a47f1ed926
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Crossplane
               images:
                 - name: crossplane
-                  ref: dhi/crossplane:2.4.0-debian13@sha256:ab52f221b10470fe57109202a1a38dafe579da86ca61b9a68a0cbc6f996ee951
+                  ref: dhi/crossplane:2.4.0-debian13@sha256:97aae068c28c54bac6d656c98d58e0e6062779231eb216aa8290b5a47f1ed926
               name: crossplane-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/crossplane/crossplane
