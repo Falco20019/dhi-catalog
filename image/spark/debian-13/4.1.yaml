@@ -21,7 +21,7 @@ vars:
   JAVA_FIPS_SUFFIX: ""
   JAVA_MAJOR_VERSION: "21"
   JDK_MAJOR_VERSION: "21"
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:645612ac05bca83249c2a1c532128d6e5d397bdf1e0de52abc4d164034a784d2
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:773bbdaae266fbae54c5ecc245575e245d0e99dc5c30de44d32d5d378e04f97d
   MAVEN_VERSION: 3.9.16
   NAME_DETAIL: Scala 2.13.x, Java 21.x
   SCALA_VERSION: "2.13"
@@ -51,7 +51,7 @@ contents:
     - tini
   builds:
     - name: spark
-      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:645612ac05bca83249c2a1c532128d6e5d397bdf1e0de52abc4d164034a784d2
+      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:773bbdaae266fbae54c5ecc245575e245d0e99dc5c30de44d32d5d378e04f97d
       environment:
         MAVEN_ARGS: --batch-mode --no-transfer-progress
       contents:
