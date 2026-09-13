@@ -23,7 +23,7 @@ vars:
   BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
   BASE_TAG: 20250419-debian13
   COMMIT_SHA: 83e909fc2a0dbc394b4b683fb3fa2d7dcf26cc5e
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:ff0feb20c07a9c40fd0d46d811abfbd055db04aac880016eeb27481dae2633cd
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:90fc442ca821c6ef71649c251cdca331d2747ffbe62ecff6383356533e30f081
   MARIADB_DOCKER_COMMIT: 4ef487565005c1acf62dcfaa87110a39262b8150
   SEMVER_MAJOR_MINOR_VERSION: "12.3"
   SEMVER_MAJOR_VERSION: "12"
@@ -161,7 +161,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:ff0feb20c07a9c40fd0d46d811abfbd055db04aac880016eeb27481dae2633cd
+    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:90fc442ca821c6ef71649c251cdca331d2747ffbe62ecff6383356533e30f081
       includes:
         - opt/docker/sbom/gosu
         - usr/local/sbin/gosu
