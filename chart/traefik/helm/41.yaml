@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "41.5"
   SEMVER_MAJOR_VERSION: "41"
   SEMVER_VERSION: 41.5.0
-  TRAEFIK_REFERENCE: dhi/traefik:3.7.13-debian13@sha256:ab68851efd3bc9e63450790b2804f0cb32cb6ad74f9354c6ec5effb7f332229c
+  TRAEFIK_REFERENCE: dhi/traefik:3.7.13-debian13@sha256:0490a8aa9b95dc2018e44e038ef11c2a005b7233c9b183ee39f0fbfe5b3e3622
   VERSION: 41.5.0
 contents:
   repositories:
@@ -51,7 +51,7 @@ contents:
               description: Docker Hardened Images Helm chart for Traefik
               images:
                 - name: traefik
-                  ref: dhi/traefik:3.7.13-debian13@sha256:ab68851efd3bc9e63450790b2804f0cb32cb6ad74f9354c6ec5effb7f332229c
+                  ref: dhi/traefik:3.7.13-debian13@sha256:0490a8aa9b95dc2018e44e038ef11c2a005b7233c9b183ee39f0fbfe5b3e3622
               name: traefik-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/traefik/traefik-helm-chart
