@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  ISTIO_PILOT_REFERENCE: dhi/istio-pilot:1.30.4-debian13@sha256:1aef165dc77c3816782a4733d6ab1b959264156b6b66a35d0ec21d9d4ec6541a
-  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.4-debian13@sha256:8364923b7199b0c878ea6b427c93546423c00b473ecb78b374eb247c325ec11b
+  ISTIO_PILOT_REFERENCE: dhi/istio-pilot:1.30.4-debian13@sha256:6bcab694f2eeb8644b1fb32166f40d478742e6fd1f1efde6fea8e8b75a89bb9b
+  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.4-debian13@sha256:e20dd9d4af7e36f55a47d25e166ebf5a61ba3cd84183c3c63099e7bf1d8fd0ab
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.30.4
@@ -50,9 +50,9 @@ contents:
               description: Docker Hardened Images Helm chart for Istio Discovery (istiod)
               images:
                 - name: pilot
-                  ref: dhi/istio-pilot:1.30.4-debian13@sha256:1aef165dc77c3816782a4733d6ab1b959264156b6b66a35d0ec21d9d4ec6541a
+                  ref: dhi/istio-pilot:1.30.4-debian13@sha256:6bcab694f2eeb8644b1fb32166f40d478742e6fd1f1efde6fea8e8b75a89bb9b
                 - name: proxyv2
-                  ref: dhi/istio-proxyv2:1.30.4-debian13@sha256:8364923b7199b0c878ea6b427c93546423c00b473ecb78b374eb247c325ec11b
+                  ref: dhi/istio-proxyv2:1.30.4-debian13@sha256:e20dd9d4af7e36f55a47d25e166ebf5a61ba3cd84183c3c63099e7bf1d8fd0ab
               name: istio-discovery-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
