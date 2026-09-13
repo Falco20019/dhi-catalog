@@ -4,9 +4,9 @@ image: dhi.io/pkg-airflow
 variant: runtime
 tags:
   - 3.3.1
-  - 3.3.1-r13
+  - 3.3.1-r14
   - 3.3.1-debian13
-  - 3.3.1-r13-debian13
+  - 3.3.1-r14-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,13 +18,13 @@ vars:
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.15-1
-  REL: "13"
+  REL: "14"
   SEMVER_MAJOR_MINOR_VERSION: "3.3"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.3.1
   UV_VERSION: 0.11.23
   VERSION: 3.3.1
-  YQ_REFERENCE: dhi/pkg-go-yq:4.53.6-debian13@sha256:faea0d84108dae72d20106bfbd3bcb2ca211f3fa1064e72e608c615cb423d2d7
+  YQ_REFERENCE: dhi/pkg-go-yq:4.53.6-debian13@sha256:6aa01541555d67409cf9dc091ecc4d8020c25d44e6cbbb441eda0e2ba18669e2
   YQ_VERSION: 4.53.6
 contents:
   packages:
@@ -124,7 +124,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/pkg-go-yq:4.53.6-debian13@sha256:faea0d84108dae72d20106bfbd3bcb2ca211f3fa1064e72e608c615cb423d2d7
+          - name: dhi.io/pkg-go-yq:4.53.6-debian13@sha256:6aa01541555d67409cf9dc091ecc4d8020c25d44e6cbbb441eda0e2ba18669e2
             includes:
               - usr/local/bin/yq
             uid: 0
@@ -354,7 +354,7 @@ contents:
               - deb
             license: Apache-2.0
             name: airflow
-            rel: 13
+            rel: 14
             url: https://airflow.apache.org/
             version: 3.3.1
       paths:
