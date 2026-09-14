@@ -4,24 +4,24 @@ image: dhi.io/pkg-argocd
 variant: runtime
 tags:
   - 3.4-alpine3.24
-  - 3.4.8-alpine3.24
-  - 3.4.8-r6-alpine3.24
+  - 3.4.9-alpine3.24
+  - 3.4.9-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-06"
 vars:
-  COMMIT_SHA: 609fa82ba26de2369c7b5138279f06a2af1d13a5
+  COMMIT_SHA: f4554f40bc545e1d633151cd43cf3784c4e35de3
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   NODEJS_VERSION: 24.21.0-r0
   PACKAGE_NAME: argocd-3.4
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.4.8
-  VERSION: 3.4.8
+  SEMVER_VERSION: 3.4.9
+  VERSION: 3.4.9
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -59,15 +59,15 @@ contents:
           - npm
           - yarn
         files:
-          - url: git+https://github.com/argoproj/argo-cd.git#v3.4.8
-            checksum: 609fa82ba26de2369c7b5138279f06a2af1d13a5
+          - url: git+https://github.com/argoproj/argo-cd.git#v3.4.9
+            checksum: f4554f40bc545e1d633151cd43cf3784c4e35de3
             path: /go/src/github.com/argoproj/argo-cd/v3
             spdx:
               name: argocd
-              version: 3.4.8
+              version: 3.4.9
               packages:
                 - name: argocd
-                  purl: pkg:dhi/argocd@3.4.8
+                  purl: pkg:dhi/argocd@3.4.9
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -137,10 +137,10 @@ contents:
           with:
             ldflags:
               - -extldflags '-static'
-              - -X github.com/argoproj/argo-cd/v3/common.version=3.4.8
-              - -X github.com/argoproj/argo-cd/v3/common.gitTag=v3.4.8
+              - -X github.com/argoproj/argo-cd/v3/common.version=3.4.9
+              - -X github.com/argoproj/argo-cd/v3/common.gitTag=v3.4.9
               - -X github.com/argoproj/argo-cd/v3/common.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/argoproj/argo-cd/v3/common.gitCommit=609fa82ba26de2369c7b5138279f06a2af1d13a5
+              - -X github.com/argoproj/argo-cd/v3/common.gitCommit=f4554f40bc545e1d633151cd43cf3784c4e35de3
               - -X github.com/argoproj/argo-cd/v3/common.gitTreeState=clean
               - -X github.com/argoproj/argo-cd/v3/common.kubectlVersion=$(go list -m k8s.io/client-go | head -n 1 | rev | cut -d' ' -f1 | rev)
             output: ${target.dir}/usr/bin/argocd
@@ -155,10 +155,10 @@ contents:
           with:
             ldflags:
               - -extldflags '-static'
-              - -X github.com/argoproj/argo-cd/v3/common.version=3.4.8
-              - -X github.com/argoproj/argo-cd/v3/common.gitTag=v3.4.8
+              - -X github.com/argoproj/argo-cd/v3/common.version=3.4.9
+              - -X github.com/argoproj/argo-cd/v3/common.gitTag=v3.4.9
               - -X github.com/argoproj/argo-cd/v3/common.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/argoproj/argo-cd/v3/common.gitCommit=609fa82ba26de2369c7b5138279f06a2af1d13a5
+              - -X github.com/argoproj/argo-cd/v3/common.gitCommit=f4554f40bc545e1d633151cd43cf3784c4e35de3
               - -X github.com/argoproj/argo-cd/v3/common.gitTreeState=clean
               - -X github.com/argoproj/argo-cd/v3/common.kubectlVersion=$(go list -m k8s.io/client-go | head -n 1 | rev | cut -d' ' -f1 | rev)
             output: ${target.dir}/usr/bin/argocd-dev
@@ -190,7 +190,7 @@ contents:
             license: Apache-2.0
             name: argocd-3.4
             provides: argocd=$pkg_full_version
-            rel: 6
+            rel: 0
             replaces: argocd
             subpackages:
               - files:
@@ -198,7 +198,7 @@ contents:
                     source: usr/bin/argocd-dev
                 name: argocd-3.4-dev
             url: https://github.com/argoproj/argo-cd
-            version: 3.4.8
+            version: 3.4.9
       paths:
         - type: file
           path: ${source.dir}/patch/yarn-patches-3.4.json
