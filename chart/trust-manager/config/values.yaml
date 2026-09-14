@@ -1,0 +1,41 @@
+image:
+  repository: ${trust-manager.registry}/${trust-manager.repository}
+  tag: ${trust-manager.tag}@${trust-manager.digest}
+
+defaultPackageImage:
+  repository: ${trust-manager-package.registry}/${trust-manager-package.repository}
+  tag: ${trust-manager-package.tag}@${trust-manager-package.digest}
+  # Upstream placeholder overwritten at release time; keep it aligned with our DHI package ref.
+  _defaultReference: :${trust-manager-package.tag}@${trust-manager-package.digest}
+
+# Align with DHI nonroot UID/GID (65532) used by dhi/trust-manager and dhi/trust-manager-package.
+podSecurityContext:
+  runAsUser: 65532
+  runAsGroup: 65532
+  runAsNonRoot: true
+
+app:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+    seccompProfile:
+      type: RuntimeDefault
+
+defaultPackage:
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+    seccompProfile:
+      type: RuntimeDefault

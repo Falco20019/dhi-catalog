@@ -1,0 +1,54 @@
+===============================================================================
+🐳  {{ .Chart.Name | upper }}  —  A Docker Hardened Helm Chart
+===============================================================================
+
+This is a {{ .Chart.Name }} Docker Helm chart built from the {{ (index .Chart.Maintainers 0).Name }}
+{{ .Chart.Name }} Helm chart while using a hardened configuration with
+**Docker Hardened Images**.
+
+To learn more about how to use this Helm chart, visit the upstream documentation:
+{{ (index .Chart.Maintainers 0).URL }}
+===============================================================================
+
+Release:      {{ .Release.Name }}
+Namespace:    {{ .Release.Namespace }}
+Chart:        {{ .Chart.Name }} {{ .Chart.Version }}
+App version:  {{ .Chart.AppVersion }}
+
+ℹ️ Checkout the getting started guides at: {{ (index .Chart.Maintainers 0).URL }}
+
+
+{{- if (lt (int .Values.replicaCount) 2) }}
+⚠️  WARNING: Consider increasing the Helm value `replicaCount` to 2 if you require high availability.
+{{- end }}
+
+{{- if (not .Values.podDisruptionBudget.enabled) }}
+⚠️  WARNING: Consider setting the Helm value `podDisruptionBudget.enabled` to true if you require high availability.
+{{- end }}
+
+⭐ {{ .Chart.Name }} has been deployed!
+
+📊 Check trust-manager status:
+$ kubectl -n {{ .Release.Namespace }} get pods -l "app.kubernetes.io/instance={{ .Release.Name }}"
+$ kubectl -n {{ .Release.Namespace }} get pods -l "app.kubernetes.io/name={{ include "trust-manager.name" . }}"
+
+trust-manager {{ .Chart.AppVersion }} has been deployed successfully!
+
+{{- if .Values.defaultPackage.enabled }}
+Your installation includes a default CA package, using the following
+default CA package image:
+
+{{ .Values.defaultPackageImage.repository }}:{{ .Values.defaultPackageImage.tag }}
+
+It's imperative that you keep the default CA package image up to date.
+{{- end }}
+
+To find out more about securely running trust-manager and to get started
+with creating your first bundle, check out the documentation on the
+cert-manager website:
+
+https://cert-manager.io/docs/trust/trust-manager/
+
+🧹 Uninstall
+$ helm -n {{ .Release.Namespace }} uninstall {{ .Release.Name }}
+===============================================================================
