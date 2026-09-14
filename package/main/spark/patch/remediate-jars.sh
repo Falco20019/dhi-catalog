@@ -22,12 +22,14 @@ DERBYSHARED="${PATCH_DIR}/derbyshared-10.17.1.0.jar"
 DERBYTOOLS="${PATCH_DIR}/derbytools-10.17.1.0.jar"
 LIBTHRIFT="${PATCH_DIR}/libthrift-0.23.0.jar"
 HIVE_JDBC_313="${PATCH_DIR}/hive-jdbc-3.1.3.jar"
+COMMONS_LANG3="${PATCH_DIR}/commons-lang3-3.18.0.jar"
+NIMBUS_JOSE_JWT="${PATCH_DIR}/nimbus-jose-jwt-10.0.2.jar"
 
 for jar in \
     "$JACKSON_CORE" "$JACKSON_DATABIND" "$JACKSON_ANNOTATIONS" \
     "$COMMONS_CONFIGURATION2" "$JLINE_REMOTE_TELNET" \
     "$DERBY" "$DERBYSHARED" "$DERBYTOOLS" "$LIBTHRIFT" \
-    "$HIVE_JDBC_313"; do
+    "$HIVE_JDBC_313" "$COMMONS_LANG3" "$NIMBUS_JOSE_JWT"; do
     if [ ! -f "$jar" ]; then
         echo "missing patch dependency: $jar" >&2
         exit 1
@@ -97,13 +99,17 @@ patch_hadoop_jar() {
     relocate_tree "$PWD" "$JACKSON_ANNOTATIONS" com/fasterxml/jackson/annotation org/apache/hadoop/shaded/com/fasterxml/jackson/annotation
     relocate_tree "$PWD" "$COMMONS_CONFIGURATION2" org/apache/commons/configuration2 org/apache/hadoop/shaded/org/apache/commons/configuration2
     relocate_tree "$PWD" "$JLINE_REMOTE_TELNET" org/jline/builtins/telnet org/apache/hadoop/shaded/org/jline/builtins/telnet
+    relocate_tree "$PWD" "$COMMONS_LANG3" org/apache/commons/lang3 org/apache/hadoop/shaded/org/apache/commons/lang3
+    relocate_tree "$PWD" "$NIMBUS_JOSE_JWT" com/nimbusds org/apache/hadoop/shaded/com/nimbusds
     rm -rf org/apache/hadoop/shaded/org/eclipse/jetty
     rm -rf META-INF/maven/org.eclipse.jetty META-INF/maven/org.eclipse.jetty.websocket
     find META-INF/services -maxdepth 1 -name 'org.apache.hadoop.shaded.org.eclipse.jetty.*' -delete
     write_pom_properties "$PWD" com.fasterxml.jackson.core jackson-core "${JACKSON_VERSION}"
     write_pom_properties "$PWD" com.fasterxml.jackson.core jackson-databind "${JACKSON_VERSION}"
     write_pom_properties "$PWD" org.apache.commons commons-configuration2 2.15.0
+    write_pom_properties "$PWD" org.apache.commons commons-lang3 3.18.0
     write_pom_properties "$PWD" org.jline jline-remote-telnet 4.2.1
+    write_pom_properties "$PWD" com.nimbusds nimbus-jose-jwt 10.0.2
 }
 
 patch_parquet_jar() {
