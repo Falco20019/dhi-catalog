@@ -4,14 +4,15 @@ image: dhi.io/pkg-glib
 variant: runtime
 tags:
   - 2.86.3-alpine3.23
-  - 2.86.3-r0-alpine3.23
+  - 2.86.3-r1-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "0"
   COMMIT_SHA: ae84b402e97c2102a88a4ad3af6dc2a3de292a23
   PACKAGE_NAME: main/glib
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.86"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.86.3
@@ -68,11 +69,73 @@ contents:
         - uses: abuild/disable@v1
           with:
             function: check
+        - name: normalize APKBUILD source closer
+          runs: |
+            set -eux -o pipefail
+
+            sed -i '/^source="/,/^[[:space:]]*"$/s/^[[:space:]]*"$/"/' APKBUILD
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58010-58012-gvariant-gdatetime-gregex.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58013-giochannel-memcmp.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58014-gkeyfile-locale-string-list.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58015-gdbusauth-cookie-validation.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58016-dbus-introspection-xml-nesting.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2026-58016-dbus-introspection-assertions.patch
         - uses: abuild/bump@v1
           with:
             depends_dev: bzip2-dev docbook-xml docbook-xsl gettext-dev libxml2-utils libxslt python3
+            rel: 1
+            version: 2.86.3
         - uses: abuild/build@v1
           privileged: true
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58010-58012-gvariant-gdatetime-gregex.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58010-58012-gvariant-gdatetime-gregex.patch
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58013-giochannel-memcmp.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58013-giochannel-memcmp.patch
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58014-gkeyfile-locale-string-list.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58014-gkeyfile-locale-string-list.patch
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58015-gdbusauth-cookie-validation.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58015-gdbusauth-cookie-validation.patch
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58016-dbus-introspection-xml-nesting.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58016-dbus-introspection-xml-nesting.patch
+        - type: file
+          path: ${source.dir}/aports/main/glib/dhi-cve-2026-58016-dbus-introspection-assertions.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/glib/patch/dhi-cve-2026-58016-dbus-introspection-assertions.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
