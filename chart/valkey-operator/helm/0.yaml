@@ -18,7 +18,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.6"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.6.0
-  VALKEY_OPERATOR_REFERENCE: dhi/valkey-operator:0.6.0-debian13@sha256:0286c05e002d01c152d597bf8099073da99b7dc1bc0337fa9345bcc7f8e28075
+  VALKEY_OPERATOR_REFERENCE: dhi/valkey-operator:0.6.0-debian13@sha256:aaef9a3039c9d77c5434a4d37b226a0112e65202e8bcfcf870307cbf493f536f
   VALKEY_OPERATOR_VERSION_PREFIX: "0.6"
   VERSION: 0.6.0
 contents:
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for the Valkey Operator
               images:
                 - name: valkey-operator
-                  ref: dhi/valkey-operator:0.6.0-debian13@sha256:0286c05e002d01c152d597bf8099073da99b7dc1bc0337fa9345bcc7f8e28075
+                  ref: dhi/valkey-operator:0.6.0-debian13@sha256:aaef9a3039c9d77c5434a4d37b226a0112e65202e8bcfcf870307cbf493f536f
               name: valkey-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/valkey-io/valkey-helm
