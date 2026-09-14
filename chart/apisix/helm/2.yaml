@@ -9,7 +9,7 @@ platforms:
   - linux/amd64
 vars:
   APISIX_INGRESS_CONTROLLER_CHART_REFERENCE: dhi/apisix-ingress-controller-chart:1.3.1@sha256:d9996f5cce621b1a6404baf30accfb01d6104f725895b41b11e41bd4a11c458c
-  APISIX_REFERENCE: dhi/apisix:3.18.0-debian13@sha256:300696bef3ab058e24a3cca8159fa72228fd85141fa19a36c3b7c8be98c3b70f
+  APISIX_REFERENCE: dhi/apisix:3.18.0-debian13@sha256:3330ff07872426914c29b0f8f458bd91eed184a486cb86debf42b4e53f09456a
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:70543fbc18071054c96f8c1986b02c43406c047d887cdcee1c93d476fd687828
   CHART_COMMIT_SHA: d166ba101f9bdb7e08bc902ff757647421bbd57f
   CHART_HELM_NAME: apisix-chart
@@ -58,7 +58,7 @@ contents:
               description: Docker Hardened Images Helm chart for APISIX
               images:
                 - name: apisix
-                  ref: dhi/apisix:3.18.0-debian13@sha256:300696bef3ab058e24a3cca8159fa72228fd85141fa19a36c3b7c8be98c3b70f
+                  ref: dhi/apisix:3.18.0-debian13@sha256:3330ff07872426914c29b0f8f458bd91eed184a486cb86debf42b4e53f09456a
                 - name: busybox
                   ref: dhi/busybox:1.37.0-debian13@sha256:70543fbc18071054c96f8c1986b02c43406c047d887cdcee1c93d476fd687828
               name: apisix-chart
