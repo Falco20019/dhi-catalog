@@ -58,6 +58,11 @@ contents:
             uid: 0
             gid: 0
       pipeline:
+        - name: backport kubevirt fixes (1.6 only)
+          uses: patch@v1
+          with:
+            options: -p1
+            patch: ${source.dir}/patch/kubevirt-cve-backports-1.6.patch
         - name: patch go dependencies (1.6 only)
           uses: go/bump@v2
           with:
@@ -71,12 +76,11 @@ contents:
               - github.com/insomniacslk/dhcp@v0.0.0-20260719225207-c76316d4aa82
               - github.com/opencontainers/selinux@v1.13.0
             download: true
-        - name: test
+        - name: test (1.6 only - cmd only after kubevirt backport)
           runs: |
             set -eux -o pipefail
 
-            # -vet=off: virt-controller v1.5.x has non-constant format strings caught by Go 1.26's linting
-            CGO_ENABLED=0 go test -vet=off ./cmd/virt-controller/... ./pkg/virt-controller/...
+            CGO_ENABLED=0 go test -vet=off ./cmd/virt-controller/...
         - name: build
           uses: go/build@v1
           environment:

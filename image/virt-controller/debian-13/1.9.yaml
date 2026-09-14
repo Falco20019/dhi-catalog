@@ -78,7 +78,6 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            # -vet=off: virt-controller v1.5.x has non-constant format strings caught by Go 1.26's linting
             CGO_ENABLED=0 go test -vet=off ./cmd/virt-controller/... ./pkg/virt-controller/...
         - name: build
           uses: go/build@v1
