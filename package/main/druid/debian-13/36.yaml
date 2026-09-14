@@ -4,9 +4,9 @@ image: dhi.io/pkg-druid
 variant: runtime
 tags:
   - 36.0.0
-  - 36.0.0-r6
+  - 36.0.0-r7
   - 36.0.0-debian13
-  - 36.0.0-r6-debian13
+  - 36.0.0-r7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -25,7 +25,7 @@ vars:
   NODEJS_VERSION: 24.21.0-0
   PACKAGE_HOME: /usr/share/druid
   PACKAGE_NAME: druid-36
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "36.0"
   SEMVER_MAJOR_VERSION: "36"
   SEMVER_VERSION: 36.0.0
@@ -275,6 +275,22 @@ contents:
               -o -name 'derbytools-*.jar' \
               -o -name 'log4j-1.2.17.jar' \
               \) -delete
+        - name: replace calcite-core for CVE-2026-46718
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            LIB="${target.dir}/usr/share/druid/lib"
+            CALCITE_VERSION="1.42.0"
+            CALCITE_SHA256="2ed5489201baab842001c95f939a0829849cf3cdaed9cdbf4b9078633c35792b"
+            URL="https://repo1.maven.org/maven2/org/apache/calcite/calcite-core/${CALCITE_VERSION}/calcite-core-${CALCITE_VERSION}.jar"
+            TMP="$(mktemp)"
+
+            curl -fsSL "$URL" -o "$TMP"
+            echo "${CALCITE_SHA256}  $TMP" | sha256sum -c -
+            rm -f "${LIB}"/calcite-core-*.jar
+            install -m 0644 "$TMP" "${LIB}/calcite-core-${CALCITE_VERSION}.jar"
+            rm -f "$TMP"
         - name: install scripts
           runs: |
             set -eux -o pipefail
@@ -294,7 +310,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-36
-            rel: 6
+            rel: 7
             url: https://druid.apache.org/
             version: 36.0.0
         - name: fipsify
@@ -328,7 +344,7 @@ contents:
               - deb
             license: Apache-2.0
             name: druid-36-fips
-            rel: 6
+            rel: 7
             url: https://druid.apache.org/
             version: 36.0.0
       paths:
