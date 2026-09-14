@@ -5,18 +5,18 @@ image: dhi.io/seaweedfs
 variant: dev
 tags:
   - 4-dev
-  - 4.46-dev
+  - 4.47-dev
   - 4-debian-dev
   - 4-debian13-dev
-  - 4.46-debian-dev
-  - 4.46-debian13-dev
+  - 4.47-debian-dev
+  - 4.47-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: d997fba1575583a89cf0cc50dc0150642286c86d
+  COMMIT_SHA: c5073360007d28385a33426a42ac3e4ec504c5a3
   MAJOR_VERSION: "4"
-  VERSION: "4.46"
+  VERSION: "4.47"
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -58,15 +58,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/seaweedfs/seaweedfs.git#4.46
-            checksum: d997fba1575583a89cf0cc50dc0150642286c86d
+          - url: git+https://github.com/seaweedfs/seaweedfs.git#4.47
+            checksum: c5073360007d28385a33426a42ac3e4ec504c5a3
             path: /go/src/github.com/seaweedfs/seaweedfs
             spdx:
               name: seaweedfs
-              version: "4.46"
+              version: "4.47"
               packages:
                 - name: seaweedfs
-                  purl: pkg:golang/github.com/seaweedfs/seaweedfs@4.46
+                  purl: pkg:golang/github.com/seaweedfs/seaweedfs@4.47
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -92,7 +92,7 @@ contents:
           work-dir: /go/src/github.com/seaweedfs/seaweedfs/weed
           with:
             ldflags:
-              - -X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=d997fba1575583a89cf0cc50dc0150642286c86d
+              - -X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=c5073360007d28385a33426a42ac3e4ec504c5a3
             output: ${target.dir}/usr/bin/weed
       outputs:
         - source: ${target.dir}/usr/bin/weed
