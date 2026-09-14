@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  FLUX_CLI_REFERENCE: dhi/flux-cli:2.9.5-debian13@sha256:a97fae05e4dad3ce8936698f8e10eca06bb550f5340b13dcd41795d8152a6914
+  FLUX_CLI_REFERENCE: dhi/flux-cli:2.9.5-debian13@sha256:859fac181ea960eb88f1ccdbcf59961d56facf9415ad3dc37be511a043e47411
   FLUXCD_HELM_CONTROLLER_REFERENCE: dhi/fluxcd-helm-controller:1.6.4-debian13@sha256:ba6fc4b262a2083440f7c226979f002e9f926ed1da177fc8d128156abeace6e5
   FLUXCD_IMAGE_AUTOMATION_CONTROLLER_REFERENCE: dhi/fluxcd-image-automation-controller:1.2.5-debian13@sha256:61da7f2b310d727659043a6f7b511d519cfb851b05f704cf1f452d990eb3da43
   FLUXCD_IMAGE_REFLECTOR_CONTROLLER_REFERENCE: dhi/fluxcd-image-reflector-controller:1.2.5-debian13@sha256:b393743c546e80b9fdf3568f46d6f56b5933321d35b06721de63ecdca38651ec
@@ -56,7 +56,7 @@ contents:
               description: Docker Hardened Images Helm chart for Flux
               images:
                 - name: flux-cli
-                  ref: dhi/flux-cli:2.9.5-debian13@sha256:a97fae05e4dad3ce8936698f8e10eca06bb550f5340b13dcd41795d8152a6914
+                  ref: dhi/flux-cli:2.9.5-debian13@sha256:859fac181ea960eb88f1ccdbcf59961d56facf9415ad3dc37be511a043e47411
                 - name: fluxcd-helm-controller
                   ref: dhi/fluxcd-helm-controller:1.6.4-debian13@sha256:ba6fc4b262a2083440f7c226979f002e9f926ed1da177fc8d128156abeace6e5
                 - name: fluxcd-image-automation-controller
