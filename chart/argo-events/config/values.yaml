@@ -1,0 +1,52 @@
+global:
+  image:
+    repository: ${argo-events.registry}/${argo-events.repository}
+    tag: ${argo-events.tag}@${argo-events.digest}
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+
+controller:
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+    seccompProfile:
+      type: RuntimeDefault
+
+webhook:
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+    seccompProfile:
+      type: RuntimeDefault
+
+# Upstream version lists are cleared before patch so rudder can replace them.
+# Controller ValidateConfig still requires a non-empty nats.versions list.
+# natsStreamingImage is blank: NATS Streaming (STAN) is upstream-deprecated/archived
+# (JetStream replaced it); we intentionally do not ship a DHI nats-streaming image.
+configs:
+  nats:
+    versions:
+      - version: latest
+        natsStreamingImage: ""
+        metricsExporterImage: ${prometheus-nats-exporter.registry}/${prometheus-nats-exporter.repository}:${prometheus-nats-exporter.tag}@${prometheus-nats-exporter.digest}
+  jetstream:
+    versions:
+      - version: latest
+        natsImage: ${nats.registry}/${nats.repository}:${nats.tag}@${nats.digest}
+        metricsExporterImage: ${prometheus-nats-exporter.registry}/${prometheus-nats-exporter.repository}:${prometheus-nats-exporter.tag}@${prometheus-nats-exporter.digest}
+        configReloaderImage: ${nats-server-config-reloader.registry}/${nats-server-config-reloader.repository}:${nats-server-config-reloader.tag}@${nats-server-config-reloader.digest}
+        startCommand: /nats-server

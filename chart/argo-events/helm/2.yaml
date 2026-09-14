@@ -1,0 +1,97 @@
+# syntax=dhi.io/build:2-helm3
+
+name: Argo Events Helm chart 2.x
+image: dhi.io/argo-events-chart
+variant: helm
+tags:
+  - 2.4.27
+platforms:
+  - linux/amd64
+vars:
+  ARGO_EVENTS_REFERENCE: dhi/argo-events:1.9.11-debian13@sha256:3fb05e484346ac7bad1eb6635ae3c45df04a2892d9429ebf501222a468755124
+  CHART_COMMIT_SHA: f60d55861d0ed6052f807d981343bd84b9a5de06
+  CHART_HELM_NAME: argo-events-chart
+  DHI_NAMESPACE: dhi
+  DHI_PREFIX: ""
+  DHI_REGISTRY: dhi.io
+  DHI_SKIP_CONTEXT_COPY: "true"
+  HELM_VERSION: 4.1.4-2
+  NATS_REFERENCE: dhi/nats:2.14.6-debian13@sha256:d7cf5cfd08cc610523e78c5a94327cfe8e42046ef27e6b500eb1c01fcd967dc2
+  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:6c76ddd8e942f22e796dc6fb548de89bcffbb85c37b9dca54abe82b29d43b678
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:006eb4059835337a328309b52e33b94ffa6f7f926b65f77dc9d08a6373119813
+  SEMVER_MAJOR_MINOR_VERSION: "2.4"
+  SEMVER_MAJOR_VERSION: "2"
+  SEMVER_VERSION: 2.4.27
+  VERSION: 2.4.27
+contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+  builds:
+    - name: argo-events
+      work-dir: ${source.dir}/helm-charts/charts/argo-events
+      contents:
+        packages:
+          - bash
+          - ca-certificates
+          - coreutils
+          - yq-go
+          - helm=4.1.4-2
+        files:
+          - url: git+https://github.com/argoproj/argo-helm#argo-events-2.4.27
+            checksum: f60d55861d0ed6052f807d981343bd84b9a5de06
+            path: ${source.dir}/helm-charts
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: prepare chart
+          uses: helm/rudder@v1
+          with:
+            chart:
+              appRef: argo-events
+              description: Docker Hardened Images Helm chart for Argo Events
+              images:
+                - name: argo-events
+                  ref: dhi/argo-events:1.9.11-debian13@sha256:3fb05e484346ac7bad1eb6635ae3c45df04a2892d9429ebf501222a468755124
+                - name: nats
+                  ref: dhi/nats:2.14.6-debian13@sha256:d7cf5cfd08cc610523e78c5a94327cfe8e42046ef27e6b500eb1c01fcd967dc2
+                - name: prometheus-nats-exporter
+                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:006eb4059835337a328309b52e33b94ffa6f7f926b65f77dc9d08a6373119813
+                - name: nats-server-config-reloader
+                  ref: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:6c76ddd8e942f22e796dc6fb548de89bcffbb85c37b9dca54abe82b29d43b678
+              name: argo-events-chart
+              notes: ${source.dir}/config/NOTES.txt
+              sourceUrl: https://github.com/argoproj/argo-helm
+            cmd: prepare
+            registry: dhi.io
+        - name: update values
+          uses: yq/patch@v1
+          with:
+            file: values.yaml
+            patches:
+              - del(.configs.nats.versions)
+              - del(.configs.jetstream.versions)
+        - name: relocate chart
+          uses: helm/rudder@v1
+          with:
+            cmd: patch
+            patches:
+              from: ${source.dir}/config
+            registry: dhi.io
+        - name: lint
+          uses: helm/cmd@v1
+          with:
+            chart: .
+            cmd: lint .
+        - name: package
+          uses: helm/package@v1
+          with:
+            chart: .
+      paths:
+        - type: directory
+          path: ${source.dir}/config
+          uid: 0
+          gid: 0
+          mode: "0644"
+          source: chart/argo-events/config

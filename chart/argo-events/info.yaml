@@ -1,0 +1,7 @@
+metadata:
+  display-name: Argo Events Helm chart
+  short-description: Argo Events is an event-driven workflow automation framework for Kubernetes
+  featured: false
+  home-url: https://argoproj.github.io/argo-events/
+  categories:
+    - integration-and-delivery
