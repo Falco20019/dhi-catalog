@@ -1,37 +1,38 @@
 # syntax=dhi.io/build:2-debian13
 
-name: DataHub Actions 1.6.x (locked)
+name: DataHub Actions 1.7.x (locked)
 image: dhi.io/datahub-actions
 variant: runtime
 flavor: locked
 tags:
   - 1-locked
-  - 1.6-locked
-  - 1.6.0-locked
-  - 1.6.0.2-locked
+  - 1.7-locked
+  - 1.7.0-locked
+  - 1.7.0.1-locked
   - 1-debian-locked
   - 1-debian13-locked
-  - 1.6-debian-locked
-  - 1.6-debian13-locked
-  - 1.6.0-debian-locked
-  - 1.6.0-debian13-locked
-  - 1.6.0.2-debian-locked
-  - 1.6.0.2-debian13-locked
+  - 1.7-debian-locked
+  - 1.7-debian13-locked
+  - 1.7.0-debian-locked
+  - 1.7.0-debian13-locked
+  - 1.7.0.1-debian-locked
+  - 1.7.0.1-debian13-locked
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-10-01"
 vars:
-  ACRYL_DATAHUB_ACTIONS_SDIST_CHECKSUM: sha256:541088f865e66ecda9b8f403da67e5d560119edd87134636fbec1574ecbe01c2
-  COMMIT_SHA: b707d73c0f527dbd4c237db052a0f9a3b652af15
+  ACRYL_DATAHUB_SDIST_CHECKSUM: sha256:c00f50677e508ca2466e3fd1334c4ea48f3aeb656b16128952596c70dbc6f14c
+  COMMIT_SHA: e99431ec510d7a2001f815c6bf70913c493af76e
   EXTRAS: base
+  PYPI_VERSION: 1.7.0.9
   PYTHON_MAJOR_MINOR_VERSION: "3.10"
-  SEMVER_MAJOR_MINOR_VERSION: "1.6"
+  SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.6.0.2
-  VERSION: 1.6.0.2
-  VERSION_MAJOR_MINOR_PATCH: 1.6.0
+  SEMVER_VERSION: 1.7.0.1
+  VERSION: 1.7.0.1
+  VERSION_MAJOR_MINOR_PATCH: 1.7.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -102,27 +103,27 @@ contents:
           - grep
           - sed
         files:
-          - url: https://files.pythonhosted.org/packages/source/a/acryl-datahub-actions/acryl_datahub_actions-1.6.0.2.tar.gz
-            checksum: sha256:541088f865e66ecda9b8f403da67e5d560119edd87134636fbec1574ecbe01c2
-            path: ${source.dir}/acryl_datahub_actions.tar.gz
+          - url: https://files.pythonhosted.org/packages/source/a/acryl-datahub/acryl_datahub-1.7.0.9.tar.gz
+            checksum: sha256:c00f50677e508ca2466e3fd1334c4ea48f3aeb656b16128952596c70dbc6f14c
+            path: ${source.dir}/acryl_datahub.tar.gz
             spdx:
-              name: acryl-datahub-actions
-              version: 1.6.0.2
+              name: acryl-datahub
+              version: 1.7.0.9
               packages:
-                - name: acryl-datahub-actions
-                  purl: pkg:pypi/acryl-datahub-actions@1.6.0.2
+                - name: acryl-datahub
+                  purl: pkg:pypi/acryl-datahub@1.7.0.9
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/datahub-project/datahub.git#v1.6.0.2
-            checksum: b707d73c0f527dbd4c237db052a0f9a3b652af15
+          - url: git+https://github.com/datahub-project/datahub.git#v1.7.0.1
+            checksum: e99431ec510d7a2001f815c6bf70913c493af76e
             path: ${source.dir}/datahub-src
             spdx:
               name: datahub
-              version: 1.6.0.2
+              version: 1.7.0.1
               packages:
                 - name: datahub
-                  purl: pkg:github/datahub-project/datahub@v1.6.0.2
+                  purl: pkg:github/datahub-project/datahub@v1.7.0.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -138,18 +139,25 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            cat > ${source.dir}/overrides.txt << 'EOF'
+            cat > ${source.dir}/overrides.txt << EOF
             urllib3>=2.7.0
             lxml>=6.1.0
             cryptography>=50.0.0
             setuptools>=83.0.0
+            acryl-datahub[datahub-kafka] @ file://${source.dir}/acryl_datahub.tar.gz
             EOF
+
+            python3 ${source.dir}/datahub-src/python-build/version_updater.py \
+              --directory ${source.dir}/datahub-src/datahub-actions/ \
+              --version "1.7.0.1" \
+              --expected-update-count 1
 
             UV_LINK_MODE=copy uv pip install \
               --prefix ${target.dir}/opt/datahub \
               --override ${source.dir}/overrides.txt \
               --no-binary cryptography \
-              "${source.dir}/acryl_datahub_actions.tar.gz[base]"
+              "${source.dir}/acryl_datahub.tar.gz[datahub-kafka]" \
+              "${source.dir}/datahub-src/datahub-actions[base]"
         - name: install datahub-actions glue from the monorepo checkout
           work-dir: ${source.dir}/datahub-src/docker/datahub-actions
           runs: |
