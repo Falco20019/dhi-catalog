@@ -4,13 +4,13 @@ name: Grafana Helm chart 13.x
 image: dhi.io/grafana-chart
 variant: helm
 tags:
-  - 13.2.2
+  - 13.2.4
 platforms:
   - linux/amd64
 vars:
   BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:c178598496474e734a0efe253036d0ec30ba2555698eba181e9d55dfcf2979ff
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:70543fbc18071054c96f8c1986b02c43406c047d887cdcee1c93d476fd687828
-  CHART_COMMIT_SHA: ""
+  CHART_COMMIT_SHA: 068bfeb94b342fcefc7016968a912554523d8aa0
   CHART_HELM_NAME: grafana-chart
   CURL_REFERENCE: dhi/curl:8.14.1-debian13@sha256:013b47c8d9f210aa73be51b40d42f579db845c8ae87e6c52ab057650e4e2b6e8
   DHI_NAMESPACE: dhi
@@ -18,13 +18,13 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.3-debian13@sha256:8dec2dc6aadec32e150cbbe4adecda78a154c0d8fb5db28ee3e6e5b4e4ab4a0c
-  GRAFANA_REFERENCE: dhi/grafana:13.2.1-debian13@sha256:e3ad2e98c21ff6ead37c64376e9b31116b7d66f4dc35547f261ad51879d2330f
+  GRAFANA_REFERENCE: dhi/grafana:13.2.1-debian13@sha256:0af893bd0b24ab4d07cf10888a1a8ba812d4ae206685e3aeaaf0bf2d7d8757d8
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.11.2-debian13@sha256:0a2ca719cfe5b928256029ac4ce6ac146b7f6d6dec55b97a2e7a0c19a22f2de3
   SEMVER_MAJOR_MINOR_VERSION: "13.2"
   SEMVER_MAJOR_VERSION: "13"
-  SEMVER_VERSION: 13.2.2
-  VERSION: 13.2.2
+  SEMVER_VERSION: 13.2.4
+  VERSION: 13.2.4
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,7 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/grafana-community/helm-charts.git#grafana-13.2.2
+          - url: git+https://github.com/grafana-community/helm-charts.git#grafana-13.2.4
+            checksum: 068bfeb94b342fcefc7016968a912554523d8aa0
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -53,7 +54,7 @@ contents:
               description: Docker Hardened Images Helm chart for Grafana
               images:
                 - name: grafana
-                  ref: dhi/grafana:13.2.1-debian13@sha256:e3ad2e98c21ff6ead37c64376e9b31116b7d66f4dc35547f261ad51879d2330f
+                  ref: dhi/grafana:13.2.1-debian13@sha256:0af893bd0b24ab4d07cf10888a1a8ba812d4ae206685e3aeaaf0bf2d7d8757d8
                 - name: grafana-image-renderer
                   ref: dhi/grafana-image-renderer:5.12.3-debian13@sha256:8dec2dc6aadec32e150cbbe4adecda78a154c0d8fb5db28ee3e6e5b4e4ab4a0c
                 - name: bats
