@@ -4,7 +4,7 @@ image: dhi.io/pkg-temporalio-server
 variant: runtime
 tags:
   - 1.29.7-alpine3.24
-  - 1.29.7-r3-alpine3.24
+  - 1.29.7-r4-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -18,7 +18,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.1-r0
   PACKAGE_NAME: temporalio-server-1.29
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "1.29"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.29.7
@@ -139,7 +139,7 @@ contents:
               - github.com/klauspost/compress@v1.18.7
               - go.opentelemetry.io/otel@v1.44.0
               - go.opentelemetry.io/otel/sdk@v1.43.0
-              - google.golang.org/grpc@v1.83.1
+              - google.golang.org/grpc@v1.83.2
             download: true
         - name: unit test
           runs: |
@@ -217,7 +217,7 @@ contents:
               - github.com/labstack/echo/v4@v4.15.3
               - go.opentelemetry.io/otel@v1.44.0
               - go.opentelemetry.io/otel/sdk@v1.43.0
-              - google.golang.org/grpc@v1.83.1
+              - google.golang.org/grpc@v1.83.2
             download: true
         - name: build temporal CLI binary
           uses: go/build@v1
@@ -279,7 +279,7 @@ contents:
               - etc/temporal
             license: MIT
             name: temporalio-server-1.29
-            rel: 3
+            rel: 4
             subpackages:
               - files:
                   - path: usr/bin/dockerize
