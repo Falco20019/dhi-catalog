@@ -24,8 +24,8 @@ vars:
   PG_MAJOR_VERSION: "18"
   PG_VERSION: "18.6"
   PGDATA: /var/lib/postgresql/18/data
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:cec2f8bb1651670ee114d12390a3a24eb9bfbdb2394077701073dba6fb528642
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:e6a571b617f96b07aebb83a306ef196af42f1056528346b56b06ca86306a9ddd
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:d0d650b35e9e6a7f5b7b4d7a7a739ba31cd7e3e1e7629ba568653ddcb27e9cfd
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:4a72d79e4bfe9feb692ae4655ccac9865eb0d3772b5be3958c919dc4239d8e85
   SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.8.6
@@ -68,7 +68,7 @@ contents:
     - zlib1g
   builds:
     - name: pgvector
-      uses: dhi.io/postgres:18.6-debian13-dev@sha256:cec2f8bb1651670ee114d12390a3a24eb9bfbdb2394077701073dba6fb528642
+      uses: dhi.io/postgres:18.6-debian13-dev@sha256:d0d650b35e9e6a7f5b7b4d7a7a739ba31cd7e3e1e7629ba568653ddcb27e9cfd
       work-dir: ${source.dir}/pgvector
       contents:
         packages:
@@ -105,8 +105,8 @@ contents:
             make OPTFLAGS="" -j"$(nproc)"
             make install DESTDIR='${target.dir}/install'
       outputs:
-        - source: ${target.dir}/install/opt/postgresql/18
-          target: /opt/postgresql/18
+        - source: ${target.dir}/install/usr/lib/postgresql/18
+          target: /usr/lib/postgresql/18
           uid: 0
           gid: 0
         - source: /opt/docker/sbom/pgvector
@@ -139,13 +139,13 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:18.6-debian13@sha256:e6a571b617f96b07aebb83a306ef196af42f1056528346b56b06ca86306a9ddd
+    - name: dhi.io/postgres:18.6-debian13@sha256:4a72d79e4bfe9feb692ae4655ccac9865eb0d3772b5be3958c919dc4239d8e85
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
       uid: 0
       gid: 0
-    - name: dhi.io/postgres:18.6-debian13-dev@sha256:cec2f8bb1651670ee114d12390a3a24eb9bfbdb2394077701073dba6fb528642
+    - name: dhi.io/postgres:18.6-debian13-dev@sha256:d0d650b35e9e6a7f5b7b4d7a7a739ba31cd7e3e1e7629ba568653ddcb27e9cfd
       excludes:
         - etc/os-release
         - var/lib/dpkg/status

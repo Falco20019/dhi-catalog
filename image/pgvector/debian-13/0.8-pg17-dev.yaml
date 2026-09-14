@@ -24,8 +24,8 @@ vars:
   PG_MAJOR_VERSION: "17"
   PG_VERSION: "17.11"
   PGDATA: /var/lib/postgresql/17/data
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:17.11-debian13-dev@sha256:b31be4a5f6eafaf19b073b5f9f1ec3141f11a10f89a76e32cda2923d9d636283
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:17.11-debian13@sha256:a5c311db281f989a0f9af22115aa2c9070cd8345549043240ca625d86e3f51c3
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:17.11-debian13-dev@sha256:faf5fddd19acd5447ddbb91a6896acecffcc64bbcd544d0a56e2ca09dba9e49a
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:17.11-debian13@sha256:f7246722dbf258922f9cb53a14f7c50ba3c602636f71fc77bc19c2e81c59d94f
   SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.8.6
@@ -68,7 +68,7 @@ contents:
     - zlib1g
   builds:
     - name: pgvector
-      uses: dhi.io/postgres:17.11-debian13-dev@sha256:b31be4a5f6eafaf19b073b5f9f1ec3141f11a10f89a76e32cda2923d9d636283
+      uses: dhi.io/postgres:17.11-debian13-dev@sha256:faf5fddd19acd5447ddbb91a6896acecffcc64bbcd544d0a56e2ca09dba9e49a
       work-dir: ${source.dir}/pgvector
       contents:
         packages:
@@ -105,8 +105,8 @@ contents:
             make OPTFLAGS="" -j"$(nproc)"
             make install DESTDIR='${target.dir}/install'
       outputs:
-        - source: ${target.dir}/install/opt/postgresql/17
-          target: /opt/postgresql/17
+        - source: ${target.dir}/install/usr/lib/postgresql/17
+          target: /usr/lib/postgresql/17
           uid: 0
           gid: 0
         - source: /opt/docker/sbom/pgvector
@@ -139,13 +139,13 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:17.11-debian13@sha256:a5c311db281f989a0f9af22115aa2c9070cd8345549043240ca625d86e3f51c3
+    - name: dhi.io/postgres:17.11-debian13@sha256:f7246722dbf258922f9cb53a14f7c50ba3c602636f71fc77bc19c2e81c59d94f
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
       uid: 0
       gid: 0
-    - name: dhi.io/postgres:17.11-debian13-dev@sha256:b31be4a5f6eafaf19b073b5f9f1ec3141f11a10f89a76e32cda2923d9d636283
+    - name: dhi.io/postgres:17.11-debian13-dev@sha256:faf5fddd19acd5447ddbb91a6896acecffcc64bbcd544d0a56e2ca09dba9e49a
       excludes:
         - etc/os-release
         - var/lib/dpkg/status

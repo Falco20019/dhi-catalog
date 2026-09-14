@@ -24,8 +24,8 @@ vars:
   PG_MAJOR_VERSION: "15"
   PG_VERSION: "15.19"
   PGDATA: /var/lib/postgresql/15/data
-  POSTGRES_BUILD_REFERENCE: dhi/postgres:15.19-debian13-dev@sha256:34488f375389f79216d8da308689453800d03b69685a40c624b99a0e3ec2e8ed
-  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:15.19-debian13@sha256:124cea30dc938f831afc5e3bcbc66968b78d2f26dbfa5503115892fdf7332b49
+  POSTGRES_BUILD_REFERENCE: dhi/postgres:15.19-debian13-dev@sha256:13e4026f16b54ea06127023a8948cbe069f9c4495654faf3c920e59f0a374d99
+  POSTGRES_RUNTIME_REFERENCE: dhi/postgres:15.19-debian13@sha256:40e6fc2bdd32aeb19a7db0d46437f641409b91d5848b6c413fb35a110cc54f7a
   SEMVER_MAJOR_MINOR_VERSION: "0.8"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.8.6
@@ -68,7 +68,7 @@ contents:
     - zlib1g
   builds:
     - name: pgvector
-      uses: dhi.io/postgres:15.19-debian13-dev@sha256:34488f375389f79216d8da308689453800d03b69685a40c624b99a0e3ec2e8ed
+      uses: dhi.io/postgres:15.19-debian13-dev@sha256:13e4026f16b54ea06127023a8948cbe069f9c4495654faf3c920e59f0a374d99
       work-dir: ${source.dir}/pgvector
       contents:
         packages:
@@ -105,8 +105,8 @@ contents:
             make OPTFLAGS="" -j"$(nproc)"
             make install DESTDIR='${target.dir}/install'
       outputs:
-        - source: ${target.dir}/install/opt/postgresql/15
-          target: /opt/postgresql/15
+        - source: ${target.dir}/install/usr/lib/postgresql/15
+          target: /usr/lib/postgresql/15
           uid: 0
           gid: 0
         - source: /opt/docker/sbom/pgvector
@@ -139,13 +139,13 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/postgres:15.19-debian13@sha256:124cea30dc938f831afc5e3bcbc66968b78d2f26dbfa5503115892fdf7332b49
+    - name: dhi.io/postgres:15.19-debian13@sha256:40e6fc2bdd32aeb19a7db0d46437f641409b91d5848b6c413fb35a110cc54f7a
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
       uid: 0
       gid: 0
-    - name: dhi.io/postgres:15.19-debian13-dev@sha256:34488f375389f79216d8da308689453800d03b69685a40c624b99a0e3ec2e8ed
+    - name: dhi.io/postgres:15.19-debian13-dev@sha256:13e4026f16b54ea06127023a8948cbe069f9c4495654faf3c920e59f0a374d99
       excludes:
         - etc/os-release
         - var/lib/dpkg/status
