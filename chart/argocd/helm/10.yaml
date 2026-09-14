@@ -4,14 +4,14 @@ name: Argo CD Helm chart 10.x
 image: dhi.io/argocd-chart
 variant: helm
 tags:
-  - 10.9.0
+  - 10.9.1
 platforms:
   - linux/amd64
 vars:
   ARGOCD_REFERENCE: dhi/argocd:3.5.2-debian13@sha256:63b043cfc1184ece55d445e03a750fe8e780ea16ae411c2ee1dee2b6fe0f7a77
-  CHART_COMMIT_SHA: 608821158c220ec5b5326b86ab3a950177ae4d26
+  CHART_COMMIT_SHA: b9f801029c16604c0fcf92ba742477ed634c16be
   CHART_HELM_NAME: argocd-chart
-  DEX_REFERENCE: dhi/dex:2.45.1-debian13@sha256:366bccc1495c4e6d249b918b04549e0dafea2105e3d345aca8dff6dbea56b4a8
+  DEX_REFERENCE: dhi/dex:2.45.1-debian13@sha256:caf803c8767f0341192d9bf5765cc6899fc9dd420184993ffd3141ac41e6b14c
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
@@ -23,8 +23,8 @@ vars:
   REDIS_REFERENCE: dhi/redis:8.10.1-debian13-compat@sha256:c903ad2b5b20ad3dd3750a8d26e5a34aebbf92ae6ae9e632a511f37c87b74485
   SEMVER_MAJOR_MINOR_VERSION: "10.9"
   SEMVER_MAJOR_VERSION: "10"
-  SEMVER_VERSION: 10.9.0
-  VERSION: 10.9.0
+  SEMVER_VERSION: 10.9.1
+  VERSION: 10.9.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -41,8 +41,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.9.0
-            checksum: 608821158c220ec5b5326b86ab3a950177ae4d26
+          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.9.1
+            checksum: b9f801029c16604c0fcf92ba742477ed634c16be
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -67,7 +67,7 @@ contents:
                 - name: argocd
                   ref: dhi/argocd:3.5.2-debian13@sha256:63b043cfc1184ece55d445e03a750fe8e780ea16ae411c2ee1dee2b6fe0f7a77
                 - name: dex
-                  ref: dhi/dex:2.45.1-debian13@sha256:366bccc1495c4e6d249b918b04549e0dafea2105e3d345aca8dff6dbea56b4a8
+                  ref: dhi/dex:2.45.1-debian13@sha256:caf803c8767f0341192d9bf5765cc6899fc9dd420184993ffd3141ac41e6b14c
                 - name: redis
                   ref: dhi/redis:8.10.1-debian13-compat@sha256:c903ad2b5b20ad3dd3750a8d26e5a34aebbf92ae6ae9e632a511f37c87b74485
                 - name: redis-exporter
