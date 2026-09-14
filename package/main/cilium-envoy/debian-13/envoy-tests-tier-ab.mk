@@ -10,7 +10,7 @@
 .PHONY: envoy-tests-ci
 envoy-tests-ci: $(COMPILER_DEP) SOURCE_VERSION proxylib/libcilium.so
 	@$(ECHO_BAZEL)
-	CARGO_BAZEL_REPIN=true $(BAZEL) $(BAZEL_OPTS) test $(BAZEL_BUILD_OPTS) $(BAZEL_TEST_OPTS) \
+	CARGO_BAZEL_REPIN=true $(BAZEL) $(BAZEL_OPTS) test $(BAZEL_BUILD_OPTS) $(BAZEL_TEST_OPTS) $(DHI_BAZEL_TEST_JOBS_OVERRIDE) \
 		//:envoy_binary_test \
 		//tests:cilium_network_policy_test \
 		//tests:bpf_metadata_config_test \

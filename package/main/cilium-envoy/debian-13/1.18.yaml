@@ -22,7 +22,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-0
   PACKAGE_NAME: cilium-envoy-1.18
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "1.18"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.18.13
@@ -221,6 +221,11 @@ contents:
           runs: |
             set -eux -o pipefail
 
+            DHI_BAZEL_TEST_JOBS_OVERRIDE=
+            if [ "1.18" = "1.20" ]; then
+              DHI_BAZEL_TEST_JOBS_OVERRIDE=--jobs=2
+            fi
+
             BAZEL_BUILD_OPTS=(
               --curses=no
               --keep_going=false
@@ -246,7 +251,8 @@ contents:
 
             test '${target.arch}' = 'arm64' && BAZEL_BUILD_OPTS+=(--cpu=aarch64)
 
-            BAZEL_OPTS=--batch BAZEL_BUILD_OPTS="${BAZEL_BUILD_OPTS[@]}" PKG_BUILD=1 V=1 \
+            DHI_BAZEL_TEST_JOBS_OVERRIDE="${DHI_BAZEL_TEST_JOBS_OVERRIDE}" \
+              BAZEL_OPTS=--batch BAZEL_BUILD_OPTS="${BAZEL_BUILD_OPTS[@]}" PKG_BUILD=1 V=1 \
               make -f Makefile -f "${source.dir}/envoy-tests-tier-ab.mk" envoy-tests-ci
         - uses: dhi/build-pkg:0
           with:
@@ -264,7 +270,7 @@ contents:
               - deb
             license: Apache-2.0
             name: cilium-envoy-1.18
-            rel: 4
+            rel: 5
             url: https://github.com/cilium/proxy
             version: 1.18.13
       paths:
