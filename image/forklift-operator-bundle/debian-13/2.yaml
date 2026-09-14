@@ -1,0 +1,175 @@
+# syntax=dhi.io/build:2-debian13
+
+name: Forklift Operator Bundle 2.x
+image: dhi.io/forklift-operator-bundle
+variant: runtime
+tags:
+  - "2"
+  - "2.12"
+  - 2.12.8
+  - 2-debian
+  - 2-debian13
+  - 2.12-debian
+  - 2.12-debian13
+  - 2.12.8-debian
+  - 2.12.8-debian13
+platforms:
+  - linux/amd64
+  - linux/arm64
+dates:
+  release: "2024-09-30"
+vars:
+  API_IMAGE: dhi.io/forklift-api:2
+  CHANNEL: release-v2.12
+  CLI_DOWNLOAD_IMAGE: dhi.io/forklift-cli-download:2
+  COMMIT_SHA: 5393e5f0e5d96716e32ec3d5c4dfa77897ad183e
+  CONTROLLER_IMAGE: dhi.io/forklift-controller:2
+  DEFAULT_CHANNEL: release-v2.12
+  HYPERV_PROVIDER_SERVER_IMAGE: dhi.io/forklift-hyperv-provider-server:2
+  KUSTOMIZE_VERSION: 5.8.1-5
+  MUST_GATHER_IMAGE: dhi.io/forklift-must-gather:2
+  OPENSTACK_POPULATOR_IMAGE: dhi.io/openstack-populator:2
+  OPERATOR_IMAGE: dhi.io/forklift-operator:2
+  OPERATOR_SDK_VERSION: 1.42.3-0
+  OVA_PROVIDER_SERVER_IMAGE: dhi.io/forklift-ova-provider-server:2
+  OVA_PROXY_IMAGE: dhi.io/forklift-ova-proxy:2
+  OVIRT_POPULATOR_IMAGE: dhi.io/ovirt-populator:2
+  POPULATOR_CONTROLLER_IMAGE: dhi.io/populator-controller:2
+  SEMVER_MAJOR_MINOR_VERSION: "2.12"
+  SEMVER_MAJOR_VERSION: "2"
+  SEMVER_VERSION: 2.12.8
+  UI_PLUGIN_IMAGE: dhi.io/forklift-console-plugin:2
+  VALIDATION_IMAGE: dhi.io/forklift-validation:2
+  VERSION: 2.12.8
+  VIRT_V2V_IMAGE: dhi.io/forklift-virt-v2v:2
+  VIRT_V2V_IMAGE_RHEL9: dhi.io/forklift-virt-v2v:2
+  VSPHERE_COPY_OFFLOAD_POPULATOR_IMAGE: dhi.io/vsphere-copy-offload-populator:2
+contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+  packages:
+    - base-files
+    - ca-certificates-bundle
+    - tzdata
+  builds:
+    - name: bundle-manifests
+      work-dir: ${source.dir}/forklift/operator
+      contents:
+        repositories:
+          - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+        keyring:
+          - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+        packages:
+          - bash
+          - coreutils
+          - gettext-base
+          - grep
+          - kustomize=5.8.1-5
+          - operator-sdk=1.42.3-0
+        files:
+          - url: git+https://github.com/kubev2v/forklift.git#v2.12.8
+            checksum: 5393e5f0e5d96716e32ec3d5c4dfa77897ad183e
+            path: ${source.dir}/forklift
+            spdx:
+              name: forklift-operator-bundle
+              version: 2.12.8
+              packages:
+                - name: forklift-operator-bundle
+                  purl: pkg:github/kubev2v/forklift@v2.12.8
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: verify release pins
+          runs: |
+            set -eux -o pipefail
+
+            grep -qxF 'MTV_VERSION=2.12.8' ../build/release.conf
+            grep -qxF 'CHANNEL=release-v2.12' ../build/release.conf
+            grep -qxF 'DEFAULT_CHANNEL=release-v2.12' ../build/release.conf
+        - name: generate bundle
+          runs: |
+            set -eux -o pipefail
+
+            cp PROJECT PROJECT.template
+            PROJECT_NAME=forklift-operator envsubst < PROJECT.template > PROJECT
+
+            export VERSION='2.12.8'
+            export CONTROLLER_IMAGE='dhi.io/forklift-controller:2'
+            export API_IMAGE='dhi.io/forklift-api:2'
+            export VIRT_V2V_IMAGE='dhi.io/forklift-virt-v2v:2'
+            export VIRT_V2V_IMAGE_RHEL9='dhi.io/forklift-virt-v2v:2'
+            export OPERATOR_IMAGE='dhi.io/forklift-operator:2'
+            export POPULATOR_CONTROLLER_IMAGE='dhi.io/populator-controller:2'
+            export OVIRT_POPULATOR_IMAGE='dhi.io/ovirt-populator:2'
+            export OPENSTACK_POPULATOR_IMAGE='dhi.io/openstack-populator:2'
+            export VSPHERE_COPY_OFFLOAD_POPULATOR_IMAGE='dhi.io/vsphere-copy-offload-populator:2'
+            export MUST_GATHER_IMAGE='dhi.io/forklift-must-gather:2'
+            export UI_PLUGIN_IMAGE='dhi.io/forklift-console-plugin:2'
+            export CLI_DOWNLOAD_IMAGE='dhi.io/forklift-cli-download:2'
+            export OVA_PROVIDER_SERVER_IMAGE='dhi.io/forklift-ova-provider-server:2'
+            export HYPERV_PROVIDER_SERVER_IMAGE='dhi.io/forklift-hyperv-provider-server:2'
+            export VALIDATION_IMAGE='dhi.io/forklift-validation:2'
+            export OVA_PROXY_IMAGE='dhi.io/forklift-ova-proxy:2'
+
+            kustomize build config/manifests/ \
+              | envsubst \
+              | operator-sdk generate bundle \
+                -q \
+                --overwrite \
+                --extra-service-accounts forklift-controller,forklift-api,forklift-populator-controller \
+                --version '2.12.8' \
+                --channels 'release-v2.12' \
+                --default-channel 'release-v2.12' \
+                --output-dir build
+        - name: validate bundle
+          runs: |
+            set -eux -o pipefail
+
+            operator-sdk bundle validate ./build --select-optional suite=operatorframework
+            deployed=$(grep -rE '^\s*(image|value): (quay\.io|registry\.redhat\.io)' build/manifests || test $? -eq 1)
+            test -z "$deployed"
+      outputs:
+        - source: ${source.dir}/forklift/operator/build/manifests
+          target: /manifests
+          uid: 0
+          gid: 0
+        - source: ${source.dir}/forklift/operator/build/metadata
+          target: /metadata
+          uid: 0
+          gid: 0
+        - source: /opt/docker/sbom/forklift-operator-bundle
+          target: /opt/docker/sbom/forklift-operator-bundle
+          uid: 0
+          gid: 0
+accounts:
+  run-as: nonroot
+  users:
+    - name: nonroot
+      uid: 65532
+      gid: 65532
+  groups:
+    - name: nonroot
+      gid: 65532
+      members:
+        - nonroot
+os-release:
+  name: Docker Hardened Images (Debian)
+  id: debian
+  version-id: "13"
+  version-codename: trixie
+  pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
+  home-url: https://docker.com/products/hardened-images/
+  bug-report-url: https://docker.com/support/
+annotations:
+  org.opencontainers.image.description: A minimal Forklift (Migration Toolkit for Virtualization) operator bundle image
+  org.opencontainers.image.licenses: Apache-2.0
+labels:
+  operators.operatorframework.io.bundle.channel.default.v1: release-v2.12
+  operators.operatorframework.io.bundle.channels.v1: release-v2.12
+  operators.operatorframework.io.bundle.manifests.v1: manifests/
+  operators.operatorframework.io.bundle.mediatype.v1: registry+v1
+  operators.operatorframework.io.bundle.metadata.v1: metadata/
+  operators.operatorframework.io.bundle.package.v1: forklift-operator
