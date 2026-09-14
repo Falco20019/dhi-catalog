@@ -4,9 +4,9 @@ image: dhi.io/pkg-debezium
 variant: runtime
 tags:
   - 3.4.3
-  - 3.4.3-r4
+  - 3.4.3-r5
   - 3.4.3-debian13
-  - 3.4.3-r4-debian13
+  - 3.4.3-r5-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ dates:
 vars:
   COMMIT_SHA: 508459f9f6f9c654fe5be2d686ce7ca045dfe2c0
   MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:d0fafa2a5f6331a78899e82254759515c8e9da8a3f7b8d1d611c714b38eff193
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
@@ -151,8 +151,8 @@ contents:
             set -eux -o pipefail
 
             xq-python -x '.project.dependencyManagement.dependencies.dependency = [
-              {"groupId": "io.netty", "artifactId": "netty-transport-native-epoll", "classifier": "linux-x86_64", "version": "4.1.136.Final"},
-              {"groupId": "io.netty", "artifactId": "netty-transport-native-epoll", "classifier": "linux-aarch_64", "version": "4.1.136.Final"}
+              {"groupId": "io.netty", "artifactId": "netty-transport-native-epoll", "classifier": "linux-x86_64", "version": "4.1.137.Final"},
+              {"groupId": "io.netty", "artifactId": "netty-transport-native-epoll", "classifier": "linux-aarch_64", "version": "4.1.137.Final"}
             ]' debezium-connector-oracle/pom.xml > /tmp/oracle-pom.xml.patched
             mv /tmp/oracle-pom.xml.patched debezium-connector-oracle/pom.xml
         - name: install prerequisites
@@ -251,7 +251,7 @@ contents:
               - deb
             license: Apache-2.0
             name: debezium-connector-mysql
-            rel: 4
+            rel: 5
             subpackages:
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-mariadb
