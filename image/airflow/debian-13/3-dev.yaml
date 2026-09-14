@@ -63,6 +63,9 @@ contents:
     - mawk
     - perl-base
     - python-3.13
+    - python3-pip
+    - python3-setuptools
+    - python3-wheel
     - sed
     - tzdata
     - util-linux
