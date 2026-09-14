@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AIRFLOW_REFERENCE: dhi/airflow:3.3.1-python3.13-debian13-compat@sha256:a95bc800607792f8836d6d8c7c87af87d8309cda40d7f6dbe95f6b9b0c9dd074
+  AIRFLOW_REFERENCE: dhi/airflow:3.3.1-python3.13-debian13-compat@sha256:293462a9924226de1dd6cec1c839360813eddcd08b3fc4da7ead7f6c67e638a9
   APPVERSION: 3.3.1
   APPVERSION_MATCH: 3.3.1
   CHART_COMMIT_SHA: 3adbbe1c58e4532df1964cb7794805e763816ee8
@@ -21,7 +21,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   OPENTELEMETRY_COLLECTOR_REFERENCE: dhi/opentelemetry-collector:0.160.0-debian13-contrib@sha256:c3ce3613bdd2f995e45ab701a9bb8832191ada3cefd5d20d177d19570fdd3b38
   PGBOUNCER_EXPORTER_REFERENCE: dhi/airflow-pgbouncer-exporter:0.20.0-debian13@sha256:9bde400bfcf02f1cc75b72fb5a98c85aec6f39faafab547d57a4038165a5fe8d
-  PGBOUNCER_REFERENCE: dhi/pgbouncer:1.25.2-debian13@sha256:aa7c658e14edeb3bdafd28ce603e2527f168c4c033753a98ff1398ac2db61757
+  PGBOUNCER_REFERENCE: dhi/pgbouncer:1.25.2-debian13@sha256:1296da73c1e1f3535cb570f1543cd15fb1130cdf175004a0b42249218fd04264
   PROMETHEUS_STATSD_EXPORTER_REFERENCE: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:64f56123818ba49230e36d4908cb69c65bbd5d4952aa5c35c4f20d118c42cdab
   REDIS_REFERENCE: dhi/redis:8.10.1-debian13-compat@sha256:c903ad2b5b20ad3dd3750a8d26e5a34aebbf92ae6ae9e632a511f37c87b74485
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
@@ -65,11 +65,11 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Airflow
               images:
                 - name: airflow
-                  ref: dhi/airflow:3.3.1-python3.13-debian13-compat@sha256:a95bc800607792f8836d6d8c7c87af87d8309cda40d7f6dbe95f6b9b0c9dd074
+                  ref: dhi/airflow:3.3.1-python3.13-debian13-compat@sha256:293462a9924226de1dd6cec1c839360813eddcd08b3fc4da7ead7f6c67e638a9
                 - name: prometheus-statsd-exporter
                   ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:64f56123818ba49230e36d4908cb69c65bbd5d4952aa5c35c4f20d118c42cdab
                 - name: pgbouncer
-                  ref: dhi/pgbouncer:1.25.2-debian13@sha256:aa7c658e14edeb3bdafd28ce603e2527f168c4c033753a98ff1398ac2db61757
+                  ref: dhi/pgbouncer:1.25.2-debian13@sha256:1296da73c1e1f3535cb570f1543cd15fb1130cdf175004a0b42249218fd04264
                 - name: airflow-pgbouncer-exporter
                   ref: dhi/airflow-pgbouncer-exporter:0.20.0-debian13@sha256:9bde400bfcf02f1cc75b72fb5a98c85aec6f39faafab547d57a4038165a5fe8d
                 - name: git-sync
