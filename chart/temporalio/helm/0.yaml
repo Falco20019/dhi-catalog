@@ -16,7 +16,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:0986637c1995ad4d030dc537386faf1ac2b6440d4b24b2122ed5b3b1d2ff7298
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_CHART_REFERENCE: dhi/prometheus-chart:28.16.0@sha256:1a939b9e841bd6be0ea7b9740c4e96d5181bf3b0b32e94e4f5bb3be58c074198
+  PROMETHEUS_CHART_REFERENCE: dhi/prometheus-chart:28.16.0@sha256:92a8105ba3527b40769a0a23cea60887be1f3b41c1c68d81d1c373261eab559d
   SEMVER_MAJOR_MINOR_VERSION: "0.74"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.74.0
@@ -55,7 +55,7 @@ contents:
                 - alias: prometheus
                   condition: prometheus.enabled
                   name: prometheus
-                  ref: dhi/prometheus-chart:28.16.0@sha256:1a939b9e841bd6be0ea7b9740c4e96d5181bf3b0b32e94e4f5bb3be58c074198
+                  ref: dhi/prometheus-chart:28.16.0@sha256:92a8105ba3527b40769a0a23cea60887be1f3b41c1c68d81d1c373261eab559d
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
