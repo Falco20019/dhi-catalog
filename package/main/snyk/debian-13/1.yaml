@@ -3,20 +3,23 @@
 image: dhi.io/pkg-snyk
 variant: runtime
 tags:
-  - 1.1307.2-0
-  - 1.1307.2-0-debian13
+  - 1.1307.2-1
+  - 1.1307.2-1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DHI_REL: "0"
-  DHI_VERSION: 1.1307.2-0
+  DHI_REL: "1"
+  DHI_VERSION: 1.1307.2-1
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.1307.2
   SNYK_AMD64_CHECKSUM: sha256:40453156449604129f6ed5cb98eb0c9aca27facd7dd8161d9c9828618b62e703
   SNYK_ARM64_CHECKSUM: sha256:612f94d50e7373ce8304a5924531cd08f9b9df592015b3d70bbf58b0bd2e45cc
   SNYK_ASSET: '#{ target.arch == "arm64" ? "snyk-linux-arm64" : "snyk-linux" }'
   SNYK_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:612f94d50e7373ce8304a5924531cd08f9b9df592015b3d70bbf58b0bd2e45cc" : "sha256:40453156449604129f6ed5cb98eb0c9aca27facd7dd8161d9c9828618b62e703" }'
+  SNYK_FIPS_AMD64_CHECKSUM: sha256:7f184faa9a4536ad995bcfedca99a7d197af4b6b923f5be347c1b40a7a465f58
+  SNYK_FIPS_ARM64_CHECKSUM: sha256:e2bf1d7e483d849fb5821a13c2e83ab81a884f43df3612a8398667bb79cc68f6
+  SNYK_FIPS_CHECKSUM: '#{ target.arch == "arm64" ? "sha256:e2bf1d7e483d849fb5821a13c2e83ab81a884f43df3612a8398667bb79cc68f6" : "sha256:7f184faa9a4536ad995bcfedca99a7d197af4b6b923f5be347c1b40a7a465f58" }'
   VERSION: 1.1307.2
 contents:
   packages:
@@ -46,7 +49,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 1.1307.2-0
+            version: 1.1307.2-1
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
