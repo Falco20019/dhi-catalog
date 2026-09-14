@@ -22,7 +22,7 @@ vars:
   CUDA_SAMPLES_VERSION: "12.9"
   FLAVORED_SUFFIX: -dev
   KUBECTL_VERSION: 1.34.11-4
-  NVIDIA_CUDA_REFERENCE: dhi/nvidia-cuda:13.2.1-debian13-dev@sha256:088fdd8f45ceb13a1c6fbc241cd184fcb5f5123092b4e00eefd233eb1bfd607f
+  NVIDIA_CUDA_REFERENCE: dhi/nvidia-cuda:13.2.1-debian13-dev@sha256:586db55a82d2014a529629aa819c0a84790e2db5fc472c9c647b45b4caaac8b0
   SEMVER_MAJOR_MINOR_VERSION: "26.7"
   SEMVER_MAJOR_VERSION: "26"
   SEMVER_VERSION: 26.7.0
@@ -63,7 +63,7 @@ contents:
     - util-linux
   builds:
     - name: vectoradd
-      uses: dhi.io/nvidia-cuda:13.2.1-debian13-dev@sha256:088fdd8f45ceb13a1c6fbc241cd184fcb5f5123092b4e00eefd233eb1bfd607f
+      uses: dhi.io/nvidia-cuda:13.2.1-debian13-dev@sha256:586db55a82d2014a529629aa819c0a84790e2db5fc472c9c647b45b4caaac8b0
       work-dir: /build
       contents:
         packages:
