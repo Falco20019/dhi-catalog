@@ -4,23 +4,23 @@ name: Trust-Manager Helm chart 0.x
 image: dhi.io/trust-manager-chart
 variant: helm
 tags:
-  - 0.24.0
+  - 0.25.0
 platforms:
   - linux/amd64
 vars:
   CHART_HELM_NAME: trust-manager-chart
-  COMMIT_SHA: 75590d07c8b52b29cafd7b01bac6a1adbfa591cd
+  COMMIT_SHA: ddeb17c70923c4c6ec44b34c36f4103a0bb798a1
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "0.24"
+  SEMVER_MAJOR_MINOR_VERSION: "0.25"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.24.0
-  TRUST_MANAGER_PACKAGE_REFERENCE: dhi/trust-manager-package:trixie-debian13@sha256:baad92d493c744fcbb06dfa6d33d6164a63634852bfd8c763451e0826fe3cd42
-  TRUST_MANAGER_REFERENCE: dhi/trust-manager:0.24.0-debian13@sha256:e23dc8955ef2b95f76cc1163558cd1f275ec2e5b8706742177c1bdaf0d844367
-  VERSION: 0.24.0
+  SEMVER_VERSION: 0.25.0
+  TRUST_MANAGER_PACKAGE_REFERENCE: dhi/trust-manager-package:trixie-20250419-debian13@sha256:91a037ad4067bf965776fc4dc91754d528cabbb467984bb800beecb0b0d7c22a
+  TRUST_MANAGER_REFERENCE: dhi/trust-manager:0.25.0-debian13@sha256:173ccf8ddf77c1eece110ab1eb480f0ca7a6aef024ba94bc9e9f0a61f56ddf3d
+  VERSION: 0.25.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/cert-manager/trust-manager.git#v0.24.0
-            checksum: 75590d07c8b52b29cafd7b01bac6a1adbfa591cd
+          - url: git+https://github.com/cert-manager/trust-manager.git#v0.25.0
+            checksum: ddeb17c70923c4c6ec44b34c36f4103a0bb798a1
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -47,14 +47,14 @@ contents:
           with:
             chart:
               appRef: trust-manager
-              appVersion: 0.24.0
-              chartVersion: 0.24.0
+              appVersion: 0.25.0
+              chartVersion: 0.25.0
               description: Docker Hardened Images Helm chart for Trust-Manager
               images:
                 - name: trust-manager
-                  ref: dhi/trust-manager:0.24.0-debian13@sha256:e23dc8955ef2b95f76cc1163558cd1f275ec2e5b8706742177c1bdaf0d844367
+                  ref: dhi/trust-manager:0.25.0-debian13@sha256:173ccf8ddf77c1eece110ab1eb480f0ca7a6aef024ba94bc9e9f0a61f56ddf3d
                 - name: trust-manager-package
-                  ref: dhi/trust-manager-package:trixie-debian13@sha256:baad92d493c744fcbb06dfa6d33d6164a63634852bfd8c763451e0826fe3cd42
+                  ref: dhi/trust-manager-package:trixie-20250419-debian13@sha256:91a037ad4067bf965776fc4dc91754d528cabbb467984bb800beecb0b0d7c22a
               name: trust-manager-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/cert-manager/trust-manager
