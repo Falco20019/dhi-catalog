@@ -17,7 +17,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.8-debian13@sha256:769451713e86dc834087cc4accc221452e016b859bf43a99a3354336b17f09b1
   KUBECTL_REFERENCE: dhi/kubectl:1.35.8-debian13@sha256:ae04e963ea75ae238567029ff32347a6f9b5a9138345b1f79131cd94d8e6542b
-  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:d0231ea019a208d8b13ed7803a5ca05b272f4212b53c60c5ae52f38744613413
+  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:6d5fc35413510d326404d547b5ac2a55bf44809a9b3addbc9399de0c79cf7977
   SEMVER_MAJOR_MINOR_VERSION: "5.0"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.0.1
@@ -55,7 +55,7 @@ contents:
                 - alias: metrics-server
                   condition: metrics-server.enabled
                   name: metrics-server
-                  ref: dhi/metrics-server-chart:3.14.0@sha256:d0231ea019a208d8b13ed7803a5ca05b272f4212b53c60c5ae52f38744613413
+                  ref: dhi/metrics-server-chart:3.14.0@sha256:6d5fc35413510d326404d547b5ac2a55bf44809a9b3addbc9399de0c79cf7977
               description: Docker Hardened Images Helm chart for Fairwinds VPA
               images:
                 - name: vpa-admission-controller
