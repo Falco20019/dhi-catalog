@@ -4,9 +4,7 @@ name: Knative Serving Controller 1.22.x
 image: dhi.io/knative-controller
 variant: runtime
 tags:
-  - 1-alpine
   - 1.22-alpine
-  - 1-alpine3.24
   - 1.22.1-alpine
   - 1.22-alpine3.24
   - 1.22.1-alpine3.24
