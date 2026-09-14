@@ -3,10 +3,10 @@
 image: dhi.io/pkg-piraeus-server
 variant: runtime
 tags:
-  - 1.35.1
-  - 1.35.1-r0
-  - 1.35.1-debian13
-  - 1.35.1-r0-debian13
+  - 1.35.2
+  - 1.35.2-r0
+  - 1.35.2-debian13
+  - 1.35.2-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ dates:
   release: "2019-08-08"
 vars:
   CARGO_VERSION: 1.97.1-0
-  COMMIT_SHA: 5d70b7395d7f6469d5d2a879b4b78d0e9c27cecd
+  COMMIT_SHA: 4f9bfb0a395cdd8ae0fc8d99876a286148c30f88
   GOLANG_VERSION: 1.26.8-0
   GRADLE_VERSION: 8.14.5-1
   JDK_MAJOR_VERSION: "21"
@@ -23,8 +23,8 @@ vars:
   K8S_AWAIT_ELECTION_VERSION: v0.5.1
   LINSTOR_CLIENT_COMMIT_SHA: 9c57f040eb3834500db508e4f04d361d006cb6b5
   LINSTOR_CLIENT_VERSION: 1.27.1
-  LINSTOR_COMMIT_SHA: 5d70b7395d7f6469d5d2a879b4b78d0e9c27cecd
-  LINSTOR_VERSION: 1.35.1
+  LINSTOR_COMMIT_SHA: 4f9bfb0a395cdd8ae0fc8d99876a286148c30f88
+  LINSTOR_VERSION: 1.35.2
   LOSETUP_CONTAINER_COMMIT_SHA: c1b24da76a9eaa95a0d3561f6a4f995e3a28c0d2
   LOSETUP_CONTAINER_VERSION: v1.1.0
   PACKAGE_NAME: piraeus-server
@@ -41,8 +41,8 @@ vars:
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "1.35"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.35.1
-  VERSION: 1.35.1
+  SEMVER_VERSION: 1.35.2
+  VERSION: 1.35.2
 contents:
   packages:
     - '!base-files'
@@ -124,10 +124,10 @@ contents:
             path: ${source.dir}/piraeus
             spdx:
               name: piraeus
-              version: 1.35.1
+              version: 1.35.2
               packages:
                 - name: piraeus
-                  purl: pkg:github/piraeusdatastore/piraeus@1.35.1
+                  purl: pkg:github/piraeusdatastore/piraeus@1.35.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -155,15 +155,15 @@ contents:
                   license: GPL-3.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/LINBIT/linstor-server.git#v1.35.1
-            checksum: 5d70b7395d7f6469d5d2a879b4b78d0e9c27cecd
+          - url: git+https://github.com/LINBIT/linstor-server.git#v1.35.2
+            checksum: 4f9bfb0a395cdd8ae0fc8d99876a286148c30f88
             path: ${source.dir}/linstor-server
             spdx:
               name: linstor-server
-              version: 1.35.1
+              version: 1.35.2
               packages:
                 - name: linstor-server
-                  purl: pkg:github/LINBIT/linstor-server@1.35.1
+                  purl: pkg:github/LINBIT/linstor-server@1.35.2
                   license: GPL-2.0
             uid: 0
             gid: 0
@@ -403,8 +403,8 @@ contents:
             chmod +x "${PROTOC_DIR}/bin/protoc"
             "${PROTOC_DIR}/bin/protoc" --version
 
-            gradle dependencies --write-locks --no-daemon -PversionOverride=v1.35.1 || true
-            gradle install --no-daemon -x test -PversionOverride=v1.35.1
+            gradle dependencies --write-locks --no-daemon -PversionOverride=v1.35.2 || true
+            gradle install --no-daemon -x test -PversionOverride=v1.35.2
         - name: install LINSTOR artifacts
           work-dir: ${source.dir}/linstor-server
           runs: |
@@ -463,7 +463,7 @@ contents:
             name: piraeus-server
             rel: 0
             url: https://github.com/piraeusdatastore/piraeus
-            version: 1.35.1
+            version: 1.35.2
       paths:
         - type: file
           path: ${source.dir}/scripts/sed_bump.sh
