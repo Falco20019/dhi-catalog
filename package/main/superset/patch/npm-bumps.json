@@ -35,6 +35,10 @@
         ]
     },
     {
+        "package": "echarts",
+        "version": "6.1.0"
+    },
+    {
         "package": "fast-uri",
         "version": "3.1.6",
         "overridePath": [
