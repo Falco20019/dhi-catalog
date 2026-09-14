@@ -4,12 +4,12 @@ name: Prometheus Helm chart 29.x
 image: dhi.io/prometheus-chart
 variant: helm
 tags:
-  - 29.29.0
+  - 29.30.0
 platforms:
   - linux/amd64
 vars:
   ALERTMANAGER_CHART_REFERENCE: dhi/alertmanager-chart:1.43.1@sha256:a13bf081d3d32f8154bb687c9176d3994723367ec44ea5ff16f51b271703726f
-  CHART_COMMIT_SHA: 028113f0205a66d11170f72e529e20c09183a2f8
+  CHART_COMMIT_SHA: 54b633ef4d6d8a05e0ca8df126dd2eed359c55f7
   CHART_HELM_NAME: prometheus-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -21,10 +21,10 @@ vars:
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.0-debian13@sha256:6af63b54bad658b6af89f6596a0bea6c26bacc736dfa04a28de8c811d04626ff
   PROMETHEUS_REFERENCE: dhi/prometheus:3.14.0-debian13@sha256:5700b5e591bde80259e24aceabfb04fcfc099f0190a1a22485a681dc2ef24ffc
   PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.8.0@sha256:9f3b52b22d190c5cbfdf61719e5af15904a97c1f98fdb1425bad5307a360511a
-  SEMVER_MAJOR_MINOR_VERSION: "29.29"
+  SEMVER_MAJOR_MINOR_VERSION: "29.30"
   SEMVER_MAJOR_VERSION: "29"
-  SEMVER_VERSION: 29.29.0
-  VERSION: 29.29.0
+  SEMVER_VERSION: 29.30.0
+  VERSION: 29.30.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.29.0
-            checksum: 028113f0205a66d11170f72e529e20c09183a2f8
+          - url: git+https://github.com/prometheus-community/helm-charts.git#prometheus-29.30.0
+            checksum: 54b633ef4d6d8a05e0ca8df126dd2eed359c55f7
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
