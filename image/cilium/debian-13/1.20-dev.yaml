@@ -124,12 +124,12 @@ contents:
           work-dir: /go/src/github.com/cilium/cilium
           with:
             deps:
-              - golang.org/x/crypto@v0.55.0
-              - golang.org/x/text@v0.41.0
+              - golang.org/x/crypto@v0.57.0
               - github.com/google/cel-go@v0.30.0
               - github.com/klauspost/compress@v1.18.7
               - github.com/osrg/gobgp/v4@v4.7.0
               - go.etcd.io/etcd/client/pkg/v3@v3.6.14
+              - google.golang.org/grpc@v1.83.2
             download: true
         - name: test
           work-dir: /go/src/github.com/cilium/cilium
