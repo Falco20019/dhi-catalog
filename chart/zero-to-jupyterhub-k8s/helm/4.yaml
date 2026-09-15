@@ -10,18 +10,18 @@ platforms:
 vars:
   CHART_COMMIT_SHA: ec77affd8cf847ad95b2bbcdb57aa17fb5c23c8b
   CHART_HELM_NAME: zero-to-jupyterhub-k8s-chart
-  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:be5049308a657ed6264e576ed9873b079540591e3301aa7232c059ab41e738da
+  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:c1293abdf5f7b38a04f1e18d2f40e3674240291b9c5b461c42ff024f49b2f2c9
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  JUPYTERHUB_K8S_HUB_REFERENCE: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:04118cd55e1105d49554ca1f6d3a6d2497c589be872c14a13fc118c20beb599f
+  JUPYTERHUB_K8S_HUB_REFERENCE: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:872b1160a7b2c6142eca6205691cb1f9cebfa30ecdeedb90ef54b5142d8f2858
   JUPYTERHUB_K8S_IMAGE_AWAITER_REFERENCE: dhi/jupyterhub-k8s-image-awaiter:4.4.2-alpine3.24@sha256:201046070e707909027cc17f23eb38dc87b31c4f557353261d8bfadb83bb0693
   JUPYTERHUB_K8S_NETWORK_TOOLS_REFERENCE: dhi/jupyterhub-k8s-network-tools:4.4.2-alpine3.24@sha256:6fcef87450cd0b8db0b7fedca9e0f1a1480309a3ccd83f39d1c674ac9b3c030e
-  JUPYTERHUB_K8S_SECRET_SYNC_REFERENCE: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:78eeef8b8a816f4e057afba399b967e179ae019ab2509091ffcfc8ac9c6cd4c6
-  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:f7da235df6ee8d72ab45074e326e7764c6c6853399a2404428fd08843b93ca2c
-  KUBE_SCHEDULER_REFERENCE: dhi/kube-scheduler:1.36.4-debian13@sha256:4e4758cb2ec5de251c654af5b1c603cbd2c5bc09a4d9e765beb13b48a4130e43
+  JUPYTERHUB_K8S_SECRET_SYNC_REFERENCE: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:e4f9856e28da74742bc3f082ea3aa6649d563079072b004726563ffd49f2ddb2
+  JUPYTERHUB_K8S_SINGLEUSER_SAMPLE_REFERENCE: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:833ec08cd46f3ca033e62d305dc48aafe466cdbc90d93a4abae5ba719bcac6ba
+  KUBE_SCHEDULER_REFERENCE: dhi/kube-scheduler:1.37.0-debian13@sha256:6cf0cc596c52860541e223a4ec4eec1421fa63e1e3697508a8b81a59f6dfbfb5
   KUBERNETES_PAUSE_REFERENCE: dhi/kubernetes-pause:3.10.2-debian13@sha256:c907abf800427d0ae19f1001dbe59b6eea47ad87a4a9a4d03c5540f1814f674d
   SEMVER_MAJOR_MINOR_VERSION: "4.4"
   SEMVER_MAJOR_VERSION: "4"
@@ -57,21 +57,21 @@ contents:
               description: Docker Hardened Images Helm chart for Zero to JupyterHub on Kubernetes
               images:
                 - name: hub
-                  ref: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:04118cd55e1105d49554ca1f6d3a6d2497c589be872c14a13fc118c20beb599f
+                  ref: dhi/jupyterhub-k8s-hub:4.4.2-debian13@sha256:872b1160a7b2c6142eca6205691cb1f9cebfa30ecdeedb90ef54b5142d8f2858
                 - name: chp
-                  ref: dhi/configurable-http-proxy:5.3.0-debian13@sha256:be5049308a657ed6264e576ed9873b079540591e3301aa7232c059ab41e738da
+                  ref: dhi/configurable-http-proxy:5.3.0-debian13@sha256:c1293abdf5f7b38a04f1e18d2f40e3674240291b9c5b461c42ff024f49b2f2c9
                 - name: secret-sync
-                  ref: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:78eeef8b8a816f4e057afba399b967e179ae019ab2509091ffcfc8ac9c6cd4c6
+                  ref: dhi/jupyterhub-k8s-secret-sync:4.4.2-debian13@sha256:e4f9856e28da74742bc3f082ea3aa6649d563079072b004726563ffd49f2ddb2
                 - name: network-tools
                   ref: dhi/jupyterhub-k8s-network-tools:4.4.2-alpine3.24@sha256:6fcef87450cd0b8db0b7fedca9e0f1a1480309a3ccd83f39d1c674ac9b3c030e
                 - name: singleuser
-                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:f7da235df6ee8d72ab45074e326e7764c6c6853399a2404428fd08843b93ca2c
+                  ref: dhi/jupyterhub-k8s-singleuser-sample:4.4.2-debian13-compat@sha256:833ec08cd46f3ca033e62d305dc48aafe466cdbc90d93a4abae5ba719bcac6ba
                 - name: image-awaiter
                   ref: dhi/jupyterhub-k8s-image-awaiter:4.4.2-alpine3.24@sha256:201046070e707909027cc17f23eb38dc87b31c4f557353261d8bfadb83bb0693
                 - name: pause
                   ref: dhi/kubernetes-pause:3.10.2-debian13@sha256:c907abf800427d0ae19f1001dbe59b6eea47ad87a4a9a4d03c5540f1814f674d
                 - name: kube-scheduler
-                  ref: dhi/kube-scheduler:1.36.4-debian13@sha256:4e4758cb2ec5de251c654af5b1c603cbd2c5bc09a4d9e765beb13b48a4130e43
+                  ref: dhi/kube-scheduler:1.37.0-debian13@sha256:6cf0cc596c52860541e223a4ec4eec1421fa63e1e3697508a8b81a59f6dfbfb5
                 - name: traefik
                   ref: dhi/traefik:3.7.13-debian13@sha256:0490a8aa9b95dc2018e44e038ef11c2a005b7233c9b183ee39f0fbfe5b3e3622
               name: zero-to-jupyterhub-k8s-chart
