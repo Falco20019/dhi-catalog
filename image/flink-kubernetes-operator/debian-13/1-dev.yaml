@@ -23,7 +23,7 @@ vars:
   FLINK_HOME: /opt/flink
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "17"
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk17-debian13-dev@sha256:d565178113b8d56d7ae73407b95a8d9a5eef9ce74d2b04a0418fcae8cb1e3385
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk17-debian13-dev@sha256:b4dcd48c501d9a14f971224884626049f64557ca10a930b1d50641040f9acd09
   MAVEN_VERSION: 3.9.16
   OPERATOR_HOME: /flink-kubernetes-operator
   SEMVER_MAJOR_MINOR_VERSION: "1.15"
@@ -58,7 +58,7 @@ contents:
     - util-linux
   builds:
     - name: flink-kubernetes-operator
-      uses: dhi.io/maven:3.9.16-jdk17-debian13-dev@sha256:d565178113b8d56d7ae73407b95a8d9a5eef9ce74d2b04a0418fcae8cb1e3385
+      uses: dhi.io/maven:3.9.16-jdk17-debian13-dev@sha256:b4dcd48c501d9a14f971224884626049f64557ca10a930b1d50641040f9acd09
       work-dir: ${source.dir}/flink-kubernetes-operator
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-17
