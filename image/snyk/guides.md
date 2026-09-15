@@ -83,6 +83,12 @@ Dockerfiles. These variants:
 - Include standard development packages (bash, ca-certificates, coreutils, findutils)
 - Should not be used in production
 
+**FIPS variants** include `-fips` in the variant name and tag and are published for the Debian-based image only
+(upstream provides no FIPS build for Alpine). They ship the official Snyk FIPS CLI binary, which provides FIPS 140
+validated cryptography through the system OpenSSL and its FIPS provider, both included in the image. FIPS mode is
+enforced: the binary refuses to start if the FIPS provider is unavailable. Usage is otherwise identical to the
+corresponding runtime and dev variants. For example, usage of MD5 fails in FIPS variants.
+
 ## Migrate to a Docker Hardened Image
 
 To migrate from the official `snyk/snyk` images to Docker Hardened Images, update your deployment configuration and
