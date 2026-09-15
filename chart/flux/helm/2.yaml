@@ -18,7 +18,7 @@ vars:
   FLUXCD_HELM_CONTROLLER_REFERENCE: dhi/fluxcd-helm-controller:1.6.4-debian13@sha256:ba6fc4b262a2083440f7c226979f002e9f926ed1da177fc8d128156abeace6e5
   FLUXCD_IMAGE_AUTOMATION_CONTROLLER_REFERENCE: dhi/fluxcd-image-automation-controller:1.2.5-debian13@sha256:61da7f2b310d727659043a6f7b511d519cfb851b05f704cf1f452d990eb3da43
   FLUXCD_IMAGE_REFLECTOR_CONTROLLER_REFERENCE: dhi/fluxcd-image-reflector-controller:1.2.5-debian13@sha256:b393743c546e80b9fdf3568f46d6f56b5933321d35b06721de63ecdca38651ec
-  FLUXCD_KUSTOMIZE_CONTROLLER_REFERENCE: dhi/fluxcd-kustomize-controller:1.9.5-debian13@sha256:1c07912f59077b5de6c67ebe26a566e32e5eefa77f36e25913eab955b94cd163
+  FLUXCD_KUSTOMIZE_CONTROLLER_REFERENCE: dhi/fluxcd-kustomize-controller:1.9.5-debian13@sha256:10c0025f5e305e0045e5fb013e75f34e1e98904f21942fb8a63c39f19b701a0c
   FLUXCD_NOTIFICATION_CONTROLLER_REFERENCE: dhi/fluxcd-notification-controller:1.9.4-debian13@sha256:50def92286ee676b35110bf4910d657cb441a809cf62fa537a928f6ac7e7d085
   FLUXCD_SOURCE_CONTROLLER_REFERENCE: dhi/fluxcd-source-controller:1.9.5-debian13@sha256:00cda2a54b850559bafcaf9648cc7edfb1fd6d30868a2fdff2cd58879883602f
   FLUXCD_SOURCE_WATCHER_REFERENCE: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:3bf59c3d7268de3dce190940077d7893e379ef82f84da9eacd7f03f628ab74ca
@@ -64,7 +64,7 @@ contents:
                 - name: fluxcd-image-reflector-controller
                   ref: dhi/fluxcd-image-reflector-controller:1.2.5-debian13@sha256:b393743c546e80b9fdf3568f46d6f56b5933321d35b06721de63ecdca38651ec
                 - name: fluxcd-kustomize-controller
-                  ref: dhi/fluxcd-kustomize-controller:1.9.5-debian13@sha256:1c07912f59077b5de6c67ebe26a566e32e5eefa77f36e25913eab955b94cd163
+                  ref: dhi/fluxcd-kustomize-controller:1.9.5-debian13@sha256:10c0025f5e305e0045e5fb013e75f34e1e98904f21942fb8a63c39f19b701a0c
                 - name: fluxcd-notification-controller
                   ref: dhi/fluxcd-notification-controller:1.9.4-debian13@sha256:50def92286ee676b35110bf4910d657cb441a809cf62fa537a928f6ac7e7d085
                 - name: fluxcd-source-controller
