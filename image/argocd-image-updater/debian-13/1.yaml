@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2025-12-15"
 vars:
-  AWSCLI_REFERENCE: dhi/awscli:2.36.44-debian13@sha256:39c542f5ec6f293c3430a6e883ab656eb5a66dcdb3f76556e69f957d72a3d0a6
+  AWSCLI_REFERENCE: dhi/awscli:2.36.44-debian13@sha256:932fe18fefe5e15a18647f9c32df0361df716e6b70384d887136dc8fb68fa78a
   AWSCLI_VERSION: 2.36.44
   FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "1.3"
@@ -45,7 +45,7 @@ contents:
     - tini
     - tzdata
   artifacts:
-    - name: dhi.io/awscli:2.36.44-debian13@sha256:39c542f5ec6f293c3430a6e883ab656eb5a66dcdb3f76556e69f957d72a3d0a6
+    - name: dhi.io/awscli:2.36.44-debian13@sha256:932fe18fefe5e15a18647f9c32df0361df716e6b70384d887136dc8fb68fa78a
       includes:
         - opt/aws-cli
         - opt/docker/sbom/awscli
