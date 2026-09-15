@@ -3,8 +3,8 @@
 image: dhi.io/pkg-capstone
 variant: runtime
 tags:
-  - 5.0.7-1-deb13u1-dhi1
-  - 5.0.7-1-deb13u1-dhi1-debian13
+  - 5.0.7-1-deb13u1-dhi2
+  - 5.0.7-1-deb13u1-dhi2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: capstone_5.0.7.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/c/capstone/capstone_5.0.7.orig.tar.gz
   DEBIAN_VERSION: 5.0.7-1~deb13u1
-  DHI_REL: "1"
-  DHI_VERSION: 5.0.7-1~deb13u1+dhi1
-  TAG_VERSION: 5.0.7-1-deb13u1-dhi1
+  DHI_REL: "2"
+  DHI_VERSION: 5.0.7-1~deb13u1+dhi2
+  TAG_VERSION: 5.0.7-1-deb13u1-dhi2
   UPSTREAM_VERSION: 5.0.7
 contents:
   packages:
@@ -68,11 +68,13 @@ contents:
             apply: true
             patches:
               - ${source.dir}/patch/CVE-2026-55893.patch
+              - ${source.dir}/patch/CVE-2026-47143.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
               - Backport upstream v5 patch for CVE-2026-55893, CVE-2026-55894
-            version: 5.0.7-1~deb13u1+dhi1
+              - Backport upstream v5 patch for CVE-2026-47143
+            version: 5.0.7-1~deb13u1+dhi2
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
@@ -82,6 +84,11 @@ contents:
           uid: 0
           gid: 0
           source: package/deb/main/capstone/patch/CVE-2026-55893.patch
+        - type: file
+          path: ${source.dir}/patch/CVE-2026-47143.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/capstone/patch/CVE-2026-47143.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
