@@ -5,10 +5,10 @@ variant: runtime
 tags:
   - "1.12"
   - 1.12.14
-  - 1.12.14-r18
+  - 1.12.14-r19
   - 1.12-debian13
   - 1.12.14-debian13
-  - 1.12.14-r18-debian13
+  - 1.12.14-r19-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,9 +17,9 @@ dates:
 vars:
   ANTLR_VERSION: 4.9.2
   COMMIT_SHA: 4ce8b3a7d97edbe40b616df7c2404adff1d2cb77
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:d0fafa2a5f6331a78899e82254759515c8e9da8a3f7b8d1d611c714b38eff193
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
   PACKAGE_NAME: openmetadata-server-1.12
-  REL: "18"
+  REL: "19"
   SEMVER_MAJOR_MINOR_VERSION: "1.12"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.12.14
@@ -29,7 +29,7 @@ contents:
     - base-files
   builds:
     - name: openmetadata-server
-      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:d0fafa2a5f6331a78899e82254759515c8e9da8a3f7b8d1d611c714b38eff193
+      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
       work-dir: ${source.dir}/OpenMetadata
       environment:
         NODE_OPTIONS: --max-old-space-size=6144
@@ -151,7 +151,7 @@ contents:
               - usr/bin/openmetadata-start
             license: Apache-2.0
             name: openmetadata-server-1.12
-            rel: 18
+            rel: 19
             url: https://open-metadata.org/
             version: 1.12.14
       paths:
