@@ -5,19 +5,19 @@ image: dhi.io/sonarqube
 variant: runtime
 tags:
   - "26"
-  - "26.8"
-  - 26.8.0
+  - "26.9"
+  - 26.9.0
   - 26-debian
   - 26-debian13
-  - 26.8-debian
-  - 26.8-debian13
-  - 26.8.0-debian
-  - 26.8.0-debian13
+  - 26.9-debian
+  - 26.9-debian13
+  - 26.9.0-debian
+  - 26.9.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: b33183b846cd47c7a811e280f5755f13d8fa8cc7
+  COMMIT_SHA: 55af4e8b2e82479da5933328048a0734e520b171
   ELASTICSEARCH_AMD64_SHA512: d53f8d3efeb830b73704873d082b940158deb9387937ed817eea89d2bf542ece24dae877548e4b48b0e134d5123704f04c86be23dcd9cb732a2489868a8dd0c5
   ELASTICSEARCH_ARM64_SHA512: c41f4d33c7ce8fdd0754017755d05a9ba4d6326b4099525f1939cdc12a5c5e7afd1879ee45d56a90c665bdb877da4b553fda13796a60030e214ae1bd2da6fbaa
   ELASTICSEARCH_LINUX_ARCH: '#{ target.arch == "arm64" ? "aarch64" : "x86_64" }'
@@ -34,17 +34,18 @@ vars:
   JDK_MAJOR_VERSION: "21"
   LOG4J_API_25_VERSION: 2.25.5
   LOG4J_API_26_VERSION: 2.26.1
-  MAVEN_REF: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:55ddfc1748b1daf376c6a079062fef83379ff2b21b9e0379e375f467bf1f84b2
+  MAVEN_REF: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
   NETTY_VERSION: 4.1.137.Final
   REACTOR_NETTY_VERSION: 1.2.8
-  SEMVER_MAJOR_MINOR_VERSION: "26.8"
+  SEMVER_MAJOR_MINOR_VERSION: "26.9"
   SEMVER_MAJOR_VERSION: "26"
-  SEMVER_VERSION: 26.8.0
-  SONARQUBE_DOCKER_SHA: 886f9480f4a9caf83de23784e11aa054cc3ad7f5
-  SONARQUBE_DOCKER_VERSION: 26.8.0.126808
+  SEMVER_VERSION: 26.9.0
+  SONARQUBE_DIST_SHA256: b7306f5ecfa6806753bc0eb0dc4ea11fe0ddd2c5a346592718814d6ec35b88cb
+  SONARQUBE_DOCKER_SHA: 8f5ff7b0395d201cbc09dd95f8463eb11c8abc61
+  SONARQUBE_DOCKER_VERSION: 26.9.0.129388
   SONARQUBE_HOME: /opt/sonarqube
   SSHD_VERSION: 2.12.0
-  VERSION: 26.8.0.126808
+  VERSION: 26.9.0.129388
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -64,7 +65,7 @@ contents:
     - libstdc++6
   builds:
     - name: sonarqube
-      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:55ddfc1748b1daf376c6a079062fef83379ff2b21b9e0379e375f467bf1f84b2
+      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
       contents:
         packages:
           - bash
@@ -75,26 +76,26 @@ contents:
           - jq
           - grep
         files:
-          - url: git+https://github.com/SonarSource/sonarqube.git#26.8.0.126808
-            checksum: b33183b846cd47c7a811e280f5755f13d8fa8cc7
+          - url: git+https://github.com/SonarSource/sonarqube.git#26.9.0.129388
+            checksum: 55af4e8b2e82479da5933328048a0734e520b171
             path: ${source.dir}/sonarqube
             spdx:
               name: sonarqube
-              version: 26.8.0.126808
+              version: 26.9.0.129388
               packages:
                 - name: sonarqube
-                  purl: pkg:dhi/sonarqube@26.8.0.126808
+                  purl: pkg:dhi/sonarqube@26.9.0.129388
                   license: LGPL-3.0-only
             uid: 0
             gid: 0
-          - url: https://raw.githubusercontent.com/SonarSource/docker-sonarqube/26.8.0.126808/community-build/entrypoint.sh
+          - url: https://raw.githubusercontent.com/SonarSource/docker-sonarqube/26.9.0.129388/community-build/entrypoint.sh
             path: ${source.dir}/entrypoint.sh
             spdx:
               name: docker-sonarqube-entrypoint
-              version: 26.8.0.126808
+              version: 26.9.0.129388
               packages:
                 - name: docker-sonarqube-entrypoint
-                  purl: pkg:dhi/docker-sonarqube@26.8.0.126808
+                  purl: pkg:dhi/docker-sonarqube@26.9.0.129388
                   license: LGPL-3.0-only
             uid: 0
             gid: 0
@@ -230,30 +231,19 @@ contents:
             path: ${source.dir}/patch/deps/log4j-api-2.26.1.jar
             uid: 0
             gid: 0
+          - url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.9.0.129388.zip
+            checksum: sha256:b7306f5ecfa6806753bc0eb0dc4ea11fe0ddd2c5a346592718814d6ec35b88cb
+            path: ${source.dir}/sonarqube-26.9.0.129388.zip
+            uid: 0
+            gid: 0
       pipeline:
-        - name: set elasticsearch arch and checksum
-          work-dir: ${source.dir}/sonarqube/sonar-application
+        - name: extract distribution
+          work-dir: ${source.dir}
           runs: |
             set -eux -o pipefail
 
-            sed -i 's/linux-x86_64/linux-${ELASTICSEARCH_LINUX_ARCH}/g' build.gradle
-            sed -i 's/^elasticSearchLinuxSha512=.*/elasticSearchLinuxSha512=${ELASTICSEARCH_LINUX_SHA512}/' ../gradle.properties
-        - name: build distribution
-          work-dir: ${source.dir}/sonarqube
-          privileged: true
-          runs: |
-            set -eux -o pipefail
-
-            ./gradlew :sonar-application:zip -x test --no-daemon --console=plain
-        - name: extract and verify
-          work-dir: ${source.dir}/sonarqube
-          runs: |
-            set -eux -o pipefail
-
-            dist_zip=$(find . -name "sonar-application-*.zip" -type f)
-            unzip -q "$dist_zip" -d "${target.dir}"
-            dist_dir=$(find "${target.dir}" -name "sonarqube-*" -type d)
-            mv "$dist_dir" "${target.dir}/sonarqube"
+            unzip -q "${source.dir}/sonarqube-26.9.0.129388.zip" -d "${target.dir}"
+            mv "${target.dir}/sonarqube-26.9.0.129388" "${target.dir}/sonarqube"
         - name: patch vulnerable JARs
           runs: |
             set -eux -o pipefail
@@ -904,7 +894,7 @@ environment:
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
-  SONAR_VERSION: 26.8.0.126808
+  SONAR_VERSION: 26.9.0.129388
   SONARQUBE_HOME: /opt/sonarqube
   SQ_DATA_DIR: /opt/sonarqube/data
   SQ_EXTENSIONS_DIR: /opt/sonarqube/extensions
@@ -950,7 +940,7 @@ paths:
     path: /opt/sonarqube/lib/sonarqube.jar
     uid: 0
     gid: 0
-    source: /opt/sonarqube/lib/sonar-application-26.8-SNAPSHOT.jar
+    source: /opt/sonarqube/lib/sonar-application-26.9.0.129388.jar
   - type: directory
     path: /opt/java
     uid: 0
