@@ -19,10 +19,10 @@ vars:
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.50.0
   VERSION: 0.50.0
-  VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.151.0-debian13@sha256:4e56abf1de803299309f6d4f9814d61ac4755e01c492b586b7aaef7b263c7cf7
-  VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.151.0-debian13@sha256:390524533eb6b8748446443a4fd757d4c983602e57a1ef4d6186a025c43d8501
-  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.151.0-debian13@sha256:591553838cd8376b5c4c6ce98ef87330a48285ec3a21c2db4a1bd2bae1a38392
-  VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.151.0-debian13@sha256:83982e66e1e740c751c0e4361469a39c7f3e376bd1fa914f0ec4417af8ed600d
+  VICTORIAMETRICS_VMAUTH_REFERENCE: dhi/victoriametrics-vmauth:1.152.0-debian13@sha256:a88d1208cd609abbf2d73526f8b0afdb1943118bc1af22341e80240badd3f802
+  VICTORIAMETRICS_VMINSERT_REFERENCE: dhi/victoriametrics-vminsert:1.152.0-debian13@sha256:9c119a66a06ce70d0c32e206b5c327b1c61437ece8e29de8e2846ba9a8e10758
+  VICTORIAMETRICS_VMSELECT_REFERENCE: dhi/victoriametrics-vmselect:1.152.0-debian13@sha256:5ddff9999236a16d467034fd6ab1d14f9d58563647acb97bbedd758086f584c6
+  VICTORIAMETRICS_VMSTORAGE_REFERENCE: dhi/victoriametrics-vmstorage:1.152.0-debian13@sha256:e778013f3feb11e9b232fb47906865d1ca72db2d17f4efb4a68f26c55d49d569
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -54,13 +54,13 @@ contents:
               description: Docker Hardened Images Helm chart for VictoriaMetrics Cluster
               images:
                 - name: victoriametrics-vmselect
-                  ref: dhi/victoriametrics-vmselect:1.151.0-debian13@sha256:591553838cd8376b5c4c6ce98ef87330a48285ec3a21c2db4a1bd2bae1a38392
+                  ref: dhi/victoriametrics-vmselect:1.152.0-debian13@sha256:5ddff9999236a16d467034fd6ab1d14f9d58563647acb97bbedd758086f584c6
                 - name: victoriametrics-vmstorage
-                  ref: dhi/victoriametrics-vmstorage:1.151.0-debian13@sha256:83982e66e1e740c751c0e4361469a39c7f3e376bd1fa914f0ec4417af8ed600d
+                  ref: dhi/victoriametrics-vmstorage:1.152.0-debian13@sha256:e778013f3feb11e9b232fb47906865d1ca72db2d17f4efb4a68f26c55d49d569
                 - name: victoriametrics-vminsert
-                  ref: dhi/victoriametrics-vminsert:1.151.0-debian13@sha256:390524533eb6b8748446443a4fd757d4c983602e57a1ef4d6186a025c43d8501
+                  ref: dhi/victoriametrics-vminsert:1.152.0-debian13@sha256:9c119a66a06ce70d0c32e206b5c327b1c61437ece8e29de8e2846ba9a8e10758
                 - name: victoriametrics-vmauth
-                  ref: dhi/victoriametrics-vmauth:1.151.0-debian13@sha256:4e56abf1de803299309f6d4f9814d61ac4755e01c492b586b7aaef7b263c7cf7
+                  ref: dhi/victoriametrics-vmauth:1.152.0-debian13@sha256:a88d1208cd609abbf2d73526f8b0afdb1943118bc1af22341e80240badd3f802
               name: victoriametrics-cluster-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/VictoriaMetrics/helm-charts
@@ -79,7 +79,7 @@ contents:
           with:
             file: ${source.dir}/helm-charts/charts/victoria-metrics-cluster/values-sidecar.yaml
             patches:
-              - .extraContainers[0].image = "dhi/victoriametrics-vmauth:1.151.0-debian13@sha256:4e56abf1de803299309f6d4f9814d61ac4755e01c492b586b7aaef7b263c7cf7"
+              - .extraContainers[0].image = "dhi/victoriametrics-vmauth:1.152.0-debian13@sha256:a88d1208cd609abbf2d73526f8b0afdb1943118bc1af22341e80240badd3f802"
               - .extraContainers[0].securityContext.enabled = true
               - .extraContainers[0].securityContext.runAsNonRoot = true
               - .extraContainers[0].securityContext.runAsUser = 65532
