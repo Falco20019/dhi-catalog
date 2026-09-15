@@ -4,7 +4,7 @@ image: dhi.io/pkg-flux-cli
 variant: runtime
 tags:
   - 2.9.5-alpine3.24
-  - 2.9.5-r8-alpine3.24
+  - 2.9.5-r9-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,9 +14,9 @@ vars:
   COMMIT_SHA: dd233c4fadef306a62b7893204f8e3817fecc2b2
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
-  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.1-debian13@sha256:fdfa1aa846ee14c345247110040c872c8562be5f87601989172f1bafb548a5ed
+  KUSTOMIZE_REFERENCE: dhi/kustomize:5.8.1-debian13@sha256:249cd5ac734efd60bbe8e5c3cd43286249f8ba08dc6286593396f654b807fcb2
   PACKAGE_NAME: flux-cli
-  REL: "8"
+  REL: "9"
   SEMVER_MAJOR_MINOR_VERSION: "2.9"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.9.5
@@ -59,7 +59,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/kustomize:5.8.1-debian13@sha256:fdfa1aa846ee14c345247110040c872c8562be5f87601989172f1bafb548a5ed
+          - name: dhi.io/kustomize:5.8.1-debian13@sha256:249cd5ac734efd60bbe8e5c3cd43286249f8ba08dc6286593396f654b807fcb2
             includes:
               - opt/**
               - usr/bin/kustomize
@@ -114,7 +114,7 @@ contents:
             license: Apache-2.0
             name: flux-cli
             provides: flux=$pkg_full_version
-            rel: 8
+            rel: 9
             subpackages:
               - files:
                   - path: usr/bin/flux-cli
