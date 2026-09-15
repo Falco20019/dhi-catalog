@@ -4,24 +4,24 @@ name: Temporal UI 2.x
 image: dhi.io/temporalio-ui
 variant: runtime
 tags:
-  - "2.53"
-  - 2.53.3
-  - 2.53-debian
-  - 2.53-debian13
-  - 2.53.3-debian
-  - 2.53.3-debian13
+  - "2.54"
+  - 2.54.1
+  - 2.54-debian
+  - 2.54-debian13
+  - 2.54.1-debian
+  - 2.54.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 835b349ffa14fbe71af3e26a7f8bc71fe6c29a53
+  COMMIT_SHA: a4e4c73b8ae8d8ba60baad998fb6911ddee76957
   DEBIAN_VERSION: "13"
   DOCKERIZE_COMMIT_SHA: 90dbb4fc2ef9098acd41e8c3ca98d2f730c741d6
   DOCKERIZE_VERSION: 0.9.5
-  SEMVER_MAJOR_MINOR_VERSION: "2.53"
+  SEMVER_MAJOR_MINOR_VERSION: "2.54"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.53.3
-  VERSION: 2.53.3
+  SEMVER_VERSION: 2.54.1
+  VERSION: 2.54.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -58,15 +58,15 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/temporalio/ui.git#v2.53.3
-            checksum: 835b349ffa14fbe71af3e26a7f8bc71fe6c29a53
+          - url: git+https://github.com/temporalio/ui.git#v2.54.1
+            checksum: a4e4c73b8ae8d8ba60baad998fb6911ddee76957
             path: ${source.dir}/ui
             spdx:
               name: temporalio-ui
-              version: 2.53.3
+              version: 2.54.1
               packages:
                 - name: temporalio-ui
-                  purl: pkg:dhi/temporalio-ui@2.53.3
+                  purl: pkg:dhi/temporalio-ui@2.54.1
                   license: MIT
             uid: 0
             gid: 0
@@ -78,7 +78,6 @@ contents:
             deps:
               - golang.org/x/crypto@v0.56.0
               - github.com/gomarkdown/markdown@v0.0.0-20260411013819-759bbc3e3207
-              - github.com/labstack/echo/v4@v4.15.3
               - google.golang.org/grpc@v1.83.2
             download: true
         - name: bump pnpm
