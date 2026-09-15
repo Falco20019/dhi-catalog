@@ -49,7 +49,7 @@ contents:
               version: 2.20.0
               packages:
                 - name: jaeger
-                  purl: pkg:golang/github.com/jaegertracing/jaeger@v2.20.0
+                  purl: pkg:golang/github.com/jaegertracing/jaeger@2.20.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -83,7 +83,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            CGO_ENABLED=0 go test ./cmd/jaeger/...
+            CGO_ENABLED=0 go test ./cmd/jaeger/... ./cmd/es-index-cleaner/... ./cmd/es-rollover/...
         - name: build
           uses: go/build@v1
           with:
@@ -105,6 +105,32 @@ contents:
             output: ${target.dir}/usr/bin/jaeger-dev
             packages: ./cmd/jaeger
             strip: false
+        - name: build es-index-cleaner
+          uses: go/build@v1
+          with:
+            fips: false
+            output: ${target.dir}/usr/bin/es-index-cleaner
+            packages: ./cmd/es-index-cleaner
+        - name: build es-index-cleaner dev
+          uses: go/build@v1
+          with:
+            fips: false
+            output: ${target.dir}/usr/bin/es-index-cleaner-dev
+            packages: ./cmd/es-index-cleaner
+            strip: false
+        - name: build es-rollover
+          uses: go/build@v1
+          with:
+            fips: false
+            output: ${target.dir}/usr/bin/es-rollover
+            packages: ./cmd/es-rollover
+        - name: build es-rollover dev
+          uses: go/build@v1
+          with:
+            fips: false
+            output: ${target.dir}/usr/bin/es-rollover-dev
+            packages: ./cmd/es-rollover
+            strip: false
         - uses: dhi/build-pkg:0
           with:
             description: Jaeger, a CNCF Distributed Tracing Platform (v2 unified binary)
@@ -114,10 +140,29 @@ contents:
             name: jaeger
             rel: 5
             subpackages:
-              - files:
+              - description: Jaeger Elasticsearch index cleaner
+                files:
+                  - path: usr/bin/es-index-cleaner
+                name: jaeger-es-index-cleaner
+              - description: Jaeger Elasticsearch index rollover
+                files:
+                  - path: usr/bin/es-rollover
+                name: jaeger-es-rollover
+              - description: Jaeger, a CNCF Distributed Tracing Platform (v2 unified binary) (dev)
+                files:
                   - path: usr/bin/jaeger
                     source: usr/bin/jaeger-dev
                 name: jaeger-dev
+              - description: Jaeger Elasticsearch index cleaner (dev)
+                files:
+                  - path: usr/bin/es-index-cleaner
+                    source: usr/bin/es-index-cleaner-dev
+                name: jaeger-es-index-cleaner-dev
+              - description: Jaeger Elasticsearch index rollover (dev)
+                files:
+                  - path: usr/bin/es-rollover
+                    source: usr/bin/es-rollover-dev
+                name: jaeger-es-rollover-dev
             url: https://github.com/jaegertracing/jaeger
             version: 2.20.0
 os-release:
