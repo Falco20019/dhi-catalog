@@ -43,7 +43,9 @@ contents:
     - bash
     - ca-certificates
     - ca-certificates-bundle
+    - coreutils
     - curl
+    - findutils
     - jq
     - tzdata
   builds:
@@ -286,6 +288,23 @@ paths:
     path: /nsc
     uid: 65532
     gid: 65532
+  - type: file
+    path: /entrypoint.sh
+    content: |
+      #!/bin/sh
+      # Compatible with https://github.com/nats-io/nats-box/blob/main/entrypoint.sh
+      if [ "${HOME}" != "/root" ] && [ "${PWD}" = "/root" ]; then
+        cd "${HOME}" || true
+      fi
+
+      if [ "$#" -ne 0 ]; then
+        exec "$@"
+      else
+        exec /bin/bash -l
+      fi
+    uid: 0
+    gid: 0
+    mode: "0755"
 annotations:
   org.opencontainers.image.description: A minimal NATS Box image
   org.opencontainers.image.licenses: Apache-2.0
