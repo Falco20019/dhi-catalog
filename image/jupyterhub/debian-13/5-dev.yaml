@@ -21,7 +21,7 @@ dates:
 vars:
   BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
   BASE_TAG: 20250419-debian13
-  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:be5049308a657ed6264e576ed9873b079540591e3301aa7232c059ab41e738da
+  CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:c1293abdf5f7b38a04f1e18d2f40e3674240291b9c5b461c42ff024f49b2f2c9
   SEMVER_MAJOR_MINOR_VERSION: "5.5"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.5.2
@@ -57,7 +57,7 @@ contents:
     - tzdata
     - util-linux
   artifacts:
-    - name: dhi.io/configurable-http-proxy:5.3.0-debian13@sha256:be5049308a657ed6264e576ed9873b079540591e3301aa7232c059ab41e738da
+    - name: dhi.io/configurable-http-proxy:5.3.0-debian13@sha256:c1293abdf5f7b38a04f1e18d2f40e3674240291b9c5b461c42ff024f49b2f2c9
       includes:
         - srv/configurable-http-proxy/**
         - usr/bin/node
