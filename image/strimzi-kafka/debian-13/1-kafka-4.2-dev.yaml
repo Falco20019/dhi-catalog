@@ -29,14 +29,14 @@ vars:
   JDK_MAJOR_VERSION: "21"
   JMX_EXPORTER_REFERENCE: dhi/jmx-exporter:1.6.0-debian13@sha256:88edb5842a13117d6c1ef00eca54492c2707464e5336d107fcdcf9866c8b902a
   JMX_EXPORTER_VERSION: 1.6.0
-  KAFKA_EXPORTER_REFERENCE: dhi/kafka-exporter:1.9.0-debian13@sha256:44d669265af1396b28951cead661168e069b956c7aea7a61d9d0b40fd87c5759
-  KAFKA_EXPORTER_VERSION: 1.9.0
+  KAFKA_EXPORTER_REFERENCE: dhi/kafka-exporter:1.10.0-debian13@sha256:c9e8dfe08366cdb4c45fb8de9cd19a45579c698a01c52d2085ce3be398671b40
+  KAFKA_EXPORTER_VERSION: 1.10.0
   KAFKA_LIB_PATH: 4.2.1
   KAFKA_MAJOR_MINOR_VERSION: "4.2"
   KAFKA_REFERENCE: dhi/kafka:4.2.1-debian13@sha256:ea7fee9d4bcd9ffc6d448cdf31c467b031eef652077a50bdd1e0d7946d15014d
   KAFKA_SUPPORTED: "true"
   KAFKA_VERSION: 4.2.1
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ea81a93f139e20ebe4373c5d2986494c592de1d39700a6af485f222c4b75e732
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
   MAVEN_VERSION: 3.9.16
   SEMVER_MAJOR_MINOR_VERSION: "1.2"
   SEMVER_MAJOR_VERSION: "1"
@@ -77,7 +77,7 @@ contents:
     - util-linux
   builds:
     - name: strimzi-kafka scripts and agents
-      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:ea81a93f139e20ebe4373c5d2986494c592de1d39700a6af485f222c4b75e732
+      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
       contents:
         files:
           - url: git+https://github.com/strimzi/strimzi-kafka-operator.git#1.2.0
@@ -262,7 +262,7 @@ contents:
         - opt/kafka
       uid: 0
       gid: 0
-    - name: dhi.io/kafka-exporter:1.9.0-debian13@sha256:44d669265af1396b28951cead661168e069b956c7aea7a61d9d0b40fd87c5759
+    - name: dhi.io/kafka-exporter:1.10.0-debian13@sha256:c9e8dfe08366cdb4c45fb8de9cd19a45579c698a01c52d2085ce3be398671b40
       includes:
         - usr/bin
         - usr/local/bin
