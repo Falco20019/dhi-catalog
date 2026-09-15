@@ -5,19 +5,19 @@ variant: runtime
 tags:
   - "1.20"
   - 1.20.4
-  - 1.20.4-r6
+  - 1.20.4-r7
   - 1.20-debian13
   - 1.20.4-debian13
-  - 1.20.4-r6-debian13
+  - 1.20.4-r7-debian13
 platforms:
   - linux/amd64
 dates:
   release: "2026-06-03"
 vars:
   COMMIT_SHA: 759443e724f55bf58e71c0603644e99058918d52
-  ERLANG_OTP_DEV_REFERENCE: dhi/erlang-otp:28.5-debian13-dev@sha256:50648e3e11eec2e808beaa4365b11f154a515cc2f44706b4f2ae81e2aa149eca
+  ERLANG_OTP_DEV_REFERENCE: dhi/erlang-otp:28.5-debian13-dev@sha256:3df727e227934897ea35b2829302ea123822e58d6bd2ae8bad2243898a2ea587
   PACKAGE_NAME: elixir-1.20
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.20.4
@@ -27,7 +27,7 @@ contents:
     - base-files
   builds:
     - name: elixir
-      uses: dhi.io/erlang-otp:28.5-debian13-dev@sha256:50648e3e11eec2e808beaa4365b11f154a515cc2f44706b4f2ae81e2aa149eca
+      uses: dhi.io/erlang-otp:28.5-debian13-dev@sha256:3df727e227934897ea35b2829302ea123822e58d6bd2ae8bad2243898a2ea587
       work-dir: ${source.dir}/elixir
       contents:
         packages:
@@ -69,8 +69,8 @@ contents:
               - deb
             license: Apache-2.0
             name: elixir-1.20
-            provides: elixir=1.20.4-r6
-            rel: 6
+            provides: elixir=1.20.4-r7
+            rel: 7
             url: https://elixir-lang.org/
             version: 1.20.4
 os-release:
