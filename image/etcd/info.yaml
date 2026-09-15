@@ -1,5 +1,5 @@
 metadata:
-  display-name: etcd
+  display-name: Etcd
   short-description: Etcd is a strongly consistent, distributed key-value store that provides reliable data storage
   featured: false
   home-url: https://etcd.io/
@@ -10,6 +10,6 @@ metadata:
     - name: etcd
       description: etcd server binary, a distributed key-value store.
     - name: etcdctl
-      description: (dev only) etcd command line client, used to interact with an etcd server.
+      description: etcd command line client, used to interact with an etcd server.
     - name: etcdutl
-      description: (dev only) etcd utility command, used for various etcd cluster management tasks.
+      description: etcd utility command, used for various etcd cluster management tasks.

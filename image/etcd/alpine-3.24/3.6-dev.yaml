@@ -1,56 +1,43 @@
-# syntax=dhi.io/build:2-debian13
+# syntax=dhi.io/build:2-alpine3.24
 
-name: etcd 3.7.x (dev)
+name: etcd 3.6.x (dev)
 image: dhi.io/etcd
 variant: dev
 tags:
-  - 3-dev
-  - 3.7-dev
-  - 3.7.1-dev
-  - 3-debian-dev
-  - 3-debian13-dev
-  - 3.7-debian-dev
-  - 3.7-debian13-dev
-  - 3.7.1-debian-dev
-  - 3.7.1-debian13-dev
+  - 3.6-alpine-dev
+  - 3.6.14-alpine-dev
+  - 3.6-alpine3.24-dev
+  - 3.6.14-alpine3.24-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
-  release: "2026-07-08"
+  release: "2025-05-15"
 vars:
   FLAVORED_SUFFIX: -dev
-  SEMVER_MAJOR_MINOR_VERSION: "3.7"
+  SEMVER_MAJOR_MINOR_VERSION: "3.6"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.7.1
+  SEMVER_VERSION: 3.6.14
   SUFFIX: -dev
-  VERSION: 3.7.1-6
+  VERSION: 3.6.14-r12
 contents:
   repositories:
-    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+    - https://dhi.io/apk/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/community
   keyring:
-    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
   packages:
-    - '!gawk'
-    - '!libelogind0'
-    - '!original-awk'
-    - apt
-    - base-files
+    - alpine-baselayout-data
+    - apk-tools
     - bash
+    - busybox
     - ca-certificates
     - ca-certificates-bundle
     - coreutils
-    - diffutils
-    - dpkg
-    - etcd-3.7-dev=3.7.1-6
+    - etcd-3.6-dev=3.6.14-r12
     - findutils
-    - grep
-    - libc-bin
-    - mawk
-    - perl-base
-    - sed
     - tzdata
-    - util-linux
 accounts:
   root: true
   run-as: root
@@ -60,9 +47,6 @@ accounts:
       gid: 101
     - name: nonroot
       uid: 65532
-      gid: 65532
-    - name: _apt
-      uid: 42
       gid: 65532
   groups:
     - name: etcd
@@ -75,16 +59,14 @@ accounts:
       members:
         - nonroot
 os-release:
-  name: Docker Hardened Images (Debian)
-  id: debian
-  version-id: "13"
-  version-codename: trixie
-  pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
+  name: Docker Hardened Images (Alpine)
+  id: alpine
+  version-id: "3.24"
+  pretty-name: Docker Hardened Images/Alpine Linux v3.24
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 work-dir: /var/lib/etcd
 environment:
-  DEBIAN_FRONTEND: noninteractive
   SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 paths:
   - type: directory

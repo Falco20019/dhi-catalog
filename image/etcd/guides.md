@@ -18,12 +18,12 @@ security-hardened package:
 - `etcd`: A distributed, reliable key-value store that provides a consistent way to store and retrieve configuration
   data. It powers critical systems like Kubernetes by maintaining cluster state, offering features such as leader
   election, service discovery, and fault tolerance across nodes (even master ones).
-- `etcdctl`: (Dev only) The official command-line client for etcd. It provides tools to manage cluster membership, check
-  health, and inspect endpoints, as well as perform key-value operations like get, put, delete, and transactions. With
-  support for watching changes, managing leases, and creating or restoring snapshots, etcdctl is essential for
-  administering etcd clusters and interacting with the data they store.
-- `etcdutl`: (Dev only) Provides administrative and diagnostic operations for etcd clusters. It is primarily intended
-  for operators to inspect, manage, and recover etcd data outside of a running cluster.
+- `etcdctl`: The official command-line client for etcd. It provides tools to manage cluster membership, check health,
+  and inspect endpoints, as well as perform key-value operations like get, put, delete, and transactions. With support
+  for watching changes, managing leases, and creating or restoring snapshots, etcdctl is essential for administering
+  etcd clusters and interacting with the data they store.
+- `etcdutl`: Provides administrative and diagnostic operations for etcd clusters. It is primarily intended for operators
+  to inspect, manage, and recover etcd data outside of a running cluster.
 
 ## Start an etcd image
 
@@ -119,7 +119,7 @@ Check cluster health:
 
 ```bash
 docker run --rm -it --network host \
-  dhi.io/etcd:<tag>-dev \
+  dhi.io/etcd:<tag> \
   etcdctl --endpoints=localhost:2379 endpoint health
 ```
 
@@ -127,11 +127,11 @@ Put and get key-value pairs:
 
 ```bash
 docker run --rm -it --network host \
-  dhi.io/etcd:<tag>-dev \
+  dhi.io/etcd:<tag> \
   etcdctl --endpoints=localhost:2379 put mykey "Hello etcd"
 
 docker run --rm -it --network host \
-  dhi.io/etcd:<tag>-dev \
+  dhi.io/etcd:<tag> \
   etcdctl --endpoints=localhost:2379 get mykey
 ```
 
@@ -139,7 +139,7 @@ Create a snapshot for backup:
 
 ```bash
 docker run --rm -it -v $(pwd):/backup --network host \
-  dhi.io/etcd:<tag>-dev \
+  dhi.io/etcd:<tag> \
   etcdctl --endpoints=localhost:2379 snapshot save /backup/snapshot.db
 ```
 
@@ -223,6 +223,10 @@ multi-stage Dockerfile. These images typically:
 - Run as the root user
 - Include a shell and package manager
 - Are used to build or compile applications
+
+FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+cryptographic operations. For example, usage of MD5 fails in FIPS variants.
 
 ## Migrate to a Docker Hardened Image
 

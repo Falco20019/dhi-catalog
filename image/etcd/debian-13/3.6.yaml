@@ -16,11 +16,12 @@ platforms:
 dates:
   release: "2025-05-15"
 vars:
-  COMMIT_SHA: fc04cf702b0a46c2fd85547a2be05705b100a496
+  FLAVORED_SUFFIX: ""
   SEMVER_MAJOR_MINOR_VERSION: "3.6"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.6.14
-  VERSION: 3.6.14
+  SUFFIX: ""
+  VERSION: 3.6.14-12
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -29,69 +30,8 @@ contents:
   packages:
     - base-files
     - ca-certificates-bundle
+    - etcd-3.6=3.6.14-12
     - tzdata
-  builds:
-    - name: etcd
-      caches:
-        - path: /go/pkg/mod
-      contents:
-        packages:
-          - ca-certificates
-          - protobuf-compiler
-          - tar
-          - xz-utils
-          - bash
-          - ca-certificates-bundle
-          - coreutils
-          - golang-1.26
-          - findutils
-          - mawk
-          - sed
-        files:
-          - url: git+https://github.com/etcd-io/etcd.git#v3.6.14
-            checksum: fc04cf702b0a46c2fd85547a2be05705b100a496
-            path: /go/src/github.com/etcd-io/etcd
-            spdx:
-              name: etcd
-              version: 3.6.14
-              packages:
-                - name: etcd
-                  purl: pkg:golang/github.com/etcd-io/etcd@3.6.14
-                  license: Apache-2.0
-            uid: 0
-            gid: 0
-      pipeline:
-        - name: update go dependencies (3.6 only)
-          uses: go/bump@v2
-          work-dir: /go/src/github.com/etcd-io/etcd/server
-          with:
-            deps:
-              - golang.org/x/crypto@v0.56.0
-              - github.com/gorilla/websocket@v1.5.3
-              - github.com/klauspost/compress@v1.18.7
-              - go.opentelemetry.io/otel@v1.44.0
-              - go.opentelemetry.io/otel/sdk@v1.43.0
-              - google.golang.org/grpc@v1.83.1
-            download: true
-            tidy: true
-        - name: build
-          uses: go/build@v1
-          work-dir: /go/src/github.com/etcd-io/etcd/server
-          with:
-            cgo_enabled: 0
-            ldflags:
-              - -X go.etcd.io/etcd/api/v3/version.GitSHA=fc04cf702b0a46c2fd85547a2be05705b100a496
-            output: ${target.dir}/usr/local/bin/etcd
-            packages: .
-      outputs:
-        - source: ${target.dir}/usr/local/bin
-          target: /usr/local/bin
-          uid: 0
-          gid: 0
-        - source: /opt/docker/sbom/etcd
-          target: /opt/docker/sbom/etcd
-          uid: 0
-          gid: 0
 accounts:
   run-as: nonroot
   users:
@@ -128,6 +68,26 @@ paths:
     uid: 100
     gid: 101
     mode: "1770"
+  - type: directory
+    path: /usr/local/bin
+    uid: 0
+    gid: 0
+    mode: "0755"
+  - type: symlink
+    path: /usr/local/bin/etcd
+    uid: 0
+    gid: 0
+    source: /usr/bin/etcd
+  - type: symlink
+    path: /usr/local/bin/etcdctl
+    uid: 0
+    gid: 0
+    source: /usr/bin/etcdctl
+  - type: symlink
+    path: /usr/local/bin/etcdutl
+    uid: 0
+    gid: 0
+    source: /usr/bin/etcdutl
 annotations:
   org.opencontainers.image.description: A minimal and secure etcd image
   org.opencontainers.image.licenses: Apache-2.0
