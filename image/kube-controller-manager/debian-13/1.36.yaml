@@ -4,12 +4,9 @@ name: Kubernetes Controller Manager 1.36.x
 image: dhi.io/kube-controller-manager
 variant: runtime
 tags:
-  - "1"
   - "1.36"
   - 1.36.4
   - v1.36.4
-  - 1-debian
-  - 1-debian13
   - 1.36-debian
   - 1.36-debian13
   - 1.36.4-debian
