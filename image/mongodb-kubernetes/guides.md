@@ -10,14 +10,33 @@ For example:
 
 For the examples, you must first use `docker login dhi.io` to authenticate to the registry to pull the images.
 
-## Create a mongodb-kubernestes deployment
+## Create a mongodb-kubernetes deployment
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/mongodb/mongodb-kubernetes/<version>/public/crds.yaml
-curl https://raw.githubusercontent.com/mongodb/mongodb-kubernetes/1.5.0/public/mongodb-kubernetes.yaml \
+curl https://raw.githubusercontent.com/mongodb/mongodb-kubernetes/<version>/public/mongodb-kubernetes.yaml \
     | sed -e 's#quay.io/mongodb/mongodb-kubernetes:<version>#dhi.io/mongodb-kubernetes:<tag>#' \
     | kubectl apply -f -
 ```
+
+## Non-hardened images vs Docker Hardened Images
+
+### Key differences
+
+| Feature                   | Non-hardened MongoDB Controllers for Kubernetes                   | Docker Hardened MongoDB Controllers for Kubernetes |
+| :------------------------ | :---------------------------------------------------------------- | :------------------------------------------------- |
+| Base                      | `registry.access.redhat.com/ubi9/ubi-minimal`                     | Debian 13 or Alpine 3.24                           |
+| Bundled files             | Operator, `connectivity-validator`, and `om_version_mapping.json` | Operator only                                      |
+| Shell and package manager | Shell and `microdnf` available                                    | Neither, in runtime variants                       |
+| User                      | Runs as UID 2000                                                  | Runs as the nonroot user                           |
+
+Two upstream code paths expect files that this image does not ship:
+
+- The migration dry-run Job, which the operator launches from its own image, runs
+  `/usr/local/bin/connectivity-validator`. That Job fails against this image, so avoid the migration dry-run, or run it
+  from the upstream image.
+- Agent version resolution reads `/usr/local/om_version_mapping.json` by default. If you need it, mount your own mapping
+  file and point `MDB_OM_VERSION_MAPPING_PATH` at it.
 
 ## Image variants
 
@@ -37,6 +56,10 @@ their tag.
   - Run as the root user
   - Include a shell and package manager
   - Are used to build or compile applications
+
+- FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+  variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+  cryptographic operations. For example, usage of MD5 fails in FIPS variants.
 
 To view the image variants and get more information about them, select the Tags tab for this repository, and then select
 a tag.

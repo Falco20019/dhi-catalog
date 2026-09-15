@@ -1,18 +1,15 @@
-# syntax=dhi.io/build:2-debian13
+# syntax=dhi.io/build:2-alpine3.24
 
 name: MongoDB Controllers for Kubernetes 1.x (dev)
 image: dhi.io/mongodb-kubernetes
 variant: dev
 tags:
-  - 1-dev
-  - 1.12-dev
-  - 1.12.0-dev
-  - 1-debian-dev
-  - 1-debian13-dev
-  - 1.12-debian-dev
-  - 1.12-debian13-dev
-  - 1.12.0-debian-dev
-  - 1.12.0-debian13-dev
+  - 1-alpine-dev
+  - 1.12-alpine-dev
+  - 1-alpine3.24-dev
+  - 1.12.0-alpine-dev
+  - 1.12-alpine3.24-dev
+  - 1.12.0-alpine3.24-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,7 +17,7 @@ dates:
   release: "2025-05-06"
 vars:
   FLAVORED_SUFFIX: -dev
-  PACKAGE_VERSION: 1.12.903-0
+  PACKAGE_VERSION: 1.12.903-r0
   SEMVER_MAJOR_MINOR_VERSION: "1.12"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.12.0
@@ -28,30 +25,19 @@ vars:
   VERSION: 1.12.0
 contents:
   repositories:
-    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+    - https://dhi.io/apk/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.24/community
   keyring:
-    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
   packages:
-    - '!gawk'
-    - '!libelogind0'
-    - '!original-awk'
-    - apt
-    - base-files
-    - bash
+    - alpine-baselayout-data
+    - apk-tools
+    - busybox
     - ca-certificates
     - ca-certificates-bundle
-    - coreutils
-    - diffutils
-    - dpkg
-    - findutils
-    - grep
-    - libc-bin
-    - mawk
-    - mongodb-kubernetes-operator-dev=1.12.903-0
-    - perl-base
-    - sed
+    - mongodb-kubernetes-operator-dev=1.12.903-r0
     - tzdata
-    - util-linux
 accounts:
   root: true
   run-as: root
@@ -59,24 +45,18 @@ accounts:
     - name: nonroot
       uid: 65532
       gid: 65532
-    - name: _apt
-      uid: 42
-      gid: 65532
   groups:
     - name: nonroot
       gid: 65532
       members:
         - nonroot
 os-release:
-  name: Docker Hardened Images (Debian)
-  id: debian
-  version-id: "13"
-  version-codename: trixie
-  pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
+  name: Docker Hardened Images (Alpine)
+  id: alpine
+  version-id: "3.24"
+  pretty-name: Docker Hardened Images/Alpine Linux v3.24
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
-environment:
-  DEBIAN_FRONTEND: noninteractive
 paths:
   - type: directory
     path: /usr/local/bin
