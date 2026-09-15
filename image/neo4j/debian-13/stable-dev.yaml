@@ -20,7 +20,7 @@ vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
   COMMIT_SHA: bbf3b91f46a761809c19dfca0c3a09a6a8ea09e8
   GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:90fc442ca821c6ef71649c251cdca331d2747ffbe62ecff6383356533e30f081
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ea81a93f139e20ebe4373c5d2986494c592de1d39700a6af485f222c4b75e732
+  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:d0fafa2a5f6331a78899e82254759515c8e9da8a3f7b8d1d611c714b38eff193
   MVN_PROPS_VARIANT: stable
   NEO4J_HOME: /var/lib/neo4j
   SEMVER_MAJOR_MINOR_VERSION: "2026.08"
@@ -56,7 +56,7 @@ contents:
     - util-linux
   builds:
     - name: neo4j
-      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:ea81a93f139e20ebe4373c5d2986494c592de1d39700a6af485f222c4b75e732
+      uses: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:d0fafa2a5f6331a78899e82254759515c8e9da8a3f7b8d1d611c714b38eff193
       contents:
         packages:
           - coreutils
