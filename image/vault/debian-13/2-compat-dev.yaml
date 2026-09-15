@@ -25,7 +25,7 @@ vars:
   COMMIT_SHA: cb6a54face072e372480d7cc2e64a3110b84756f
   GO_VERSION: "1"
   GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:baa8e6b0fe23dcfdcaec24af47e091660ba539685fe8340d0f5172227afadaf8
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:90fc442ca821c6ef71649c251cdca331d2747ffbe62ecff6383356533e30f081
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:a4046334ab89599751b3ccbcbbfd539a6b1365b493686ebb2c09c427f2fef55b
   SEMVER_MAJOR_MINOR_VERSION: "2.1"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.1.0
@@ -291,7 +291,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:90fc442ca821c6ef71649c251cdca331d2747ffbe62ecff6383356533e30f081
+    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:a4046334ab89599751b3ccbcbbfd539a6b1365b493686ebb2c09c427f2fef55b
       includes:
         - opt/docker/sbom/gosu
         - usr/local/sbin/gosu
