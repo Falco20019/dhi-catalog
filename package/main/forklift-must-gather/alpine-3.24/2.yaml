@@ -3,21 +3,21 @@
 image: dhi.io/pkg-forklift-must-gather
 variant: runtime
 tags:
-  - 2.12.8-alpine3.24
-  - 2.12.8-r1-alpine3.24
+  - 2.12.9-alpine3.24
+  - 2.12.9-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-09-20"
 vars:
-  COMMIT_SHA: e8dadb705f0cd91977ae0e9ca69fa821e82a1dca
+  COMMIT_SHA: e9e3bdd915c3fbac24ea9f5e8a1e8a02d97613b1
   PACKAGE_NAME: forklift-must-gather
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.12.8
-  VERSION: 2.12.8
+  SEMVER_VERSION: 2.12.9
+  VERSION: 2.12.9
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -36,15 +36,15 @@ contents:
           - busybox
           - bash
         files:
-          - url: git+https://github.com/kubev2v/forklift-must-gather.git#e8dadb705f0cd91977ae0e9ca69fa821e82a1dca
-            checksum: e8dadb705f0cd91977ae0e9ca69fa821e82a1dca
+          - url: git+https://github.com/kubev2v/forklift-must-gather.git#e9e3bdd915c3fbac24ea9f5e8a1e8a02d97613b1
+            checksum: e9e3bdd915c3fbac24ea9f5e8a1e8a02d97613b1
             path: ${source.dir}/forklift-must-gather
             spdx:
               name: forklift-must-gather
-              version: 2.12.8
+              version: 2.12.9
               packages:
                 - name: forklift-must-gather
-                  purl: pkg:github/kubev2v/forklift-must-gather@e8dadb705f0cd91977ae0e9ca69fa821e82a1dca
+                  purl: pkg:github/kubev2v/forklift-must-gather@e9e3bdd915c3fbac24ea9f5e8a1e8a02d97613b1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -58,7 +58,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            grep -qxF 'VERSION=2.12.8' build/release.conf
+            grep -qxF 'VERSION=2.12.9' build/release.conf
         - name: verify script set and syntax
           runs: |
             set -eux -o pipefail
@@ -106,9 +106,9 @@ contents:
               - usr/bin/_metrics_chart_template_part_2.html
             license: Apache-2.0
             name: forklift-must-gather
-            rel: 1
+            rel: 0
             url: https://github.com/kubev2v/forklift-must-gather
-            version: 2.12.8
+            version: 2.12.9
       paths:
         - type: file
           path: ${source.dir}/patch/archive-path-mktemp.patch
