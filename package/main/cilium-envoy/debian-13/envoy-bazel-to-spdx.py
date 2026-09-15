@@ -14,6 +14,7 @@ Example:
 
 import ast
 import json
+import os
 import re
 import subprocess
 import sys
@@ -21,6 +22,13 @@ import uuid
 from datetime import datetime, timezone
 
 BAZEL = "/opt/bazel/bin/bazel"
+
+
+def bazel_output_user_root_args():
+    root = os.environ.get("BAZEL_OUTPUT_USER_ROOT")
+    if not root:
+        return []
+    return [f"--output_user_root={root}"]
 
 
 def run_bazel_query():
@@ -32,6 +40,7 @@ def run_bazel_query():
     cmd = [
         BAZEL,
         "--batch",
+        *bazel_output_user_root_args(),
         "--bazelrc=clang.bazelrc",
         "query",
         "--output=build",
@@ -54,6 +63,7 @@ def run_bazel_aquery(bazel_options):
     cmd = [
         BAZEL,
         "--batch",
+        *bazel_output_user_root_args(),
         "--bazelrc=clang.bazelrc",
         "aquery",
         *bazel_options,
