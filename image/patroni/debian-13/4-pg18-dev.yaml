@@ -26,10 +26,10 @@ vars:
   PG_VERSION: "18.6"
   POSTGRES_BUILD_REFERENCE: dhi/postgres:18.6-debian13-dev@sha256:efdf459d0a23c6522debd809e7a7b8cbedca946b3bac875425123baceb90879a
   POSTGRES_RUNTIME_REFERENCE: dhi/postgres:18.6-debian13@sha256:81034c8000d5cb8651dd10a3596bd17506523051e4e578e7e7cba5be1e89fbb7
-  PYTHON_BUILD_REFERENCE: dhi/python:3.13.15-debian13-dev@sha256:b4399bc6cbe56230cbccf203f0591520dd5f1629ccd90ba29bd3082e99807ea3
+  PYTHON_BUILD_REFERENCE: dhi/python:3.13.15-debian13-dev@sha256:63abdfc6bc135508c7332c80a1c46a1e81754064c1cb9fbebd82ce301a40dd4e
   PYTHON_BUILD_VERSION: 3.13.15
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
-  PYTHON_REFERENCE: dhi/python:3.13.15-debian13@sha256:4e7d2414a4921335d88128c9b74c45dbd7791c4240fa2b0a5642ff86f1267cbe
+  PYTHON_REFERENCE: dhi/python:3.13.15-debian13@sha256:1561772a3763ca9e95274436263c69df9241025e82a9a05a98b5b5916ccd7d5b
   PYTHON_VERSION: 3.13.15
   SEMVER_MAJOR_MINOR_VERSION: "4.1"
   SEMVER_MAJOR_VERSION: "4"
@@ -72,7 +72,7 @@ contents:
     - zlib1g
   builds:
     - name: patroni
-      uses: dhi.io/python:3.13.15-debian13-dev@sha256:b4399bc6cbe56230cbccf203f0591520dd5f1629ccd90ba29bd3082e99807ea3
+      uses: dhi.io/python:3.13.15-debian13-dev@sha256:63abdfc6bc135508c7332c80a1c46a1e81754064c1cb9fbebd82ce301a40dd4e
       work-dir: ${source.dir}/patroni
       caches:
         - path: /root/.cache/pip
@@ -118,7 +118,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/python:3.13.15-debian13@sha256:4e7d2414a4921335d88128c9b74c45dbd7791c4240fa2b0a5642ff86f1267cbe
+    - name: dhi.io/python:3.13.15-debian13@sha256:1561772a3763ca9e95274436263c69df9241025e82a9a05a98b5b5916ccd7d5b
       includes:
         - opt/**
         - usr/**
