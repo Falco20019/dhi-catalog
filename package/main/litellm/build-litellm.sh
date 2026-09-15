@@ -33,6 +33,9 @@ rm -rf "${BUILD_VENV}"
 # shellcheck disable=SC1091
 source "${VENV}/bin/activate"
 
+# cryptography builds from source so it links the system OpenSSL instead of its vendored copy.
+export PIP_NO_BINARY=cryptography
+
 WHEEL_FILES=(dist/litellm-*.whl)
 if [ ${#WHEEL_FILES[@]} -gt 1 ]; then
   echo "Error: Multiple wheel files found:"
