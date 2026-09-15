@@ -25,7 +25,7 @@ vars:
   CODENAME: trixie
   DISTRO_PRETTY_VERSION: Debian 13 (trixie)
   DISTRO_VERSION: "13"
-  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:baa8e6b0fe23dcfdcaec24af47e091660ba539685fe8340d0f5172227afadaf8
+  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:4b2ae164c94d903e408eb5b150a269732268b48451da1a4fcfd3b8bbf9d5a285
   TRUST_MANAGER_COMMIT_SHA: ddeb17c70923c4c6ec44b34c36f4103a0bb798a1
   TRUST_MANAGER_VERSION: 0.25.0
 contents:
@@ -33,7 +33,7 @@ contents:
     - '!base-files'
   builds:
     - name: trust-pkg-debian-trixie
-      uses: dhi.io/golang:1.27.1-debian13-dev@sha256:baa8e6b0fe23dcfdcaec24af47e091660ba539685fe8340d0f5172227afadaf8
+      uses: dhi.io/golang:1.27.1-debian13-dev@sha256:4b2ae164c94d903e408eb5b150a269732268b48451da1a4fcfd3b8bbf9d5a285
       contents:
         files:
           - url: git+https://github.com/cert-manager/trust-manager.git#v0.25.0
