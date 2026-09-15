@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BASH_REFERENCE: dhi/bash:5.2.37-debian13-compat@sha256:d6c4ce2b9f7378c95910e45335374694766c6bf8ff10d4946b108bcecf4a43da
+  BASH_REFERENCE: dhi/bash:5.2.37-debian13-compat@sha256:686b355f0eaacd1c040e2dc278feb7e37b2aa4b5f43c076a2a3a9ddc08246b0c
   CHART_COMMIT_SHA: a817233509d8cc7dca1345d5ca109a944b4f7a8b
   CHART_HELM_NAME: mongodb-chart
   DHI_NAMESPACE: dhi
@@ -16,10 +16,10 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-debian13-compat@sha256:3aac46d2ac8893b107b0e871aeeb269e24a7b482c8776061e4ecc59a51b05a15
-  MONGODB_EXPORTER_REFERENCE: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:02d9695ed268173f47ac0b50a2a99a37ed6a473a415abb3181420ecc383aec17
-  MONGODB_REFERENCE: dhi/mongodb:8.3.8-debian13-compat@sha256:fa6b4f1f5c7248249d9bbb81ee704fab16f4e4aae165cb47e1c4b523b9b56eb0
-  NGINX_REFERENCE: dhi/nginx:1.31.5-debian13-compat@sha256:90f5bc2421a790c603f3d696f6a00f348e393d8f8daee493cb14dd82c75a7aff
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-debian13-compat@sha256:3cafca0d812bf8f9a3de5be983308619f7272f499b894ddea19c7fb7acabc019
+  MONGODB_EXPORTER_REFERENCE: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:0e61883183f1af8bd6413741821341d0f5a8ba2327f2d059ae16917028fa7805
+  MONGODB_REFERENCE: dhi/mongodb:8.3.11-debian13-compat@sha256:afc087fed6c922255c76da49b4c8dc238d4c40cf7af3167159350bed91cd4a74
+  NGINX_REFERENCE: dhi/nginx:1.31.5-debian13-compat@sha256:2f1a880246dcec85f8a06e145c0a3e01aee75fc1474924da43d69418e4aa9bca
   SEMVER_MAJOR_MINOR_VERSION: "18.0"
   SEMVER_MAJOR_VERSION: "18"
   SEMVER_VERSION: 18.0.2
@@ -53,15 +53,15 @@ contents:
               description: Docker Hardened Images Helm chart for MongoDB
               images:
                 - name: mongodb
-                  ref: dhi/mongodb:8.3.8-debian13-compat@sha256:fa6b4f1f5c7248249d9bbb81ee704fab16f4e4aae165cb47e1c4b523b9b56eb0
+                  ref: dhi/mongodb:8.3.11-debian13-compat@sha256:afc087fed6c922255c76da49b4c8dc238d4c40cf7af3167159350bed91cd4a74
                 - name: mongodb-exporter
-                  ref: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:02d9695ed268173f47ac0b50a2a99a37ed6a473a415abb3181420ecc383aec17
+                  ref: dhi/mongodb-exporter:0.53.0-debian13-compat@sha256:0e61883183f1af8bd6413741821341d0f5a8ba2327f2d059ae16917028fa7805
                 - name: nginx
-                  ref: dhi/nginx:1.31.5-debian13-compat@sha256:90f5bc2421a790c603f3d696f6a00f348e393d8f8daee493cb14dd82c75a7aff
+                  ref: dhi/nginx:1.31.5-debian13-compat@sha256:2f1a880246dcec85f8a06e145c0a3e01aee75fc1474924da43d69418e4aa9bca
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.11-debian13-compat@sha256:3aac46d2ac8893b107b0e871aeeb269e24a7b482c8776061e4ecc59a51b05a15
+                  ref: dhi/kubectl:1.34.11-debian13-compat@sha256:3cafca0d812bf8f9a3de5be983308619f7272f499b894ddea19c7fb7acabc019
                 - name: bash
-                  ref: dhi/bash:5.2.37-debian13-compat@sha256:d6c4ce2b9f7378c95910e45335374694766c6bf8ff10d4946b108bcecf4a43da
+                  ref: dhi/bash:5.2.37-debian13-compat@sha256:686b355f0eaacd1c040e2dc278feb7e37b2aa4b5f43c076a2a3a9ddc08246b0c
               name: mongodb-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/docker-hardened-images/helm-charts
