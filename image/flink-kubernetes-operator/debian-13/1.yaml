@@ -5,31 +5,31 @@ image: dhi.io/flink-kubernetes-operator
 variant: runtime
 tags:
   - "1"
-  - "1.15"
-  - 1.15.0
+  - "1.16"
+  - 1.16.0
   - 1-debian
   - 1-debian13
-  - 1.15-debian
-  - 1.15-debian13
-  - 1.15.0-debian
-  - 1.15.0-debian13
+  - 1.16-debian
+  - 1.16-debian13
+  - 1.16.0-debian
+  - 1.16.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-05-07"
 vars:
-  COMMIT_SHA: 79d730bab4d8403f3a447fb027f879f5cbdc59ad
+  COMMIT_SHA: b395d61c17f95dcd66d10ee727c9fa718204eb2d
   FLINK_HOME: /opt/flink
   JAVA_VARIANT: jre
   JDK_MAJOR_VERSION: "17"
   MAVEN_REFERENCE: dhi/maven:3.9.16-jdk17-debian13-dev@sha256:b4dcd48c501d9a14f971224884626049f64557ca10a930b1d50641040f9acd09
   MAVEN_VERSION: 3.9.16
   OPERATOR_HOME: /flink-kubernetes-operator
-  SEMVER_MAJOR_MINOR_VERSION: "1.15"
+  SEMVER_MAJOR_MINOR_VERSION: "1.16"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.15.0
-  VERSION: 1.15.0
+  SEMVER_VERSION: 1.16.0
+  VERSION: 1.16.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -58,15 +58,15 @@ contents:
           - bash
           - coreutils
         files:
-          - url: git+https://github.com/apache/flink-kubernetes-operator.git#release-1.15.0
-            checksum: 79d730bab4d8403f3a447fb027f879f5cbdc59ad
+          - url: git+https://github.com/apache/flink-kubernetes-operator.git#release-1.16.0
+            checksum: b395d61c17f95dcd66d10ee727c9fa718204eb2d
             path: ${source.dir}/flink-kubernetes-operator
             spdx:
               name: flink-kubernetes-operator
-              version: 1.15.0
+              version: 1.16.0
               packages:
                 - name: flink-kubernetes-operator
-                  purl: pkg:github/apache/flink-kubernetes-operator@release-1.15.0
+                  purl: pkg:github/apache/flink-kubernetes-operator@release-1.16.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -118,14 +118,14 @@ contents:
             install -d "${target.dir}/opt/flink/plugins"
 
             install -m 0644 \
-              "flink-kubernetes-operator/target/flink-kubernetes-operator-1.15.0-shaded.jar" \
-              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-operator-1.15.0-shaded.jar"
+              "flink-kubernetes-operator/target/flink-kubernetes-operator-1.16.0-shaded.jar" \
+              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-operator-1.16.0-shaded.jar"
             install -m 0644 \
-              "flink-kubernetes-webhook/target/flink-kubernetes-webhook-1.15.0-shaded.jar" \
-              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-webhook-1.15.0-shaded.jar"
+              "flink-kubernetes-webhook/target/flink-kubernetes-webhook-1.16.0-shaded.jar" \
+              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-webhook-1.16.0-shaded.jar"
             install -m 0644 \
-              "flink-kubernetes-standalone/target/flink-kubernetes-standalone-1.15.0.jar" \
-              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-standalone-1.15.0.jar"
+              "flink-kubernetes-standalone/target/flink-kubernetes-standalone-1.16.0.jar" \
+              "${target.dir}/flink-kubernetes-operator/flink-kubernetes-standalone-1.16.0.jar"
 
             cp -a flink-kubernetes-operator/target/plugins/. "${target.dir}/opt/flink/plugins/"
             cp -a flink-kubernetes-operator/target/log4j/. "${target.dir}/opt/flink/log/log4j/"
@@ -214,15 +214,15 @@ environment:
   FLINK_HOME: /opt/flink
   FLINK_PLUGINS_DIR: /opt/flink/plugins
   JAVA_HOME: /usr/lib/jvm/temurin-17
-  KUBERNETES_STANDALONE_JAR: flink-kubernetes-standalone-1.15.0.jar
+  KUBERNETES_STANDALONE_JAR: flink-kubernetes-standalone-1.16.0.jar
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
-  OPERATOR_JAR: flink-kubernetes-operator-1.15.0-shaded.jar
+  OPERATOR_JAR: flink-kubernetes-operator-1.16.0-shaded.jar
   OPERATOR_LIB: /opt/flink/operator-lib
   OPERATOR_LOG: /opt/flink/log
-  OPERATOR_VERSION: 1.15.0
-  WEBHOOK_JAR: flink-kubernetes-webhook-1.15.0-shaded.jar
+  OPERATOR_VERSION: 1.16.0
+  WEBHOOK_JAR: flink-kubernetes-webhook-1.16.0-shaded.jar
 paths:
   - type: file
     path: /docker-entrypoint.sh
