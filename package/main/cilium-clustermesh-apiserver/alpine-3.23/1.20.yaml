@@ -4,7 +4,7 @@ image: dhi.io/pkg-cilium-clustermesh-apiserver
 variant: runtime
 tags:
   - 1.20.1-alpine3.23
-  - 1.20.1-r4-alpine3.23
+  - 1.20.1-r5-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: cilium-clustermesh-apiserver-1.20
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.20.1
@@ -73,24 +73,31 @@ contents:
               - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
             output: ${target.dir}/usr/bin/clustermesh-apiserver
             packages: ./clustermesh-apiserver
-        - name: install etcd-config
-          runs: |
-            set -eux -o pipefail
-
-            install -D -m 644 clustermesh-apiserver/etcd-config.yaml \
-              ${target.dir}/var/lib/cilium/etcd-config.yaml
+        - name: build clustermesh-apiserver dev
+          uses: go/build@v1
+          with:
+            fips: false
+            ldflags:
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
+            output: ${target.dir}/usr/bin/clustermesh-apiserver-dev
+            packages: ./clustermesh-apiserver
+            strip: false
         - name: create clustermesh-apiserver package
           uses: dhi/build-pkg:0
           with:
-            description: Cilium clustermesh-apiserver binary and configuration
+            description: Cilium clustermesh-apiserver binary
             files:
               - usr/bin/clustermesh-apiserver
-              - var/lib/cilium/etcd-config.yaml
             formats:
               - deb
             license: Apache-2.0
             name: cilium-clustermesh-apiserver-1.20
-            rel: 4
+            rel: 5
+            subpackages:
+              - files:
+                  - path: usr/bin/clustermesh-apiserver
+                    source: usr/bin/clustermesh-apiserver-dev
+                name: cilium-clustermesh-apiserver-1.20-dev
             url: https://github.com/cilium/cilium
             version: 1.20.1
 os-release:

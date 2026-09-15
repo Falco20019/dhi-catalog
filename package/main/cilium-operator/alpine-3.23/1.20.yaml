@@ -4,7 +4,7 @@ image: dhi.io/pkg-cilium-operator
 variant: runtime
 tags:
   - 1.20.1-alpine3.23
-  - 1.20.1-r4-alpine3.23
+  - 1.20.1-r5-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ vars:
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: cilium-operator-1.20
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.20.1
@@ -74,6 +74,16 @@ contents:
             output: ${target.dir}/usr/bin/cilium-operator-generic
             packages: ./operator
             tags: osusergo,ipam_provider_operator
+        - name: build cilium-operator-generic dev
+          uses: go/build@v1
+          with:
+            fips: false
+            ldflags:
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
+            output: ${target.dir}/usr/bin/cilium-operator-generic-dev
+            packages: ./operator
+            strip: false
+            tags: osusergo,ipam_provider_operator
         - name: build cilium-operator-aws
           uses: go/build@v1
           with:
@@ -83,6 +93,16 @@ contents:
             output: ${target.dir}/usr/bin/cilium-operator-aws
             packages: ./operator
             tags: osusergo,ipam_provider_aws
+        - name: build cilium-operator-aws dev
+          uses: go/build@v1
+          with:
+            fips: false
+            ldflags:
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
+            output: ${target.dir}/usr/bin/cilium-operator-aws-dev
+            packages: ./operator
+            strip: false
+            tags: osusergo,ipam_provider_aws
         - name: build cilium-operator-azure
           uses: go/build@v1
           with:
@@ -91,6 +111,16 @@ contents:
               - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
             output: ${target.dir}/usr/bin/cilium-operator-azure
             packages: ./operator
+            tags: osusergo,ipam_provider_azure
+        - name: build cilium-operator-azure dev
+          uses: go/build@v1
+          with:
+            fips: false
+            ldflags:
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.20.1
+            output: ${target.dir}/usr/bin/cilium-operator-azure-dev
+            packages: ./operator
+            strip: false
             tags: osusergo,ipam_provider_azure
         - name: create cilium-operator package
           uses: dhi/build-pkg:0
@@ -102,7 +132,7 @@ contents:
               - deb
             license: Apache-2.0
             name: cilium-operator-1.20
-            rel: 4
+            rel: 5
             subpackages:
               - files:
                   - path: usr/bin/cilium-operator-aws
@@ -110,6 +140,18 @@ contents:
               - files:
                   - path: usr/bin/cilium-operator-azure
                 name: cilium-operator-azure-1.20
+              - files:
+                  - path: usr/bin/cilium-operator-generic
+                    source: usr/bin/cilium-operator-generic-dev
+                name: cilium-operator-1.20-dev
+              - files:
+                  - path: usr/bin/cilium-operator-aws
+                    source: usr/bin/cilium-operator-aws-dev
+                name: cilium-operator-aws-1.20-dev
+              - files:
+                  - path: usr/bin/cilium-operator-azure
+                    source: usr/bin/cilium-operator-azure-dev
+                name: cilium-operator-azure-1.20-dev
             url: https://github.com/cilium/cilium
             version: 1.20.1
 os-release:
