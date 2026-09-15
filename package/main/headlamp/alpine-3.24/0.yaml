@@ -4,7 +4,7 @@ image: dhi.io/pkg-headlamp
 variant: runtime
 tags:
   - 0.45.0-alpine3.24
-  - 0.45.0-r3-alpine3.24
+  - 0.45.0-r4-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: 0e9fe810cb618964172f420666727c9a67fd6ebf
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: headlamp
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "0.45"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.45.0
@@ -66,7 +66,7 @@ contents:
           work-dir: /go/src/github.com/kubernetes-sigs/headlamp/backend
           with:
             deps:
-              - github.com/containerd/containerd@v1.7.33
+              - github.com/containerd/containerd@v1.7.35
               - golang.org/x/crypto@v0.57.0
               - oras.land/oras-go/v2@v2.6.2
             download: true
@@ -127,7 +127,7 @@ contents:
               - usr/share/headlamp/frontend
             license: Apache-2.0
             name: headlamp
-            rel: 3
+            rel: 4
             url: https://headlamp.dev/
             version: 0.45.0
 os-release:
