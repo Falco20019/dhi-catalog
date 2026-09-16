@@ -18,8 +18,8 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.25"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.25.0
-  TRUST_MANAGER_PACKAGE_REFERENCE: dhi/trust-manager-package:trixie-20250419-debian13@sha256:3674425902d0fffc7ed1aa29cf95a842ff27fe6524e1738c73e813c160cc9bed
-  TRUST_MANAGER_REFERENCE: dhi/trust-manager:0.25.0-debian13@sha256:173ccf8ddf77c1eece110ab1eb480f0ca7a6aef024ba94bc9e9f0a61f56ddf3d
+  TRUST_MANAGER_PACKAGE_REFERENCE: dhi/trust-manager-package:trixie-20250419-debian13@sha256:989a80d26c370572e2c462ba32302848a9fd7db3927df9922d991380f0a725e4
+  TRUST_MANAGER_REFERENCE: dhi/trust-manager:0.25.0-debian13@sha256:efb06dda8d1a84572e9995697fa855cf7fc6b3846434bc339597967f7fb5c105
   VERSION: 0.25.0
 contents:
   repositories:
@@ -52,9 +52,9 @@ contents:
               description: Docker Hardened Images Helm chart for Trust-Manager
               images:
                 - name: trust-manager
-                  ref: dhi/trust-manager:0.25.0-debian13@sha256:173ccf8ddf77c1eece110ab1eb480f0ca7a6aef024ba94bc9e9f0a61f56ddf3d
+                  ref: dhi/trust-manager:0.25.0-debian13@sha256:efb06dda8d1a84572e9995697fa855cf7fc6b3846434bc339597967f7fb5c105
                 - name: trust-manager-package
-                  ref: dhi/trust-manager-package:trixie-20250419-debian13@sha256:3674425902d0fffc7ed1aa29cf95a842ff27fe6524e1738c73e813c160cc9bed
+                  ref: dhi/trust-manager-package:trixie-20250419-debian13@sha256:989a80d26c370572e2c462ba32302848a9fd7db3927df9922d991380f0a725e4
               name: trust-manager-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/cert-manager/trust-manager
