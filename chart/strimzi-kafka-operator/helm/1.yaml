@@ -20,9 +20,9 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "1.2"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.2.0
-  STRIMZI_KAFKA_REFERENCE: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:772b5f29fd6bcdeaad5503f65064faf54dff3be275b3c75164df434706eba72f
+  STRIMZI_KAFKA_REFERENCE: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:ae2ad64afc31a4e306c38b26af82cf74ff3a2eb1b3096ec354f67425036f1904
   STRIMZI_KAFKA_VERSION_MATCH: 1.2.0
-  STRIMZI_OPERATOR_REFERENCE: dhi/strimzi-operator:1.2.0-debian13@sha256:27513f9db0efeca5fa8ccea81bca0c5d6fc2fa5f0c0a8457a5fecc6d50570747
+  STRIMZI_OPERATOR_REFERENCE: dhi/strimzi-operator:1.2.0-debian13@sha256:bd87dcdb1c32e606adc9f7e52a0d62029722d361fb0783f4ae78d3782d60518e
   VERSION: 1.2.0
   VERSION_MATCH: 1.2.0
 contents:
@@ -73,9 +73,9 @@ contents:
               description: Docker Hardened Images Helm chart for Strimzi Kafka Operator
               images:
                 - name: strimzi-operator
-                  ref: dhi/strimzi-operator:1.2.0-debian13@sha256:27513f9db0efeca5fa8ccea81bca0c5d6fc2fa5f0c0a8457a5fecc6d50570747
+                  ref: dhi/strimzi-operator:1.2.0-debian13@sha256:bd87dcdb1c32e606adc9f7e52a0d62029722d361fb0783f4ae78d3782d60518e
                 - name: strimzi-kafka
-                  ref: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:772b5f29fd6bcdeaad5503f65064faf54dff3be275b3c75164df434706eba72f
+                  ref: dhi/strimzi-kafka:1.2.0-debian13-kafka-4.2.1@sha256:ae2ad64afc31a4e306c38b26af82cf74ff3a2eb1b3096ec354f67425036f1904
               name: strimzi-kafka-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/strimzi/strimzi-kafka-operator
