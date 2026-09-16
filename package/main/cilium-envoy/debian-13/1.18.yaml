@@ -4,9 +4,9 @@ image: dhi.io/pkg-cilium-envoy
 variant: runtime
 tags:
   - "1.18"
-  - 1.18.13
+  - 1.18.14
   - 1.18-debian13
-  - 1.18.13-debian13
+  - 1.18.14-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,18 +15,18 @@ dates:
 vars:
   BAZEL_ARCH: '#{ target.arch == "amd64" ? "x86_64" : "arm64" }'
   BAZEL_VERSION: 7.7.1
-  CILIUM_COMMIT_SHA: 782d4dca211cfd4cdf08dcd089a14bae38eaf25e
-  CILIUM_ENVOY_COMMIT_SHA: 07e8503ff34b9190d7bbe4e57d4e185c4ef8b1de
-  CILIUM_ENVOY_VERSION: 1.36.9
+  CILIUM_COMMIT_SHA: 0a5b4195ff0bfc4d5d6e707a24f57e1047166ab4
+  CILIUM_ENVOY_COMMIT_SHA: cbec91f666af0bf742da986d43832932dbb26b82
+  CILIUM_ENVOY_VERSION: 1.37.6
   CLANG_VERSION: "18"
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-0
   PACKAGE_NAME: cilium-envoy-1.18
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.18"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.18.13
-  VERSION: 1.18.13
+  SEMVER_VERSION: 1.18.14
+  VERSION: 1.18.14
 contents:
   packages:
     - base-files
@@ -87,15 +87,15 @@ contents:
           - python3-wheel
           - sed
         files:
-          - url: git+https://github.com/cilium/proxy.git#07e8503ff34b9190d7bbe4e57d4e185c4ef8b1de
-            checksum: 07e8503ff34b9190d7bbe4e57d4e185c4ef8b1de
+          - url: git+https://github.com/cilium/proxy.git#cbec91f666af0bf742da986d43832932dbb26b82
+            checksum: cbec91f666af0bf742da986d43832932dbb26b82
             path: /go/src/github.com/cilium/proxy
             spdx:
               name: cilium-envoy
-              version: 1.36.9
+              version: 1.37.6
               packages:
                 - name: proxy
-                  purl: pkg:golang/github.com/cilium/proxy@07e8503ff34b9190d7bbe4e57d4e185c4ef8b1de
+                  purl: pkg:golang/github.com/cilium/proxy@cbec91f666af0bf742da986d43832932dbb26b82
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -113,9 +113,7 @@ contents:
             - path: /go/pkg/mod
           with:
             deps:
-              - golang.org/x/text@v0.39.0
-              - golang.org/x/net@v0.56.0
-              - google.golang.org/grpc@v1.83.1
+              - google.golang.org/grpc@v1.83.2
             download: true
         - name: setup
           work-dir: /go/src/github.com/cilium/proxy
@@ -124,7 +122,7 @@ contents:
 
             mkdir -p "${BAZEL_OUTPUT_USER_ROOT}"
 
-            echo 07e8503ff34b9190d7bbe4e57d4e185c4ef8b1de > SOURCE_VERSION
+            echo cbec91f666af0bf742da986d43832932dbb26b82 > SOURCE_VERSION
 
             ln -sf "$(command -v clang-18)" /usr/bin/clang
             ln -sf "$(command -v clang++-18)" /usr/bin/clang++
@@ -211,7 +209,7 @@ contents:
             mkdir -p /opt/docker/sbom/envoy
             python ${source.dir}/envoy-bazel-to-spdx.py \
               "cilium-envoy-1.18-${target.arch}" \
-              "1.36.9" \
+              "1.37.6" \
               "${BAZEL_ANALYSIS_OPTS[@]}" \
               > /opt/docker/sbom/envoy/.spdx.envoy.json
         - name: test-proxy
@@ -272,9 +270,9 @@ contents:
               - deb
             license: Apache-2.0
             name: cilium-envoy-1.18
-            rel: 6
+            rel: 0
             url: https://github.com/cilium/proxy
-            version: 1.18.13
+            version: 1.18.14
       paths:
         - type: file
           path: ${source.dir}/envoy-tests-tier-ab.mk
