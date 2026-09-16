@@ -24,7 +24,7 @@ vars:
   KYVERNO_READINESS_CHECKER_REFERENCE: dhi/kyverno-readiness-checker:1.18.2-debian13@sha256:3008d8f3799da53337844d76f336698d6b60b266c5b74bbec4b8b373abb897c3
   KYVERNO_REFERENCE: dhi/kyverno:1.18.2-debian13@sha256:c0022d2a62b88a011257d24b5b59cd4ea98a520242dab682b3360b5a104020ed
   KYVERNO_REPORTS_CONTROLLER_REFERENCE: dhi/kyverno-reports-controller:1.18.2-debian13@sha256:839504b3545ed34222f8bb01bb13c5885fa96e0487c057b04e7e76f65fabe0d3
-  KYVERNO_REPORTS_SERVER_CHART_REFERENCE: dhi/kyverno-reports-server-chart:0.1.7@sha256:6db97574891ac8f8f0ddc02211c8721d76b2519c5a43bb11ce5eae56a80eb608
+  KYVERNO_REPORTS_SERVER_CHART_REFERENCE: dhi/kyverno-reports-server-chart:0.1.7@sha256:364d989f0e7eaab9f76171c268f7b56642ea87b2ea4c4b94217d39d13306f7af
   SEMVER_MAJOR_MINOR_VERSION: "3.8"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.8.2
@@ -71,7 +71,7 @@ contents:
                 - alias: reports-server
                   condition: reportsServer.enabled
                   name: kyverno-reports-server
-                  ref: dhi/kyverno-reports-server-chart:0.1.7@sha256:6db97574891ac8f8f0ddc02211c8721d76b2519c5a43bb11ce5eae56a80eb608
+                  ref: dhi/kyverno-reports-server-chart:0.1.7@sha256:364d989f0e7eaab9f76171c268f7b56642ea87b2ea4c4b94217d39d13306f7af
               description: Docker Hardened Images Helm chart for Kyverno
               images:
                 - name: kyverno
