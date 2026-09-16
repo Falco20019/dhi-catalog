@@ -4,23 +4,23 @@ image: dhi.io/pkg-cert-manager
 variant: runtime
 tags:
   - 1.20-alpine3.23
-  - 1.20.3-alpine3.23
-  - 1.20.3-r11-alpine3.23
+  - 1.20.4-alpine3.23
+  - 1.20.4-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-10"
 vars:
-  COMMIT_SHA: 1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+  COMMIT_SHA: 0b9448974868c5669d4f3e7499f5afd393889e22
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: cert-manager-1.20
-  REL: "11"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.3
-  VERSION: 1.20.3
+  SEMVER_VERSION: 1.20.4
+  VERSION: 1.20.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -45,15 +45,15 @@ contents:
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
         files:
-          - url: git+https://github.com/cert-manager/cert-manager.git#v1.20.3
-            checksum: 1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+          - url: git+https://github.com/cert-manager/cert-manager.git#v1.20.4
+            checksum: 0b9448974868c5669d4f3e7499f5afd393889e22
             path: /go/src/github.com/cert-manager/cert-manager
             spdx:
               name: cert-manager
-              version: 1.20.3
+              version: 1.20.4
               packages:
                 - name: cert-manager
-                  purl: pkg:golang/cert-manager/cert-manager@1.20.3
+                  purl: pkg:golang/cert-manager/cert-manager@1.20.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -131,8 +131,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/acmesolver
             packages: .
         - name: build acmesolver dev
@@ -141,8 +141,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/acmesolver-dev
             packages: .
             strip: false
@@ -152,8 +152,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/webhook
             packages: .
         - name: build webhook dev
@@ -162,8 +162,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/webhook-dev
             packages: .
             strip: false
@@ -173,8 +173,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cainjector
             packages: .
         - name: build cainjector dev
@@ -183,8 +183,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cainjector-dev
             packages: .
             strip: false
@@ -194,8 +194,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cert-manager-controller
             packages: .
         - name: build cert-manager-controller dev
@@ -204,8 +204,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cert-manager-controller-dev
             packages: .
             strip: false
@@ -215,8 +215,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cert-manager-startupapicheck
             packages: .
         - name: build cert-manager-startupapicheck dev
@@ -225,8 +225,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.3
-              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppVersion=1.20.4
+              - -X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=0b9448974868c5669d4f3e7499f5afd393889e22
             output: ${target.dir}/usr/bin/cert-manager-startupapicheck-dev
             packages: .
             strip: false
@@ -239,7 +239,7 @@ contents:
             name: cert-manager-1.20
             priority: "200"
             provides: cert-manager=$pkg_full_version
-            rel: 11
+            rel: 0
             replaces: cert-manager
             subpackages:
               - files:
@@ -275,7 +275,7 @@ contents:
                     source: usr/bin/cert-manager-startupapicheck-dev
                 name: cert-manager-startupapicheck-1.20-dev
             url: https://github.com/cert-manager/cert-manager
-            version: 1.20.3
+            version: 1.20.4
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
