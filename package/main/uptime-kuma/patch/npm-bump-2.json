@@ -141,7 +141,7 @@
   },
   {
     "package": "nodemailer",
-    "version": "9.0.1"
+    "version": "9.1.1"
   },
   {
     "package": "path-to-regexp",
@@ -163,7 +163,7 @@
   },
   {
     "package": "liquidjs",
-    "version": "10.27.1"
+    "version": "10.27.2"
   },
   {
     "package": "axios",
@@ -171,19 +171,15 @@
   },
   {
     "package": "qs",
-    "version": "6.15.2"
+    "version": "6.16.0"
+  },
+  {
+    "package": "mysql2",
+    "version": "3.23.1"
   },
   {
     "package": "tmp",
     "version": "0.2.7"
-  },
-  {
-    "package": "dompurify",
-    "version": "3.4.13"
-  },
-  {
-    "package": "jsonata",
-    "version": "2.2.1"
   },
   {
     "package": "ws",
