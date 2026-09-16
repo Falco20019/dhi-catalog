@@ -17,7 +17,7 @@ platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
   BASE_TAG: 20250419-debian13
   COMMIT_SHA: aac0823e6b58f8a499e856e93738082691cbf212
   SEMVER_MAJOR_MINOR_VERSION: "0.11"
@@ -92,7 +92,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
       includes:
         - bin
         - etc

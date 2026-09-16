@@ -21,7 +21,7 @@ dates:
   end-of-life: "2028-02-16"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
   BASE_TAG: 20250419-debian13
   COMMIT_SHA: 93e051860a9c7e87ee8cee6ed38b640d491f7170
   GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:a4046334ab89599751b3ccbcbbfd539a6b1365b493686ebb2c09c427f2fef55b
@@ -164,7 +164,7 @@ contents:
         - usr/local/sbin/gosu
       uid: 0
       gid: 0
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
       includes:
         - bin
         - etc

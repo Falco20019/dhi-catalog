@@ -16,7 +16,7 @@ platforms:
 dates:
   release: "2025-11-11"
 vars:
-  BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
   BASE_TAG: 20250419-debian13
   FLAVORED_SUFFIX: ""
   PACKAGE_NAME: kubevirt-1.6
@@ -34,7 +34,7 @@ contents:
     - '!base-files'
     - kubevirt-1.6=1.6.6-10
   artifacts:
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
       includes:
         - bin
         - etc

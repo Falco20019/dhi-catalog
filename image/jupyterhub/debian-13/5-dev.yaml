@@ -19,7 +19,7 @@ platforms:
 dates:
   release: "2024-05-24"
 vars:
-  BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
   BASE_TAG: 20250419-debian13
   CONFIGURABLE_HTTP_PROXY_REFERENCE: dhi/configurable-http-proxy:5.3.0-debian13@sha256:c1293abdf5f7b38a04f1e18d2f40e3674240291b9c5b461c42ff024f49b2f2c9
   SEMVER_MAJOR_MINOR_VERSION: "5.5"
@@ -64,7 +64,7 @@ contents:
         - usr/lib/configurable-http-proxy/**
       uid: 0
       gid: 0
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
       includes:
         - bin
         - etc

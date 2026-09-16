@@ -16,7 +16,7 @@ platforms:
 dates:
   release: "2026-02-03"
 vars:
-  BASE_DIGEST: sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+  BASE_DIGEST: sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
   BASE_TAG: 20250419-debian13
   CILLIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.19.7-debian13@sha256:12d5746b5b121dba1de3a1ad5b5ebba70f3c30e16eafb5be3785bf5274d7e7e2
   CLANG_VERSION: "18"
@@ -260,7 +260,7 @@ contents:
         - usr/bin/cilium-envoy-starter
       uid: 0
       gid: 0
-    - name: dhi.io/static:20250419-debian13@sha256:4a01816cedefdd66a4a7f32813de794d8b8a8478e68deafd49f82e81c249cd8d
+    - name: dhi.io/static:20250419-debian13@sha256:98ef7a853608577e8d66dad1d25ada75d745d782f28d84e9ecfb85dfeb1f9c98
       includes:
         - bin
         - etc
