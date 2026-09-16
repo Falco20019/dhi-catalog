@@ -4,17 +4,17 @@ name: Cert-Manager Helm chart 1.20.x
 image: dhi.io/cert-manager-chart
 variant: helm
 tags:
-  - 1.20.3
+  - 1.20.4
 platforms:
   - linux/amd64
 vars:
   CERT_MANAGER_ACMESOLVER_REFERENCE: dhi/cert-manager-acmesolver:1.20.3-debian13@sha256:0fd8d1fe35726d9455f30e0316d6af74b0d3c9511aaa4fd60d9e1d353f6e80b6
   CERT_MANAGER_CAINJECTOR_REFERENCE: dhi/cert-manager-cainjector:1.20.3-debian13@sha256:38475ca04de332752210587660b7307c717ce717d61e185f43ed4dcf9605d38f
-  CERT_MANAGER_COMMIT_SHA: 1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+  CERT_MANAGER_COMMIT_SHA: 0b9448974868c5669d4f3e7499f5afd393889e22
   CERT_MANAGER_CONTROLLER_REFERENCE: dhi/cert-manager-controller:1.20.3-debian13@sha256:5657097fff39ee86d458e8de8a8227397b79dbe4cfcabc1816fad78530b0405a
   CERT_MANAGER_MAJOR_MINOR_VERSION: "1.20"
   CERT_MANAGER_STARTUPAPICHECK_REFERENCE: dhi/cert-manager-startupapicheck:1.20.3-debian13@sha256:87aac2e09f8cf2205032827bee75e31ee9d5b04b28cb309a68ff5cd17143003a
-  CERT_MANAGER_VERSION: 1.20.3
+  CERT_MANAGER_VERSION: 1.20.4
   CERT_MANAGER_WEBHOOK_REFERENCE: dhi/cert-manager-webhook:1.20.3-debian13@sha256:a70a530afd9b575dbdd56d9abaee2b08e601ffa323bb6e41d19752999c95482a
   CHART_HELM_NAME: cert-manager-chart
   DHI_NAMESPACE: dhi
@@ -42,8 +42,8 @@ contents:
           - findutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/cert-manager/cert-manager.git#v1.20.3
-            checksum: 1e1d16d1744e6d9c80e464e58e8d9ab1caed222b
+          - url: git+https://github.com/cert-manager/cert-manager.git#v1.20.4
+            checksum: 0b9448974868c5669d4f3e7499f5afd393889e22
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
