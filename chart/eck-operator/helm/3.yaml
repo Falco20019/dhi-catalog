@@ -15,10 +15,10 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   ECK_OPERATOR_REFERENCE: dhi/eck-operator:3.5.0-debian13@sha256:5ca6c5369882d52ee7003f2ec5a8d87f0d286ac3d9a6cb03123f4af54420bb51
-  ELASTICSEARCH_REFERENCE: dhi/elasticsearch:9.5.3-debian13@sha256:e373153eaea0d58f7b682bd96bf9cd8ab8ae3a24f126acd0c1df65e5d34a7a9e
+  ELASTICSEARCH_REFERENCE: dhi/elasticsearch:9.5.3-debian13@sha256:ddc57dc1d1d4c50cd320ea281aec2ff0a7c506e8587c6c2f25c08092786acd0a
   HELM_VERSION: 4.1.4-2
-  KIBANA_REFERENCE: dhi/kibana:9.5.3-debian13@sha256:b91c61d61c77b6c5d15077a1e541f8e5fbbf630b8790f338b3fe90768868c784
-  LOGSTASH_REFERENCE: dhi/logstash:9.5.3-debian13-compat@sha256:0ff570743c9ae61f2a127733202e95e35f27ff164257f99e08906bdb754ae741
+  KIBANA_REFERENCE: dhi/kibana:9.5.3-debian13@sha256:a6644db7d2db23fa4dea7b9c75c26e0298f7279f72d1ce83768ba74581e9c7bf
+  LOGSTASH_REFERENCE: dhi/logstash:9.5.3-debian13-compat@sha256:8934641a58cb3a83117593502ffe0dd1642850b53ec4761bd11c0f28eb9c66c6
   SEMVER_MAJOR_MINOR_VERSION: "3.5"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.5.0
@@ -58,11 +58,11 @@ contents:
                 - name: eck-operator
                   ref: dhi/eck-operator:3.5.0-debian13@sha256:5ca6c5369882d52ee7003f2ec5a8d87f0d286ac3d9a6cb03123f4af54420bb51
                 - name: logstash
-                  ref: dhi/logstash:9.5.3-debian13-compat@sha256:0ff570743c9ae61f2a127733202e95e35f27ff164257f99e08906bdb754ae741
+                  ref: dhi/logstash:9.5.3-debian13-compat@sha256:8934641a58cb3a83117593502ffe0dd1642850b53ec4761bd11c0f28eb9c66c6
                 - name: kibana
-                  ref: dhi/kibana:9.5.3-debian13@sha256:b91c61d61c77b6c5d15077a1e541f8e5fbbf630b8790f338b3fe90768868c784
+                  ref: dhi/kibana:9.5.3-debian13@sha256:a6644db7d2db23fa4dea7b9c75c26e0298f7279f72d1ce83768ba74581e9c7bf
                 - name: elasticsearch
-                  ref: dhi/elasticsearch:9.5.3-debian13@sha256:e373153eaea0d58f7b682bd96bf9cd8ab8ae3a24f126acd0c1df65e5d34a7a9e
+                  ref: dhi/elasticsearch:9.5.3-debian13@sha256:ddc57dc1d1d4c50cd320ea281aec2ff0a7c506e8587c6c2f25c08092786acd0a
               name: eck-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/elastic/cloud-on-k8s
