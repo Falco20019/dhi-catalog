@@ -4,11 +4,11 @@ name: Goldilocks Helm chart 11.x
 image: dhi.io/goldilocks-chart
 variant: helm
 tags:
-  - 11.1.0
+  - 11.1.1
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: 43eafcdd9431495a44c0f55cc99ff1832cdecc08
+  CHART_COMMIT_SHA: db94aff3c6d0f0ce0ed6f80f56f3b0b5135f819c
   CHART_HELM_NAME: goldilocks-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -20,8 +20,8 @@ vars:
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:6d5fc35413510d326404d547b5ac2a55bf44809a9b3addbc9399de0c79cf7977
   SEMVER_MAJOR_MINOR_VERSION: "11.1"
   SEMVER_MAJOR_VERSION: "11"
-  SEMVER_VERSION: 11.1.0
-  VERSION: 11.1.0
+  SEMVER_VERSION: 11.1.1
+  VERSION: 11.1.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/FairwindsOps/charts.git#43eafcdd9431495a44c0f55cc99ff1832cdecc08
-            checksum: 43eafcdd9431495a44c0f55cc99ff1832cdecc08
+          - url: git+https://github.com/FairwindsOps/charts.git#db94aff3c6d0f0ce0ed6f80f56f3b0b5135f819c
+            checksum: db94aff3c6d0f0ce0ed6f80f56f3b0b5135f819c
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
