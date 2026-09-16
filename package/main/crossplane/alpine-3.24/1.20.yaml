@@ -3,24 +3,24 @@
 image: dhi.io/pkg-crossplane
 variant: runtime
 tags:
-  - 1.20.12-alpine3.24
-  - 1.20.12-r2-alpine3.24
+  - 1.20.13-alpine3.24
+  - 1.20.13-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-05-21"
 vars:
-  COMMIT_SHA: 1dfb6581431f7499214342e777fb8db2164d75b4
+  COMMIT_SHA: c562034c1158e7050813f36aa3bd2529bf44d10f
   CROSSPLANE_MODULE_BASE: github.com/crossplane/crossplane
   CROSSPLANE_VERSION_LDFLAG: github.com/crossplane/crossplane/internal/version.version
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: crossplane-1.20
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.20.12
-  VERSION: 1.20.12
+  SEMVER_VERSION: 1.20.13
+  VERSION: 1.20.13
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -48,15 +48,15 @@ contents:
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
         files:
-          - url: git+https://github.com/crossplane/crossplane.git#v1.20.12
-            checksum: 1dfb6581431f7499214342e777fb8db2164d75b4
+          - url: git+https://github.com/crossplane/crossplane.git#v1.20.13
+            checksum: c562034c1158e7050813f36aa3bd2529bf44d10f
             path: /go/src/github.com/crossplane/crossplane
             spdx:
               name: crossplane
-              version: 1.20.12
+              version: 1.20.13
               packages:
                 - name: crossplane
-                  purl: pkg:golang/github.com/crossplane/crossplane@1.20.12
+                  purl: pkg:golang/github.com/crossplane/crossplane@1.20.13
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -79,7 +79,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/crossplane/crossplane/internal/version.version=1.20.12
+              - -X github.com/crossplane/crossplane/internal/version.version=1.20.13
             output: ${target.dir}/usr/bin/crossplane
             packages: ./cmd/crossplane
             tidy: true
@@ -88,7 +88,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/crossplane/crossplane/internal/version.version=1.20.12
+              - -X github.com/crossplane/crossplane/internal/version.version=1.20.13
             output: ${target.dir}/usr/bin/crossplane-dev
             packages: ./cmd/crossplane
             strip: false
@@ -111,14 +111,14 @@ contents:
               - usr/share/crossplane/webhookconfigurations
             license: Apache-2.0
             name: crossplane-1.20
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/crossplane
                     source: usr/bin/crossplane-dev
                 name: crossplane-1.20-dev
             url: https://crossplane.io/
-            version: 1.20.12
+            version: 1.20.13
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
