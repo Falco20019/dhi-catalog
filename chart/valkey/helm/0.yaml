@@ -19,7 +19,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "0.12"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.12.0
-  VALKEY_REFERENCE: dhi/valkey:9.1.2-debian13@sha256:66c97f2e36bfc6728ba46316e53c61b31ec40b50353adf11ce21eb1fd9b3dd6f
+  VALKEY_REFERENCE: dhi/valkey:9.1.2-debian13@sha256:57e7b695ba75857fc3e47572cd764671b7a182c400638d722cf5211f6a1b868b
   VERSION: 0.12.0
 contents:
   repositories:
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Valkey
               images:
                 - name: valkey
-                  ref: dhi/valkey:9.1.2-debian13@sha256:66c97f2e36bfc6728ba46316e53c61b31ec40b50353adf11ce21eb1fd9b3dd6f
+                  ref: dhi/valkey:9.1.2-debian13@sha256:57e7b695ba75857fc3e47572cd764671b7a182c400638d722cf5211f6a1b868b
                 - name: redis-exporter
                   ref: dhi/redis-exporter:1.91.1-debian13@sha256:259e97a410c556e4c575a66a360cd49d715c9049df4cfa7716ee620e576ffb5d
               name: valkey-chart
