@@ -13,9 +13,9 @@ dates:
   release: "2025-10-16"
 vars:
   COMMIT_SHA: 915d6dca16268e17605aaeb96ed5a1484f440703
-  ERLANG_OTP_DEV_REFERENCE: dhi/erlang-otp:28.5-debian13-dev@sha256:3df727e227934897ea35b2829302ea123822e58d6bd2ae8bad2243898a2ea587
+  ERLANG_OTP_DEV_REFERENCE: dhi/erlang-otp:28.5-debian13-dev@sha256:996601407dd17e6d82fed48d8b3c9ed2c62b6689d08edfc7bf660d29fe730fdb
   PACKAGE_NAME: elixir-1.19
-  REL: "9"
+  REL: "10"
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.19.6
@@ -25,7 +25,7 @@ contents:
     - base-files
   builds:
     - name: elixir
-      uses: dhi.io/erlang-otp:28.5-debian13-dev@sha256:3df727e227934897ea35b2829302ea123822e58d6bd2ae8bad2243898a2ea587
+      uses: dhi.io/erlang-otp:28.5-debian13-dev@sha256:996601407dd17e6d82fed48d8b3c9ed2c62b6689d08edfc7bf660d29fe730fdb
       work-dir: ${source.dir}/elixir
       contents:
         packages:
@@ -67,8 +67,8 @@ contents:
               - deb
             license: Apache-2.0
             name: elixir-1.19
-            provides: elixir=1.19.6-r9
-            rel: 9
+            provides: elixir=1.19.6-r10
+            rel: 10
             url: https://elixir-lang.org/
             version: 1.19.6
 os-release:
