@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:c178598496474e734a0efe253036d0ec30ba2555698eba181e9d55dfcf2979ff
+  BATS_REFERENCE: dhi/bats:1.14.0-debian13@sha256:19783372b345fdefa5b89c54b4c1b9c94e425b7b1873720fe5a54cd2feb40ec5
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:abcd06d567c6ecda4aae78cff5334a231bd3e663b69b671612566d4a4c949899
   CHART_COMMIT_SHA: ae91d5a1c2cc89a119b06c72488d127baf9af9d0
   CHART_HELM_NAME: grafana-chart
@@ -58,7 +58,7 @@ contents:
                 - name: grafana-image-renderer
                   ref: dhi/grafana-image-renderer:5.12.3-debian13@sha256:71ec026994bc4c52497dbb2717d6133af2254436d50ab6a17c16cc3d8b353473
                 - name: bats
-                  ref: dhi/bats:1.14.0-debian13@sha256:c178598496474e734a0efe253036d0ec30ba2555698eba181e9d55dfcf2979ff
+                  ref: dhi/bats:1.14.0-debian13@sha256:19783372b345fdefa5b89c54b4c1b9c94e425b7b1873720fe5a54cd2feb40ec5
                 - name: busybox
                   ref: dhi/busybox:1.37.0-debian13@sha256:abcd06d567c6ecda4aae78cff5334a231bd3e663b69b671612566d4a4c949899
                 - name: curl
