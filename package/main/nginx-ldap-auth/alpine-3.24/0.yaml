@@ -4,15 +4,15 @@ image: dhi.io/pkg-nginx-ldap-auth
 variant: runtime
 tags:
   - 0.0.5-alpine3.24
-  - 0.0.5-r1-alpine3.24
+  - 0.0.5-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   COMMIT_SHA: c98eb555f5faba6b6efdddad4071afa56464d2c5
-  PYTHON_LDAP_VERSION: 3.4.7
+  PYTHON_LDAP_VERSION: 3.4.8
   PYTHON3_VERSION: 3.14.7-r1
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "0.0"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.0.5
@@ -65,7 +65,7 @@ contents:
             set -eux -o pipefail
 
             pip3 --python "${target.dir}/usr/lib/nginx-ldap-auth/bin/python" \
-              install --no-cache-dir "python-ldap==3.4.7"
+              install --no-cache-dir "python-ldap==3.4.8"
         - name: install auth daemon
           runs: |
             set -eux -o pipefail
@@ -102,7 +102,7 @@ contents:
               - apk
             license: BSD-2-Clause
             name: nginx-ldap-auth
-            rel: 1
+            rel: 2
             url: https://github.com/nginxinc/nginx-ldap-auth
             version: 0.0.5.20230304
 os-release:
