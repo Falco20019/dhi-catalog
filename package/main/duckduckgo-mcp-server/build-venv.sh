@@ -25,7 +25,7 @@ export UV_COMPILE_BYTECODE="${UV_COMPILE_BYTECODE:-1}"
 # Install strictly from upstream's committed uv.lock plus the targeted CVE
 # bumps below. Do NOT run a full `uv lock --upgrade`: regenerating the whole
 # lock would drift from the dependency set the release was tested against.
-# CVE-2026-59950 / CVE-2026-52869 / CVE-2026-52870: mcp <1.28.1.
+# v0.7.0+ requires mcp[cli]>=2.1.1,<3; pin upstream's locked mcp==2.1.1.
 # GHSA-4xgf-cpjx-pc3j: pydantic-settings 2.14.1 path traversal.
 # CVE-2026-32597 / CVE-2026-48526: pyjwt <2.13.0.
 # CVE-2026-42561 / CVE-2026-53539: python-multipart <0.0.31.
@@ -36,7 +36,7 @@ export UV_COMPILE_BYTECODE="${UV_COMPILE_BYTECODE:-1}"
 # CVE-2026-45409: idna <3.15.
 # CVE-2026-4539: pygments <2.20.0.
 uv lock \
-  --upgrade-package "mcp==1.28.1" \
+  --upgrade-package "mcp==2.1.1" \
   --upgrade-package "pydantic-settings>=2.14.2" \
   --upgrade-package "pyjwt>=2.13.0" \
   --upgrade-package "python-multipart>=0.0.31" \
