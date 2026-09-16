@@ -18,7 +18,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HAPROXY_CHART_REFERENCE: dhi/haproxy-chart:1.30.1@sha256:fb2d42ed68e96620da629a2a5ed50289436243d9537f50aa50cc9f3c2d009049
   HELM_VERSION: 4.1.4-2
-  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:356970937e92373fee81e0f031f4454ae5b15e52f150052344cdd4e42959e14a
+  REDIS_CHART_REFERENCE: dhi/redis-chart:23.0.7@sha256:c5ebe5f7059569556e21523851f46a7d2c475184e7de22b70fc03ca2b3357b7a
   REDIS_EXPORTER_REFERENCE: dhi/redis-exporter:1.91.1-debian13@sha256:259e97a410c556e4c575a66a360cd49d715c9049df4cfa7716ee620e576ffb5d
   REDIS_REFERENCE: dhi/redis:8.10.1-debian13-compat@sha256:eb2fa0d3b374d7132896311c89ddcfa85f41021661f043f2953dd001d0822735
   SEMVER_MAJOR_MINOR_VERSION: "10.9"
@@ -57,7 +57,7 @@ contents:
                 - alias: redis-ha
                   condition: redis-ha.enabled
                   name: redis-ha
-                  ref: dhi/redis-chart:23.0.7@sha256:356970937e92373fee81e0f031f4454ae5b15e52f150052344cdd4e42959e14a
+                  ref: dhi/redis-chart:23.0.7@sha256:c5ebe5f7059569556e21523851f46a7d2c475184e7de22b70fc03ca2b3357b7a
                 - alias: haproxy
                   condition: haproxy.enabled
                   name: haproxy
