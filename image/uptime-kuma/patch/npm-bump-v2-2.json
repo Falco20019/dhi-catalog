@@ -144,7 +144,7 @@
   },
   {
     "package": "jsonata",
-    "version": "2.2.1"
+    "version": "2.2.2"
   },
   {
     "package": "@grpc/grpc-js",
