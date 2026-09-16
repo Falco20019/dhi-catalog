@@ -18,7 +18,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:67de5a0a175991f0f895c319494f6a3eb6f12c1d0efbaeed028c8ee0cfeb9d7e
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:9aaf27c077fb21ac3e9abf14be7b6237b2113a9467c4014c588125a99c58c02a
   SEMVER_MAJOR_MINOR_VERSION: "0.27"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.27.3
@@ -58,7 +58,7 @@ contents:
                 - name: clickhouse-server
                   ref: dhi/clickhouse-server:25.8.33-debian13@sha256:ffadf1b29c6538ccad5c77657cdbb4b70a3baa84671f44e54fc97ee30e5a2ce6
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:67de5a0a175991f0f895c319494f6a3eb6f12c1d0efbaeed028c8ee0cfeb9d7e
+                  ref: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:9aaf27c077fb21ac3e9abf14be7b6237b2113a9467c4014c588125a99c58c02a
               name: clickhouse-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/Altinity/clickhouse-operator
