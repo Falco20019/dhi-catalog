@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.4-debian13@sha256:c1598700ee444ecac9eb0388d9f5d53fd1907e38dedcf1091f471a0a7cdb59f0
+  ISTIO_PROXYV2_REFERENCE: dhi/istio-proxyv2:1.30.4-debian13@sha256:8c14d77df240a654ac75d83b7f085b199433eb12ff905dff6b10ede125baca32
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.30.4
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Istio Ingress
               images:
                 - name: proxyv2
-                  ref: dhi/istio-proxyv2:1.30.4-debian13@sha256:c1598700ee444ecac9eb0388d9f5d53fd1907e38dedcf1091f471a0a7cdb59f0
+                  ref: dhi/istio-proxyv2:1.30.4-debian13@sha256:8c14d77df240a654ac75d83b7f085b199433eb12ff905dff6b10ede125baca32
               name: istio-ingress-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/istio/istio
