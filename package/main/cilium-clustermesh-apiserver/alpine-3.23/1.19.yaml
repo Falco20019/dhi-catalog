@@ -3,23 +3,23 @@
 image: dhi.io/pkg-cilium-clustermesh-apiserver
 variant: runtime
 tags:
-  - 1.19.7-alpine3.23
-  - 1.19.7-r7-alpine3.23
+  - 1.19.8-alpine3.23
+  - 1.19.8-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-03"
 vars:
-  COMMIT_SHA: 704b537b83f456fc199f48c2f1781beb0d679c87
+  COMMIT_SHA: 5791d208dda456da8d08e9389c3d22514dc2db77
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: cilium-clustermesh-apiserver-1.19
-  REL: "7"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.19"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.19.7
-  VERSION: 1.19.7
+  SEMVER_VERSION: 1.19.8
+  VERSION: 1.19.8
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -40,15 +40,15 @@ contents:
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
         files:
-          - url: git+https://github.com/cilium/cilium.git#v1.19.7
-            checksum: 704b537b83f456fc199f48c2f1781beb0d679c87
+          - url: git+https://github.com/cilium/cilium.git#v1.19.8
+            checksum: 5791d208dda456da8d08e9389c3d22514dc2db77
             path: /go/src/github.com/cilium/cilium
             spdx:
               name: cilium-clustermesh-apiserver
-              version: 1.19.7
+              version: 1.19.8
               packages:
                 - name: cilium-clustermesh-apiserver
-                  purl: pkg:golang/github.com/cilium/cilium@1.19.7
+                  purl: pkg:golang/github.com/cilium/cilium@1.19.8
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -74,7 +74,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.19.7
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.19.8
             output: ${target.dir}/usr/bin/clustermesh-apiserver
             packages: ./clustermesh-apiserver
         - name: build clustermesh-apiserver dev
@@ -82,7 +82,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.19.7
+              - -X github.com/cilium/cilium/pkg/version.ciliumVersion=1.19.8
             output: ${target.dir}/usr/bin/clustermesh-apiserver-dev
             packages: ./clustermesh-apiserver
             strip: false
@@ -96,14 +96,14 @@ contents:
               - deb
             license: Apache-2.0
             name: cilium-clustermesh-apiserver-1.19
-            rel: 7
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/clustermesh-apiserver
                     source: usr/bin/clustermesh-apiserver-dev
                 name: cilium-clustermesh-apiserver-1.19-dev
             url: https://github.com/cilium/cilium
-            version: 1.19.7
+            version: 1.19.8
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
