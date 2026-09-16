@@ -15,8 +15,8 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:67de5a0a175991f0f895c319494f6a3eb6f12c1d0efbaeed028c8ee0cfeb9d7e
-  NEO4J_REFERENCE: dhi/neo4j:5.26.30-debian13@sha256:b652d56bd7d9b5989b5b8efec86e4109d3eef7589a02dfe4f0b7e9aafebbd78e
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:9aaf27c077fb21ac3e9abf14be7b6237b2113a9467c4014c588125a99c58c02a
+  NEO4J_REFERENCE: dhi/neo4j:5.26.30-debian13@sha256:67db1b891e50dfab450daa8ef127d30e079ad772bec86f10fab042e8cadf3e56
   SEMVER_MAJOR_MINOR_VERSION: "5.26"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.26.30
@@ -51,9 +51,9 @@ contents:
               description: Docker Hardened Images Helm chart for Neo4j
               images:
                 - name: neo4j
-                  ref: dhi/neo4j:5.26.30-debian13@sha256:b652d56bd7d9b5989b5b8efec86e4109d3eef7589a02dfe4f0b7e9aafebbd78e
+                  ref: dhi/neo4j:5.26.30-debian13@sha256:67db1b891e50dfab450daa8ef127d30e079ad772bec86f10fab042e8cadf3e56
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:67de5a0a175991f0f895c319494f6a3eb6f12c1d0efbaeed028c8ee0cfeb9d7e
+                  ref: dhi/kubectl:1.34.11-alpine3.22-dev@sha256:9aaf27c077fb21ac3e9abf14be7b6237b2113a9467c4014c588125a99c58c02a
               name: neo4j-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/neo4j/helm-charts
