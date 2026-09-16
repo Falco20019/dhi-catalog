@@ -3,25 +3,25 @@
 image: dhi.io/pkg-netdata
 variant: runtime
 tags:
-  - 2.11.0
-  - 2.11.0-r6
-  - 2.11.0-debian13
-  - 2.11.0-r6-debian13
+  - 2.11.1
+  - 2.11.1-r0
+  - 2.11.1-debian13
+  - 2.11.1-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-04"
 vars:
-  COMMIT_SHA: bb8f509e99cad230d3acc1fdfc840224f3b3db3a
+  COMMIT_SHA: 4452c86ab63611092e30f1fa1f3085c62fb7c9cd
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-0
   PACKAGE_NAME: netdata
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.11"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.11.0
-  VERSION: 2.11.0
+  SEMVER_VERSION: 2.11.1
+  VERSION: 2.11.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -80,15 +80,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/netdata/netdata.git#v2.11.0
-            checksum: bb8f509e99cad230d3acc1fdfc840224f3b3db3a
+          - url: git+https://github.com/netdata/netdata.git#v2.11.1
+            checksum: 4452c86ab63611092e30f1fa1f3085c62fb7c9cd
             path: ${source.dir}/netdata
             spdx:
               name: netdata
-              version: 2.11.0
+              version: 2.11.1
               packages:
                 - name: netdata
-                  purl: pkg:dhi/netdata@2.11.0
+                  purl: pkg:dhi/netdata@2.11.1
                   license: GPL-3.0
             uid: 0
             gid: 0
@@ -214,9 +214,9 @@ contents:
               - deb
             license: GPL-3.0
             name: netdata
-            rel: 6
+            rel: 0
             url: https://www.netdata.cloud/
-            version: 2.11.0
+            version: 2.11.1
       paths:
         - type: file
           path: ${source.dir}/patch/prometheus-labels-v0.311.3.patch
