@@ -4,11 +4,11 @@ name: Fairwinds VPA Helm chart 5.x
 image: dhi.io/fairwinds-vpa-chart
 variant: helm
 tags:
-  - 5.0.1
+  - 5.1.0
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: c3c13eb07c83f1d0784db02339f80bd0b2471cea
+  CHART_COMMIT_SHA: 31ce6425099017d64f75c612ad587a0f3cbe880d
   CHART_HELM_NAME: fairwinds-vpa-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -16,12 +16,12 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.8-debian13@sha256:769451713e86dc834087cc4accc221452e016b859bf43a99a3354336b17f09b1
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.8-debian13@sha256:ae04e963ea75ae238567029ff32347a6f9b5a9138345b1f79131cd94d8e6542b
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.8-debian13@sha256:f2d415e866ad85a8445747f486f72d6ce02887f1253d6300026d80b60af55dc3
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:6d5fc35413510d326404d547b5ac2a55bf44809a9b3addbc9399de0c79cf7977
-  SEMVER_MAJOR_MINOR_VERSION: "5.0"
+  SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.0.1
-  VERSION: 5.0.1
+  SEMVER_VERSION: 5.1.0
+  VERSION: 5.1.0
   VPA_ADMISSION_CONTROLLER_REFERENCE: dhi/vpa-admission-controller:1.7.1-debian13@sha256:1325d5027696c3e71380ba6d3954b7ad7450814ada88b29072b43e6c1a5dcb72
   VPA_RECOMMENDER_REFERENCE: dhi/vpa-recommender:1.7.1-debian13@sha256:f921bdcae61661dff813a695c0b0d19ffcd570cb44b4f3b7ddb4e88427bdb3ff
   VPA_UPDATER_REFERENCE: dhi/vpa-updater:1.7.1-debian13@sha256:e8825e04d9748107dae070e93e9df8aaf0dca5dad2b5c998904856407c8166a1
@@ -39,8 +39,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/FairwindsOps/charts.git#c3c13eb07c83f1d0784db02339f80bd0b2471cea
-            checksum: c3c13eb07c83f1d0784db02339f80bd0b2471cea
+          - url: git+https://github.com/FairwindsOps/charts.git#31ce6425099017d64f75c612ad587a0f3cbe880d
+            checksum: 31ce6425099017d64f75c612ad587a0f3cbe880d
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -67,7 +67,7 @@ contents:
                 - name: kube-webhook-certgen
                   ref: dhi/kube-webhook-certgen:1.8.8-debian13@sha256:769451713e86dc834087cc4accc221452e016b859bf43a99a3354336b17f09b1
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.8-debian13@sha256:ae04e963ea75ae238567029ff32347a6f9b5a9138345b1f79131cd94d8e6542b
+                  ref: dhi/kubectl:1.35.8-debian13@sha256:f2d415e866ad85a8445747f486f72d6ce02887f1253d6300026d80b60af55dc3
               name: fairwinds-vpa-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
