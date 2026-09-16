@@ -4,23 +4,23 @@ name: NGINX Ingress Helm chart 2.x
 image: dhi.io/nginx-ingress-chart
 variant: helm
 tags:
-  - 2.7.2
+  - 2.7.3
 platforms:
   - linux/amd64
 vars:
-  APP_VERSION: 5.6.2
-  CHART_COMMIT_SHA: 6977515691e3525359ad412c5f899a56a85409da
+  APP_VERSION: 5.6.3
+  CHART_COMMIT_SHA: 795560851534267b30d65a0713c687256b666333
   CHART_HELM_NAME: nginx-ingress-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.6.1-debian13@sha256:ae215927f0b642ef6fd28f0715a124efc57f978d892938d33c33d5b2b97cf1a2
+  NGINX_INGRESS_REFERENCE: dhi/nginx-ingress:5.6.1-debian13@sha256:539f821a043b7406e49be843441fd222c0c7a42d030caa203326cc8d8e6e38ce
   SEMVER_MAJOR_MINOR_VERSION: "2.7"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.7.2
-  VERSION: 2.7.2
+  SEMVER_VERSION: 2.7.3
+  VERSION: 2.7.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/nginx/kubernetes-ingress.git#v5.6.2
-            checksum: 6977515691e3525359ad412c5f899a56a85409da
+          - url: git+https://github.com/nginx/kubernetes-ingress.git#v5.6.3
+            checksum: 795560851534267b30d65a0713c687256b666333
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for NGINX Ingress Controller
               images:
                 - name: nginx-ingress
-                  ref: dhi/nginx-ingress:5.6.1-debian13@sha256:ae215927f0b642ef6fd28f0715a124efc57f978d892938d33c33d5b2b97cf1a2
+                  ref: dhi/nginx-ingress:5.6.1-debian13@sha256:539f821a043b7406e49be843441fd222c0c7a42d030caa203326cc8d8e6e38ce
               name: nginx-ingress-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/nginx/kubernetes-ingress
