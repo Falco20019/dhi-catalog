@@ -5,11 +5,11 @@ image: dhi.io/clickhouse-keeper
 variant: runtime
 tags:
   - "26.7"
-  - 26.7.8
+  - 26.7.9
   - 26.7-debian
   - 26.7-debian13
-  - 26.7.8-debian
-  - 26.7.8-debian13
+  - 26.7.9-debian
+  - 26.7.9-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,12 +17,12 @@ dates:
   release: "2026-04-16"
 vars:
   CLANG_VERSION: "21"
-  COMMIT_SHA: 5cf8a36253e5e53abfdd5d339c32c76adeccaffb
+  COMMIT_SHA: dcfd8a8ee1f365633d510baa81cd623978c457eb
   SEMVER_MAJOR_MINOR_VERSION: "26.7"
   SEMVER_MAJOR_VERSION: "26"
-  SEMVER_VERSION: 26.7.8
+  SEMVER_VERSION: 26.7.9
   TAG_SUFFIX: stable
-  VERSION: 26.7.8.15
+  VERSION: 26.7.9.12
 contents:
   packages:
     - '!libelogind0'
@@ -57,15 +57,15 @@ contents:
           - python3
           - sed
         files:
-          - url: git+https://github.com/ClickHouse/ClickHouse.git#v26.7.8.15-stable
-            checksum: 5cf8a36253e5e53abfdd5d339c32c76adeccaffb
+          - url: git+https://github.com/ClickHouse/ClickHouse.git#v26.7.9.12-stable
+            checksum: dcfd8a8ee1f365633d510baa81cd623978c457eb
             path: ${source.dir}/clickhouse
             spdx:
               name: clickhouse-keeper
-              version: 26.7.8.15
+              version: 26.7.9.12
               packages:
                 - name: clickhouse-keeper
-                  purl: pkg:dhi/clickhouse-keeper@v26.7.8.15
+                  purl: pkg:dhi/clickhouse-keeper@v26.7.9.12
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -153,7 +153,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /var/lib/clickhouse-keeper
 environment:
-  CLICKHOUSE_VERSION: 26.7.8.15
+  CLICKHOUSE_VERSION: 26.7.9.12
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
