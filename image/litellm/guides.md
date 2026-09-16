@@ -221,25 +221,28 @@ curl -X POST http://localhost:4000/v1/chat/completions \
 | Feature                | Standard LiteLLM Image              | Docker Hardened LiteLLM                                                    |
 | ---------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
 | Security               | Standard base with common utilities | Minimal, hardened base with security patches                               |
-| Shell access           | Full shell (bash/sh) available      | No shell in runtime variants                                               |
+| Shell access           | Full shell (bash/sh) available      | Bash included for the upstream entrypoint script                           |
 | Package manager        | apt/apk available                   | No package manager in runtime variants (pip available for Python packages) |
 | User                   | Runs as root by default             | Runs as nonroot user                                                       |
+| File permissions       | `/app` writable by the runtime user | Application tree root-owned; only `/app/.cache` writable at runtime        |
 | Attack surface         | Larger due to additional utilities  | Minimal, only essential components                                         |
 | Debugging              | Traditional shell debugging         | Use Docker Debug or Image Mount for troubleshooting                        |
 | Provenance             | Standard image metadata             | Signed provenance attestations and complete SBOM                           |
 | Vulnerability tracking | Standard CVE reporting              | VEX documents explaining remaining CVEs                                    |
 | Upstream compatibility | N/A                                 | Based on official litellm/litellm, maintains full API compatibility        |
 
-### Why no shell or package manager?
+### Why is Bash included?
 
-Docker Hardened Images prioritize security through minimalism:
+The LiteLLM runtime image includes Bash because the upstream entrypoint script `/app/docker/prod_entrypoint.sh` requires
+it. The image does not include a system package manager (pip remains available in the LiteLLM virtual environment) and
+otherwise remains minimal:
 
 - Reduced attack surface: Fewer binaries mean fewer potential vulnerabilities
 - Immutable infrastructure: Runtime containers shouldn't be modified after deployment
 - Compliance ready: Meets strict security requirements for regulated environments
 
-The hardened images intended for runtime don't contain a shell nor any tools for debugging. Common debugging methods for
-applications built with Docker Hardened Images include:
+The hardened images intended for runtime don't contain debugging tools beyond the shell and basic utilities. Common
+debugging methods for applications built with Docker Hardened Images include:
 
 - [Docker Debug](https://docs.docker.com/reference/cli/docker/debug/) to attach to containers
 - Docker's Image Mount feature to mount debugging tools
@@ -264,23 +267,40 @@ docker run --rm -it --pid container:my-litellm \
 
 ## Image variants
 
-Docker Hardened Images come in different variants depending on their intended use.
+Docker Hardened Images come in different variants depending on their intended use. Image variants are identified by
+their tag.
 
-Runtime variants are designed to run your application in production. These images are intended to be used either
-directly or as the `FROM` image in the final stage of a multi-stage build. These images typically:
+- Runtime variants are designed to run your application in production. These images are intended to be used either
+  directly or as the `FROM` image in the final stage of a multi-stage build. These images typically:
 
-- Run as the nonroot user
-- Do not include a shell or a package manager (except pip for Python packages)
-- Contain only the minimal set of libraries needed to run the app
+  - Run as the nonroot user
+  - Do not include a shell or a package manager (except pip for Python packages)
+  - Contain only the minimal set of libraries needed to run the app
 
-Build-time variants typically include `dev` in the variant name and are intended for use in the first stage of a
-multi-stage Dockerfile. These images typically:
+  **`litellm` is an exception to the shell point above:** the upstream entrypoint script
+  `/app/docker/prod_entrypoint.sh` needs `bash`, so the runtime variants include a shell. They still have no system
+  package manager.
 
-- Run as the root user
-- Include a shell and package manager
-- Are used to build or compile applications
+- Build-time variants typically include `dev` in the variant name and are intended for use in the first stage of a
+  multi-stage Dockerfile. These images typically:
 
-**Note**: No FIPS-compliant or -dev images are currently available in the catalog for LiteLLM.
+  - Run as the root user
+  - Include a shell and package manager
+  - Are used to build or compile applications
+
+- FIPS variants include `fips` in the variant name and tag. They come in both runtime and build-time variants. These
+  variants use cryptographic modules that have been validated under FIPS 140, a U.S. government standard for secure
+  cryptographic operations. In this image, the validated OpenSSL provider covers Python's `ssl` and `hashlib` modules,
+  which carry the proxy's TLS listener, its outbound HTTPS calls to LLM providers and its key hashing; the
+  `cryptography` package, built against the system OpenSSL, which handles JWT verification, license checks, request
+  signing for OCI and the encryption of credentials stored in the database; and the Prisma query and schema engines.
+  Components that bundle their own cryptography stay outside that boundary: the Node.js runtime that drives
+  `prisma migrate deploy` at startup, the `pynacl` wheel (libsodium) that decrypts credentials stored by older releases,
+  `grpcio` (BoringSSL) used by gRPC-based providers such as Vertex AI, and the Rust-based extensions (`hf_xet`,
+  `granian`, `polars`, and the Datadog and Pyroscope agents). For example, usage of MD5 fails in FIPS variants.
+
+To view the image variants and get more information about them, select the Tags tab for this repository, and then select
+a tag.
 
 ## Migrate to a Docker Hardened Image
 
@@ -293,11 +313,11 @@ following table of migration notes:
 | Base image         | Replace litellm/litellm or other base images (ghcr.io/berriai/litellm, etc.) with the Docker Hardened LiteLLM image.                                                                                                                                                                                                                             |
 | Package management | Non-dev images don't contain Debian package managers. Python's pip is included as part of the Python installation in a virtual environment at `/opt/litellm`, allowing you to extend with custom callbacks and packages. Note that adding packages can potentially introduce new CVEs or break previously remediated CVEs if not done carefully. |
 |                    | Non-root user                                                                                                                                                                                                                                                                                                                                    |
-| Multi-stage build  | For custom extensions, use a multi-stage build approach. Build stages can use dev variants (when available) for compilation, then copy artifacts to the runtime stage.                                                                                                                                                                           |
+| Multi-stage build  | For custom extensions, use a multi-stage build approach. Build stages can use dev variants for compilation, then copy artifacts to the runtime stage.                                                                                                                                                                                            |
 | TLS certificates   | Docker Hardened Images contain standard TLS certificates by default. There is no need to install TLS certificates.                                                                                                                                                                                                                               |
 | Ports              | Non-dev hardened images run as a nonroot user by default. As a result, applications in these images can't bind to privileged ports (below 1024) when running in Kubernetes or in Docker Engine versions older than 20.10. Configure LiteLLM to listen on port 4000 or another unprivileged port.                                                 |
 | Entry point        | Docker Hardened Images may have different entry points than upstream images. The DHI LiteLLM image uses `/app/docker/prod_entrypoint.sh` as the entry point.                                                                                                                                                                                     |
-| No shell           | By default, non-dev images don't contain a shell. Use Docker Debug for troubleshooting or mount debugging tools when needed.                                                                                                                                                                                                                     |
+| Shell              | LiteLLM runtime variants include Bash because the upstream entrypoint requires it. Use Docker Debug or mounted tools for troubleshooting instead of modifying the running container.                                                                                                                                                             |
 
 The following steps outline the general migration process.
 
@@ -346,8 +366,8 @@ The following steps outline the general migration process.
 
 ### General debugging
 
-The hardened images intended for runtime don't contain common shell tools for debugging. The recommended method for
-debugging applications built with Docker Hardened Images is to use
+The hardened images intended for runtime don't contain debugging tools beyond the shell and basic utilities. The
+recommended method for debugging applications built with Docker Hardened Images is to use
 [Docker Debug](https://docs.docker.com/engine/reference/commandline/debug/) to attach to these containers. Docker Debug
 provides a shell, common debugging tools, and lets you install other tools in an ephemeral, writable layer that only
 exists during the debugging session.

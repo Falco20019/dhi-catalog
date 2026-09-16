@@ -125,8 +125,8 @@ contents:
           gid: 0
         - source: /usr/share/litellm
           target: /usr/share/litellm
-          uid: 65532
-          gid: 65532
+          uid: 0
+          gid: 0
         - source: /usr/bin/litellm
           target: /usr/bin/litellm
           uid: 0
@@ -179,6 +179,21 @@ environment:
   PRISMA_USE_GLOBAL_NODE: "true"
   PYTHON_VERSION: 3.13.15-1
 paths:
+  - type: directory
+    path: /usr/share/litellm/.cache
+    uid: 65532
+    gid: 65532
+    mode: "0755"
+  - type: directory
+    path: /usr/share/litellm
+    uid: 0
+    gid: 0
+    mode: "0755"
+  - type: directory
+    path: /usr/share
+    uid: 0
+    gid: 0
+    mode: "0755"
   - type: symlink
     path: /app
     uid: 0
