@@ -3,14 +3,14 @@
 image: dhi.io/pkg-node
 variant: runtime
 tags:
-  - 26.9.0-0
-  - 26.9.0-0-debian13
+  - 26.9.0-1
+  - 26.9.0-1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  DHI_REL: "0"
-  DHI_VERSION: 26.9.0-0
+  DHI_REL: "1"
+  DHI_VERSION: 26.9.0-1
   PACKAGE_NAME: nodejs-26
   SEMVER_MAJOR_VERSION: "26"
   SEMVER_VERSION: 26.9.0
@@ -81,6 +81,11 @@ contents:
             path: ${source.dir}/node-v26.9.0.tar.gz
             uid: 0
             gid: 0
+          - url: https://github.com/madler/zlib/commit/df84af25dc1942490e1d1c899a07619152a46148.patch
+            checksum: sha256:110ff14375733173d8aa54574473424fbd7dfe4b81f1ca34a759c6fe14b15b14
+            path: ${source.dir}/patch/upstream-cve-2026-85091.patch
+            uid: 0
+            gid: 0
       pipeline:
         - name: verify
           work-dir: ${source.dir}
@@ -105,10 +110,8 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            # Extract Node.js source into the work-dir (alongside debian/)
             tar -xf "${source.dir}/node-v26.9.0.tar.gz" --strip-components=1
 
-            # Finalize debian/ templates in-place
             sed -i -e "s/@PACKAGE_NAME@/nodejs-26/g" \
               -e "s/@MAJOR_VERSION@/26/g" \
               -e "s/@TRAIN@/lts/g" \
@@ -117,11 +120,18 @@ contents:
 
             mv debian/nodejs.install.in "debian/nodejs-26.install"
             mv debian/nodejs-dev.install.in "debian/nodejs-26-dev.install"
+        - name: apply bundled zlib fix for CVE-2026-85091
+          uses: patch@v1
+          work-dir: ${source.dir}/nodejs-26/deps/zlib
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/patch/upstream-cve-2026-85091.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - DHI Build
-            version: 26.9.0-0
+              - Backport upstream bundled zlib fix for CVE-2026-85091
+            version: 26.9.0-1
         - uses: dpkg/build@v1
           environment:
             DHI_CONFIGURE_OPTS: '#{ definition.vars.SEMVER_MAJOR_VERSION == "25" || definition.vars.SEMVER_MAJOR_VERSION == "26" ? "--without-npm" : "--without-npm --without-corepack" }'
@@ -134,6 +144,11 @@ contents:
           gid: 0
           mode: "0600"
           source: package/deb/main/node/debian-13/debian
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-85091-zlib-1.3.1.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/node/patch/dhi-cve-2026-85091-zlib-1.3.1.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
