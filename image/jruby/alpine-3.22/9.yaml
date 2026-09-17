@@ -14,7 +14,7 @@ vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
   COMMIT_SHA: 6114208a317732f8ad54d6cd3a06a46fcde03a08
   JRE_REF: dhi/eclipse-temurin:21.0.12.8-alpine3.22@sha256:99bd4ef06a7f4c0889d22da307c595a0a10a951db454b529bcb12fc2b3a2589d
-  MAVEN_REF: dhi/maven:3.9.16-jdk21-alpine3.22-dev@sha256:42b4f40696a2bf2c47ec4e5664d439e6e3ce4c7a3d4564db391e9293d1fd0899
+  MAVEN_REF: dhi/maven:3.9.16-jdk21-alpine3.22-dev@sha256:fd4c1dec84b4415501ed1530e684abc64403a998d88d6007c611ec8eef4dedd9
   SEMVER_MAJOR_MINOR_VERSION: "9.4"
   SEMVER_MAJOR_VERSION: "9"
   SEMVER_VERSION: 9.4.15
@@ -30,7 +30,7 @@ contents:
     - coreutils
   builds:
     - name: jruby
-      uses: dhi.io/maven:3.9.16-jdk21-alpine3.22-dev@sha256:42b4f40696a2bf2c47ec4e5664d439e6e3ce4c7a3d4564db391e9293d1fd0899
+      uses: dhi.io/maven:3.9.16-jdk21-alpine3.22-dev@sha256:fd4c1dec84b4415501ed1530e684abc64403a998d88d6007c611ec8eef4dedd9
       environment:
         JRE_TRUST_STORE: ${JRE_TRUST_STORE}
       contents:
