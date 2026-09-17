@@ -1,15 +1,15 @@
 # syntax=dhi.io/build:2-alpine3.23
 
-name: Grafana Beyla 2.x
+name: Grafana Beyla 3.x
 image: dhi.io/beyla
 variant: runtime
 tags:
-  - 2-alpine
-  - 2.5-alpine
-  - 2-alpine3.24
-  - 2.5.8-alpine
-  - 2.5-alpine3.24
-  - 2.5.8-alpine3.24
+  - 3-alpine
+  - 3.35-alpine
+  - 3-alpine3.24
+  - 3.35.0-alpine
+  - 3.35-alpine3.24
+  - 3.35.0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,11 +17,11 @@ dates:
   release: "2025-07-22"
 vars:
   FLAVORED_SUFFIX: ""
-  SEMVER_MAJOR_MINOR_VERSION: "2.5"
-  SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.8
+  SEMVER_MAJOR_MINOR_VERSION: "3.35"
+  SEMVER_MAJOR_VERSION: "3"
+  SEMVER_VERSION: 3.35.0
   SUFFIX: ""
-  VERSION: 2.5.8-r13
+  VERSION: 3.35.0-r1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -31,7 +31,7 @@ contents:
     - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
   packages:
     - alpine-baselayout-data
-    - beyla-2.5=2.5.8-r13
+    - beyla-3=3.35.0-r1
     - ca-certificates-bundle
     - tzdata
 accounts:

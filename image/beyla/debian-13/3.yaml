@@ -1,40 +1,38 @@
-# syntax=dhi.io/build:2-alpine3.23
+# syntax=dhi.io/build:2-debian13
 
-name: Grafana Beyla 2.x (dev)
+name: Grafana Beyla 3.x
 image: dhi.io/beyla
-variant: dev
+variant: runtime
 tags:
-  - 2-alpine-dev
-  - 2.5-alpine-dev
-  - 2-alpine3.24-dev
-  - 2.5.8-alpine-dev
-  - 2.5-alpine3.24-dev
-  - 2.5.8-alpine3.24-dev
+  - "3"
+  - "3.35"
+  - 3.35.0
+  - 3-debian
+  - 3-debian13
+  - 3.35-debian
+  - 3.35-debian13
+  - 3.35.0-debian
+  - 3.35.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-22"
 vars:
-  FLAVORED_SUFFIX: -dev
-  SEMVER_MAJOR_MINOR_VERSION: "2.5"
-  SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.8
-  SUFFIX: -dev
-  VERSION: 2.5.8-r13
+  FLAVORED_SUFFIX: ""
+  SEMVER_MAJOR_MINOR_VERSION: "3.35"
+  SEMVER_MAJOR_VERSION: "3"
+  SEMVER_VERSION: 3.35.0
+  SUFFIX: ""
+  VERSION: 3.35.0-1
 contents:
   repositories:
-    - https://dhi.io/apk/alpine/v3.24/main
-    - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
-    - https://dl-cdn.alpinelinux.org/alpine/v3.24/community
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
   keyring:
-    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
-    - alpine-baselayout-data
-    - apk-tools
-    - beyla-2.5-dev=2.5.8-r13
-    - busybox
-    - ca-certificates
+    - base-files
+    - beyla-3=3.35.0-1
     - ca-certificates-bundle
     - tzdata
 accounts:
@@ -50,10 +48,11 @@ accounts:
       members:
         - nonroot
 os-release:
-  name: Docker Hardened Images (Alpine)
-  id: alpine
-  version-id: "3.24"
-  pretty-name: Docker Hardened Images/Alpine Linux v3.24
+  name: Docker Hardened Images (Debian)
+  id: debian
+  version-id: "13"
+  version-codename: trixie
+  pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
 paths:
