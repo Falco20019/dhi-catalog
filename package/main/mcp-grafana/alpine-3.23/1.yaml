@@ -3,22 +3,23 @@
 image: dhi.io/pkg-mcp-grafana
 variant: runtime
 tags:
-  - 1.3.0-alpine3.23
-  - 1.3.0-r5-alpine3.23
+  - 1.4.2-alpine3.23
+  - 1.4.2-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-28"
 vars:
-  COMMIT_SHA: dcca5f171e760770b9c57107c39484b3c4a5b813
+  COMMIT_SHA: b56dceea39c7bff3b97aa32fcb8a3103cc0ca119
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
-  REL: "5"
-  SEMVER_MAJOR_MINOR_VERSION: "1.3"
+  PACKAGE_NAME: mcp-grafana-1
+  REL: "0"
+  SEMVER_MAJOR_MINOR_VERSION: "1.4"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.3.0
-  VERSION: 1.3.0
+  SEMVER_VERSION: 1.4.2
+  VERSION: 1.4.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -29,7 +30,7 @@ contents:
   packages:
     - alpine-baselayout-data
   builds:
-    - name: mcp-grafana
+    - name: mcp-grafana-1
       work-dir: /go/src/github.com/grafana/mcp-grafana
       contents:
         packages:
@@ -43,15 +44,15 @@ contents:
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
         files:
-          - url: git+https://github.com/grafana/mcp-grafana.git#v1.3.0
-            checksum: dcca5f171e760770b9c57107c39484b3c4a5b813
+          - url: git+https://github.com/grafana/mcp-grafana.git#v1.4.2
+            checksum: b56dceea39c7bff3b97aa32fcb8a3103cc0ca119
             path: /go/src/github.com/grafana/mcp-grafana
             spdx:
               name: grafana-mcp
-              version: 1.3.0
+              version: 1.4.2
               packages:
                 - name: grafana-mcp
-                  purl: pkg:dhi/grafana-mcp@1.3.0
+                  purl: pkg:dhi/grafana-mcp@1.4.2
                   license: AGPL-3.0
             uid: 0
             gid: 0
@@ -61,8 +62,7 @@ contents:
           work-dir: /go/src/github.com/grafana/mcp-grafana
           with:
             deps:
-              - golang.org/x/net@v0.57.0
-              - github.com/klauspost/compress@v1.18.7
+              - golang.org/x/crypto@v0.57.0
               - go.opentelemetry.io/otel@v1.44.0
               - google.golang.org/grpc@v1.83.1
               - github.com/prometheus/prometheus@v0.314.0
@@ -72,7 +72,6 @@ contents:
           work-dir: /go/src/github.com/grafana/mcp-grafana
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
               - go.opentelemetry.io/otel/exporters/prometheus@v0.66.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.44.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.44.0
@@ -107,7 +106,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/grafana/mcp-grafana.version=1.3.0
+              - -X github.com/grafana/mcp-grafana.version=1.4.2
             output: ${target.dir}/usr/bin/mcp-grafana
             packages: ./cmd/mcp-grafana
         - name: build dev
@@ -124,15 +123,15 @@ contents:
             files:
               - usr/bin/mcp-grafana
             license: AGPL-3.0
-            name: mcp-grafana
-            rel: 5
+            name: mcp-grafana-1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/mcp-grafana
                     source: usr/bin/mcp-grafana-dev
-                name: mcp-grafana-dev
+                name: mcp-grafana-1-dev
             url: https://github.com/grafana/mcp-grafana
-            version: 1.3.0
+            version: 1.4.2
       paths:
         - type: file
           path: /go/src/github.com/grafana/mcp-grafana/fix-semconv-schema-url.patch

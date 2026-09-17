@@ -12,6 +12,7 @@ vars:
   COMMIT_SHA: fac7c8a312c6f6aee8330de72182dcf45bf4ae26
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
+  PACKAGE_NAME: mcp-grafana-0
   REL: "9"
   SEMVER_MAJOR_MINOR_VERSION: "0.17"
   SEMVER_MAJOR_VERSION: "0"
@@ -27,7 +28,7 @@ contents:
   packages:
     - alpine-baselayout-data
   builds:
-    - name: mcp-grafana
+    - name: mcp-grafana-0
       work-dir: /go/src/github.com/grafana/mcp-grafana
       contents:
         packages:
@@ -59,6 +60,7 @@ contents:
           work-dir: /go/src/github.com/grafana/mcp-grafana
           with:
             deps:
+              - golang.org/x/crypto@v0.56.0
               - golang.org/x/net@v0.57.0
               - github.com/klauspost/compress@v1.18.7
               - go.opentelemetry.io/otel@v1.44.0
@@ -70,7 +72,6 @@ contents:
           work-dir: /go/src/github.com/grafana/mcp-grafana
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
               - go.opentelemetry.io/otel/exporters/prometheus@v0.66.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.44.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.44.0
@@ -122,13 +123,13 @@ contents:
             files:
               - usr/bin/mcp-grafana
             license: AGPL-3.0
-            name: mcp-grafana
+            name: mcp-grafana-0
             rel: 9
             subpackages:
               - files:
                   - path: usr/bin/mcp-grafana
                     source: usr/bin/mcp-grafana-dev
-                name: mcp-grafana-dev
+                name: mcp-grafana-0-dev
             url: https://github.com/grafana/mcp-grafana
             version: 0.17.2
       paths:
