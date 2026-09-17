@@ -5,26 +5,26 @@ image: dhi.io/redis
 variant: dev
 tags:
   - 8.6-dev
-  - 8.6.6-dev
+  - 8.6.7-dev
   - 8.6-debian-dev
   - 8.6-debian13-dev
-  - 8.6.6-debian-dev
-  - 8.6.6-debian13-dev
+  - 8.6.7-debian-dev
+  - 8.6.7-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-24"
 vars:
-  COMMIT_SHA: c78094fd4710bca2fa28d5dd2266b9b753b9868d
+  COMMIT_SHA: 3b450c3dcb075e59f50dbc0377151e25c8f375d4
   HAS_MODULES: "true"
   LLVM_VERSION: "19"
   MODULE_BUILD_FLOW: legacy
   REDIS_LICENSE: AGPL-3.0-only
   SEMVER_MAJOR_MINOR_VERSION: "8.6"
   SEMVER_MAJOR_VERSION: "8"
-  SEMVER_VERSION: 8.6.6
-  VERSION: 8.6.6
+  SEMVER_VERSION: 8.6.7
+  VERSION: 8.6.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -92,15 +92,15 @@ contents:
           - wget
           - xz-utils
         files:
-          - url: git+https://github.com/redis/redis.git#8.6.6
-            checksum: c78094fd4710bca2fa28d5dd2266b9b753b9868d
+          - url: git+https://github.com/redis/redis.git#8.6.7
+            checksum: 3b450c3dcb075e59f50dbc0377151e25c8f375d4
             path: ${source.dir}/redis
             spdx:
               name: redis
-              version: 8.6.6
+              version: 8.6.7
               packages:
                 - name: redis
-                  purl: pkg:github/redis/redis@8.6.6
+                  purl: pkg:github/redis/redis@8.6.7
                   license: AGPL-3.0-only
             uid: 0
             gid: 0
@@ -187,7 +187,7 @@ os-release:
 work-dir: /data
 environment:
   DEBIAN_FRONTEND: noninteractive
-  REDIS_VERSION: 8.6.6
+  REDIS_VERSION: 8.6.7
 paths:
   - type: directory
     path: /var/lib/redis
