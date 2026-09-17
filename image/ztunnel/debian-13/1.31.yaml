@@ -1,60 +1,44 @@
 # syntax=dhi.io/build:2-debian13
 
-name: Istio Ztunnel 1.29.x (dev)
+name: Istio Ztunnel 1.31.x
 image: dhi.io/ztunnel
-variant: dev
+variant: runtime
 tags:
-  - 1.29-dev
-  - 1.29.7-dev
-  - 1.29-debian-dev
-  - 1.29-debian13-dev
-  - 1.29.7-debian-dev
-  - 1.29.7-debian13-dev
+  - "1.31"
+  - 1.31.0
+  - 1.31-debian
+  - 1.31-debian13
+  - 1.31.0-debian
+  - 1.31.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
-  release: "2026-02-16"
-  end-of-life: "2026-08-31"
+  release: "2026-08-31"
+  end-of-life: "2027-02-28"
 vars:
-  COMMIT_SHA: 0d5fac134a73332f5be9957fcfe35a6ee2571cfd
-  SEMVER_MAJOR_MINOR_VERSION: "1.29"
+  COMMIT_SHA: 44beaefcd456ab46f98b297023ff0a382e69bb03
+  SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.29.7
-  VERSION: 1.29.7
+  SEMVER_VERSION: 1.31.0
+  VERSION: 1.31.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
   keyring:
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
-    - '!gawk'
-    - '!libelogind0'
-    - '!original-awk'
-    - apt
     - base-files
-    - bash
-    - ca-certificates
     - ca-certificates-bundle
-    - coreutils
-    - diffutils
-    - dpkg
-    - findutils
-    - grep
-    - libc-bin
     - libc6
     - libgcc-s1
     - libstdc++6
-    - mawk
-    - perl-base
-    - sed
     - tzdata
-    - util-linux
   builds:
     - name: ztunnel
       work-dir: ${source.dir}/ztunnel
       environment:
-        VERSION: 1.29.7
+        VERSION: 1.31.0
       caches:
         - path: /root/.cargo
       contents:
@@ -73,15 +57,15 @@ contents:
           - pkg-config
           - libssl-dev
         files:
-          - url: git+https://github.com/istio/ztunnel.git#1.29.7
-            checksum: 0d5fac134a73332f5be9957fcfe35a6ee2571cfd
+          - url: git+https://github.com/istio/ztunnel.git#1.31.0
+            checksum: 44beaefcd456ab46f98b297023ff0a382e69bb03
             path: ${source.dir}/ztunnel
             spdx:
               name: ztunnel
-              version: 1.29.7
+              version: 1.31.0
               packages:
                 - name: ztunnel
-                  purl: pkg:dhi/ztunnel@1.29.7
+                  purl: pkg:dhi/ztunnel@1.31.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -178,14 +162,10 @@ contents:
           uid: 0
           gid: 0
 accounts:
-  root: true
-  run-as: root
+  run-as: nonroot
   users:
     - name: nonroot
       uid: 65532
-      gid: 65532
-    - name: _apt
-      uid: 42
       gid: 65532
   groups:
     - name: nonroot
@@ -200,8 +180,6 @@ os-release:
   pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
-environment:
-  DEBIAN_FRONTEND: noninteractive
 annotations:
   org.opencontainers.image.description: Istio Ztunnel - Rust L4 proxy for Istio ambient mesh
   org.opencontainers.image.licenses: Apache-2.0

@@ -66,6 +66,7 @@ contents:
           - coreutils
           - findutils
           - gawk
+          - grep
           - sed
           - ca-certificates
           - protobuf-compiler
