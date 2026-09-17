@@ -3,8 +3,8 @@
 image: dhi.io/pkg-onnx
 variant: runtime
 tags:
-  - 1.17.0-3-dhi4
-  - 1.17.0-3-dhi4-debian13
+  - 1.17.0-3-dhi5
+  - 1.17.0-3-dhi5-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: onnx_1.17.0.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/o/onnx/onnx_1.17.0.orig.tar.gz
   DEBIAN_VERSION: 1.17.0-3
-  DHI_REL: "4"
-  DHI_VERSION: 1.17.0-3+dhi4
-  TAG_VERSION: 1.17.0-3-dhi4
+  DHI_REL: "5"
+  DHI_VERSION: 1.17.0-3+dhi5
+  TAG_VERSION: 1.17.0-3-dhi5
   UPSTREAM_VERSION: 1.17.0
 contents:
   packages:
@@ -85,13 +85,16 @@ contents:
               - ${source.dir}/patch/CVE-2026-27489.patch
               - ${source.dir}/patch/CVE-2026-34445.patch
               - ${source.dir}/patch/CVE-2026-28500.patch
+              - ${source.dir}/patch/CVE-2026-34446.patch
+              - ${source.dir}/patch/CVE-2026-34447.patch
+              - ${source.dir}/patch/CVE-2026-44512.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - Backport CVE-2026-27489 external data symlink containment (checker.cc, model_container)
-              - Backport CVE-2026-34445 ExternalDataInfo attribute whitelist and file bounds checks
-              - Backport CVE-2026-28500 hub trust bypass when silent=True (reject untrusted repos)
-            version: 1.17.0-3+dhi4
+              - Backport CVE-2026-34446 external data hardlink rejection in checker.cc
+              - Backport CVE-2026-34447 model_container O_NOFOLLOW external data open
+              - Backport CVE-2026-44512 version converter input bounds checks (Upsample and peers)
+            version: 1.17.0-3+dhi5
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
