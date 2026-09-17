@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:be63660db660b515db1ee06865ab8744512d3aa1ca115c88db0f3a0052329bef
+  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:55c7c650538fd486a72a96e41828f126b9d5adc1a34ec9a23d9edb1f1c4992ad
   HELM_VERSION: 4.1.4-2
   PROMETHEUS_CHART_REFERENCE: dhi/prometheus-chart:28.16.0@sha256:92a8105ba3527b40769a0a23cea60887be1f3b41c1c68d81d1c373261eab559d
   SEMVER_MAJOR_MINOR_VERSION: "0.74"
@@ -59,7 +59,7 @@ contents:
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
-                  ref: dhi/grafana-chart:12.11.2@sha256:be63660db660b515db1ee06865ab8744512d3aa1ca115c88db0f3a0052329bef
+                  ref: dhi/grafana-chart:12.11.2@sha256:55c7c650538fd486a72a96e41828f126b9d5adc1a34ec9a23d9edb1f1c4992ad
               description: Docker Hardened Images Helm chart for TemporalIO
               images:
                 - name: temporalio-server
