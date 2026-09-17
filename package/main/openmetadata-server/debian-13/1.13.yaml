@@ -3,10 +3,10 @@
 image: dhi.io/pkg-openmetadata-server
 variant: runtime
 tags:
-  - 1.13.5
-  - 1.13.5-r4
-  - 1.13.5-debian13
-  - 1.13.5-r4-debian13
+  - 1.13.6
+  - 1.13.6-r0
+  - 1.13.6-debian13
+  - 1.13.6-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,14 +14,14 @@ dates:
   release: "2026-06-05"
 vars:
   ANTLR_VERSION: 4.9.2
-  COMMIT_SHA: 80be256fc265840967fb504adb9589010918c2f1
+  COMMIT_SHA: e9ba578333a244285afa2ea50be4d70ba49deb77
   MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
   PACKAGE_NAME: openmetadata-server-1.13
-  REL: "4"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.13"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.13.5
-  VERSION: 1.13.5
+  SEMVER_VERSION: 1.13.6
+  VERSION: 1.13.6
 contents:
   packages:
     - base-files
@@ -46,15 +46,15 @@ contents:
           - tar
           - yq
         files:
-          - url: git+https://github.com/open-metadata/OpenMetadata.git#1.13.5-release
-            checksum: 80be256fc265840967fb504adb9589010918c2f1
+          - url: git+https://github.com/open-metadata/OpenMetadata.git#1.13.6-release
+            checksum: e9ba578333a244285afa2ea50be4d70ba49deb77
             path: ${source.dir}/OpenMetadata
             spdx:
               name: openmetadata
-              version: 1.13.5
+              version: 1.13.6
               packages:
                 - name: openmetadata
-                  purl: pkg:github/open-metadata/OpenMetadata@1.13.5
+                  purl: pkg:github/open-metadata/OpenMetadata@1.13.6
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -140,9 +140,9 @@ contents:
               - usr/bin/openmetadata-start
             license: Apache-2.0
             name: openmetadata-server-1.13
-            rel: 4
+            rel: 0
             url: https://open-metadata.org/
-            version: 1.13.5
+            version: 1.13.6
       paths:
         - type: file
           path: ${source.dir}/maven-settings.xml

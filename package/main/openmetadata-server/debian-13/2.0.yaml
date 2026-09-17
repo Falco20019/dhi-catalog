@@ -4,9 +4,9 @@ image: dhi.io/pkg-openmetadata-server
 variant: runtime
 tags:
   - 2.0.1
-  - 2.0.1-r4
+  - 2.0.1-r5
   - 2.0.1-debian13
-  - 2.0.1-r4-debian13
+  - 2.0.1-r5-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   COMMIT_SHA: bf621b166ec12e8c99fcb1c1443442723386fa41
   MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:ebc5985bddb0be1a7e006d1270975360f03e4efaed6c306b63c761a1430c070e
   PACKAGE_NAME: openmetadata-server-2.0
-  REL: "4"
+  REL: "5"
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.0.1
@@ -125,7 +125,7 @@ contents:
               - usr/bin/openmetadata-start
             license: Apache-2.0
             name: openmetadata-server-2.0
-            rel: 4
+            rel: 5
             url: https://open-metadata.org/
             version: 2.0.1
       paths:
