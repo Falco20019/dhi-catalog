@@ -4,9 +4,9 @@ image: dhi.io/pkg-unleash
 variant: runtime
 tags:
   - 7.6.5
-  - 7.6.5-r2
+  - 7.6.5-r3
   - 7.6.5-debian13
-  - 7.6.5-r2-debian13
+  - 7.6.5-r3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,7 +15,7 @@ dates:
 vars:
   COMMIT_SHA: b501005d1d9961605e9c7b5333d17c8ca14579f1
   PACKAGE_NAME: unleash-7
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "7.6"
   SEMVER_MAJOR_VERSION: "7"
   SEMVER_VERSION: 7.6.5
@@ -78,22 +78,22 @@ contents:
               "ajv/fast-uri": "3.1.6",
               "axios": "1.18.0",
               "body-parser": "1.20.6",
-              "body-parser/qs": "6.15.2",
-              "express/qs": "6.15.2",
+              "body-parser/qs": "6.16.0",
+              "express/qs": "6.16.0",
               "unleash-client/ip-address": "10.3.1",
               "express-rate-limit/ip-address": "10.3.1",
               "ip-address": "10.3.1",
               "devalue": "5.8.1",
               "svelte": "5.55.7",
               "yaml": "1.10.3",
-              "joi": "18.2.1",
+              "joi": "18.2.5",
               "react-router": "7.18.2",
               "react-router-dom": "7.18.2",
               "form-data": "4.0.6",
-              "js-yaml": "4.3.1",
+              "js-yaml": "4.3.2",
               "tar": "7.5.21",
               "brace-expansion": "5.0.9",
-              "nodemailer": "9.0.1",
+              "nodemailer": "9.1.1",
               "json-2-csv": "5.5.11",
               "postcss": "8.5.23"
             }' package.json > package.tmp.json
@@ -109,10 +109,10 @@ contents:
               "react-router": "7.18.2",
               "react-router-dom": "7.18.2",
               "form-data": "4.0.6",
-              "js-yaml": "4.3.1",
+              "js-yaml": "4.3.2",
               "tar": "7.5.21",
               "brace-expansion": "5.0.9",
-              "nodemailer": "9.0.1",
+              "nodemailer": "9.1.1",
               "json-2-csv": "5.5.11",
               "postcss": "8.5.23",
               "ip-address": "10.3.1"
@@ -180,7 +180,7 @@ contents:
               - deb
             license: Apache-2.0
             name: unleash-7
-            rel: 2
+            rel: 3
             url: https://github.com/Unleash/unleash
             version: 7.6.5
       paths:
