@@ -6,18 +6,18 @@ variant: dev
 tags:
   - 2-alpine3.22
   - 2.25-alpine3.22
-  - 2.25.1-alpine3.22
+  - 2.25.2-alpine3.22
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: cd7d5766e4d7f11d2d502ab45e45775581165b85
+  COMMIT_SHA: e4e4b628397629dbf01fba18e3f408b285b9c6a6
   DHI_TAGS_OVERWRITE: "true"
   GOLANG_REFERENCE: dhi/golang:1.26.8-alpine3.22-dev@sha256:cf5c5757f5340d39eb92398a096f70192b75b37ca295d8916a28f3d7b9b4534d
   SEMVER_MAJOR_MINOR_VERSION: "2.25"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.25.1
-  VERSION: 2.25.1
+  SEMVER_VERSION: 2.25.2
+  VERSION: 2.25.2
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.22/main
@@ -44,15 +44,15 @@ contents:
           - ca-certificates-bundle
           - git
         files:
-          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.1
-            checksum: cd7d5766e4d7f11d2d502ab45e45775581165b85
+          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.2
+            checksum: e4e4b628397629dbf01fba18e3f408b285b9c6a6
             path: /go/src/github.com/docker-hardened-images/frontend
             spdx:
               name: dhi-build
-              version: 2.25.1
+              version: 2.25.2
               packages:
                 - name: dhi-build
-                  purl: pkg:golang/github.com/docker-hardened-images/frontend@2.25.1
+                  purl: pkg:golang/github.com/docker-hardened-images/frontend@2.25.2
             uid: 0
             gid: 0
         artifacts:

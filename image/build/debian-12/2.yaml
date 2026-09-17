@@ -6,19 +6,19 @@ variant: dev
 tags:
   - 2-debian12
   - 2.25-debian12
-  - 2.25.1-debian12
+  - 2.25.2-debian12
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   BINUTILS_REFERENCE: dhi/pkg-binutils:2.46-debian12@sha256:422c289e706828133bb706ecedc773b35c094571bebc09815d7e838b1498ad53
-  COMMIT_SHA: cd7d5766e4d7f11d2d502ab45e45775581165b85
+  COMMIT_SHA: e4e4b628397629dbf01fba18e3f408b285b9c6a6
   DHI_TAGS_OVERWRITE: "true"
   GOLANG_REFERENCE: dhi/golang:1.26.8-debian12-dev@sha256:3bab89cc3ce568ae6e58343dec4038cc870ac8490deff727afbba660870becb6
   SEMVER_MAJOR_MINOR_VERSION: "2.25"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.25.1
-  VERSION: 2.25.1
+  SEMVER_VERSION: 2.25.2
+  VERSION: 2.25.2
 contents:
   packages:
     - '!binutils'
@@ -67,15 +67,15 @@ contents:
           - coreutils
           - git
         files:
-          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.1
-            checksum: cd7d5766e4d7f11d2d502ab45e45775581165b85
+          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.2
+            checksum: e4e4b628397629dbf01fba18e3f408b285b9c6a6
             path: /go/src/github.com/docker-hardened-images/frontend
             spdx:
               name: dhi-build
-              version: 2.25.1
+              version: 2.25.2
               packages:
                 - name: dhi-build
-                  purl: pkg:golang/github.com/docker-hardened-images/frontend@2.25.1
+                  purl: pkg:golang/github.com/docker-hardened-images/frontend@2.25.2
             uid: 0
             gid: 0
         artifacts:

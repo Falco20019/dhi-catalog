@@ -3,20 +3,20 @@
 image: dhi.io/pkg-build
 variant: runtime
 tags:
-  - 2.25.1-alpine3.23
-  - 2.25.1-r0-alpine3.23
+  - 2.25.2-alpine3.23
+  - 2.25.2-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: cd7d5766e4d7f11d2d502ab45e45775581165b85
+  COMMIT_SHA: e4e4b628397629dbf01fba18e3f408b285b9c6a6
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: build
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.25"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.25.1
-  VERSION: 2.25.1
+  SEMVER_VERSION: 2.25.2
+  VERSION: 2.25.2
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -38,8 +38,8 @@ contents:
           - golang-1.26
           - golang-1.26-oci-config
         files:
-          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.1
-            checksum: cd7d5766e4d7f11d2d502ab45e45775581165b85
+          - url: git+https://github.com/docker-hardened-images/frontend.git#v2.25.2
+            checksum: e4e4b628397629dbf01fba18e3f408b285b9c6a6
             path: /go/src/github.com/docker-hardened-images/frontend
             uid: 0
             gid: 0
@@ -110,7 +110,7 @@ contents:
                     source: usr/bin/build-dev
                 name: build-dev
             url: https://github.com/docker-hardened-images/frontend
-            version: 2.25.1
+            version: 2.25.2
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
