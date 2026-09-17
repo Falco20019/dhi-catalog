@@ -128,6 +128,9 @@ contents:
 
             # GHSA-7gcf-g7xr-8hxj: serde_with 3.19.0 -> 3.21.0
             cargo update --package serde_with --precise 3.21.0
+
+            # GHSA-2mjx-qc3c-rqvc: rustls 0.23.40 -> 0.23.45
+            cargo update --package rustls@0.23.40 --precise 0.23.45
         - name: bump crossbeam-epoch cargo dep
           work-dir: ${source.dir}/influxdb3
           privileged: true

@@ -110,6 +110,14 @@ contents:
 
             # GHSA-4w2j-m93h-cj5j: quinn-proto 0.11.14 -> 0.11.15
             cargo update --package quinn-proto --precise 0.11.15
+        - name: bump rustls cargo dep
+          work-dir: ${source.dir}/influxdb3
+          privileged: true
+          runs: |
+            set -eux -o pipefail
+
+            # GHSA-2mjx-qc3c-rqvc: rustls 0.23.42 -> 0.23.45
+            cargo update --package rustls@0.23.42 --precise 0.23.45
         - name: bump event-listener cargo dep
           work-dir: ${source.dir}/influxdb3
           privileged: true
