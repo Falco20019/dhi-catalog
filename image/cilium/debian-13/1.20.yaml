@@ -115,9 +115,9 @@ contents:
               - golang.org/x/crypto@v0.57.0
               - github.com/google/cel-go@v0.30.0
               - github.com/klauspost/compress@v1.18.7
-              - github.com/osrg/gobgp/v4@v4.7.0
               - go.etcd.io/etcd/client/pkg/v3@v3.6.14
               - google.golang.org/grpc@v1.83.2
+              - github.com/osrg/gobgp/v4@v4.7.0
             download: true
         - name: test
           work-dir: /go/src/github.com/cilium/cilium
@@ -225,7 +225,7 @@ contents:
             install -m 755 images/cilium/init-container.sh ${target.dir}/init-container.sh
             install -m 755 plugins/cilium-cni/install-plugin.sh ${target.dir}/install-plugin.sh
             install -m 755 plugins/cilium-cni/cni-uninstall.sh ${target.dir}/cni-uninstall.sh
-        - name: download iptables-wrappers go dependencies
+        - name: download iptables-wrappers go dependencies (1.20 only)
           uses: go/bump@v1
           work-dir: /go/src/github.com/kubernetes-sigs/iptables-wrappers
           with:
