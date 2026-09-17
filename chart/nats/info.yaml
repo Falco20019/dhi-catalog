@@ -1,0 +1,7 @@
+metadata:
+  display-name: NATS Helm chart
+  short-description: A high-performance messaging system for cloud-native applications, on top of hardened DHI images.
+  featured: false
+  home-url: https://nats.io/
+  categories:
+    - message-queues

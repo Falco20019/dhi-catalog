@@ -1,0 +1,95 @@
+# syntax=dhi.io/build:2-helm3
+
+name: NATS Helm chart 2.x
+image: dhi.io/nats-chart
+variant: helm
+tags:
+  - 2.14.6
+platforms:
+  - linux/amd64
+vars:
+  APPVERSION: 2.14.6
+  CHART_COMMIT_SHA: 49c450456f2401663469a3a0429e7ff922d67505
+  CHART_HELM_NAME: nats-chart
+  DHI_NAMESPACE: dhi
+  DHI_PREFIX: ""
+  DHI_REGISTRY: dhi.io
+  DHI_SKIP_CONTEXT_COPY: "true"
+  HELM_VERSION: 4.1.4-2
+  NATS_BOX_REFERENCE: dhi/nats-box:0.19.7-debian13-compat@sha256:28ccbc2bb6f4e9c4d26cdd0a5f6cc97ba8afd3bf90559e63044eca8f6ab9234b
+  NATS_REFERENCE: dhi/nats:2.14.6-debian13@sha256:e8b09260c2ee16561b0ad2ee1777ade93cf8927f8409b5255fae7ce1894e7c6a
+  NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:563923b339d55760342aff4bdc6869a181ea5f58bc7091a4c001aaa5642ab549
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:96cbd83717b47086c66ff5c6586e49488e872c6212914b29ff507dfa9a027fd6
+  SEMVER_MAJOR_MINOR_VERSION: "2.14"
+  SEMVER_MAJOR_VERSION: "2"
+  SEMVER_VERSION: 2.14.6
+  VERSION: 2.14.6
+contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+  builds:
+    - name: nats
+      work-dir: ${source.dir}/helm-charts/helm/charts/nats
+      contents:
+        packages:
+          - bash
+          - ca-certificates
+          - coreutils
+          - helm=4.1.4-2
+        files:
+          - url: git+https://github.com/nats-io/k8s.git#nats-2.14.6
+            checksum: 49c450456f2401663469a3a0429e7ff922d67505
+            path: ${source.dir}/helm-charts
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: prepare chart
+          uses: helm/rudder@v1
+          with:
+            chart:
+              appRef: nats
+              description: Docker Hardened Images Helm chart for NATS
+              images:
+                - name: nats
+                  ref: dhi/nats:2.14.6-debian13@sha256:e8b09260c2ee16561b0ad2ee1777ade93cf8927f8409b5255fae7ce1894e7c6a
+                - name: nats-server-config-reloader
+                  ref: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:563923b339d55760342aff4bdc6869a181ea5f58bc7091a4c001aaa5642ab549
+                - name: prometheus-nats-exporter
+                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:96cbd83717b47086c66ff5c6586e49488e872c6212914b29ff507dfa9a027fd6
+                - name: nats-box
+                  ref: dhi/nats-box:0.19.7-debian13-compat@sha256:28ccbc2bb6f4e9c4d26cdd0a5f6cc97ba8afd3bf90559e63044eca8f6ab9234b
+              name: nats-chart
+              notes: ${source.dir}/config/NOTES.txt
+              sourceUrl: https://github.com/nats-io/k8s
+            cmd: prepare
+            registry: dhi.io
+        - name: relocate chart
+          uses: helm/rudder@v1
+          with:
+            cmd: patch
+            patches:
+              from: ${source.dir}/config
+            registry: dhi.io
+        - name: update dependencies
+          uses: helm/cmd@v1
+          with:
+            chart: .
+            cmd: dependency update
+        - name: lint
+          uses: helm/cmd@v1
+          with:
+            chart: .
+            cmd: lint .
+        - name: package
+          uses: helm/package@v1
+          with:
+            chart: .
+      paths:
+        - type: directory
+          path: ${source.dir}/config
+          uid: 0
+          gid: 0
+          mode: "0644"
+          source: chart/nats/config

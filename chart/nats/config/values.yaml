@@ -1,0 +1,116 @@
+# DHI relocation overlay for the upstream nats-io/k8s nats chart.
+# Maps every container image to a DHI equivalent and hardens security contexts.
+# nats.image helper renders registry/repository@digest when digest is set.
+
+global:
+  image:
+    # guides.md --set path: global.image.pullSecretNames[0]
+    pullSecretNames: []
+
+container:
+  image:
+    registry: ${nats.registry}
+    repository: ${nats.repository}
+    tag: ${nats.tag}
+    digest: ${nats.digest}
+  # DHI nats binary lives at /nats-server (not on PATH as "nats-server").
+  # Override the upstream preStop lame-duck command accordingly.
+  merge:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 65532
+      runAsGroup: 65532
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: false
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+    lifecycle:
+      preStop:
+        exec:
+          command:
+            - /nats-server
+            - -sl=ldm=/var/run/nats/nats.pid
+
+podTemplate:
+  # Merge into files/stateful-set/pod-template.yaml (PodTemplateSpec shape: metadata + spec).
+  merge:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+
+reloader:
+  enabled: true
+  image:
+    registry: ${nats-server-config-reloader.registry}
+    repository: ${nats-server-config-reloader.repository}
+    tag: ${nats-server-config-reloader.tag}
+    digest: ${nats-server-config-reloader.digest}
+  merge:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 65532
+      runAsGroup: 65532
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+
+# Disabled by default (upstream default). Image is still mapped so enabling
+# promExporter cannot silently pull natsio/prometheus-nats-exporter.
+promExporter:
+  enabled: false
+  image:
+    registry: ${prometheus-nats-exporter.registry}
+    repository: ${prometheus-nats-exporter.repository}
+    tag: ${prometheus-nats-exporter.tag}
+    digest: ${prometheus-nats-exporter.digest}
+  merge:
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 65532
+      runAsGroup: 65532
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+      capabilities:
+        drop:
+          - ALL
+
+natsBox:
+  enabled: true
+  container:
+    image:
+      registry: ${nats-box.registry}
+      repository: ${nats-box.repository}
+      tag: ${nats-box.tag}
+      digest: ${nats-box.digest}
+    merge:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: false
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+            - ALL
+  podTemplate:
+    merge:
+      spec:
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+          runAsGroup: 65532
+          fsGroup: 65532
