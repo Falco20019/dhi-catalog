@@ -4,11 +4,8 @@ name: istio-proxyv2 1.x (dev)
 image: dhi.io/istio-proxyv2
 variant: dev
 tags:
-  - 1-dev
   - 1.30-dev
   - 1.30.4-dev
-  - 1-debian-dev
-  - 1-debian13-dev
   - 1.30-debian-dev
   - 1.30-debian13-dev
   - 1.30.4-debian-dev
@@ -397,7 +394,7 @@ contents:
             BORINGSSL_FLAGS=()
             if [ '${target.fips}' = true ]; then
               case '1.30' in
-                1.30) BORINGSSL_FLAGS+=(--config=boringssl-fips) ;;
+                1.30 | 1.31) BORINGSSL_FLAGS+=(--config=boringssl-fips) ;;
                 *) BORINGSSL_FLAGS+=(--define=boringssl=fips) ;;
               esac
             fi
