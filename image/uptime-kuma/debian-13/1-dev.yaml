@@ -182,7 +182,7 @@ contents:
             if [ "1" = "1" ]; then
               npm test # ensure our version bumps have not broken anything
             else
-              npm run test-backend || true # Run backend tests only (skip E2E tests which require Playwright/browser dependencies)
+              timeout 5m npm run test-backend || true # Run backend tests only (skip E2E tests which require Playwright/browser dependencies)
             fi
             npm run build
             npm prune --omit=dev

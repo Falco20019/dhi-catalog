@@ -3,21 +3,21 @@
 image: dhi.io/pkg-uptime-kuma
 variant: runtime
 tags:
-  - 2.5.4
-  - 2.5.4-r0
-  - 2.5.4-debian13
-  - 2.5.4-r0-debian13
+  - 2.5.5
+  - 2.5.5-r0
+  - 2.5.5-debian13
+  - 2.5.5-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: ed828eac9f5c7d46328f957854ad08545306b868
+  COMMIT_SHA: c98982ac60eccb74cdab1d04c30e18057895ce87
   PACKAGE_NAME: uptime-kuma-2
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.4
-  VERSION: 2.5.4
+  SEMVER_VERSION: 2.5.5
+  VERSION: 2.5.5
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -53,15 +53,15 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.4
-            checksum: ed828eac9f5c7d46328f957854ad08545306b868
+          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.5
+            checksum: c98982ac60eccb74cdab1d04c30e18057895ce87
             path: ${source.dir}/uptime-kuma
             spdx:
               name: uptime-kuma
-              version: 2.5.4
+              version: 2.5.5
               packages:
                 - name: uptime-kuma
-                  purl: pkg:npm/uptime-kuma@2.5.4
+                  purl: pkg:npm/uptime-kuma@2.5.5
                   license: MIT
             uid: 0
             gid: 0
@@ -132,7 +132,7 @@ contents:
             if [ "2" = "1" ]; then
               npm test
             else
-              npm run test-backend || true
+              timeout 5m npm run test-backend || true
             fi
             npm run build
             npm prune --omit=dev
@@ -164,7 +164,7 @@ contents:
               from_entries |
               {
                 name: "frontend",
-                version: "2.5.4",
+                version: "2.5.5",
                 dependencies: .
               }' package.json ./hack/exclude-dev-dependencies.json > ./frontend/package.json
             cp package.json package.json.original
@@ -192,7 +192,7 @@ contents:
             name: uptime-kuma-2
             rel: 0
             url: https://github.com/louislam/uptime-kuma
-            version: 2.5.4
+            version: 2.5.5
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bump-2.json
