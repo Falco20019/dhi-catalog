@@ -1,0 +1,193 @@
+# Fix ocp builder_test.go for forklift v2.12.8
+# Upstream v2.12.8 added TestDataVolumes_PVCNameTemplate without required imports
+# and against APIs not present in the v2.12.8 tag (fixed on main later).
+# https://github.com/kubev2v/forklift/commit/e11a5757
+--- a/pkg/controller/plan/adapter/ocp/builder_test.go	2026-09-10 02:36:43.376590651 +0000
++++ b/pkg/controller/plan/adapter/ocp/builder_test.go	2026-09-10 02:37:23.513319973 +0000
+@@ -15,6 +15,8 @@
+ 	"testing"
+ 	"time"
+ 
++	"k8s.io/apimachinery/pkg/api/resource"
++
+ 	api "github.com/kubev2v/forklift/pkg/apis/forklift/v1beta1"
+ 	planapi "github.com/kubev2v/forklift/pkg/apis/forklift/v1beta1/plan"
+ 	"github.com/kubev2v/forklift/pkg/apis/forklift/v1beta1/ref"
+@@ -190,177 +192,6 @@
+ 	}
+ }
+ 
+-func TestDataVolumes_PVCNameTemplate(t *testing.T) {
+-	const (
+-		ns      = "src-ns"
+-		vmName  = "test-vm"
+-		pvcName = "source-pvc"
+-		scName  = "source-sc"
+-	)
+-
+-	scheme := runtime.NewScheme()
+-	_ = core.AddToScheme(scheme)
+-	_ = export.AddToScheme(scheme)
+-	_ = cdi.AddToScheme(scheme)
+-
+-	ocpType := api.OpenShift
+-	newBuilder := func(objs ...runtime.Object) *Builder {
+-		srcClient := fake.NewClientBuilder().WithScheme(scheme).WithRuntimeObjects(objs...).Build()
+-		dstClient := fake.NewClientBuilder().WithScheme(scheme).Build()
+-		plan := &api.Plan{
+-			ObjectMeta: metav1.ObjectMeta{Name: "test-plan"},
+-			Spec: api.PlanSpec{
+-				TargetNamespace: "target-ns",
+-			},
+-		}
+-		plan.Provider.Source = &api.Provider{
+-			Spec: api.ProviderSpec{Type: &ocpType},
+-		}
+-		return &Builder{
+-			Context: &plancontext.Context{
+-				Plan: plan,
+-				Map: struct {
+-					Network *api.NetworkMap
+-					Storage *api.StorageMap
+-				}{
+-					Storage: &api.StorageMap{
+-						Spec: api.StorageMapSpec{
+-							Map: []api.StoragePair{{
+-								Source:      ref.Ref{Name: scName},
+-								Destination: api.DestinationStorage{StorageClass: "dest-sc"},
+-							}},
+-						},
+-					},
+-				},
+-				Destination: plancontext.Destination{Client: dstClient},
+-				Log:         logging.WithName("ocp-builder-test"),
+-			},
+-			sourceClient: srcClient,
+-		}
+-	}
+-
+-	storageClass := scName
+-	makePVC := func(name string) *core.PersistentVolumeClaim {
+-		return &core.PersistentVolumeClaim{
+-			ObjectMeta: metav1.ObjectMeta{Name: name, Namespace: ns},
+-			Spec: core.PersistentVolumeClaimSpec{
+-				StorageClassName: &storageClass,
+-				Resources: core.VolumeResourceRequirements{
+-					Requests: core.ResourceList{core.ResourceStorage: resource.MustParse("1Gi")},
+-				},
+-			},
+-		}
+-	}
+-	makeExport := func(volumeName string) *export.VirtualMachineExport {
+-		return &export.VirtualMachineExport{
+-			ObjectMeta: metav1.ObjectMeta{Name: vmName, Namespace: ns},
+-			Status: &export.VirtualMachineExportStatus{
+-				Links: &export.VirtualMachineExportLinks{
+-					External: &export.VirtualMachineExportLink{
+-						Cert: "",
+-						Volumes: []export.VirtualMachineExportVolume{{
+-							Name: volumeName,
+-							Formats: []export.VirtualMachineExportVolumeFormat{
+-								{Format: export.KubeVirtGz, Url: "https://export.example/disk.gz"},
+-							},
+-						}},
+-					},
+-				},
+-			},
+-		}
+-	}
+-	dvTemplate := &cdi.DataVolume{
+-		ObjectMeta: metav1.ObjectMeta{Namespace: "target-ns", Annotations: map[string]string{}},
+-	}
+-	secret := &core.Secret{ObjectMeta: metav1.ObjectMeta{Name: "secret"}}
+-	configMap := &core.ConfigMap{ObjectMeta: metav1.ObjectMeta{Name: "cm"}}
+-	vmRef := ref.Ref{ID: "vm-1", Name: vmName, Namespace: ns}
+-
+-	t.Run("default uses exact source PVC name", func(t *testing.T) {
+-		builder := newBuilder(makeExport(pvcName), makePVC(pvcName))
+-		dvs, err := builder.DataVolumes(vmRef, secret, configMap, dvTemplate.DeepCopy(), nil)
+-		if err != nil {
+-			t.Fatalf("unexpected error: %v", err)
+-		}
+-		if len(dvs) != 1 {
+-			t.Fatalf("expected 1 DataVolume, got %d", len(dvs))
+-		}
+-		if dvs[0].Name != pvcName {
+-			t.Errorf("expected Name %q, got Name=%q GenerateName=%q", pvcName, dvs[0].Name, dvs[0].GenerateName)
+-		}
+-		if dvs[0].GenerateName != "" {
+-			t.Errorf("expected empty GenerateName for OCP default, got %q", dvs[0].GenerateName)
+-		}
+-	})
+-
+-	t.Run("explicit non-OCP template uses generateName", func(t *testing.T) {
+-		builder := newBuilder(makeExport(pvcName), makePVC(pvcName))
+-		builder.Plan.Spec.PVCNameTemplate = planbase.DefaultPVCNameTemplate
+-		builder.Plan.Spec.PVCNameTemplateUseGenerateName = ptr.To(true)
+-		dvs, err := builder.DataVolumes(vmRef, secret, configMap, dvTemplate.DeepCopy(), nil)
+-		if err != nil {
+-			t.Fatalf("unexpected error: %v", err)
+-		}
+-		if len(dvs) != 1 {
+-			t.Fatalf("expected 1 DataVolume, got %d", len(dvs))
+-		}
+-		want := "test-plan-test-vm-disk-0-"
+-		if dvs[0].GenerateName != want {
+-			t.Errorf("expected GenerateName %q, got Name=%q GenerateName=%q", want, dvs[0].Name, dvs[0].GenerateName)
+-		}
+-	})
+-
+-	t.Run("setPVCNameFromTemplate with trunc template", func(t *testing.T) {
+-		builder := newBuilder()
+-		objectMeta := &metav1.ObjectMeta{}
+-		err := builder.setPVCNameFromTemplate(objectMeta, vmRef, &core.PersistentVolumeClaim{
+-			ObjectMeta: metav1.ObjectMeta{Name: pvcName, Namespace: ns},
+-		}, 0, planbase.DefaultPVCNameTemplate, true)
+-		if err != nil {
+-			t.Fatalf("unexpected error: %v", err)
+-		}
+-		want := "test-plan-test-vm-disk-0-"
+-		if objectMeta.GenerateName != want {
+-			t.Errorf("expected GenerateName %q, got %q", want, objectMeta.GenerateName)
+-		}
+-	})
+-
+-	t.Run("plan template overrides OCP default", func(t *testing.T) {
+-		builder := newBuilder(makeExport(pvcName), makePVC(pvcName))
+-		builder.Plan.Spec.PVCNameTemplate = "custom-{{.DiskIndex}}"
+-		builder.Plan.Spec.PVCNameTemplateUseGenerateName = ptr.To(false)
+-		dvs, err := builder.DataVolumes(vmRef, secret, configMap, dvTemplate.DeepCopy(), nil)
+-		if err != nil {
+-			t.Fatalf("unexpected error: %v", err)
+-		}
+-		if len(dvs) != 1 {
+-			t.Fatalf("expected 1 DataVolume, got %d", len(dvs))
+-		}
+-		if dvs[0].Name != "custom-0" {
+-			t.Errorf("expected Name %q, got Name=%q GenerateName=%q", "custom-0", dvs[0].Name, dvs[0].GenerateName)
+-		}
+-	})
+-
+-	t.Run("OCP global template overrides OCP default", func(t *testing.T) {
+-		prev := settings.Settings.OCPPVCNameTemplate
+-		settings.Settings.OCPPVCNameTemplate = "ocpglob-{{.DiskIndex}}"
+-		t.Cleanup(func() { settings.Settings.OCPPVCNameTemplate = prev })
+-
+-		builder := newBuilder(makeExport(pvcName), makePVC(pvcName))
+-		builder.Plan.Spec.PVCNameTemplateUseGenerateName = ptr.To(false)
+-		dvs, err := builder.DataVolumes(vmRef, secret, configMap, dvTemplate.DeepCopy(), nil)
+-		if err != nil {
+-			t.Fatalf("unexpected error: %v", err)
+-		}
+-		if len(dvs) != 1 {
+-			t.Fatalf("expected 1 DataVolume, got %d", len(dvs))
+-		}
+-		if dvs[0].Name != "ocpglob-0" {
+-			t.Errorf("expected Name %q, got Name=%q GenerateName=%q", "ocpglob-0", dvs[0].Name, dvs[0].GenerateName)
+-		}
+-	})
+-}
+-
+ func TestTlsCertForExport(t *testing.T) {
+ 	caPEM, serverCert, _ := newTestTLSCredentials(t)
+ 	listener := startTestTLSServer(t, serverCert)
