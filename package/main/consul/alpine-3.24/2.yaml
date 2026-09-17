@@ -4,7 +4,7 @@ image: dhi.io/pkg-consul
 variant: runtime
 tags:
   - 2.0.4-alpine3.24
-  - 2.0.4-r0-alpine3.24
+  - 2.0.4-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,8 +13,10 @@ dates:
 vars:
   COMMIT_SHA: a3eb721c21d4c1ff4baabf84da60158f374f8907
   GOLANG_VERSION: 1.26.8-r0
+  NODEJS_VERSION: 24.21.0-r0
   PACKAGE_NAME: consul
-  REL: "0"
+  PNPM_VERSION: 10.16.1
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.0"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.0.4
@@ -32,13 +34,20 @@ contents:
   builds:
     - name: consul
       work-dir: /go/src/github.com/hashicorp/consul
+      caches:
+        - path: /pnpm/store
       contents:
         packages:
           - busybox
           - bash
           - ca-certificates-bundle
+          - corepack
+          - git
+          - make
+          - python3
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
+          - nodejs-24=24.21.0-r0
         files:
           - url: git+https://github.com/hashicorp/consul.git#v2.0.4
             checksum: a3eb721c21d4c1ff4baabf84da60158f374f8907
@@ -58,12 +67,36 @@ contents:
           with:
             deps: []
             download: true
+        - name: build embedded UI
+          work-dir: /go/src/github.com/hashicorp/consul/ui
+          privileged: true
+          environment:
+            CI: "true"
+            CONSUL_VERSION: 2.0.4
+            HUSKY: "0"
+            PNPM_HOME: /pnpm
+          caches:
+            - path: /pnpm/store
+          runs: |
+            set -eux -o pipefail
+
+            corepack enable
+            corepack prepare pnpm@10.16.1 --activate
+            pnpm config set store-dir /pnpm/store
+
+            make dist
+
+            rm -rf /go/src/github.com/hashicorp/consul/agent/uiserver/dist
+            mv packages/consul-ui/dist /go/src/github.com/hashicorp/consul/agent/uiserver/
         - uses: go/hermetic@v1
         - name: build
           uses: go/build@v1
+          environment:
+            GOFLAGS: -buildvcs=false
           with:
             fips: false
             ldflags:
+              - -X github.com/hashicorp/consul/version.fullVersion=2.0.4
               - -X github.com/hashicorp/consul/version.GitCommit=a3eb721c21d4c1ff4baabf84da60158f374f8907
               - -X github.com/hashicorp/consul/version.BuildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/consul
@@ -72,9 +105,12 @@ contents:
               - hashicorpmetrics
         - name: build dev
           uses: go/build@v1
+          environment:
+            GOFLAGS: -buildvcs=false
           with:
             fips: false
             ldflags:
+              - -X github.com/hashicorp/consul/version.fullVersion=2.0.4
               - -X github.com/hashicorp/consul/version.GitCommit=a3eb721c21d4c1ff4baabf84da60158f374f8907
               - -X github.com/hashicorp/consul/version.BuildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
             output: ${target.dir}/usr/bin/consul-dev
@@ -89,7 +125,7 @@ contents:
               - usr/bin/consul
             license: BUSL-1.1
             name: consul
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/consul
