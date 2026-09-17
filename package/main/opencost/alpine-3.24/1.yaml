@@ -3,23 +3,23 @@
 image: dhi.io/pkg-opencost
 variant: runtime
 tags:
-  - 1.121.2-alpine3.24
-  - 1.121.2-r0-alpine3.24
+  - 1.121.3-alpine3.24
+  - 1.121.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-09"
 vars:
-  COMMIT_SHA: e22df84a4fb1113534514c44616f979f6455c0a7
+  COMMIT_SHA: 2f1af7f0c26368b50bf981a25e9e5f38b800979f
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-r0
   PACKAGE_NAME: opencost-1
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.121"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.121.2
-  VERSION: 1.121.2
+  SEMVER_VERSION: 1.121.3
+  VERSION: 1.121.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -45,15 +45,15 @@ contents:
           - golang-1.26=1.26.8-r0
           - golang-1.26-oci-config=1.26.8-r0
         files:
-          - url: git+https://github.com/opencost/opencost.git#v1.121.2
-            checksum: e22df84a4fb1113534514c44616f979f6455c0a7
+          - url: git+https://github.com/opencost/opencost.git#v1.121.3
+            checksum: 2f1af7f0c26368b50bf981a25e9e5f38b800979f
             path: /go/src/github.com/opencost/opencost
             spdx:
               name: opencost
-              version: 1.121.2
+              version: 1.121.3
               packages:
                 - name: opencost
-                  purl: pkg:golang/opencost/opencost@1.121.2
+                  purl: pkg:golang/opencost/opencost@1.121.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -81,8 +81,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X github.com/opencost/opencost/core/pkg/version.Version=1.121.2
-              - -X github.com/opencost/opencost/core/pkg/version.GitCommit=e22df84a4fb1113534514c44616f979f6455c0a7
+              - -X github.com/opencost/opencost/core/pkg/version.Version=1.121.3
+              - -X github.com/opencost/opencost/core/pkg/version.GitCommit=2f1af7f0c26368b50bf981a25e9e5f38b800979f
             output: ${target.dir}/usr/bin/costmodel
             packages: ./cmd/costmodel
         - name: build dev
@@ -110,7 +110,7 @@ contents:
                     source: usr/bin/costmodel-dev
                 name: opencost-1-dev
             url: https://github.com/opencost/opencost
-            version: 1.121.2
+            version: 1.121.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
