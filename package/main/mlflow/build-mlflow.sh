@@ -37,7 +37,7 @@ export LDFLAGS="${LDFLAGS:-} $("${PYTHON_BIN}-config" --ldflags)"
 "${VENV}/bin/python3" -m pip install --upgrade "cryptography==50.0.0"
 "${VENV}/bin/python3" -m pip install --upgrade "pillow==12.3.0"
 "${VENV}/bin/python3" -m pip install --upgrade "starlette==1.3.1"
-"${VENV}/bin/python3" -m pip install --upgrade "gitpython==3.1.59"
+"${VENV}/bin/python3" -m pip install --upgrade "gitpython==3.1.60"  # CVE-2026-87817, CVE-2026-87818, CVE-2026-87819
 
 find "${VENV}" \( -type d -a \( -name test -o -name tests -o -name __pycache__ \) \) -prune -exec rm -rf {} + || true
 find "${VENV}" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
