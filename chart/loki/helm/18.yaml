@@ -25,7 +25,7 @@ vars:
   LOKI_REFERENCE: dhi/loki:3.7.7-debian13@sha256:cd47ee1a4efb620d1c5d6d9be05dc5a19400ddecdb52ebef50cc45462dd4283c
   MEMCACHED_EXPORTER_REFERENCE: dhi/memcached-exporter:0.17.0-debian13@sha256:079826ea980ce9d923f82bb06e6a3dc116e75f5c7bd6bc1073c00bb93972e77b
   MEMCACHED_REFERENCE: dhi/memcached:1.6.45-debian13@sha256:69d6daabba38b85aac6596ccf279c8369452995d64c0135c508a352ec0090138
-  NGINX_REFERENCE: dhi/nginx:1.31.6-debian13@sha256:74581656d727a53e916196d06e9105fbf1b2fb27e201e027d997b250b40b8bcb
+  NGINX_REFERENCE: dhi/nginx:1.31.6-debian13@sha256:7d40efb720f11926d3d6dbc30eb290415da5e3195192304b48c112f44433bd2f
   SEMVER_MAJOR_MINOR_VERSION: "18.13"
   SEMVER_MAJOR_VERSION: "18"
   SEMVER_VERSION: 18.13.2
@@ -72,7 +72,7 @@ contents:
                 - name: loki-helm-test
                   ref: dhi/loki-helm-test:3.7.7-debian13@sha256:e1c8ce611bf093ddd55000590ceb76f17d6d7afdab123e77c9cd51ed813eed8b
                 - name: nginx
-                  ref: dhi/nginx:1.31.6-debian13@sha256:74581656d727a53e916196d06e9105fbf1b2fb27e201e027d997b250b40b8bcb
+                  ref: dhi/nginx:1.31.6-debian13@sha256:7d40efb720f11926d3d6dbc30eb290415da5e3195192304b48c112f44433bd2f
                 - name: k8s-sidecar
                   ref: dhi/k8s-sidecar:2.11.2-debian13@sha256:c14c11c9bd7d37eb3af3707db764ad35394fc1dbab2117d975b231c4bdd26684
                 - name: memcached
