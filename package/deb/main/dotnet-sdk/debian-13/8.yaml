@@ -3,23 +3,23 @@
 image: dhi.io/pkg-dotnet-sdk
 variant: runtime
 tags:
-  - 8.0.424-1
-  - 8.0.424-1-debian13
+  - 8.0.425-0
+  - 8.0.425-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "arm64" }'
-  CHECKSUM: '#{ target.arch == "arm64" ? "fc86992aec3536e60383b4decbdfa762f16171b5d52e085d8c0a9491577f475d" : "1a0f577b530d52e54c5a53ea0b578fd1ebe421b11bfbf9b29a5bdc413bdbad64" }'
-  CHECKSUM_AMD64: 1a0f577b530d52e54c5a53ea0b578fd1ebe421b11bfbf9b29a5bdc413bdbad64
-  CHECKSUM_ARM64: fc86992aec3536e60383b4decbdfa762f16171b5d52e085d8c0a9491577f475d
-  DHI_REL: "1"
-  DHI_VERSION: 8.0.424-1
+  CHECKSUM: '#{ target.arch == "arm64" ? "1bd832a57b00b5c50fb10f847d79401d99175469d58241f92933dc14d253b57f" : "ec2c55738f3aa16c58b2c0c565ce10ad6fea83925574a6f08c920ba62a39712b" }'
+  CHECKSUM_AMD64: ec2c55738f3aa16c58b2c0c565ce10ad6fea83925574a6f08c920ba62a39712b
+  CHECKSUM_ARM64: 1bd832a57b00b5c50fb10f847d79401d99175469d58241f92933dc14d253b57f
+  DHI_REL: "0"
+  DHI_VERSION: 8.0.425-0
   DOTNET_FORMAT_CHECKSUM: 720e37b63ef16cebff0c42842915699dcc445411e1f48c2e1d1feb6fe5bbc907
   DOTNET_FORMAT_VERSION: 8.3.546805
   PACKAGE_NAME: dotnet-sdk-8
   SEMVER_MAJOR_VERSION: "8"
-  VERSION: 8.0.424
+  VERSION: 8.0.425
 contents:
   packages:
     - '!base-files'
@@ -36,15 +36,15 @@ contents:
           - tar
           - unzip
         files:
-          - url: https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.424/dotnet-sdk-8.0.424-linux-${ARCH}.tar.gz
+          - url: https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.425/dotnet-sdk-8.0.425-linux-${ARCH}.tar.gz
             checksum: sha256:${CHECKSUM}
             path: ${source.dir}/dotnet-sdk-8.tar.gz
             spdx:
               name: dotnet-sdk
-              version: 8.0.424
+              version: 8.0.425
               packages:
                 - name: dotnet-sdk
-                  purl: pkg:dhi/microsoft/dotnet-sdk@8.0.424
+                  purl: pkg:dhi/microsoft/dotnet-sdk@8.0.425
                   license: MIT
             uid: 0
             gid: 0
@@ -79,10 +79,10 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            rm -rf "sdk/8.0.424/DotnetTools/dotnet-format"
-            mkdir -p "sdk/8.0.424/DotnetTools/dotnet-format" "${source.dir}/format"
+            rm -rf "sdk/8.0.425/DotnetTools/dotnet-format"
+            mkdir -p "sdk/8.0.425/DotnetTools/dotnet-format" "${source.dir}/format"
             unzip -q "${source.dir}/dotnet-format.nupkg" -d "${source.dir}/format"
-            cp -a "${source.dir}/format/tools/net8.0/any/." "sdk/8.0.424/DotnetTools/dotnet-format/"
+            cp -a "${source.dir}/format/tools/net8.0/any/." "sdk/8.0.425/DotnetTools/dotnet-format/"
         - name: generate oci config
           runs: |
             set -eux -o pipefail
@@ -93,14 +93,14 @@ contents:
               DOTNET_CLI_TELEMETRY_OPTOUT: "true"
               DOTNET_GENERATE_ASPNET_CERTIFICATE: "false"
               DOTNET_ROOT: /usr/lib/dotnet
-              DOTNET_VERSION: 8.0.424
+              DOTNET_VERSION: 8.0.425
               PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
             EOF
         - uses: dpkg/bump@v1
           with:
             changelog:
               - DHI Build
-            version: 8.0.424-1
+            version: 8.0.425-0
         - uses: dpkg/build@v1
           with:
             args: -b -uc -us -d
