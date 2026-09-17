@@ -5,25 +5,25 @@ image: dhi.io/homepage
 variant: runtime
 tags:
   - "2"
-  - "2.3"
-  - 2.3.0
+  - "2.4"
+  - 2.4.0
   - 2-debian
   - 2-debian13
-  - 2.3-debian
-  - 2.3-debian13
-  - 2.3.0-debian
-  - 2.3.0-debian13
+  - 2.4-debian
+  - 2.4-debian13
+  - 2.4.0-debian
+  - 2.4.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-14"
 vars:
-  COMMIT_SHA: 541b2fe9f13de9b4efbbc4d1e5fbc4c8d637734b
-  SEMVER_MAJOR_MINOR_VERSION: "2.3"
+  COMMIT_SHA: 6b6926108e35c3902dd23f6bc337162b7289450b
+  SEMVER_MAJOR_MINOR_VERSION: "2.4"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.3.0
-  VERSION: 2.3.0
+  SEMVER_VERSION: 2.4.0
+  VERSION: 2.4.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -65,15 +65,15 @@ contents:
           - yarn-classic
           - yq
         files:
-          - url: git+https://github.com/gethomepage/homepage.git#v2.3.0
-            checksum: 541b2fe9f13de9b4efbbc4d1e5fbc4c8d637734b
+          - url: git+https://github.com/gethomepage/homepage.git#v2.4.0
+            checksum: 6b6926108e35c3902dd23f6bc337162b7289450b
             path: ${source.dir}/homepage
             spdx:
               name: homepage
-              version: 2.3.0
+              version: 2.4.0
               packages:
                 - name: homepage
-                  purl: pkg:dhi/homepage@2.3.0
+                  purl: pkg:dhi/homepage@2.4.0
                   license: GPL-3.0
             uid: 0
             gid: 0
@@ -143,8 +143,8 @@ contents:
             pnpm install --prefer-offline \
               && NEXT_TELEMETRY_DISABLED=1 \
                 NEXT_PUBLIC_BUILDTIME=$(date -u -d @${SOURCE_DATE_EPOCH} +'%FT%TZ') \
-                NEXT_PUBLIC_VERSION=2.3.0 \
-                NEXT_PUBLIC_REVISION=541b2fe9f13de9b4efbbc4d1e5fbc4c8d637734b \
+                NEXT_PUBLIC_VERSION=2.4.0 \
+                NEXT_PUBLIC_REVISION=6b6926108e35c3902dd23f6bc337162b7289450b \
                 pnpm run build
 
             mkdir ${target.dir}/app
