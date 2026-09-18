@@ -4,22 +4,22 @@ image: dhi.io/pkg-azure-functions-python
 variant: runtime
 tags:
   - 4.1054.200
-  - 4.1054.200-r35
+  - 4.1054.200-r36
   - 4.1054.200-debian13
-  - 4.1054.200-r35-debian13
+  - 4.1054.200-r36-debian13
 platforms:
   - linux/amd64
 vars:
   BUILD_NUMBER: "200"
   COMMIT_SHA: 85a260d24bbf53ad3899d2218e8422757513cda2
-  DOTNET_8_VERSION: 8.0.424-1
-  DOTNET_10_VERSION: 10.0.400-1
+  DOTNET_8_VERSION: 8.0.425-0
+  DOTNET_10_VERSION: 10.0.401-0
   EXT_BUNDLE_COMMIT_SHA: eca6b16dcacedd6b835e7a26e8f7e6ad66da0bb7
   EXT_BUNDLE_VERSION: 4.39.1
   FUNCTIONS_WORKER: python
   PYTHON_MAJOR_MINOR_VERSION: "3.12"
   PYTHON_VERSION: 3.12.14-1
-  REL: "35"
+  REL: "36"
   SEMVER_MAJOR_MINOR_VERSION: "4.1054"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.1054.200
@@ -52,8 +52,8 @@ contents:
           - libstdc++6
           - tzdata
           - zlib1g
-          - dotnet-sdk-8=8.0.424-1
-          - dotnet-sdk-10=10.0.400-1
+          - dotnet-sdk-8=8.0.425-0
+          - dotnet-sdk-10=10.0.401-0
         files:
           - url: git+https://github.com/Azure/azure-functions-host.git#v4.1054.200
             checksum: 85a260d24bbf53ad3899d2218e8422757513cda2
@@ -192,7 +192,7 @@ contents:
               - deb
             license: MIT
             name: azure-functions-python
-            rel: 35
+            rel: 36
             url: https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview
             version: 4.1054.200
       paths:
