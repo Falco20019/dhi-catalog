@@ -20,7 +20,7 @@ JLINE_REMOTE_TELNET="${PATCH_DIR}/jline-remote-telnet-4.2.1.jar"
 DERBY="${PATCH_DIR}/derby-10.17.1.0.jar"
 DERBYSHARED="${PATCH_DIR}/derbyshared-10.17.1.0.jar"
 DERBYTOOLS="${PATCH_DIR}/derbytools-10.17.1.0.jar"
-LIBTHRIFT="${PATCH_DIR}/libthrift-0.23.0.jar"
+LIBTHRIFT="${PATCH_DIR}/libthrift-0.24.0.jar"
 HIVE_JDBC_313="${PATCH_DIR}/hive-jdbc-3.1.3.jar"
 COMMONS_LANG3="${PATCH_DIR}/commons-lang3-3.18.0.jar"
 NIMBUS_JOSE_JWT="${PATCH_DIR}/nimbus-jose-jwt-10.0.2.jar"
@@ -138,11 +138,12 @@ rm -f \
     "${JARS_DIR}/derbyshared-10.16.1.1.jar" \
     "${JARS_DIR}/derbytools-10.16.1.1.jar" \
     "${JARS_DIR}/libthrift-0.16.0.jar" \
+    "${JARS_DIR}/libthrift-0.23.0.jar" \
     "${JARS_DIR}/hive-jdbc-2.3.10.jar"
 install -T -m 0644 "$DERBY" "${JARS_DIR}/derby-10.17.1.0.jar"
 install -T -m 0644 "$DERBYSHARED" "${JARS_DIR}/derbyshared-10.17.1.0.jar"
 install -T -m 0644 "$DERBYTOOLS" "${JARS_DIR}/derbytools-10.17.1.0.jar"
-install -T -m 0644 "$LIBTHRIFT" "${JARS_DIR}/libthrift-0.23.0.jar"
+install -T -m 0644 "$LIBTHRIFT" "${JARS_DIR}/libthrift-0.24.0.jar"
 
 # Spark pins hive-jdbc-2.3.10.jar; install the fixed JDBC driver under that
 # name so the distribution classpath layout stays stable.
