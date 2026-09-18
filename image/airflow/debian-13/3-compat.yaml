@@ -180,7 +180,7 @@ contents:
 
             sed -i 's/joserfc==1\.6\.5/joserfc==1.6.8/' ./constraints.txt
 
-            sed -i 's/GitPython==3\.1\.50/GitPython==3.1.58/' ./constraints.txt # GHSA-jm78-9fvv-mhgr, GHSA-wvpp-8hx9-p66j, GHSA-hmq2-w58f-27jc, GHSA-4gmw-gg2m-w46p, GHSA-9rj7-rf2p-w77r, GHSA-hh9p-6wh2-4mfc
+            sed -i 's/^GitPython==3\.1\.58$/GitPython==3.1.60/' ./constraints.txt
 
             sed -i 's/pyasn1==0\.6\.3/pyasn1==0.6.4/' ./constraints.txt
 
@@ -391,6 +391,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /opt/airflow
 environment:
+  AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_PASSWORDS_FILE: /opt/airflow/auth/simple_auth_manager_passwords.json.generated
   AIRFLOW_HOME: /opt/airflow
   PATH: /opt/airflow/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   PYTHONPATH: /opt/airflow/lib/python3.13/site-packages
@@ -400,6 +401,11 @@ paths:
     uid: 0
     gid: 0
     source: /usr/lib/airflow
+  - type: directory
+    path: /usr/lib/airflow/auth
+    uid: 50000
+    gid: 50000
+    mode: "0700"
   - type: directory
     path: /usr/lib/airflow/logs
     uid: 50000

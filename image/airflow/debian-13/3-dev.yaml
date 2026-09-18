@@ -106,6 +106,7 @@ os-release:
   bug-report-url: https://docker.com/support/
 work-dir: /opt/airflow
 environment:
+  AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_PASSWORDS_FILE: /opt/airflow/auth/simple_auth_manager_passwords.json.generated
   AIRFLOW_HOME: /opt/airflow
   DEBIAN_FRONTEND: noninteractive
   PATH: /opt/airflow/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -116,6 +117,11 @@ paths:
     uid: 0
     gid: 0
     source: /usr/lib/airflow
+  - type: directory
+    path: /usr/lib/airflow/auth
+    uid: 50000
+    gid: 50000
+    mode: "0700"
   - type: directory
     path: /usr/lib/airflow/logs
     uid: 50000
