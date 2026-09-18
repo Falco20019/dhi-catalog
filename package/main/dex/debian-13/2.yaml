@@ -4,9 +4,9 @@ image: dhi.io/pkg-dex
 variant: runtime
 tags:
   - 2.45.1
-  - 2.45.1-r10
+  - 2.45.1-r11
   - 2.45.1-debian13
-  - 2.45.1-r10-debian13
+  - 2.45.1-r11-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,8 @@ vars:
   COMMIT_SHA: 11d2eeb52b42e1980e14cb91e69dd9e3faab2076
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.8-0
-  REL: "10"
+  LIBC6_VERSION: 2.41-12+deb13u4+dhi0
+  REL: "11"
   SEMVER_MAJOR_MINOR_VERSION: "2.45"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.45.1
@@ -40,6 +41,7 @@ contents:
           - mawk
           - sed
           - libsqlite3-dev
+          - libc6=2.41-12+deb13u4+dhi0
           - golang-1.26=1.26.8-0
           - golang-1.26-oci-config=1.26.8-0
         files:
@@ -120,7 +122,7 @@ contents:
         - uses: dhi/build-pkg:0
           with:
             depends:
-              - libc6
+              - libc6=2.41-12+deb13u4+dhi0
               - libsqlite3-0
             description: Dex binaries
             files:
@@ -129,7 +131,7 @@ contents:
               - deb
             license: Apache-2.0
             name: dex
-            rel: 10
+            rel: 11
             subpackages:
               - files:
                   - path: usr/bin/docker-entrypoint
