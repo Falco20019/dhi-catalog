@@ -16,14 +16,14 @@ dates:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
   COMMIT_SHA: 50b0b50b75abd47f830b7805ee1b51716eb4065e
-  GOLANG_REFERENCE: dhi/golang:1.27.1-debian13-dev@sha256:b2c53244752dcb35fea192b1e7015635696c8456130e5b82bb0306f89e1144eb
+  GOLANG_REFERENCE: dhi/golang:1.27.2-debian13-dev@sha256:486a7655c1bf281a16996b21060a1cab48cea57cc14b61e425a115cdcf136a27
   JAVA_FIPS_SUFFIX: ""
   JAVA_VARIANT: jdk
   JDK_MAJOR_VERSION: "25"
   JVM_KILL_COMMIT: 8a6ae95b38905f98ce6b7b727efb2dc75da16e11
   LAUNCHER_COMMIT_SHA: 55cda05870182df2be6b7bb081989bbb4253611a
   LAUNCHER_VERSION: "321"
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk25-debian13-dev@sha256:ea126d8fd2acead3fcb044dfdaef788ef261cb3e3a1926e0435ce2111bfde18e
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk25-debian13-dev@sha256:64dde725c464b2c31e4d9c15395d67f624b3b9b62f39095971ebc9a95bf4eed7
   MAVEN_VERSION: 3.10.0
   VERSION: "483"
 contents:
@@ -136,7 +136,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.10.0-jdk25-debian13-dev@sha256:ea126d8fd2acead3fcb044dfdaef788ef261cb3e3a1926e0435ce2111bfde18e
+          - name: dhi.io/maven:3.10.0-jdk25-debian13-dev@sha256:64dde725c464b2c31e4d9c15395d67f624b3b9b62f39095971ebc9a95bf4eed7
             includes:
               - opt/**
               - usr/local/bin/**
