@@ -33,7 +33,7 @@ vars:
   KAFKA_EXPORTER_VERSION: 1.10.0
   KAFKA_LIB_PATH: 4.3.x
   KAFKA_MAJOR_MINOR_VERSION: "4.3"
-  KAFKA_REFERENCE: dhi/kafka:4.3.1-debian13@sha256:f97a9d1f731d39e8cb18edfd19a91f5f05e0c86d71174c0864cdb1d3af8f3711
+  KAFKA_REFERENCE: dhi/kafka:4.3.1-debian13@sha256:1f26e0114e02a64928b17e2d64c01039a89c9c3d3d8172f08645d3968fa785ea
   KAFKA_SUPPORTED: "true"
   KAFKA_VERSION: 4.3.1
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:0adc31a2ab0c8de549a260e13ccad83e2cb03cc5456308b6532554745669aab7
@@ -264,7 +264,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/kafka:4.3.1-debian13@sha256:f97a9d1f731d39e8cb18edfd19a91f5f05e0c86d71174c0864cdb1d3af8f3711
+    - name: dhi.io/kafka:4.3.1-debian13@sha256:1f26e0114e02a64928b17e2d64c01039a89c9c3d3d8172f08645d3968fa785ea
       includes:
         - opt/kafka
       uid: 0
