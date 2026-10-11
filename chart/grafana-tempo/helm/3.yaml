@@ -18,7 +18,7 @@ vars:
   SEMVER_MAJOR_MINOR_VERSION: "3.1"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.1.0
-  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:7db88ca84212ade8118170670988eda7348e08ebdbeb49b3416e4c8514bc56be
+  TEMPO_QUERY_REFERENCE: dhi/tempo-query:3.1.0-debian13@sha256:6a210ad6d857104db68af9c8e4bbdff464f59b41f170bb4e143a6445e80411e3
   TEMPO_REFERENCE: dhi/tempo:3.1.0-debian13@sha256:35964f31085cd4e968b64411dca4dfba3f427360287dc8779621273f5748593f
   VERSION: 3.1.0
 contents:
@@ -52,7 +52,7 @@ contents:
                 - name: tempo
                   ref: dhi/tempo:3.1.0-debian13@sha256:35964f31085cd4e968b64411dca4dfba3f427360287dc8779621273f5748593f
                 - name: tempo-query
-                  ref: dhi/tempo-query:3.1.0-debian13@sha256:7db88ca84212ade8118170670988eda7348e08ebdbeb49b3416e4c8514bc56be
+                  ref: dhi/tempo-query:3.1.0-debian13@sha256:6a210ad6d857104db68af9c8e4bbdff464f59b41f170bb4e143a6445e80411e3
               name: tempo-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana-community/helm-charts
