@@ -15,13 +15,13 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBECTL_DIGEST: sha256:5345f9a09f21035f5af7833678ea315420a4e2b2bc2c9b64bd7cbf457d41a09a
-  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:5345f9a09f21035f5af7833678ea315420a4e2b2bc2c9b64bd7cbf457d41a09a
+  KUBECTL_DIGEST: sha256:1b5a63f10156af5208bf14b5675d281e0b69f6dfecbc48102db9336874137ecb
+  KUBECTL_REFERENCE: dhi/kubectl:1.34.12-debian13-compat@sha256:1b5a63f10156af5208bf14b5675d281e0b69f6dfecbc48102db9336874137ecb
   KUBECTL_TAG: 1.34.12-debian13-compat
   SEMVER_MAJOR_MINOR_VERSION: "1.8"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.8.0
-  SPARK_KUBERNETES_OPERATOR_REFERENCE: dhi/spark-kubernetes-operator:1.0.0-debian13@sha256:f24cc5d2d2ebaa7c4741054b7528ab6292a54655d8400a6873efdd4f2760364b
+  SPARK_KUBERNETES_OPERATOR_REFERENCE: dhi/spark-kubernetes-operator:1.0.0-debian13@sha256:49236113eec2620d3c952bd33adbe139b34aa2bdffa419214498ea5a405aeafa
   SPARK_VERSION: 4.2.0
   VERSION: 1.8.0
   VERSION_MATCH: 1.0.0
@@ -55,9 +55,9 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Spark Kubernetes Operator
               images:
                 - name: spark-kubernetes-operator
-                  ref: dhi/spark-kubernetes-operator:1.0.0-debian13@sha256:f24cc5d2d2ebaa7c4741054b7528ab6292a54655d8400a6873efdd4f2760364b
+                  ref: dhi/spark-kubernetes-operator:1.0.0-debian13@sha256:49236113eec2620d3c952bd33adbe139b34aa2bdffa419214498ea5a405aeafa
                 - name: kubectl
-                  ref: dhi/kubectl:1.34.12-debian13-compat@sha256:5345f9a09f21035f5af7833678ea315420a4e2b2bc2c9b64bd7cbf457d41a09a
+                  ref: dhi/kubectl:1.34.12-debian13-compat@sha256:1b5a63f10156af5208bf14b5675d281e0b69f6dfecbc48102db9336874137ecb
               name: spark-kubernetes-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/apache/spark-kubernetes-operator
@@ -67,7 +67,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            sed -i 's|bitnamisecure/kubectl:latest|dhi.io/kubectl:1.34.12-debian13-compat@sha256:5345f9a09f21035f5af7833678ea315420a4e2b2bc2c9b64bd7cbf457d41a09a|' templates/tests/test-rbac.yaml
+            sed -i 's|bitnamisecure/kubectl:latest|dhi.io/kubectl:1.34.12-debian13-compat@sha256:1b5a63f10156af5208bf14b5675d281e0b69f6dfecbc48102db9336874137ecb|' templates/tests/test-rbac.yaml
         - name: relocate chart
           uses: helm/rudder@v1
           with:
