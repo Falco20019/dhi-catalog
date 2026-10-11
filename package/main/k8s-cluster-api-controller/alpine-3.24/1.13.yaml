@@ -5,6 +5,7 @@ variant: runtime
 tags:
   - 1.13-alpine3.24
   - 1.13.7-alpine3.24
+  - 1.13.7-r1-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -59,7 +60,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
+              - golang.org/x/net@v0.60.0
               - github.com/google/cel-go@v0.30.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
