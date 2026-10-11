@@ -4,9 +4,9 @@ image: dhi.io/pkg-mysql-operator
 variant: runtime
 tags:
   - 8.4.9-2.1.11
-  - 8.4.9-2.1.11-r3
+  - 8.4.9-2.1.11-r4
   - 8.4.9-2.1.11-debian13
-  - 8.4.9-2.1.11-r3-debian13
+  - 8.4.9-2.1.11-r4-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -24,7 +24,7 @@ vars:
   PACKAGE_NAME: mysql-operator-8.4
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "8.4"
   SEMVER_MAJOR_VERSION: "8"
   SEMVER_VERSION: 8.4.9
@@ -216,8 +216,12 @@ contents:
             sed -i 's/idna==3\.11/idna==3.15/g' requirements.txt              # CVE-2026-45409
             sed -i 's/pyasn1==0\.6\.1/pyasn1==0.6.3/g' requirements.txt       # CVE-2026-23490, CVE-2026-30922
             sed -i 's/pyasn1==0\.6\.2/pyasn1==0.6.3/g' requirements.txt       # CVE-2026-30922
-            sed -i 's/urllib3==2\.6\.3/urllib3==2.7.0/g' requirements.txt     # CVE-2026-44431, CVE-2026-44432
+            sed -i 's/urllib3==2\.6\.3/urllib3==2.8.0/g' requirements.txt     # CVE-2026-44431, CVE-2026-44432, CVE-2026-97687, CVE-2026-97688, CVE-2026-97689
+            sed -i 's/multidict==6\.7\.1/multidict==6.9.1/g' requirements.txt # CVE-2026-104874
+            sed -i 's/multidict==6\.8\.0/multidict==6.9.1/g' requirements.txt # CVE-2026-104874
+            sed -i 's/multidict==6\.9\.0/multidict==6.9.1/g' requirements.txt # CVE-2026-104874
             sed -i 's/requests==2\.32\.5/requests==2.33.0/g' requirements.txt # CVE-2026-25645
+            sed -i 's/oauthlib==3\.3\.1/oauthlib==4.0.0/g' requirements.txt   # CVE-2026-49264, CVE-2026-49265
         - name: install python deps
           work-dir: ${source.dir}/mysql-operator/docker-deps
           privileged: true
@@ -312,7 +316,7 @@ contents:
               - deb
             license: UPL-1.0
             name: mysql-operator-8.4
-            rel: 3
+            rel: 4
             url: https://github.com/mysql/mysql-operator
             version: 8.4.9-2.1.11
 os-release:
