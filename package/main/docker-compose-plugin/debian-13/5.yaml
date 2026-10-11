@@ -4,9 +4,9 @@ image: dhi.io/pkg-docker-compose-plugin
 variant: runtime
 tags:
   - 5.6.0
-  - 5.6.0-r2
+  - 5.6.0-r3
   - 5.6.0-debian13
-  - 5.6.0-r2-debian13
+  - 5.6.0-r3-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,8 +15,8 @@ dates:
 vars:
   COMMIT_SHA: 42f48072bbf92ee9b0e43f9fdf2008d03546e7ca
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.8-1
-  REL: "2"
+  GOLANG_VERSION: 1.26.9-0
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "5.6"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.6.0
@@ -39,8 +39,8 @@ contents:
           - ca-certificates-bundle
           - coreutils
           - findutils
-          - golang-1.26=1.26.8-1
-          - golang-1.26-oci-config=1.26.8-1
+          - golang-1.26=1.26.9-0
+          - golang-1.26-oci-config=1.26.9-0
         files:
           - url: git+https://github.com/docker/compose.git#v5.6.0
             checksum: 42f48072bbf92ee9b0e43f9fdf2008d03546e7ca
@@ -84,7 +84,7 @@ contents:
               - deb
             license: Apache-2.0
             name: docker-compose-plugin
-            rel: 2
+            rel: 3
             url: https://github.com/docker/compose
             version: 5.6.0
 os-release:
