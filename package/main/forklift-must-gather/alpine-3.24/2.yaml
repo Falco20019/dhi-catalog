@@ -4,16 +4,16 @@ image: dhi.io/pkg-forklift-must-gather
 variant: runtime
 tags:
   - 2.12.10-alpine3.24
-  - 2.12.10-r1-alpine3.24
+  - 2.12.10-r2-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2024-09-20"
 vars:
-  COMMIT_SHA: 5d0a0b7e4e4646e612371ac919a9fee7e7b99672
+  COMMIT_SHA: 5e73510c015e204f6271016772bab19b8de8dc86
   PACKAGE_NAME: forklift-must-gather
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.12.10
@@ -36,15 +36,15 @@ contents:
           - busybox
           - bash
         files:
-          - url: git+https://github.com/kubev2v/forklift-must-gather.git#5d0a0b7e4e4646e612371ac919a9fee7e7b99672
-            checksum: 5d0a0b7e4e4646e612371ac919a9fee7e7b99672
+          - url: git+https://github.com/kubev2v/forklift-must-gather.git#5e73510c015e204f6271016772bab19b8de8dc86
+            checksum: 5e73510c015e204f6271016772bab19b8de8dc86
             path: ${source.dir}/forklift-must-gather
             spdx:
               name: forklift-must-gather
               version: 2.12.10
               packages:
                 - name: forklift-must-gather
-                  purl: pkg:github/kubev2v/forklift-must-gather@5d0a0b7e4e4646e612371ac919a9fee7e7b99672
+                  purl: pkg:github/kubev2v/forklift-must-gather@5e73510c015e204f6271016772bab19b8de8dc86
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -106,7 +106,7 @@ contents:
               - usr/bin/_metrics_chart_template_part_2.html
             license: Apache-2.0
             name: forklift-must-gather
-            rel: 1
+            rel: 2
             url: https://github.com/kubev2v/forklift-must-gather
             version: 2.12.10
       paths:
