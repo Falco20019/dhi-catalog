@@ -16,10 +16,10 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  NATS_BOX_REFERENCE: dhi/nats-box:0.20.0-debian13-compat@sha256:b5171834b12fdce87074c52d026d29f549b1435f1d63d74047e25451991ddcbd
+  NATS_BOX_REFERENCE: dhi/nats-box:0.20.0-debian13-compat@sha256:bae507a0b47d244e149efd8f0e10bd36496eecb1b9be7b501cc2fc50c8d82d03
   NATS_REFERENCE: dhi/nats:2.15.0-debian13@sha256:0809f30100938f4dc0cee716a7031eaf665c1ebc6f3f744e7390892ef6e5e7ab
   NATS_SERVER_CONFIG_RELOADER_REFERENCE: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:286ee2eb45153e60afde3f949286499cda32a2bd8aa827ba63d97a751bdd5dae
-  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:e225e2396f5d2f53cca6a2c0018d814c925592bbc6f5d5a0fa31d93e07c845fe
+  PROMETHEUS_NATS_EXPORTER_REFERENCE: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:8114ee6ea956d518846cbe618a86360c461297d406bdc36ec49ae1029c29c8dd
   SEMVER_MAJOR_MINOR_VERSION: "2.15"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.15.0
@@ -57,9 +57,9 @@ contents:
                 - name: nats-server-config-reloader
                   ref: dhi/nats-server-config-reloader:0.24.0-debian13@sha256:286ee2eb45153e60afde3f949286499cda32a2bd8aa827ba63d97a751bdd5dae
                 - name: prometheus-nats-exporter
-                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:e225e2396f5d2f53cca6a2c0018d814c925592bbc6f5d5a0fa31d93e07c845fe
+                  ref: dhi/prometheus-nats-exporter:0.20.2-debian13@sha256:8114ee6ea956d518846cbe618a86360c461297d406bdc36ec49ae1029c29c8dd
                 - name: nats-box
-                  ref: dhi/nats-box:0.20.0-debian13-compat@sha256:b5171834b12fdce87074c52d026d29f549b1435f1d63d74047e25451991ddcbd
+                  ref: dhi/nats-box:0.20.0-debian13-compat@sha256:bae507a0b47d244e149efd8f0e10bd36496eecb1b9be7b501cc2fc50c8d82d03
               name: nats-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/nats-io/k8s
