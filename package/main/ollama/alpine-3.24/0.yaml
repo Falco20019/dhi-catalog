@@ -3,26 +3,26 @@
 image: dhi.io/pkg-ollama
 variant: runtime
 tags:
-  - 0.40.2-alpine3.24
-  - 0.40.2-r1-alpine3.24
+  - 0.40.3-alpine3.24
+  - 0.40.3-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-27"
 vars:
-  COMMIT_SHA: b061384d90ff455462bc32745dd0de479de717a3
+  COMMIT_SHA: eab97e9f92b9a25c2d52d2cc6c1b1c99bd9fae21
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   LLAMA_CPP_COMMIT_SHA: 631109b34da437a3c4a5ebd75091d677671392e3
   LLAMA_CPP_TAG_VERSION: b11351
   LLAMA_CPP_VERSION: b11351
   PACKAGE_NAME: ollama
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.40"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.40.2
-  VERSION: 0.40.2
+  SEMVER_VERSION: 0.40.3
+  VERSION: 0.40.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,15 +47,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/ollama/ollama.git#v0.40.2
-            checksum: b061384d90ff455462bc32745dd0de479de717a3
+          - url: git+https://github.com/ollama/ollama.git#v0.40.3
+            checksum: eab97e9f92b9a25c2d52d2cc6c1b1c99bd9fae21
             path: /go/src/github.com/ollama/ollama
             spdx:
               name: ollama
-              version: 0.40.2
+              version: 0.40.3
               packages:
                 - name: ollama
-                  purl: pkg:golang/github.com/ollama/ollama@0.40.2
+                  purl: pkg:golang/github.com/ollama/ollama@0.40.3
                   license: MIT
             uid: 0
             gid: 0
@@ -114,7 +114,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X github.com/ollama/ollama/version.Version=0.40.2
+              - -X github.com/ollama/ollama/version.Version=0.40.3
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama
         - name: build ollama dev
@@ -127,7 +127,7 @@ contents:
             ldflags:
               - -linkmode=external
               - -extldflags=-static
-              - -X github.com/ollama/ollama/version.Version=0.40.2
+              - -X github.com/ollama/ollama/version.Version=0.40.3
               - -X github.com/ollama/ollama/server.mode=release
             output: ${target.dir}/usr/bin/ollama-dev
             strip: false
@@ -144,7 +144,7 @@ contents:
               - apk
             license: MIT
             name: ollama
-            rel: 1
+            rel: 0
             subpackages:
               - depends:
                   - libgcc
@@ -156,7 +156,7 @@ contents:
                     source: usr/lib/ollama-dev
                 name: ollama-dev
             url: https://ollama.com
-            version: 0.40.2
+            version: 0.40.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
