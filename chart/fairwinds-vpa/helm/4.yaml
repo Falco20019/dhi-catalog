@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:e313a4f6128306963ab5b17f75cb5e8d5408cc69ba11e0a05530ab2ec9a91c7a
+  KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
   KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:e91956f5d0964a003e220aba19f292689d5c670460f78069bcdf8f02d15e0eb4
   METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:beeb6f81c28c8cebd80272b879b9d224c067b5fca9b9688a8b23830225867dbb
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
@@ -65,7 +65,7 @@ contents:
                 - name: vpa-updater
                   ref: dhi/vpa-updater:1.8.0-debian13@sha256:e7b33418b492a86d979bafd56a2da8bbf7c9d4d35a342e2c40a1dc6297df3a89
                 - name: kube-webhook-certgen
-                  ref: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:e313a4f6128306963ab5b17f75cb5e8d5408cc69ba11e0a05530ab2ec9a91c7a
+                  ref: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
                 - name: kubectl
                   ref: dhi/kubectl:1.35.9-debian13@sha256:e91956f5d0964a003e220aba19f292689d5c670460f78069bcdf8f02d15e0eb4
               name: fairwinds-vpa-chart
