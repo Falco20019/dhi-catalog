@@ -55,6 +55,7 @@ contents:
           work-dir: /go/src/github.com/docker/distribution
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - golang.org/x/crypto@v0.57.0
               - github.com/go-jose/go-jose/v4@v4.1.4
               - go.opentelemetry.io/otel@v1.44.0
