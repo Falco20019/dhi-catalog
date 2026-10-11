@@ -4,7 +4,7 @@ image: dhi.io/pkg-python
 variant: runtime
 tags:
   - 3.14.8-apk-alpine3.23
-  - 3.14.8-r0-apk-alpine3.23
+  - 3.14.8-r1-apk-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -23,7 +23,7 @@ vars:
   PYTHON_MAJOR_MINOR_VERSION: "3.14"
   PYTHON_MAJOR_VERSION: "3"
   PYTHON_VERSION: 3.14.8
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "3.14"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.14.8
@@ -111,6 +111,47 @@ contents:
             certificate-oidc-issuer: https://github.com/login/oauth
             offline: true
             signature: ${source.dir}/python.tar.xz.sigstore
+        - name: patch bundled urllib3
+          work-dir: ${source.dir}
+          runs: |
+            set -eux -o pipefail
+
+            rm -rf pip_temp pip-patched.whl
+            unzip -q "pip-26.2.1-py3-none-any.whl" -d pip_temp/
+
+            for cve in \
+              97687-https-proxy-tls-policy \
+              97688-deflate-infinite-loop \
+              97689-chunk-line-limit; do
+              converted="dhi-cve-2026-${cve}-vendored.patch"
+              sed \
+                -e 's|a/src/urllib3/|a/pip/_vendor/urllib3/|g' \
+                -e 's|b/src/urllib3/|b/pip/_vendor/urllib3/|g' \
+                "urllib3-patches/dhi-cve-2026-${cve}.patch" \
+                > "${converted}"
+              (cd pip_temp && git apply "../${converted}")
+            done
+
+            grep -q 'proxy_ssl_context.verify_mode' pip_temp/pip/_vendor/urllib3/connection.py
+            grep -q 'and not self._obj.eof' pip_temp/pip/_vendor/urllib3/response.py
+            grep -q '_MAX_CHUNK_LINE_LENGTH + 1' pip_temp/pip/_vendor/urllib3/response.py
+
+            record="$(find pip_temp -path '*/pip-*.dist-info/RECORD' -print -quit)"
+            for file in \
+              pip/_vendor/urllib3/connection.py \
+              pip/_vendor/urllib3/poolmanager.py \
+              pip/_vendor/urllib3/response.py; do
+              digest="$(openssl dgst -sha256 -binary "pip_temp/${file}" | base64 | tr '+/' '-_' | tr -d '=\n')"
+              size="$(wc -c < "pip_temp/${file}" | tr -d ' ')"
+              awk -F, -v OFS=, -v path="${file}" -v hash="sha256=${digest}" -v size="${size}" \
+                '$1 == path {$2 = hash; $3 = size} {print}' "${record}" > "${record}.new"
+              mv "${record}.new" "${record}"
+            done
+
+            (cd pip_temp && zip -X -q -r ../pip-patched.whl .)
+            unzip -tq pip-patched.whl
+            mv pip-patched.whl "pip-26.2.1-py3-none-any.whl"
+            rm -rf pip_temp
         - name: install
           runs: |
             set -eux -o pipefail
@@ -263,7 +304,7 @@ contents:
             functions:
               _default_pyc: |
                 replaces="python3-pyc"
-                provides="python3-pyc=3.14.8-r0"
+                provides="python3-pyc=3.14.8-r1"
                 pkgdesc="$pkgdesc (install .pyc cache files)"
                 install_if="$pkgname=$pkgver-r$pkgrel"
                 depends="
@@ -273,13 +314,13 @@ contents:
                 mkdir -p "$subpkgdir"
               _pyc_meta: |
                 replaces="pyc"
-                provides="pyc=3.14.8-r0"
+                provides="pyc=3.14.8-r1"
                 pkgdesc="Meta package for pulling in all -pyc packages"
                 depends=""
                 mkdir -p "$subpkgdir"
               dev: |
                 replaces="python3-dev"
-                provides="python3-dev=3.14.8-r0"
+                provides="python3-dev=3.14.8-r1"
                 default_dev
 
                 # pyconfig.h is needed runtime so we move it back
@@ -288,38 +329,38 @@ contents:
                   "$pkgdir"/usr/include/python3.14/
               gdbm: |
                 replaces="python3-gdbm"
-                provides="python3-gdbm=3.14.8-r0"
+                provides="python3-gdbm=3.14.8-r1"
                 pkgdesc="Python backend for GNU gdbm"
                 amove usr/lib/python3.14*/lib-dynload/_gdbm.cpython*
               pyc0: |
                 replaces="python3-pycache-pyc0"
-                provides="python3-pycache-pyc0=3.14.8-r0"
+                provides="python3-pycache-pyc0=3.14.8-r1"
                 pkgdesc="$pkgdesc (.pyc pycache files)"
                 cd "$pkgdir"
                 amove $(find usr/lib/python3* -name "*.pyc")
               pyc1: |
                 replaces="python3-pycache-pyc1"
-                provides="python3-pycache-pyc1=3.14.8-r0"
+                provides="python3-pycache-pyc1=3.14.8-r1"
                 pkgdesc="$pkgdesc (.opt-1.pyc pycache files)"
                 cd "$pkgdir"
                 amove $(find usr/lib/python3* -name "*.opt-1.pyc")
               pyc2: |
                 replaces="python3-pycache-pyc2"
-                provides="python3-pycache-pyc2=3.14.8-r0"
+                provides="python3-pycache-pyc2=3.14.8-r1"
                 pkgdesc="$pkgdesc (.opt-2.pyc pycache files)"
                 cd "$pkgdir"
                 amove $(find usr/lib/python3* -name "*.opt-2.pyc")
               tests: |
                 replaces="python3-tests"
-                provides="python3-tests=3.14.8-r0"
+                provides="python3-tests=3.14.8-r1"
                 pkgdesc="The test modules from the main python package"
                 amove usr/lib/python3.14/test
             license: PSF-2.0
             name: python-3.14
             options: '!check'
             provider_priority: 200
-            provides: python3=3.14.8-r0
-            rel: 0
+            provides: python3=3.14.8-r1
+            rel: 1
             replaces: python3
             subpackages: $pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-tests::noarch $pkgname-pyc:_default_pyc $pkgname-pycache-pyc2 $pkgname-pycache-pyc1 $pkgname-pycache-pyc0 $pkgname-gdbm pyc-3.14:_pyc_meta:noarch
             url: https://www.python.org/
@@ -332,6 +373,12 @@ contents:
           uid: 0
           gid: 0
           source: package/apk/main/python/patch
+          recursive: true
+        - type: directory
+          path: ${source.dir}/urllib3-patches
+          uid: 0
+          gid: 0
+          source: package/apk/main/py3-urllib3/patch
           recursive: true
 os-release:
   name: Docker Hardened Images (Alpine)
