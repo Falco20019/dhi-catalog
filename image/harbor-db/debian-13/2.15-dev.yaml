@@ -21,9 +21,9 @@ dates:
 vars:
   GOSU_VERSION: 1.19-11
   PACKAGE_NAME: harbor-db-2.15
-  POSTGRES_14_REFERENCE: dhi/postgres:14.24-debian13@sha256:712e71d13e61be981699b2200567f0dbd43e731425d7f87cb62c00c02473a753
+  POSTGRES_14_REFERENCE: dhi/postgres:14.24-debian13@sha256:38d38862af19a451ee1c4c910b586d7ba009c1741270c14a071e00bf3199a05b
   POSTGRES_14_VERSION: "14.24"
-  POSTGRES_15_REFERENCE: dhi/postgres:15.19-debian13@sha256:a4f56d3e7342ca4f47e99636ffc5caf7fd41b42c28e542f3c8af84eb31c58010
+  POSTGRES_15_REFERENCE: dhi/postgres:15.19-debian13@sha256:6b5d03a6254d81aa2665b440fad431929eb3d6dda1b54c76e2fd61791dd9654b
   POSTGRES_15_VERSION: "15.19"
   POSTGRES_18_REFERENCE: dhi/postgres:18.6-debian13@sha256:2b7f961f54423c5f4c6e09084593b1714659df6a30c1f138d23010ac1c74f754
   POSTGRES_18_VERSION: "18.6"
@@ -31,7 +31,7 @@ vars:
   POSTGRES_NEW_REFERENCE: dhi/postgres:18.6-debian13@sha256:2b7f961f54423c5f4c6e09084593b1714659df6a30c1f138d23010ac1c74f754
   POSTGRES_NEW_VERSION: "18.6"
   POSTGRES_OLD_MAJOR: "15"
-  POSTGRES_OLD_REFERENCE: dhi/postgres:15.19-debian13@sha256:a4f56d3e7342ca4f47e99636ffc5caf7fd41b42c28e542f3c8af84eb31c58010
+  POSTGRES_OLD_REFERENCE: dhi/postgres:15.19-debian13@sha256:6b5d03a6254d81aa2665b440fad431929eb3d6dda1b54c76e2fd61791dd9654b
   POSTGRES_OLD_VERSION: "15.19"
   SEMVER_MAJOR_MINOR_VERSION: "2.15"
   SEMVER_MAJOR_VERSION: "2"
@@ -85,7 +85,7 @@ contents:
           - bash
           - coreutils
         artifacts:
-          - name: dhi.io/postgres:15.19-debian13@sha256:a4f56d3e7342ca4f47e99636ffc5caf7fd41b42c28e542f3c8af84eb31c58010
+          - name: dhi.io/postgres:15.19-debian13@sha256:6b5d03a6254d81aa2665b440fad431929eb3d6dda1b54c76e2fd61791dd9654b
             includes:
               - opt/postgresql/15/**
               - usr/bin/**
