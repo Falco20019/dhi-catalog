@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  PUSHGATEWAY_REFERENCE: dhi/pushgateway:1.11.3-debian13@sha256:7715052ac6a02bf9fc6776beb1b631798431f3377916652f2f24c8b57f20f887
+  PUSHGATEWAY_REFERENCE: dhi/pushgateway:1.11.4-debian13@sha256:2f482dd5f3ea1f2e09c97fe981053d3a98dfa65eb22bd1703123fbb0f4947854
   SEMVER_MAJOR_MINOR_VERSION: "3.9"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.9.1
@@ -49,7 +49,7 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus Pushgateway
               images:
                 - name: pushgateway
-                  ref: dhi/pushgateway:1.11.3-debian13@sha256:7715052ac6a02bf9fc6776beb1b631798431f3377916652f2f24c8b57f20f887
+                  ref: dhi/pushgateway:1.11.4-debian13@sha256:2f482dd5f3ea1f2e09c97fe981053d3a98dfa65eb22bd1703123fbb0f4947854
               name: pushgateway-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/prometheus-community/helm-charts
