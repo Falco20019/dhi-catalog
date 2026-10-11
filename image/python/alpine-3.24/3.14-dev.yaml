@@ -22,7 +22,7 @@ vars:
   PYTHON_PIP_VERSION: 26.1.2-r1
   PYTHON_SETUPTOOLS_VERSION: 84.0.0-r0
   PYTHON_VERSION: 3.14.8
-  VERSION: 3.14.8-r0
+  VERSION: 3.14.8-r1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -49,7 +49,7 @@ contents:
     - openssl
     - py3.14-pip=26.1.2-r1
     - py3.14-setuptools=84.0.0-r0
-    - python-3.14=3.14.8-r0
+    - python-3.14=3.14.8-r1
     - readline
     - sqlite-libs
     - tzdata
