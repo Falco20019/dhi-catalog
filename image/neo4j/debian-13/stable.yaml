@@ -19,7 +19,7 @@ platforms:
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x64" : "aarch64" }'
   COMMIT_SHA: 54a7dcf7c2501b31866199143364c5332da8936f
-  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:cb525586f8f90c7c4488387f7e43a99dbe00d82eeb56d1f8d7f77ef747caf6f0
+  GOSU_REFERENCE: dhi/pkg-gosu:1.19-debian13@sha256:aeaabfe590d0e03bc4046023387c0a8e29f7b897e63b9ffb5fd9fdfe82c9f17a
   JAVA_HOME: /usr/lib/jvm/temurin-21
   JDK_MAJOR_VERSION: "21"
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
@@ -305,7 +305,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:cb525586f8f90c7c4488387f7e43a99dbe00d82eeb56d1f8d7f77ef747caf6f0
+    - name: dhi.io/pkg-gosu:1.19-debian13@sha256:aeaabfe590d0e03bc4046023387c0a8e29f7b897e63b9ffb5fd9fdfe82c9f17a
       includes:
         - opt/docker/sbom/gosu
         - usr/local/sbin/gosu
