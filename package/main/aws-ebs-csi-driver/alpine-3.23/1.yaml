@@ -4,7 +4,7 @@ image: dhi.io/pkg-aws-ebs-csi-driver
 variant: runtime
 tags:
   - 1.66.1-alpine3.23
-  - 1.66.1-r0-alpine3.23
+  - 1.66.1-r1-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: e2bb61fbdcfdc7cd0ad60736375b82300e5a72ba
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.66"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.66.1
@@ -59,7 +59,8 @@ contents:
         - name: update go dependencies
           uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             download: true
         - name: test
           runs: |
@@ -96,7 +97,7 @@ contents:
               - usr/bin/aws-ebs-csi-driver
             license: Apache-2.0
             name: aws-ebs-csi-driver
-            rel: 0
+            rel: 1
             subpackages:
               - files:
                   - path: usr/bin/aws-ebs-csi-driver
