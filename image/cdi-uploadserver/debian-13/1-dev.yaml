@@ -51,6 +51,7 @@ contents:
     - perl-base
     - qemu-utils
     - sed
+    - tar
     - tzdata
     - util-linux
   builds:

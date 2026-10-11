@@ -36,7 +36,9 @@ contents:
     - libnbd-bin
     - libnbd0
     - qemu-utils
+    - tar
     - tzdata
+    - util-linux
   builds:
     - name: cdi-uploadserver
       caches:
