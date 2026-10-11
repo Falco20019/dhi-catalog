@@ -4,7 +4,7 @@ image: dhi.io/pkg-loki-canary
 variant: runtime
 tags:
   - 3.7.8-alpine3.24
-  - 3.7.8-r7-alpine3.24
+  - 3.7.8-r8-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,9 +13,9 @@ dates:
 vars:
   COMMIT_SHA: 09e6ce2ff1bdc19763a10265b870c86f51c98655
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.8-r1
+  GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: loki-canary-3.7
-  REL: "7"
+  REL: "8"
   SEMVER_MAJOR_MINOR_VERSION: "3.7"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.7.8
@@ -44,8 +44,8 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.8-r1
-          - golang-1.26-oci-config=1.26.8-r1
+          - golang-1.26=1.26.9-r0
+          - golang-1.26-oci-config=1.26.9-r0
         files:
           - url: git+https://github.com/grafana/loki.git#v3.7.8
             checksum: 09e6ce2ff1bdc19763a10265b870c86f51c98655
@@ -80,7 +80,6 @@ contents:
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.46.0
               - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.46.0
               - go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.22.0
-              - golang.org/x/crypto@v0.57.0
             download: true
             replaces:
               - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
@@ -135,7 +134,7 @@ contents:
               - usr/bin/loki-canary
             license: AGPL-3.0
             name: loki-canary-3.7
-            rel: 7
+            rel: 8
             subpackages:
               - files:
                   - path: usr/bin/loki-canary
