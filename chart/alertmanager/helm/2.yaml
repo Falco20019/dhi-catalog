@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:b8c45bd2893376fcb93883d73ab7402fb614293e470d2ffca44c1e009dba3ef4
+  ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
   CHART_COMMIT_SHA: 33b6d8ee9c5f249754c66f4c55f6e8a243afafa3
   CHART_HELM_NAME: alertmanager-chart
@@ -50,7 +50,7 @@ contents:
               description: Docker Hardened Images Helm chart for Prometheus AlertManager
               images:
                 - name: alertmanager
-                  ref: dhi/alertmanager:0.34.1-debian13@sha256:b8c45bd2893376fcb93883d73ab7402fb614293e470d2ffca44c1e009dba3ef4
+                  ref: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
                 - name: prometheus-config-reloader
                   ref: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
                 - name: busybox
