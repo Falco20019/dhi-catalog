@@ -14,14 +14,14 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:8a1296a9e388c5d6feb41436306f417b839b274b1b4b2df784faaef7bd4271fd
+  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:669a6d23d42d035660130d00ace2662d633d70df6df5724d046bcd4b41cf49ee
   HELM_VERSION: 4.1.4-2
-  PROMETHEUS_CHART_REFERENCE: dhi/prometheus-chart:28.16.0@sha256:b5790015d7644f473da684033b997bf6720dcf19d783c6accf7923ca2fcd8f7c
+  PROMETHEUS_CHART_REFERENCE: dhi/prometheus-chart:28.16.0@sha256:7fd8154ef5800a0e94a253d0aa30132efb1afcf5a71b3c089e211efb04fdc78d
   SEMVER_MAJOR_MINOR_VERSION: "0.74"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.74.0
-  TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.29.7-cli-1.9.1-debian13@sha256:8a90f799fc097fe73172cbc3bf62965d9a6ae0b8ee40774ff9ecf8900bbce66d
-  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.29.7-cli-1.9.1-debian13@sha256:729def3ee5a05ed42148efc66d404c2855e4901579b4db55d746a1b045fe6250
+  TEMPORALIO_ADMIN_TOOLS_REFERENCE: dhi/temporalio-admin-tools:1.29.7-cli-1.9.1-debian13@sha256:74c0ab24865a9311e020e874f818e9b4a437dd5ef68eb67d084b7afb5726af34
+  TEMPORALIO_SERVER_REFERENCE: dhi/temporalio-server:1.29.7-cli-1.9.1-debian13@sha256:be36b7e5fc7a8621f7ee884f990f37be7b8f18e2208eae8ca2ffb1f5a249ae64
   TEMPORALIO_UI_REFERENCE: dhi/temporalio-ui:2.55.0-debian13@sha256:973b6d89e285c3b0ae06d72cac2745b20a0e5df3eeb5b1ede79c03cedc4c03b7
   VERSION: 0.74.0
 contents:
@@ -55,17 +55,17 @@ contents:
                 - alias: prometheus
                   condition: prometheus.enabled
                   name: prometheus
-                  ref: dhi/prometheus-chart:28.16.0@sha256:b5790015d7644f473da684033b997bf6720dcf19d783c6accf7923ca2fcd8f7c
+                  ref: dhi/prometheus-chart:28.16.0@sha256:7fd8154ef5800a0e94a253d0aa30132efb1afcf5a71b3c089e211efb04fdc78d
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
-                  ref: dhi/grafana-chart:12.11.2@sha256:8a1296a9e388c5d6feb41436306f417b839b274b1b4b2df784faaef7bd4271fd
+                  ref: dhi/grafana-chart:12.11.2@sha256:669a6d23d42d035660130d00ace2662d633d70df6df5724d046bcd4b41cf49ee
               description: Docker Hardened Images Helm chart for TemporalIO
               images:
                 - name: temporalio-server
-                  ref: dhi/temporalio-server:1.29.7-cli-1.9.1-debian13@sha256:729def3ee5a05ed42148efc66d404c2855e4901579b4db55d746a1b045fe6250
+                  ref: dhi/temporalio-server:1.29.7-cli-1.9.1-debian13@sha256:be36b7e5fc7a8621f7ee884f990f37be7b8f18e2208eae8ca2ffb1f5a249ae64
                 - name: temporalio-admin-tools
-                  ref: dhi/temporalio-admin-tools:1.29.7-cli-1.9.1-debian13@sha256:8a90f799fc097fe73172cbc3bf62965d9a6ae0b8ee40774ff9ecf8900bbce66d
+                  ref: dhi/temporalio-admin-tools:1.29.7-cli-1.9.1-debian13@sha256:74c0ab24865a9311e020e874f818e9b4a437dd5ef68eb67d084b7afb5726af34
                 - name: temporalio-ui
                   ref: dhi/temporalio-ui:2.55.0-debian13@sha256:973b6d89e285c3b0ae06d72cac2745b20a0e5df3eeb5b1ede79c03cedc4c03b7
               name: temporalio-chart
