@@ -16,12 +16,12 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:669a6d23d42d035660130d00ace2662d633d70df6df5724d046bcd4b41cf49ee
+  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:d5b57de3a18a0805ebade8e87827548edf7187745fba344a4d3211a414ee32b8
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.6.0@sha256:1efb453b84c827ae251b081bba1bb3b3be933e384b973e7a919d5feb9f109a4c
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
   KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:fd1c8d2866edb223c8f68add9b56314051dce197bd1a45b7e6ee24781b23f2a5
-  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.59.0@sha256:06d9259d3ba98bfaa94d6090d5e32221ac15c034ecee632a83718f9502bc00e8
+  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.59.0@sha256:cd66609adaf2583bbb11fa9cdf467400295c75749cd03ca5dc670798c6e0d26d
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
   PROMETHEUS_OPERATOR_ADMISSION_WEBHOOK_REFERENCE: dhi/prometheus-operator-admission-webhook:0.94.1-debian13@sha256:86ffe7ecb77762cdc24986c21dd8309d642e71a154c81e505731209fe0d4884e
   PROMETHEUS_OPERATOR_REFERENCE: dhi/prometheus-operator:0.94.1-debian13@sha256:d435231ebf4ead33fe92acd1417e25cb2de998eb757ccb5e62230218c1e69afd
@@ -69,11 +69,11 @@ contents:
                 - alias: prometheus-node-exporter
                   condition: nodeExporter.enabled
                   name: node-exporter
-                  ref: dhi/node-exporter-chart:4.59.0@sha256:06d9259d3ba98bfaa94d6090d5e32221ac15c034ecee632a83718f9502bc00e8
+                  ref: dhi/node-exporter-chart:4.59.0@sha256:cd66609adaf2583bbb11fa9cdf467400295c75749cd03ca5dc670798c6e0d26d
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
-                  ref: dhi/grafana-chart:12.11.2@sha256:669a6d23d42d035660130d00ace2662d633d70df6df5724d046bcd4b41cf49ee
+                  ref: dhi/grafana-chart:12.11.2@sha256:d5b57de3a18a0805ebade8e87827548edf7187745fba344a4d3211a414ee32b8
               description: Docker Hardened Images Helm chart for Kube Prometheus Stack
               images:
                 - name: busybox
