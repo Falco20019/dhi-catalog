@@ -3,22 +3,22 @@
 image: dhi.io/pkg-kubevirt
 variant: runtime
 tags:
-  - 1.9.0-alpine3.23
-  - 1.9.0-r8-alpine3.23
+  - 1.9.1-alpine3.23
+  - 1.9.1-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-27"
 vars:
-  COMMIT_SHA: 79d34c1762169e5b0370ec491cef5ca12e6b504c
+  COMMIT_SHA: c3d19093f9c7b843b3879b18dc088911c081c39e
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: kubevirt-1.9
-  REL: "8"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.9"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.9.0
-  VERSION: 1.9.0
+  SEMVER_VERSION: 1.9.1
+  VERSION: 1.9.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -43,15 +43,15 @@ contents:
           - pkgconf
           - libvirt-dev
         files:
-          - url: git+https://github.com/kubevirt/kubevirt.git#v1.9.0
-            checksum: 79d34c1762169e5b0370ec491cef5ca12e6b504c
+          - url: git+https://github.com/kubevirt/kubevirt.git#v1.9.1
+            checksum: c3d19093f9c7b843b3879b18dc088911c081c39e
             path: /go/src/kubevirt.io/kubevirt
             spdx:
               name: kubevirt
-              version: 1.9.0
+              version: 1.9.1
               packages:
                 - name: kubevirt
-                  purl: pkg:golang/kubevirt.io/kubevirt@1.9.0
+                  purl: pkg:golang/kubevirt.io/kubevirt@1.9.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -66,7 +66,7 @@ contents:
               - github.com/insomniacslk/dhcp@v0.0.0-20260719225207-c76316d4aa82
               - github.com/klauspost/compress@v1.18.7
               - go.mongodb.org/mongo-driver@v1.17.7
-              - google.golang.org/grpc@v1.82.1
+              - google.golang.org/grpc@v1.83.2
               - github.com/containernetworking/plugins@v1.9.0
             download: true
         - uses: go/hermetic@v1
@@ -100,8 +100,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-api
             packages: ./cmd/virt-api
         - name: build virt-api dev
@@ -111,8 +111,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-api-dev
             packages: ./cmd/virt-api
             strip: false
@@ -123,8 +123,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-controller
             packages: ./cmd/virt-controller
         - name: build virt-controller dev
@@ -134,8 +134,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-controller-dev
             packages: ./cmd/virt-controller
             strip: false
@@ -146,8 +146,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-operator
             packages: ./cmd/virt-operator
         - name: build virt-operator dev
@@ -157,8 +157,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-operator-dev
             packages: ./cmd/virt-operator
             strip: false
@@ -169,8 +169,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-exportproxy
             packages: ./cmd/virt-exportproxy
         - name: build virt-exportproxy dev
@@ -180,8 +180,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-exportproxy-dev
             packages: ./cmd/virt-exportproxy
             strip: false
@@ -192,8 +192,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-exportserver
             packages: ./cmd/virt-exportserver
         - name: build virt-exportserver dev
@@ -203,8 +203,8 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-exportserver-dev
             packages: ./cmd/virt-exportserver
             strip: false
@@ -216,8 +216,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-handler
             packages: ./cmd/virt-handler
         - name: build virt-handler dev
@@ -228,8 +228,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-handler-dev
             packages: ./cmd/virt-handler
             strip: false
@@ -241,8 +241,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-launcher
             packages: ./cmd/virt-launcher
         - name: build virt-launcher dev
@@ -253,8 +253,8 @@ contents:
             cgo_enabled: 1
             fips: false
             ldflags:
-              - -X kubevirt.io/client-go/version.gitVersion=v1.9.0
-              - -X kubevirt.io/client-go/version.gitCommit=79d34c1762169e5b0370ec491cef5ca12e6b504c
+              - -X kubevirt.io/client-go/version.gitVersion=v1.9.1
+              - -X kubevirt.io/client-go/version.gitCommit=c3d19093f9c7b843b3879b18dc088911c081c39e
             output: ${target.dir}/usr/bin/virt-launcher-dev
             packages: ./cmd/virt-launcher
             strip: false
@@ -266,7 +266,7 @@ contents:
             license: Apache-2.0
             name: kubevirt-1.9
             priority: optional
-            rel: 8
+            rel: 0
             section: admin
             subpackages:
               - files:
@@ -316,7 +316,7 @@ contents:
                     source: usr/bin/virt-launcher-dev
                 name: virt-launcher-1.9-dev
             url: https://github.com/kubevirt/kubevirt
-            version: 1.9.0
+            version: 1.9.1
       paths:
         - type: directory
           path: ${source.dir}/patch
