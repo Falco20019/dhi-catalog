@@ -117,7 +117,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.27
           - findutils
           - mawk
           - sed
