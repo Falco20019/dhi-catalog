@@ -16,8 +16,8 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
-  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:e91956f5d0964a003e220aba19f292689d5c670460f78069bcdf8f02d15e0eb4
-  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:beeb6f81c28c8cebd80272b879b9d224c067b5fca9b9688a8b23830225867dbb
+  KUBECTL_REFERENCE: dhi/kubectl:1.35.9-debian13@sha256:f02173234d21c581f427e35930f90e359f0731df664cef0ab82deed702b9a048
+  METRICS_SERVER_CHART_REFERENCE: dhi/metrics-server-chart:3.14.0@sha256:200a28639b903ba895c90660af4409b0faa686981c9266cc0d49b0f87ff39ffd
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.1.0
@@ -55,7 +55,7 @@ contents:
                 - alias: metrics-server
                   condition: metrics-server.enabled
                   name: metrics-server
-                  ref: dhi/metrics-server-chart:3.14.0@sha256:beeb6f81c28c8cebd80272b879b9d224c067b5fca9b9688a8b23830225867dbb
+                  ref: dhi/metrics-server-chart:3.14.0@sha256:200a28639b903ba895c90660af4409b0faa686981c9266cc0d49b0f87ff39ffd
               description: Docker Hardened Images Helm chart for Fairwinds VPA
               images:
                 - name: vpa-admission-controller
@@ -67,7 +67,7 @@ contents:
                 - name: kube-webhook-certgen
                   ref: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
                 - name: kubectl
-                  ref: dhi/kubectl:1.35.9-debian13@sha256:e91956f5d0964a003e220aba19f292689d5c670460f78069bcdf8f02d15e0eb4
+                  ref: dhi/kubectl:1.35.9-debian13@sha256:f02173234d21c581f427e35930f90e359f0731df664cef0ab82deed702b9a048
               name: fairwinds-vpa-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/FairwindsOps/charts
