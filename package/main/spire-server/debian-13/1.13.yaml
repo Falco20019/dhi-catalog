@@ -5,8 +5,10 @@ variant: runtime
 tags:
   - "1.13"
   - 1.13.6
+  - 1.13.6-r6
   - 1.13-debian13
   - 1.13.6-debian13
+  - 1.13.6-r6-debian13
 platforms:
   - linux/amd64
   - linux/arm64
