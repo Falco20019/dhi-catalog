@@ -37,7 +37,7 @@ export LDFLAGS="${LDFLAGS:-} $("${PYTHON_BIN}-config" --ldflags)"
 "${VENV}/bin/python3" -m pip install --upgrade "cryptography==50.0.0"
 "${VENV}/bin/python3" -m pip install --upgrade "pillow==12.3.0"
 "${VENV}/bin/python3" -m pip install --upgrade "starlette==1.3.1"
-"${VENV}/bin/python3" -m pip install --upgrade "gitpython==3.1.60"  # CVE-2026-87817, CVE-2026-87818, CVE-2026-87819
+"${VENV}/bin/python3" -m pip install --upgrade "gitpython==3.1.62"  # GHSA-59cr-6r3x-644w; CVE-2026-87817, CVE-2026-87818, CVE-2026-87819
 
 "${VENV}/bin/python3" -m pip uninstall -y pip setuptools wheel
 sp="$(echo "${VENV}"/lib/python*/site-packages)"
