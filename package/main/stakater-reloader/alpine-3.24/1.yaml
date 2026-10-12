@@ -59,7 +59,7 @@ contents:
           uses: go/bump@v1
           with:
             deps:
-              - golang.org/x/text@v0.41.0
+              - golang.org/x/net@v0.60.0
             download: true
         - uses: go/hermetic@v1
         - name: build
