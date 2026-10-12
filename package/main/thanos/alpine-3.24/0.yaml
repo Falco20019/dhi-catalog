@@ -65,11 +65,11 @@ contents:
               - github.com/go-jose/go-jose/v4@v4.1.4
               - github.com/klauspost/compress@v1.18.7
               - go.mongodb.org/mongo-driver@v1.17.7
-              - go.opentelemetry.io/otel/bridge/opentracing@v1.47.0
               - go.opentelemetry.io/otel/sdk@v1.45.0
-              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
-              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
               - google.golang.org/grpc@v1.83.2
+              - go.opentelemetry.io/otel/bridge/opentracing@v1.47.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0
+              - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.45.0
             downgrade: true
             replaces:
               - google.golang.org/grpc=google.golang.org/grpc@v1.83.2
