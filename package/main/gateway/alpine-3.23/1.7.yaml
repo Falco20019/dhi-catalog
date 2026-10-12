@@ -5,6 +5,7 @@ variant: runtime
 tags:
   - 1.7-alpine3.23
   - 1.7.5-alpine3.23
+  - 1.7.5-r15-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -61,8 +62,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/text@v0.39.0
-              - golang.org/x/crypto@v0.56.0
+              - golang.org/x/net@v0.60.0
               - github.com/go-jose/go-jose/v4@v4.1.4
               - github.com/google/cel-go@v0.30.0
               - github.com/moby/spdystream@v0.5.1
