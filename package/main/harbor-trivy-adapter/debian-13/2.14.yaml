@@ -5,8 +5,10 @@ variant: runtime
 tags:
   - "2.14"
   - 2.14.5
+  - 2.14.5-r1
   - 2.14-debian13
   - 2.14.5-debian13
+  - 2.14.5-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
