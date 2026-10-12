@@ -4,9 +4,9 @@ image: dhi.io/pkg-kiali-operator
 variant: runtime
 tags:
   - 2.33.0
-  - 2.33.0-r0
+  - 2.33.0-r1
   - 2.33.0-debian13
-  - 2.33.0-r0-debian13
+  - 2.33.0-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,7 +21,7 @@ vars:
   KUBERNETES_CORE_VERSION: 4.0.0
   OPERATOR_SDK_UTIL_VERSION: 0.5.0
   PYTHON_MINOR: "3.12"
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "2.33"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.33.0
@@ -37,10 +37,6 @@ contents:
     - name: kiali-operator
       work-dir: ${source.dir}/kiali-operator
       contents:
-        repositories:
-          - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
-        keyring:
-          - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
         packages:
           - bash
           - coreutils
@@ -178,7 +174,7 @@ contents:
               - deb
             license: Apache-2.0
             name: kiali-operator
-            rel: 0
+            rel: 1
             url: https://github.com/kiali/kiali-operator
             version: 2.33.0
       paths:
