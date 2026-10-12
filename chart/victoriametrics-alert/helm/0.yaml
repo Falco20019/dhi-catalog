@@ -4,22 +4,22 @@ name: VictoriaMetrics Alerts Helm chart 0.x
 image: dhi.io/victoriametrics-alert-chart
 variant: helm
 tags:
-  - 0.50.0
+  - 0.51.0
 platforms:
   - linux/amd64
 vars:
   ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
-  CHART_COMMIT_SHA: c5bdad40f36cad4eb09282de94845bc23b131a2c
+  CHART_COMMIT_SHA: 4ccbee8b0069b15b963491e80fc382ec28912436
   CHART_HELM_NAME: victoriametrics-alert-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  SEMVER_MAJOR_MINOR_VERSION: "0.50"
+  SEMVER_MAJOR_MINOR_VERSION: "0.51"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.50.0
-  VERSION: 0.50.0
+  SEMVER_VERSION: 0.51.0
+  VERSION: 0.51.0
   VICTORIAMETRICS_VMALERT_REFERENCE: dhi/victoriametrics-vmalert:1.152.0-debian13@sha256:ce98c3c87422c295b9fb489e8087ab6afcb16a6b8dba57937f1e0336184ecc6a
 contents:
   repositories:
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/VictoriaMetrics/helm-charts.git#victoria-metrics-alert-0.50.0
-            checksum: c5bdad40f36cad4eb09282de94845bc23b131a2c
+          - url: git+https://github.com/VictoriaMetrics/helm-charts.git#victoria-metrics-alert-0.51.0
+            checksum: 4ccbee8b0069b15b963491e80fc382ec28912436
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
