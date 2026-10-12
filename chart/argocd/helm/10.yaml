@@ -4,12 +4,12 @@ name: Argo CD Helm chart 10.x
 image: dhi.io/argocd-chart
 variant: helm
 tags:
-  - 10.10.2
+  - 10.10.3
 platforms:
   - linux/amd64
 vars:
-  ARGOCD_REFERENCE: dhi/argocd:3.5.4-debian13@sha256:65fc04fc080554eb3a3bcdb87760142450c0530adf796a7f0d966dba7e3b1080
-  CHART_COMMIT_SHA: 1de96014ce4b828823e53a5c8f5cbcee87ffdbe6
+  ARGOCD_REFERENCE: dhi/argocd:3.5.4-debian13@sha256:689d666287a8690166aade5e79a7b7c67f2dbc7d76c575c1cc93943e02c76365
+  CHART_COMMIT_SHA: d0666d153c7363583cd783b4983a43550332c186
   CHART_HELM_NAME: argocd-chart
   DEX_REFERENCE: dhi/dex:2.45.1-debian13@sha256:b332e8955709e29c9fd4723f54f1384768968eecc163baba523940c6e125ecd2
   DHI_NAMESPACE: dhi
@@ -23,8 +23,8 @@ vars:
   REDIS_REFERENCE: dhi/redis:8.10.2-debian13-compat@sha256:8477e3456e63d1777b0df44658d8bb93b40ca0d0442df89222bd0ca4612b662f
   SEMVER_MAJOR_MINOR_VERSION: "10.10"
   SEMVER_MAJOR_VERSION: "10"
-  SEMVER_VERSION: 10.10.2
-  VERSION: 10.10.2
+  SEMVER_VERSION: 10.10.3
+  VERSION: 10.10.3
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -41,8 +41,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.10.2
-            checksum: 1de96014ce4b828823e53a5c8f5cbcee87ffdbe6
+          - url: git+https://github.com/argoproj/argo-helm#argo-cd-10.10.3
+            checksum: d0666d153c7363583cd783b4983a43550332c186
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Argo CD
               images:
                 - name: argocd
-                  ref: dhi/argocd:3.5.4-debian13@sha256:65fc04fc080554eb3a3bcdb87760142450c0530adf796a7f0d966dba7e3b1080
+                  ref: dhi/argocd:3.5.4-debian13@sha256:689d666287a8690166aade5e79a7b7c67f2dbc7d76c575c1cc93943e02c76365
                 - name: dex
                   ref: dhi/dex:2.45.1-debian13@sha256:b332e8955709e29c9fd4723f54f1384768968eecc163baba523940c6e125ecd2
                 - name: redis
