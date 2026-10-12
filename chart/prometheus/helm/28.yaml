@@ -17,10 +17,10 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:7.8.1@sha256:d0cfb1794e5da70429b19974b2624e6bbf406dec34e950f15d2c25694fc7fb8a
-  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.59.0@sha256:06d9259d3ba98bfaa94d6090d5e32221ac15c034ecee632a83718f9502bc00e8
+  NODE_EXPORTER_CHART_REFERENCE: dhi/node-exporter-chart:4.59.0@sha256:cd66609adaf2583bbb11fa9cdf467400295c75749cd03ca5dc670798c6e0d26d
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
   PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:fc689c29d99e5834f3ce1b2e3d02a668516bfe0ab7456d4cccf9d5db1b2368b9
-  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:cb403606c5de6b851bebb83d48b34122ec9da6a7d0b776c1be06bc8e0169d7b5
+  PUSHGATEWAY_CHART_REFERENCE: dhi/pushgateway-chart:3.9.1@sha256:b2b32ae00fb33841e719c1e1cfa2f508c285883a879f6a55df4201d84dea6914
   SEMVER_MAJOR_MINOR_VERSION: "28.16"
   SEMVER_MAJOR_VERSION: "28"
   SEMVER_VERSION: 28.16.0
@@ -63,11 +63,11 @@ contents:
                 - alias: prometheus-node-exporter
                   condition: prometheus-node-exporter.enabled
                   name: prometheus-node-exporter
-                  ref: dhi/node-exporter-chart:4.59.0@sha256:06d9259d3ba98bfaa94d6090d5e32221ac15c034ecee632a83718f9502bc00e8
+                  ref: dhi/node-exporter-chart:4.59.0@sha256:cd66609adaf2583bbb11fa9cdf467400295c75749cd03ca5dc670798c6e0d26d
                 - alias: prometheus-pushgateway
                   condition: prometheus-pushgateway.enabled
                   name: prometheus-pushgateway
-                  ref: dhi/pushgateway-chart:3.9.1@sha256:cb403606c5de6b851bebb83d48b34122ec9da6a7d0b776c1be06bc8e0169d7b5
+                  ref: dhi/pushgateway-chart:3.9.1@sha256:b2b32ae00fb33841e719c1e1cfa2f508c285883a879f6a55df4201d84dea6914
               description: Docker Hardened Images Helm chart for Prometheus
               images:
                 - name: prometheus
