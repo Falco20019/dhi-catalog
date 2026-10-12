@@ -21,6 +21,8 @@ vars:
   DEBIAN_EPOCH_MAJOR_MINOR_VERSION: "2.10"
   DEBIAN_EPOCH_MAJOR_VERSION: "2"
   DEBIAN_EPOCH_VERSION: 2.10.8
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.2-0
   VERSION: 2.10.8
 contents:
   repositories:
@@ -58,7 +60,7 @@ contents:
           - ca-certificates-bundle
           - coreutils
           - findutils
-          - golang-1.26
+          - golang-1.27=1.27.2-0
           - hostname
           - make
           - mawk
@@ -82,7 +84,7 @@ contents:
           with:
             deps:
               - golang.org/x/crypto@v0.56.0
-              - golang.org/x/net@v0.57.0
+              - golang.org/x/net@v0.60.0
               - golang.org/x/text@v0.41.0
               - github.com/apache/thrift@v0.24.0
               - github.com/klauspost/compress@v1.18.7
