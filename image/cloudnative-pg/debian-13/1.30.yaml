@@ -37,6 +37,8 @@ contents:
   builds:
     - name: cloudnative-pg
       work-dir: /go/src/github.com/cloudnative-pg/cloudnative-pg
+      environment:
+        GOTOOLCHAIN: local
       caches:
         - path: /go/pkg/mod
       contents:
