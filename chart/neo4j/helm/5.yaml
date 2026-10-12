@@ -4,11 +4,11 @@ name: Neo4j Helm chart 5.x
 image: dhi.io/neo4j-chart
 variant: helm
 tags:
-  - 5.26.31
+  - 5.26.32
 platforms:
   - linux/amd64
 vars:
-  CHART_COMMIT_SHA: d62af732ccfcb5b5e3b92b34bebeb990ad4f21a6
+  CHART_COMMIT_SHA: a8c20e730256a7c19916e5c04f9b0f976e4b3a6b
   CHART_HELM_NAME: neo4j-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -16,11 +16,11 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   KUBECTL_REFERENCE: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:c80dfe4e62ce6203d7ba855f429ba674e32b4207176bf5658313c7cb6e8d9eaf
-  NEO4J_REFERENCE: dhi/neo4j:5.26.31-debian13@sha256:37b33c5bce0e8597437697b5df25c92756227fc74fcc52836c47ec31c7e394ee
+  NEO4J_REFERENCE: dhi/neo4j:5.26.32-debian13@sha256:d3bc371aea791d5791db45a57701a789bdf3c46e66c1d713f2426157350c2fb6
   SEMVER_MAJOR_MINOR_VERSION: "5.26"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.26.31
-  VERSION: 5.26.31
+  SEMVER_VERSION: 5.26.32
+  VERSION: 5.26.32
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -36,8 +36,8 @@ contents:
           - sed
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/neo4j/helm-charts.git#5.26.31
-            checksum: d62af732ccfcb5b5e3b92b34bebeb990ad4f21a6
+          - url: git+https://github.com/neo4j/helm-charts.git#5.26.32
+            checksum: a8c20e730256a7c19916e5c04f9b0f976e4b3a6b
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -51,7 +51,7 @@ contents:
               description: Docker Hardened Images Helm chart for Neo4j
               images:
                 - name: neo4j
-                  ref: dhi/neo4j:5.26.31-debian13@sha256:37b33c5bce0e8597437697b5df25c92756227fc74fcc52836c47ec31c7e394ee
+                  ref: dhi/neo4j:5.26.32-debian13@sha256:d3bc371aea791d5791db45a57701a789bdf3c46e66c1d713f2426157350c2fb6
                 - name: kubectl
                   ref: dhi/kubectl:1.34.12-alpine3.22-dev@sha256:c80dfe4e62ce6203d7ba855f429ba674e32b4207176bf5658313c7cb6e8d9eaf
               name: neo4j-chart
