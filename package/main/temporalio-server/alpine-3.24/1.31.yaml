@@ -3,23 +3,23 @@
 image: dhi.io/pkg-temporalio-server
 variant: runtime
 tags:
-  - 1.31.3-alpine3.24
-  - 1.31.3-r4-alpine3.24
+  - 1.31.4-alpine3.24
+  - 1.31.4-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-04-29"
 vars:
-  COMMIT_SHA: 8c78934b67fbac43d2ea7f8ada448c539780584d
+  COMMIT_SHA: 9a9a1f0fa8a5a4edf29a90c4069352da094920fc
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: temporalio-server-1.31
-  REL: "4"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.31"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.31.3
-  VERSION: 1.31.3
+  SEMVER_VERSION: 1.31.4
+  VERSION: 1.31.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -47,15 +47,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/temporalio/temporal.git#v1.31.3
-            checksum: 8c78934b67fbac43d2ea7f8ada448c539780584d
+          - url: git+https://github.com/temporalio/temporal.git#v1.31.4
+            checksum: 9a9a1f0fa8a5a4edf29a90c4069352da094920fc
             path: /go/src/go.temporal.io/server
             spdx:
               name: temporalio-server
-              version: 1.31.3
+              version: 1.31.4
               packages:
                 - name: temporal-server
-                  purl: pkg:golang/go.temporal.io/server@v1.31.3
+                  purl: pkg:golang/go.temporal.io/server@v1.31.4
                   license: MIT
             uid: 0
             gid: 0
@@ -116,7 +116,7 @@ contents:
               - etc/temporal/entrypoint.sh
             license: MIT
             name: temporalio-server-1.31
-            rel: 4
+            rel: 0
             subpackages:
               - files:
                   - path: etc/temporal/entrypoint.sh
@@ -125,7 +125,7 @@ contents:
                     source: usr/bin/temporal-server-dev
                 name: temporalio-server-1.31-dev
             url: https://github.com/temporalio/temporal
-            version: 1.31.3
+            version: 1.31.4
       paths:
         - type: file
           path: /src/patch/entrypoint-getent_hostname.30.patch
