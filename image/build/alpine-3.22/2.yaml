@@ -13,7 +13,7 @@ platforms:
 vars:
   COMMIT_SHA: 5e41a566c0785c1b43f37c91e9a58aa5394da7ec
   DHI_TAGS_OVERWRITE: "true"
-  GOLANG_REFERENCE: dhi/golang:1.26.8-alpine3.22-dev@sha256:67f91b3192ad64473e196e88cbc20a34ab6865e8dad53a1e856ac89eab3f0abf
+  GOLANG_REFERENCE: dhi/golang:1.26.9-alpine3.22-dev@sha256:eac1036fd123d367c32e1a4b8ed2b75b4eb2381b26216557cb1fbf66d0f5c47a
   SEMVER_MAJOR_MINOR_VERSION: "2.26"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.26.0
@@ -56,7 +56,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/golang:1.26.8-alpine3.22-dev@sha256:67f91b3192ad64473e196e88cbc20a34ab6865e8dad53a1e856ac89eab3f0abf
+          - name: dhi.io/golang:1.26.9-alpine3.22-dev@sha256:eac1036fd123d367c32e1a4b8ed2b75b4eb2381b26216557cb1fbf66d0f5c47a
             includes:
               - usr/local/go
             uid: 0
@@ -98,7 +98,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            go get github.com/containerd/containerd/v2@v2.3.5 # CVE-2026-53488 CVE-2026-53489 CVE-2026-53492 CVE-2026-53495
+            go get github.com/containerd/containerd/v2@v2.3.6 # CVE-2026-53488 CVE-2026-53489 CVE-2026-53492 CVE-2026-53493 CVE-2026-53495
 
             go mod tidy
             go mod vendor
