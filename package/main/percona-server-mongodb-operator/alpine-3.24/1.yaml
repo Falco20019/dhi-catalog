@@ -59,8 +59,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/text@v0.41.0
-              - golang.org/x/crypto@v0.56.0
+              - golang.org/x/net@v0.60.0
               - go.opentelemetry.io/otel/sdk@v1.45.0
               - google.golang.org/grpc@v1.85.0-dev.0.20260825072537-93e31b48545e
         - uses: go/hermetic@v1
