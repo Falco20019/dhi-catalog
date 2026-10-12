@@ -3,17 +3,17 @@
 image: dhi.io/pkg-dependencytrack-apiserver
 variant: runtime
 tags:
-  - 5.1.1
-  - 5.1.1-r1
-  - 5.1.1-debian13
-  - 5.1.1-r1-debian13
+  - 5.1.2
+  - 5.1.2-r0
+  - 5.1.2-debian13
+  - 5.1.2-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-07"
 vars:
-  COMMIT_SHA: e61df6de5b05be25bd2e09bd22a144fea04648f5
+  COMMIT_SHA: 808e41f36d27e78c555e44a8ceb7d90a8032b3d1
   DHI_TEST_DEB_EXPECTED_FILES: /usr/share/dependencytrack-apiserver-5/dependency-track-apiserver.jar /usr/share/dependencytrack-apiserver-5/lib /usr/share/dependencytrack-apiserver-5/logback-json.xml
   LINE_DEP_NAME: freemarker
   LINE_DEP_PURL: pkg:maven/org.freemarker/freemarker@2.3.35
@@ -22,13 +22,13 @@ vars:
   LINE_DEP_VERSION: 2.3.35
   MAVEN_ARTIFACT: apiserver
   PACKAGE_NAME: dependencytrack-apiserver-5
-  REL: "1"
+  REL: "0"
   RELEASE_ASSET: dependency-track-apiserver-dist.tar.gz
-  RELEASE_SHA256: f1bdebf45d1a0931db08ab68ad8801a03c3d0e605e74b78c1e25dcdcbffabd54
+  RELEASE_SHA256: dc8318de483411ea6d0b6d8b545079a8477da000991792d446eb2c4d44449846
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.1.1
-  VERSION: 5.1.1
+  SEMVER_VERSION: 5.1.2
+  VERSION: 5.1.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -51,20 +51,20 @@ contents:
           - unzip
           - zip
         files:
-          - url: git+https://github.com/DependencyTrack/dependency-track.git#5.1.1
-            checksum: e61df6de5b05be25bd2e09bd22a144fea04648f5
+          - url: git+https://github.com/DependencyTrack/dependency-track.git#5.1.2
+            checksum: 808e41f36d27e78c555e44a8ceb7d90a8032b3d1
             path: ${source.dir}/dependency-track
             spdx:
               name: dependency-track-apiserver
-              version: 5.1.1
+              version: 5.1.2
               packages:
                 - name: dependency-track-apiserver
-                  purl: pkg:maven/org.dependencytrack/apiserver@5.1.1
+                  purl: pkg:maven/org.dependencytrack/apiserver@5.1.2
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: https://github.com/DependencyTrack/dependency-track/releases/download/5.1.1/dependency-track-apiserver-dist.tar.gz
-            checksum: sha256:f1bdebf45d1a0931db08ab68ad8801a03c3d0e605e74b78c1e25dcdcbffabd54
+          - url: https://github.com/DependencyTrack/dependency-track/releases/download/5.1.2/dependency-track-apiserver-dist.tar.gz
+            checksum: sha256:dc8318de483411ea6d0b6d8b545079a8477da000991792d446eb2c4d44449846
             path: ${source.dir}/release/dependency-track-apiserver-dist.tar.gz
             uid: 0
             gid: 0
@@ -123,26 +123,18 @@ contents:
             install -m 0644 release/dist/dependency-track-apiserver.jar "${dest}/dependency-track-apiserver.jar"
             cp -a release/dist/lib/. "${dest}/lib/"
             install -m 0644 dependency-track/apiserver/src/main/docker/logback-json.xml "${dest}/logback-json.xml"
-        - name: replace fixable jars on line 5
+        - name: replace freemarker on line 5
           runs: |
             set -eux -o pipefail
 
             dest="${target.dir}/usr/share/dependencytrack-apiserver-5"
             tmp=$(mktemp -d)
             echo "0fac87dddd78f1223139e8ef88e819c7f483c0a3835cdf5982ad5e4576d1d896  deps/freemarker-2.3.35.jar" | sha256sum -c -
-            echo "556db5439e206114346043f68d200497dc96a0bca62a360a81784092ebd0e0a9  deps/jackson-databind-2.22.3.jar" | sha256sum -c -
-            echo "8a501126a385b25841915d839508f8a66e2a0dbc8a6709d055ef3b3e852b094c  deps/jackson-core-2.22.3.jar" | sha256sum -c -
             rm "${dest}/lib/freemarker-2.3.34.jar"
-            rm "${dest}/lib/jackson-databind-2.22.2.jar"
-            rm "${dest}/lib/jackson-core-2.22.2.jar"
             install -m 0644 deps/freemarker-2.3.35.jar "${dest}/lib/freemarker-2.3.35.jar"
-            install -m 0644 deps/jackson-databind-2.22.3.jar "${dest}/lib/jackson-databind-2.22.3.jar"
-            install -m 0644 deps/jackson-core-2.22.3.jar "${dest}/lib/jackson-core-2.22.3.jar"
             unzip -p "${dest}/dependency-track-apiserver.jar" META-INF/MANIFEST.MF \
               | sed \
-                -e 's/freemarker-2.3.34.jar/freemarker-2.3.35.jar/' \
-                -e 's/jackson-databind-2.22.2.jar/jackson-databind-2.22.3.jar/' \
-                -e 's/jackson-core-2.22.2.jar/jackson-core-2.22.3.jar/' > "${tmp}/MANIFEST.MF"
+                -e 's/freemarker-2.3.34.jar/freemarker-2.3.35.jar/' > "${tmp}/MANIFEST.MF"
             mkdir -p "${tmp}/META-INF"
             mv "${tmp}/MANIFEST.MF" "${tmp}/META-INF/MANIFEST.MF"
             (
@@ -164,9 +156,9 @@ contents:
               - usr/share/dependencytrack-apiserver-5
             license: Apache-2.0
             name: dependencytrack-apiserver-5
-            rel: 1
+            rel: 0
             url: https://github.com/DependencyTrack/dependency-track
-            version: 5.1.1
+            version: 5.1.2
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
