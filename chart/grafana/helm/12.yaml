@@ -17,7 +17,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.6-debian13@sha256:641968c4a6e5d85d32895a36d5ba2760aedcda5d011354c895215318e66483f9
+  GRAFANA_IMAGE_RENDERER_REFERENCE: dhi/grafana-image-renderer:5.12.6-debian13@sha256:31b1126f426c0e5472d88e4ca2321ccd16f446f5ef853d046e4365477673596c
   GRAFANA_REFERENCE: dhi/grafana:12.4.12-debian13@sha256:b91c069d72bf05147b9c2b769cf80cca3564992f1b6ea31f00c8f8044ecac071
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:460bb2ff54a20c2f094feb98a44958559788b463d7b029ec4d88c944533ce2d4
@@ -56,7 +56,7 @@ contents:
                 - name: grafana
                   ref: dhi/grafana:12.4.12-debian13@sha256:b91c069d72bf05147b9c2b769cf80cca3564992f1b6ea31f00c8f8044ecac071
                 - name: grafana-image-renderer
-                  ref: dhi/grafana-image-renderer:5.12.6-debian13@sha256:641968c4a6e5d85d32895a36d5ba2760aedcda5d011354c895215318e66483f9
+                  ref: dhi/grafana-image-renderer:5.12.6-debian13@sha256:31b1126f426c0e5472d88e4ca2321ccd16f446f5ef853d046e4365477673596c
                 - name: bats
                   ref: dhi/bats:1.14.0-debian13@sha256:e863aa79e2a9c4e9894e2ab543a3842c996609e8d4258396163b35bbc0840293
                 - name: busybox
