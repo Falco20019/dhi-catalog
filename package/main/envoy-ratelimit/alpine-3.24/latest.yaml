@@ -3,18 +3,18 @@
 image: dhi.io/pkg-envoy-ratelimit
 variant: runtime
 tags:
-  - bd88831c6756bc1929a5b54584a027508928899b-alpine3.24
-  - bd88831c6756bc1929a5b54584a027508928899b-r1-alpine3.24
+  - f4e76690d9ce6590707ffd7d28c33a24b99302da-alpine3.24
+  - f4e76690d9ce6590707ffd7d28c33a24b99302da-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: bd88831c6756bc1929a5b54584a027508928899b
-  GOLANG_MAJOR_MINOR_VERSION: "1.26"
-  GOLANG_VERSION: 1.26.8-r1
+  COMMIT_SHA: f4e76690d9ce6590707ffd7d28c33a24b99302da
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: envoy-ratelimit
-  REL: "1"
-  VERSION: 0+git.bd88831c6756bc1929a5b54584a027508928899b
+  REL: "0"
+  VERSION: 0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -39,18 +39,18 @@ contents:
           - findutils
           - mawk
           - sed
-          - golang-1.26=1.26.8-r1
-          - golang-1.26-oci-config=1.26.8-r1
+          - golang-1.27=1.27.2-r0
+          - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/envoyproxy/ratelimit.git#bd88831c6756bc1929a5b54584a027508928899b
-            checksum: bd88831c6756bc1929a5b54584a027508928899b
+          - url: git+https://github.com/envoyproxy/ratelimit.git#f4e76690d9ce6590707ffd7d28c33a24b99302da
+            checksum: f4e76690d9ce6590707ffd7d28c33a24b99302da
             path: /go/src/github.com/envoyproxy/ratelimit
             spdx:
               name: ratelimit
-              version: bd88831c6756bc1929a5b54584a027508928899b
+              version: f4e76690d9ce6590707ffd7d28c33a24b99302da
               packages:
                 - name: ratelimit
-                  purl: pkg:golang/github.com/envoyproxy/ratelimit@bd88831c6756bc1929a5b54584a027508928899b
+                  purl: pkg:golang/github.com/envoyproxy/ratelimit@f4e76690d9ce6590707ffd7d28c33a24b99302da
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -59,6 +59,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - google.golang.org/grpc@v1.83.2
               - go.opentelemetry.io/otel@v1.45.0
               - go.opentelemetry.io/otel/sdk@v1.45.0
@@ -90,14 +91,14 @@ contents:
               - usr/bin/ratelimit
             license: Apache-2.0
             name: envoy-ratelimit
-            rel: 1
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/ratelimit
                     source: usr/bin/ratelimit-dev
                 name: envoy-ratelimit-dev
             url: https://github.com/envoyproxy/ratelimit
-            version: 0+git.bd88831c6756bc1929a5b54584a027508928899b
+            version: 0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
