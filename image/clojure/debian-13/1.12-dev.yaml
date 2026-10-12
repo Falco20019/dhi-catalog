@@ -25,8 +25,8 @@ vars:
   JDK_MAJOR_VERSION: "21"
   LEIN_COMMIT_SHA: d35aef298829ef8191331ed8f9dc3c2d3aef77de
   LEIN_VERSION: 2.13.0
-  MAVEN_REFERENCE: dhi/maven:3.9.16-jdk21-debian13-dev@sha256:0f5e830e75013f85336d2c129136a73b2c7b135a223ae669a7ebe4edb8fba51f
-  MAVEN_VERSION: 3.9.16
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:0adc31a2ab0c8de549a260e13ccad83e2cb03cc5456308b6532554745669aab7
+  MAVEN_VERSION: 3.10.0
   SEMVER_MAJOR_MINOR_VERSION: "1.12"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.12.6
@@ -78,7 +78,7 @@ contents:
       work-dir: ${source.dir}/clojure
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-21
-        MAVEN_HOME: /opt/java/apache-maven-3.9.16
+        MAVEN_HOME: /opt/java/apache-maven-3.10.0
       contents:
         packages:
           - bash
@@ -104,7 +104,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:0f5e830e75013f85336d2c129136a73b2c7b135a223ae669a7ebe4edb8fba51f
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:0adc31a2ab0c8de549a260e13ccad83e2cb03cc5456308b6532554745669aab7
             includes:
               - opt/**
               - usr/local/bin/**
@@ -147,7 +147,7 @@ contents:
       work-dir: ${source.dir}/tools.deps
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-21
-        MAVEN_HOME: /opt/java/apache-maven-3.9.16
+        MAVEN_HOME: /opt/java/apache-maven-3.10.0
       contents:
         packages:
           - bash
@@ -186,7 +186,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:0f5e830e75013f85336d2c129136a73b2c7b135a223ae669a7ebe4edb8fba51f
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:0adc31a2ab0c8de549a260e13ccad83e2cb03cc5456308b6532554745669aab7
             includes:
               - opt/**
               - usr/local/bin/**
@@ -199,16 +199,6 @@ contents:
           with:
             dependencies: ${source.dir}/patch/mvn-deps.json
             mvn-root: ${source.dir}/tools.deps
-        - name: pin plexus-utils direct (CVE-2025-67030)
-          work-dir: ${source.dir}/tools.deps
-          runs: |
-            set -eux -o pipefail
-
-            # Force plexus-utils 3.6.1 as a direct <dependency> so it wins over
-            # the 3.3.1 pulled in transitively via maven-core 3.8.8. Stays on the
-            # 3.x line because 4.x removed the org.codehaus.plexus.util.xml.pull
-            # API that maven/aether still imports.
-            sed -i '/<\/dependencies>/i \    <dependency>\n      <groupId>org.codehaus.plexus<\/groupId>\n      <artifactId>plexus-utils<\/artifactId>\n      <version>3.6.1<\/version>\n    <\/dependency>' pom.xml
         - name: patch cli scripts
           runs: |
             set -eux -o pipefail
@@ -288,7 +278,7 @@ contents:
     - name: leiningen
       environment:
         JAVA_HOME: /usr/lib/jvm/temurin-21
-        MAVEN_HOME: /opt/java/apache-maven-3.9.16
+        MAVEN_HOME: /opt/java/apache-maven-3.10.0
       contents:
         packages:
           - bash
@@ -326,7 +316,7 @@ contents:
             uid: 0
             gid: 0
         artifacts:
-          - name: dhi.io/maven:3.9.16-jdk21-debian13-dev@sha256:0f5e830e75013f85336d2c129136a73b2c7b135a223ae669a7ebe4edb8fba51f
+          - name: dhi.io/maven:3.10.0-jdk21-debian13-dev@sha256:0adc31a2ab0c8de549a260e13ccad83e2cb03cc5456308b6532554745669aab7
             includes:
               - opt/**
               - usr/local/bin/**
