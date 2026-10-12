@@ -4,9 +4,9 @@ image: dhi.io/pkg-grist
 variant: runtime
 tags:
   - 1.7.21
-  - 1.7.21-r0
+  - 1.7.21-r1
   - 1.7.21-debian13
-  - 1.7.21-r0-debian13
+  - 1.7.21-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,7 +17,7 @@ vars:
   NODEJS_VERSION: 24.21.0-1
   PYTHON_MAJOR_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "1.7"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.7.21
@@ -105,6 +105,14 @@ contents:
           with:
             bumps: ${source.dir}/patches/yarn-patches.json
             yarn-root: ${source.dir}/grist
+        - name: patch-image-size-api
+          work-dir: ${source.dir}/grist
+          runs: |
+            set -eux -o pipefail
+
+            grep -q 'import imageSize from "image-size";' app/server/lib/ActiveDoc.ts
+            sed -i 's|dimensions = await bluebird.fromCallback((cb: any) => imageSize(fileData.absPath, cb));|dimensions = imageSize(await readFile(fileData.absPath));|' app/server/lib/ActiveDoc.ts
+            grep -q 'imageSize(await readFile(fileData.absPath));' app/server/lib/ActiveDoc.ts
         - name: patch-brace-expansion-2
           work-dir: ${source.dir}/grist
           runs: |
@@ -215,6 +223,12 @@ contents:
             cp package.json "${target.dir}/usr/lib/grist/package.json"
             cp -r bower_components "${target.dir}/usr/lib/grist/bower_components"
             cp -r plugins "${target.dir}/usr/lib/grist/plugins"
+        - name: node_modules sbom
+          uses: sbom@v1
+          with:
+            extra-scanners: javascript-package-cataloger
+            prefix: grist
+            source: ${target.dir}/usr/lib/grist/node_modules
         - uses: dhi/build-pkg:0
           with:
             depends:
@@ -229,7 +243,7 @@ contents:
               - deb
             license: Apache-2.0
             name: grist
-            rel: 0
+            rel: 1
             url: https://www.getgrist.com/
             version: 1.7.21
       paths:

@@ -2,17 +2,23 @@
   {
     "package": "basic-ftp",
     "version": "6.2.1",
-    "resolutions": [ "basic-ftp" ]
+    "resolutions": [
+      "basic-ftp"
+    ]
   },
   {
     "package": "picomatch",
     "version": "4.0.4",
-    "resolutions": [ "@gristlabs/**/picomatch" ]
+    "resolutions": [
+      "@gristlabs/**/picomatch"
+    ]
   },
   {
     "package": "@xmldom/xmldom",
     "version": "0.8.15",
-    "resolutions": [ "@xmldom/xmldom" ]
+    "resolutions": [
+      "@xmldom/xmldom"
+    ]
   },
   {
     "package": "glob",
@@ -25,12 +31,16 @@
   {
     "package": "path-to-regexp",
     "version": "0.1.13",
-    "resolutions": [ "express/path-to-regexp" ]
+    "resolutions": [
+      "express/path-to-regexp"
+    ]
   },
   {
     "package": "proxy-addr",
     "version": "2.0.8",
-    "resolutions": [ "**/proxy-addr" ]
+    "resolutions": [
+      "**/proxy-addr"
+    ]
   },
   {
     "package": "bn.js",
@@ -51,32 +61,44 @@
   {
     "package": "pbkdf2",
     "version": "3.1.7",
-    "resolutions": [ "**/pbkdf2" ]
+    "resolutions": [
+      "**/pbkdf2"
+    ]
   },
   {
     "package": "shell-quote",
     "version": "1.11.0",
-    "resolutions": [ "**/shell-quote" ]
+    "resolutions": [
+      "**/shell-quote"
+    ]
   },
   {
     "package": "on-headers",
     "version": "1.1.0",
-    "resolutions": [ "on-headers" ]
+    "resolutions": [
+      "on-headers"
+    ]
   },
   {
     "package": "jws",
     "version": "3.2.3",
-    "resolutions": [ "jsonwebtoken/jws" ]
+    "resolutions": [
+      "jsonwebtoken/jws"
+    ]
   },
   {
     "package": "jws",
     "version": "4.0.1",
-    "resolutions": [ "@googleapis/**/jws" ]
+    "resolutions": [
+      "@googleapis/**/jws"
+    ]
   },
   {
     "package": "diff",
     "version": "4.0.4",
-    "resolutions": [ "ts-node/diff" ]
+    "resolutions": [
+      "ts-node/diff"
+    ]
   },
   {
     "package": "winston",
@@ -96,7 +118,9 @@
   {
     "package": "js-yaml",
     "version": "4.3.2",
-    "resolutions": [ "saml2-js/xmlbuilder2/js-yaml" ]
+    "resolutions": [
+      "saml2-js/xmlbuilder2/js-yaml"
+    ]
   },
   {
     "package": "js-yaml",
@@ -105,17 +129,24 @@
   {
     "package": "js-yaml",
     "version": "4.3.2",
-    "resolutions": [ "**/js-yaml" ]
+    "resolutions": [
+      "**/js-yaml"
+    ]
   },
   {
     "package": "follow-redirects",
     "version": "1.16.0",
-    "resolutions": [ "follow-redirects" ]
+    "resolutions": [
+      "follow-redirects"
+    ]
   },
   {
     "package": "morgan",
     "version": "1.12.1",
-    "resolutions": [ "morgan", "**/morgan" ]
+    "resolutions": [
+      "morgan",
+      "**/morgan"
+    ]
   },
   {
     "package": "ws",
@@ -129,12 +160,16 @@
   {
     "package": "tar",
     "version": "7.5.21",
-    "resolutions": [ "tar" ]
+    "resolutions": [
+      "tar"
+    ]
   },
   {
     "package": "tmp",
     "version": "0.2.7",
-    "resolutions": [ "tmp" ]
+    "resolutions": [
+      "tmp"
+    ]
   },
   {
     "package": "tmp",
@@ -143,42 +178,58 @@
   {
     "package": "tmp",
     "version": "0.2.7",
-    "resolutions": [ "**/tmp" ]
+    "resolutions": [
+      "**/tmp"
+    ]
   },
   {
     "package": "form-data",
     "version": "3.0.5",
-    "resolutions": [ "@types/node-fetch/form-data" ]
+    "resolutions": [
+      "@types/node-fetch/form-data"
+    ]
   },
   {
     "package": "form-data",
     "version": "4.0.6",
-    "resolutions": [ "axios/form-data" ]
+    "resolutions": [
+      "axios/form-data"
+    ]
   },
   {
     "package": "typeorm",
     "version": "0.3.31",
-    "resolutions": [ "typeorm" ]
+    "resolutions": [
+      "typeorm"
+    ]
   },
   {
     "package": "body-parser",
     "version": "1.20.6",
-    "resolutions": [ "**/body-parser" ]
+    "resolutions": [
+      "**/body-parser"
+    ]
   },
   {
     "package": "fast-uri",
     "version": "3.1.8",
-    "resolutions": [ "**/fast-uri" ]
+    "resolutions": [
+      "**/fast-uri"
+    ]
   },
   {
     "package": "undici",
     "version": "6.28.1",
-    "resolutions": [ "**/undici" ]
+    "resolutions": [
+      "**/undici"
+    ]
   },
   {
     "package": "ip-address",
     "version": "10.7.1",
-    "resolutions": [ "**/ip-address" ]
+    "resolutions": [
+      "**/ip-address"
+    ]
   },
   {
     "package": "axios",
@@ -203,6 +254,30 @@
   {
     "package": "moment",
     "version": "2.31.0",
-    "resolutions": [ "**/moment" ]
+    "resolutions": [
+      "**/moment"
+    ]
+  },
+  {
+    "package": "handlebars",
+    "version": "4.7.10"
+  },
+  {
+    "package": "handlebars",
+    "version": "4.7.10",
+    "resolutions": [
+      "**/handlebars"
+    ]
+  },
+  {
+    "package": "image-size",
+    "version": "2.0.3"
+  },
+  {
+    "package": "image-size",
+    "version": "2.0.3",
+    "resolutions": [
+      "**/image-size"
+    ]
   }
 ]
