@@ -20,7 +20,7 @@ vars:
   HELM_VERSION: 4.1.4-2
   K8S_SIDECAR_REFERENCE: dhi/k8s-sidecar:2.14.1-debian13@sha256:460bb2ff54a20c2f094feb98a44958559788b463d7b029ec4d88c944533ce2d4
   KUBECTL_REFERENCE: dhi/kubectl:1.37.1-debian13@sha256:fd1c8d2866edb223c8f68add9b56314051dce197bd1a45b7e6ee24781b23f2a5
-  LOKI_CANARY_REFERENCE: dhi/loki-canary:3.7.8-debian13@sha256:0a0050060cf7ba2d6324485e09c7cdc9d9b46ff08252eaeaf552c56bfa53aacb
+  LOKI_CANARY_REFERENCE: dhi/loki-canary:3.7.8-debian13@sha256:50866bee17e36a1a2b71ac3e8083c48554fc451eab1043da9fcd42ab2c65be1b
   LOKI_HELM_TEST_REFERENCE: dhi/loki-helm-test:3.7.8-debian13@sha256:3ebb6f72cee1a8e5fbd93bd0f30a220ad4aa5f7064004a7c0269c4d053fb64f0
   LOKI_REFERENCE: dhi/loki:3.7.8-debian13@sha256:e30fa747d7791a6940628467140a1013e5a0656bb369e03e78096776c9839d07
   MEMCACHED_EXPORTER_REFERENCE: dhi/memcached-exporter:0.17.0-debian13@sha256:7e833d948e5714435f608cf61f809c8fea36d9ebf5aaa576e20bd1b18c736a1b
@@ -68,7 +68,7 @@ contents:
                 - name: loki
                   ref: dhi/loki:3.7.8-debian13@sha256:e30fa747d7791a6940628467140a1013e5a0656bb369e03e78096776c9839d07
                 - name: loki-canary
-                  ref: dhi/loki-canary:3.7.8-debian13@sha256:0a0050060cf7ba2d6324485e09c7cdc9d9b46ff08252eaeaf552c56bfa53aacb
+                  ref: dhi/loki-canary:3.7.8-debian13@sha256:50866bee17e36a1a2b71ac3e8083c48554fc451eab1043da9fcd42ab2c65be1b
                 - name: loki-helm-test
                   ref: dhi/loki-helm-test:3.7.8-debian13@sha256:3ebb6f72cee1a8e5fbd93bd0f30a220ad4aa5f7064004a7c0269c4d053fb64f0
                 - name: nginx
