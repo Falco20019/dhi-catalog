@@ -3,18 +3,18 @@
 image: dhi.io/pkg-meilisearch
 variant: runtime
 tags:
-  - 1.54.3-0
-  - 1.54.3-0-debian13
+  - 1.55.0-0
+  - 1.55.0-0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
   CARGO_VERSION: 1.97.1-0
-  COMMIT_SHA: 7ebd97e38c36882b0c78d79e433b9115b4f003b3
+  COMMIT_SHA: 420ff1362801adb58c938aec89700e8f7e32e566
   DHI_REL: "0"
-  DHI_VERSION: 1.54.3-0
+  DHI_VERSION: 1.55.0-0
   RUSTC_VERSION: 1.97.1-0
-  VERSION: 1.54.3
+  VERSION: 1.55.0
 contents:
   packages:
     - '!base-files'
@@ -22,8 +22,8 @@ contents:
     - name: meilisearch deb
       work-dir: ${source.dir}/meilisearch
       environment:
-        COMMIT_SHA: 7ebd97e38c36882b0c78d79e433b9115b4f003b3
-        VERSION: 1.54.3
+        COMMIT_SHA: 420ff1362801adb58c938aec89700e8f7e32e566
+        VERSION: 1.55.0
       caches:
         - path: /root/.cargo
       contents:
@@ -47,18 +47,18 @@ contents:
           - rustc-1.97=1.97.1-0
           - sed
         files:
-          - url: git+https://github.com/meilisearch/meilisearch.git#v1.54.3
-            checksum: 7ebd97e38c36882b0c78d79e433b9115b4f003b3
+          - url: git+https://github.com/meilisearch/meilisearch.git#v1.55.0
+            checksum: 420ff1362801adb58c938aec89700e8f7e32e566
             path: ${source.dir}/meilisearch/src
             spdx:
               name: meilisearch
-              version: 1.54.3
+              version: 1.55.0
               packages:
                 - name: meilisearch
-                  purl: pkg:cargo/meilisearch@1.54.3
+                  purl: pkg:cargo/meilisearch@1.55.0
                   license: MIT
                 - name: meilitool
-                  purl: pkg:cargo/meilitool@1.54.3
+                  purl: pkg:cargo/meilitool@1.55.0
                   license: MIT
             uid: 0
             gid: 0
@@ -88,7 +88,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 1.54.3-0
+            version: 1.55.0-0
         - uses: dpkg/build@v1
           privileged: true
           with:
