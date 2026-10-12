@@ -6,13 +6,13 @@ variant: dev
 tags:
   - 3-dev
   - 3.18-dev
-  - 3.18.0-dev
+  - 3.18.1-dev
   - 3-debian-dev
   - 3-debian13-dev
   - 3.18-debian-dev
   - 3.18-debian13-dev
-  - 3.18.0-debian-dev
-  - 3.18.0-debian13-dev
+  - 3.18.1-debian-dev
+  - 3.18.1-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,11 +20,11 @@ dates:
   release: "2020-07-27"
 vars:
   CEPH_REFERENCE: dhi/ceph:20.3.0-debian13@sha256:6cfa3edfde97c2b6ec2786b383575d61dc80a48ba604dc429cca19d7e34a5e2e
-  COMMIT_SHA: 5a9ac2a1ac95117320d8043f0f390308ed139d3f
+  COMMIT_SHA: e8688c3bf3d057daf1d7e679f3e0ed861a234c3b
   SEMVER_MAJOR_MINOR_VERSION: "3.18"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.18.0
-  VERSION: 3.18.0
+  SEMVER_VERSION: 3.18.1
+  VERSION: 3.18.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -87,15 +87,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/ceph/ceph-csi.git#v3.18.0
-            checksum: 5a9ac2a1ac95117320d8043f0f390308ed139d3f
+          - url: git+https://github.com/ceph/ceph-csi.git#v3.18.1
+            checksum: e8688c3bf3d057daf1d7e679f3e0ed861a234c3b
             path: /go/src/github.com/ceph/ceph-csi
             spdx:
               name: ceph-csi
-              version: 3.18.0
+              version: 3.18.1
               packages:
                 - name: ceph-csi
-                  purl: pkg:golang/github.com/ceph/ceph-csi@3.18.0
+                  purl: pkg:golang/github.com/ceph/ceph-csi@3.18.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -105,6 +105,7 @@ contents:
           work-dir: /go/src/github.com/ceph/ceph-csi
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - github.com/go-jose/go-jose/v4@v4.1.4
               - go.opentelemetry.io/otel@v1.44.0
               - google.golang.org/grpc@v1.83.2
@@ -125,8 +126,8 @@ contents:
           with:
             cgo_enabled: 1
             ldflags:
-              - -X github.com/ceph/ceph-csi/internal/util.GitCommit=5a9ac2a1ac95117320d8043f0f390308ed139d3f
-              - -X github.com/ceph/ceph-csi/internal/util.DriverVersion=3.18.0
+              - -X github.com/ceph/ceph-csi/internal/util.GitCommit=e8688c3bf3d057daf1d7e679f3e0ed861a234c3b
+              - -X github.com/ceph/ceph-csi/internal/util.DriverVersion=3.18.1
             output: ${target.dir}/usr/local/bin/cephcsi
             packages: ./cmd
             tags: reef,ceph_preview
