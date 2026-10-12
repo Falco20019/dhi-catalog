@@ -3,23 +3,23 @@
 image: dhi.io/pkg-vault-secrets-operator
 variant: runtime
 tags:
-  - 1.6.0-alpine3.24
-  - 1.6.0-r1-alpine3.24
+  - 1.6.1-alpine3.24
+  - 1.6.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-09-25"
 vars:
-  COMMIT_SHA: 92e69f61366ec3675af3cb5592f8f4ca3b86efa8
+  COMMIT_SHA: ea05808cb65d7436f081c5e115624fc49bd01340
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: vault-secrets-operator-1
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.6"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.6.0
-  VERSION: 1.6.0
+  SEMVER_VERSION: 1.6.1
+  VERSION: 1.6.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -45,15 +45,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/hashicorp/vault-secrets-operator.git#v1.6.0
-            checksum: 92e69f61366ec3675af3cb5592f8f4ca3b86efa8
+          - url: git+https://github.com/hashicorp/vault-secrets-operator.git#v1.6.1
+            checksum: ea05808cb65d7436f081c5e115624fc49bd01340
             path: /go/src/github.com/hashicorp/vault-secrets-operator
             spdx:
               name: vault-secrets-operator
-              version: 1.6.0
+              version: 1.6.1
               packages:
                 - name: vault-secrets-operator
-                  purl: pkg:golang/github.com/hashicorp/vault-secrets-operator@1.6.0
+                  purl: pkg:golang/github.com/hashicorp/vault-secrets-operator@1.6.1
                   license: BUSL-1.1
             uid: 0
             gid: 0
@@ -80,10 +80,10 @@ contents:
             cgo_enabled: 0
             fips: false
             ldflags:
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Major=$(echo 1.6.0 | cut -d. -f1)
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Minor=$(echo 1.6.0 | cut -d. -f2)
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitVersion=1.6.0
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitCommit=92e69f61366ec3675af3cb5592f8f4ca3b86efa8
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Major=$(echo 1.6.1 | cut -d. -f1)
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Minor=$(echo 1.6.1 | cut -d. -f2)
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitVersion=1.6.1
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitCommit=ea05808cb65d7436f081c5e115624fc49bd01340
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitTreeState=clean
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +%Y-%m-%dT%H:%M:%S%z)
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.GoVersion=$(go env GOVERSION)
@@ -97,10 +97,10 @@ contents:
             cgo_enabled: 0
             fips: false
             ldflags:
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Major=$(echo 1.6.0 | cut -d. -f1)
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Minor=$(echo 1.6.0 | cut -d. -f2)
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitVersion=1.6.0
-              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitCommit=92e69f61366ec3675af3cb5592f8f4ca3b86efa8
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Major=$(echo 1.6.1 | cut -d. -f1)
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.Minor=$(echo 1.6.1 | cut -d. -f2)
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitVersion=1.6.1
+              - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitCommit=ea05808cb65d7436f081c5e115624fc49bd01340
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.GitTreeState=clean
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.BuildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +%Y-%m-%dT%H:%M:%S%z)
               - -X github.com/hashicorp/vault-secrets-operator/internal/version.GoVersion=$(go env GOVERSION)
@@ -124,7 +124,7 @@ contents:
             cp -a "${target.dir}/usr/share/doc/vault-secrets-operator/LICENSE.txt" "${target.dir}/usr/share/doc/vault-secrets-operator-dev/LICENSE.txt"
         - uses: dhi/build-pkg:0
           with:
-            commit: 92e69f61366ec3675af3cb5592f8f4ca3b86efa8
+            commit: ea05808cb65d7436f081c5e115624fc49bd01340
             description: Vault Secrets Operator
             files:
               - usr/bin/vault-secrets-operator
@@ -132,7 +132,7 @@ contents:
               - usr/share/doc/vault-secrets-operator/LICENSE.txt
             license: BUSL-1.1
             name: vault-secrets-operator-1
-            rel: 1
+            rel: 0
             subpackages:
               - description: Vault Secrets Operator debug build
                 files:
@@ -144,7 +144,7 @@ contents:
                     source: usr/share/doc/vault-secrets-operator-dev/LICENSE.txt
                 name: vault-secrets-operator-1-dev
             url: https://github.com/hashicorp/vault-secrets-operator
-            version: 1.6.0
+            version: 1.6.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
