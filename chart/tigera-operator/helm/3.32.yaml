@@ -12,9 +12,9 @@ vars:
   CALICO_CSI_REFERENCE: dhi/calico-csi:3.32.2-debian13@sha256:1c204df025fa396c5621b9b8890b66e2740970236b161b6e47f6975e28ac6a3e
   CALICO_CTL_REFERENCE: dhi/calico-ctl:3.32.2-debian13@sha256:8a5254317d5467edcc25cc0f33c61c90855f2eb942f4da34dddb1b2dc2cda6d8
   CALICO_GOLDMANE_REFERENCE: dhi/calico-goldmane:3.32.2-debian13@sha256:d086e58b48e6f463502271bce1cc2ce1dae9c57b62ed2972166882045cee8ca5
-  CALICO_KUBE_CONTROLLERS_REFERENCE: dhi/calico-kube-controllers:3.32.2-debian13@sha256:b4e18308f8754a0dd38ed6401a1942429ce84e841b88ab8af4daef94bdb2f67a
+  CALICO_KUBE_CONTROLLERS_REFERENCE: dhi/calico-kube-controllers:3.32.2-debian13@sha256:8cd90f2adc3eee21a447c230597ec361cfb9ead2c8562a3be8b7de082cd54164
   CALICO_NODE_DRIVER_REGISTRAR_REFERENCE: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:daf856bbb8d705e0a2653f949d1c11eb48909ee88ee6ed281b9b0f8a8c26cbfb
-  CALICO_NODE_REFERENCE: dhi/calico-node:3.32.2-debian13@sha256:438e0429db69eb9a58df66dbfdde17798b6d53d9eff13972c709c867e501cdd6
+  CALICO_NODE_REFERENCE: dhi/calico-node:3.32.2-debian13@sha256:07bfa5d0f4bb47e60e6bdab0106872236fd2fcb144fe4de5a743e905a0c0d471
   CALICO_POD2DAEMON_FLEXVOL_REFERENCE: dhi/calico-pod2daemon-flexvol:3.32.2-debian13@sha256:5df643f73b5cfe115fe597c583effe1e31337d71cc4d9d74a5bb3231d1899440
   CALICO_TYPHA_REFERENCE: dhi/calico-typha:3.32.2-debian13@sha256:9f3c0364685112aace95b38482f0bf78c6edc7a855e22f19d7056c5ca1e3baa6
   CALICO_WEBHOOKS_REFERENCE: dhi/calico-webhooks:3.32.2-debian13@sha256:f45738bf2707838c098a1602f073c8d7054b601b44a4694f21c19b74aacdac5e
@@ -77,9 +77,9 @@ contents:
                 - name: calico-goldmane
                   ref: dhi/calico-goldmane:3.32.2-debian13@sha256:d086e58b48e6f463502271bce1cc2ce1dae9c57b62ed2972166882045cee8ca5
                 - name: calico-kube-controllers
-                  ref: dhi/calico-kube-controllers:3.32.2-debian13@sha256:b4e18308f8754a0dd38ed6401a1942429ce84e841b88ab8af4daef94bdb2f67a
+                  ref: dhi/calico-kube-controllers:3.32.2-debian13@sha256:8cd90f2adc3eee21a447c230597ec361cfb9ead2c8562a3be8b7de082cd54164
                 - name: calico-node
-                  ref: dhi/calico-node:3.32.2-debian13@sha256:438e0429db69eb9a58df66dbfdde17798b6d53d9eff13972c709c867e501cdd6
+                  ref: dhi/calico-node:3.32.2-debian13@sha256:07bfa5d0f4bb47e60e6bdab0106872236fd2fcb144fe4de5a743e905a0c0d471
                 - name: calico-node-driver-registrar
                   ref: dhi/calico-node-driver-registrar:3.32.2-debian13@sha256:daf856bbb8d705e0a2653f949d1c11eb48909ee88ee6ed281b9b0f8a8c26cbfb
                 - name: calico-pod2daemon-flexvol
