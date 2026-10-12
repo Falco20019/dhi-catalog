@@ -3,15 +3,15 @@
 image: dhi.io/pkg-gitlab-rails
 variant: runtime
 tags:
-  - 19.4.1-alpine3.24
-  - 19.4.1-r3-alpine3.24
+  - 19.4.2-alpine3.24
+  - 19.4.2-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-09-22"
 vars:
-  COMMIT_SHA: 191678a37648bc14466c2bed346ed60eee7ddec6
+  COMMIT_SHA: ecff27ae76032d42095793aa7639d3e73ae6f0de
   COREPACK_VERSION: 0.36.0-r0
   DEVFILE_COMMIT_SHA: 30640cb427fa7850cb9cd8c13d3f3fa1fc5734a1
   DEVFILE_OUT: /srv/gitlab/vendor/bundle/ruby/3.3.0/gems/devfile-0.5.4-${MACHINE_ARCH}-linux/out
@@ -25,13 +25,13 @@ vars:
   PACKAGE_NAME: gitlab-rails-19
   PYTHON_MAJOR_MINOR_VERSION: "3.12"
   PYTHON_VERSION: 3.12.15-r1
-  REL: "3"
+  REL: "0"
   RUBY_MAJOR_MINOR_VERSION: "3.3"
   RUBY_VERSION: 3.3.12-r3
   SEMVER_MAJOR_MINOR_VERSION: "19.4"
   SEMVER_MAJOR_VERSION: "19"
-  SEMVER_VERSION: 19.4.1
-  VERSION: 19.4.1
+  SEMVER_VERSION: 19.4.2
+  VERSION: 19.4.2
   YARN_VERSION: 1.22.22_git20260611-r1
 contents:
   repositories:
@@ -105,15 +105,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://gitlab.com/gitlab-org/gitlab-foss.git#v19.4.1
-            checksum: 191678a37648bc14466c2bed346ed60eee7ddec6
+          - url: git+https://gitlab.com/gitlab-org/gitlab-foss.git#v19.4.2
+            checksum: ecff27ae76032d42095793aa7639d3e73ae6f0de
             path: /srv/gitlab
             spdx:
               name: gitlab-ce
-              version: 19.4.1
+              version: 19.4.2
               packages:
                 - name: gitlab-ce
-                  purl: pkg:gitlab/gitlab-org/gitlab-foss@v19.4.1
+                  purl: pkg:gitlab/gitlab-org/gitlab-foss@v19.4.2
                   license: MIT AND CC-BY-SA-4.0
             uid: 0
             gid: 0
@@ -410,9 +410,9 @@ contents:
               - apk
             license: MIT AND CC-BY-SA-4.0
             name: gitlab-rails-19
-            rel: 3
+            rel: 0
             url: https://gitlab.com/gitlab-org/gitlab-foss
-            version: 19.4.1
+            version: 19.4.2
       paths:
         - type: file
           path: ${source.dir}/patch/gem-constraints-19.patch
