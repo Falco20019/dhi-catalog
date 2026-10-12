@@ -14,18 +14,18 @@ vars:
   CHART_COMMIT_SHA: e0dc92bd6dac33d7ba3b5eace82a0448bbb13aac
   CHART_HELM_NAME: cilium-chart
   CILIUM_CERTGEN_REFERENCE: dhi/cilium-certgen:0.4.11-debian13@sha256:430a5306748d7b11b9c44352f97207910365f450f758d22ae49c7549e032e2ca
-  CILIUM_CLUSTERMESH_APISERVER_REFERENCE: dhi/cilium-clustermesh-apiserver:1.20.2-debian13@sha256:540598224cefcb5a8068c2cf359add8820527bfe5fb87f41708b49242ba9dc23
-  CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.20.2-debian13@sha256:f4839c1c11ad4510fa1f51eddc13bf89ea232517862c8a1d2580b2384149e87a
-  CILIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:7afa7f3eb64f6ab17492297065fd746ac4b1325de551994d4e435738a0cde518
-  CILIUM_OPERATOR_REFERENCE: dhi/cilium-operator:1.20.2-debian13@sha256:f4178ff7b7e7b492981d58ade28e211b46f6272b6f8cc4b7b202fe6d665e4771
-  CILIUM_REFERENCE: dhi/cilium:1.20.2-debian13@sha256:cbcfc3bcd7cb1aa566a15a456968e03f266ea96155c1ffcb259fcbd17a3f8449
+  CILIUM_CLUSTERMESH_APISERVER_REFERENCE: dhi/cilium-clustermesh-apiserver:1.20.2-debian13@sha256:fe353501027a594c43b97e42710f762c4fe07798551d2e92087cfc507045c95a
+  CILIUM_DNSPROXY_REFERENCE: dhi/cilium-dnsproxy:1.20.2-debian13@sha256:7c4eb80b4436559f20b17c20dd3a478051af079404a474c1697bcf13b1fa789c
+  CILIUM_ENVOY_REFERENCE: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:93925c1ee6bd07a5cc938dc125e77e0e01443683a63d0e3071c1ccdd3463c3b6
+  CILIUM_OPERATOR_REFERENCE: dhi/cilium-operator:1.20.2-debian13@sha256:67493fb343b63ccdb9aac5c8cb7370ade88a958c4e18c1acffe308e2a934db70
+  CILIUM_REFERENCE: dhi/cilium:1.20.2-debian13@sha256:5daf2b6edb9234df93d093227dadf8ddc19f4fb7b92edcaa7f9d703018b947d7
   CILIUM_STARTUP_SCRIPT_REFERENCE: dhi/cilium-startup-script:0.20261002-debian13@sha256:317246a33f742f709cc3580730c6278353b2b3b915cbeddf0f8c900f50f8f0df
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  HUBBLE_RELAY_REFERENCE: dhi/hubble-relay:1.20.2-debian13@sha256:6bd2074e81f6ca2f6c4904336ded468a74c0d4a4d6dfb9c750c62f0341fb99bd
+  HUBBLE_RELAY_REFERENCE: dhi/hubble-relay:1.20.2-debian13@sha256:81da41c4c5d04b5143fb291d2ea0a2e301c53cd535fe7da43a5e4f6e22b97aec
   HUBBLE_UI_BACKEND_REFERENCE: dhi/hubble-ui-backend:0.13.6-debian13@sha256:fab01595e5e6b78025b8e40c18e7c672656a5fb844b2e50e31b0ebd4c10a0e77
   HUBBLE_UI_REFERENCE: dhi/hubble-ui:0.13.6-debian13@sha256:ee060a92b95e554ee78d889674427bf9b2dad804fe9ae4c13bfffb7850d45571
   SEMVER_MAJOR_MINOR_VERSION: "1.20"
@@ -65,25 +65,25 @@ contents:
               description: Docker Hardened Images Helm chart for Cilium
               images:
                 - name: cilium
-                  ref: dhi/cilium:1.20.2-debian13@sha256:cbcfc3bcd7cb1aa566a15a456968e03f266ea96155c1ffcb259fcbd17a3f8449
+                  ref: dhi/cilium:1.20.2-debian13@sha256:5daf2b6edb9234df93d093227dadf8ddc19f4fb7b92edcaa7f9d703018b947d7
                 - name: cilium-operator
-                  ref: dhi/cilium-operator:1.20.2-debian13@sha256:f4178ff7b7e7b492981d58ade28e211b46f6272b6f8cc4b7b202fe6d665e4771
+                  ref: dhi/cilium-operator:1.20.2-debian13@sha256:67493fb343b63ccdb9aac5c8cb7370ade88a958c4e18c1acffe308e2a934db70
                 - name: hubble-relay
-                  ref: dhi/hubble-relay:1.20.2-debian13@sha256:6bd2074e81f6ca2f6c4904336ded468a74c0d4a4d6dfb9c750c62f0341fb99bd
+                  ref: dhi/hubble-relay:1.20.2-debian13@sha256:81da41c4c5d04b5143fb291d2ea0a2e301c53cd535fe7da43a5e4f6e22b97aec
                 - name: hubble-ui
                   ref: dhi/hubble-ui:0.13.6-debian13@sha256:ee060a92b95e554ee78d889674427bf9b2dad804fe9ae4c13bfffb7850d45571
                 - name: hubble-ui-backend
                   ref: dhi/hubble-ui-backend:0.13.6-debian13@sha256:fab01595e5e6b78025b8e40c18e7c672656a5fb844b2e50e31b0ebd4c10a0e77
                 - name: cilium-envoy
-                  ref: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:7afa7f3eb64f6ab17492297065fd746ac4b1325de551994d4e435738a0cde518
+                  ref: dhi/cilium-envoy:1.20.2-debian13-compat@sha256:93925c1ee6bd07a5cc938dc125e77e0e01443683a63d0e3071c1ccdd3463c3b6
                 - name: cilium-certgen
                   ref: dhi/cilium-certgen:0.4.11-debian13@sha256:430a5306748d7b11b9c44352f97207910365f450f758d22ae49c7549e032e2ca
                 - name: cilium-clustermesh-apiserver
-                  ref: dhi/cilium-clustermesh-apiserver:1.20.2-debian13@sha256:540598224cefcb5a8068c2cf359add8820527bfe5fb87f41708b49242ba9dc23
+                  ref: dhi/cilium-clustermesh-apiserver:1.20.2-debian13@sha256:fe353501027a594c43b97e42710f762c4fe07798551d2e92087cfc507045c95a
                 - name: cilium-startup-script
                   ref: dhi/cilium-startup-script:0.20261002-debian13@sha256:317246a33f742f709cc3580730c6278353b2b3b915cbeddf0f8c900f50f8f0df
                 - name: cilium-dnsproxy
-                  ref: dhi/cilium-dnsproxy:1.20.2-debian13@sha256:f4839c1c11ad4510fa1f51eddc13bf89ea232517862c8a1d2580b2384149e87a
+                  ref: dhi/cilium-dnsproxy:1.20.2-debian13@sha256:7c4eb80b4436559f20b17c20dd3a478051af079404a474c1697bcf13b1fa789c
                 - name: ztunnel
                   ref: dhi/ztunnel:1.31.1-debian13@sha256:7beedc39ebdc9e9cd4338848e39a7c4ce0894442073de18abc0b7eb374f68f35
                 - name: spire-agent
