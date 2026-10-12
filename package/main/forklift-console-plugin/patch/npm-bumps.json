@@ -48,5 +48,20 @@
     "overridePath": [
       "dompurify"
     ]
+  },
+  {
+    "package": "uuid",
+    "version": "11.1.1",
+    "overridePath": [
+      "uuid"
+    ]
+  },
+  {
+    "package": "uuid",
+    "version": "11.1.1",
+    "overridePath": [
+      "@openshift-console/dynamic-plugin-sdk",
+      "uuid"
+    ]
   }
 ]
