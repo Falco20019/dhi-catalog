@@ -8,7 +8,7 @@ tags:
 platforms:
   - linux/amd64
 vars:
-  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:e41d50f868aafa374456e5a5f3503ff8ed944b96ef77ff37217e536a9fc12609
+  AIRFLOW_REFERENCE: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:9ab824158e92e0a309f06f974322f3a6ade720da690850d2bc894ff308f6c152
   APPVERSION: 3.3.2
   APPVERSION_MATCH: 3.3.2
   CHART_COMMIT_SHA: aa19d2dbb9ed187ec01957a92848d9b005e9ba9d
@@ -65,7 +65,7 @@ contents:
               description: Docker Hardened Images Helm chart for Apache Airflow
               images:
                 - name: airflow
-                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:e41d50f868aafa374456e5a5f3503ff8ed944b96ef77ff37217e536a9fc12609
+                  ref: dhi/airflow:3.3.2-python3.13-debian13-compat@sha256:9ab824158e92e0a309f06f974322f3a6ade720da690850d2bc894ff308f6c152
                 - name: prometheus-statsd-exporter
                   ref: dhi/prometheus-statsd-exporter:0.31.0-debian13@sha256:0b043cbc8d73244103caa068f05b17d7b4b3f31184d31badca9453f52340e2ab
                 - name: pgbouncer
