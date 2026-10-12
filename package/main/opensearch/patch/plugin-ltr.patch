@@ -1,5 +1,5 @@
 Subject: Disable Spotless for the LTR plugin build
-Upstream source: https://github.com/opensearch-project/opensearch-learning-to-rank-base/blob/3.6.0/build.gradle
+Upstream source: https://github.com/opensearch-project/opensearch-learning-to-rank-base/blob/3.9.0.0/build.gradle
 DHI context: https://github.com/docker-hardened-images/definitions-external/tree/main/image/opensearch
 Description: The DHI build patches plugin dependencies for CVE remediation.
   Disable Spotless formatting enforcement so patched generated dependency
@@ -7,16 +7,7 @@ Description: The DHI build patches plugin dependencies for CVE remediation.
 
 --- a/build.gradle
 +++ b/build.gradle
-@@ -34,7 +34,7 @@ plugins {
-   id 'idea'
-   id 'maven-publish'
-   id 'jacoco'
--  id 'com.diffplug.spotless' version '6.25.0' apply false
-+  id 'com.diffplug.spotless' version '6.25.0' apply false // disabled for DHI build
- }
- 
- group = 'org.opensearch'
-@@ -45,7 +45,7 @@ apply plugin: 'opensearch.java-rest-test'
+@@ -50,7 +50,7 @@ apply plugin: 'opensearch.java-rest-test'
  apply plugin: 'opensearch.rest-resources'
  apply plugin: 'opensearch.pluginzip'
  apply plugin: 'opensearch.java-agent'
@@ -25,7 +16,7 @@ Description: The DHI build patches plugin dependencies for CVE remediation.
  
  idea {
      module {
-@@ -211,7 +211,7 @@ testClusters.register("integTest") {
+@@ -222,7 +222,7 @@ testClusters.register("integTest") {
  
  tasks.named("check").configure {
    dependsOn(integTest)
@@ -34,30 +25,21 @@ Description: The DHI build patches plugin dependencies for CVE remediation.
  }
  
  integTest {
-@@ -264,16 +264,16 @@ thirdPartyAudit {
+@@ -275,7 +275,7 @@ integTest {
    ignoreViolations('org.conscrypt.Platform')
  }
  
 -plugins.withId('com.diffplug.spotless') {
--  // Configure Spotless only if/when the plugin is applied (e.g., by parent project)
--  spotless {
--    java {
--      removeUnusedImports()
--      importOrder 'java', 'javax', 'org', 'com'
--      eclipse().configFile rootProject.file('.eclipseformat.xml')
--    }
--  }
++/* plugins.withId('com.diffplug.spotless') {
+   // Configure Spotless only if/when the plugin is applied (e.g., by parent project)
+   // Only wire the Eclipse JDT step when a spotless task is actually being run, so non-spotless
+   // Gradle invocations (test, assemble) don't provision the formatter at configuration time.
+@@ -294,7 +294,7 @@ plugins.withId('com.diffplug.spotless') {
+       }
+     }
+   }
 -}
-+// plugins.withId('com.diffplug.spotless') {
-+//   // Configure Spotless only if/when the plugin is applied (e.g., by parent project)
-+//   spotless {
-+//     java {
-+//       removeUnusedImports()
-+//       importOrder 'java', 'javax', 'org', 'com'
-+//       eclipse().configFile rootProject.file('.eclipseformat.xml')
-+//     }
-+//   }
-+// }
++} */ // disabled for DHI build
  
  tasks.named("run").configure {
      // Configure RunTask with the registered integTest cluster

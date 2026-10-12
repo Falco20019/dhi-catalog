@@ -59,7 +59,7 @@ allprojects {
             force "org.apache.httpcomponents.core5:httpcore5:5.4.3"
             force "org.apache.httpcomponents.core5:httpcore5-h2:5.4.3"
             force "org.apache.httpcomponents.core5:httpcore5-reactive:5.4.3"
-            force "org.apache.httpcomponents.client5:httpclient5:5.6.3"
+            force "org.apache.httpcomponents.client5:httpclient5:5.6.4"
 
             eachDependency { details ->
             def grp = details.requested.group
@@ -91,11 +91,11 @@ allprojects {
                 details.because("CVE remediation: pin httpcore5")
             }
 
-            // httpclient5 5.6.x -> 5.6.3 (CVE-2026-40542, CVE-2026-64607)
+            // httpclient5 5.6.x -> 5.6.4 (CVE-2026-40542, CVE-2026-64607)
             if (grp == "org.apache.httpcomponents.client5"
                     && (ver == "5.6" || ver == "5.6.0" || ver == "5.6.1"
-                        || ver == "5.6.2")) {
-                details.useVersion("5.6.3")
+                        || ver == "5.6.2" || ver == "5.6.3")) {
+                details.useVersion("5.6.4")
                 details.because("CVE remediation: pin httpclient5")
             }
 
