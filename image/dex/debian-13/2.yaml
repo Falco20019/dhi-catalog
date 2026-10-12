@@ -5,28 +5,28 @@ image: dhi.io/dex
 variant: runtime
 tags:
   - "2"
-  - "2.45"
-  - 2.45.1
+  - "2.46"
+  - 2.46.0
   - 2-debian
   - 2-debian13
-  - 2.45-debian
-  - 2.45-debian13
-  - 2.45.1-debian
-  - 2.45.1-debian13
+  - 2.46-debian
+  - 2.46-debian13
+  - 2.46.0-debian
+  - 2.46.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 11d2eeb52b42e1980e14cb91e69dd9e3faab2076
-  DEBIAN_VERSION: 2.45.1-14
+  COMMIT_SHA: 05a275057112ba93e17db21f600b756f000f1c21
+  DEBIAN_VERSION: 2.46.0-0
   FLAVORED_SUFFIX: ""
   GOMPLATE_COMMIT_SHA: 117c916d306b2239081656622f00b802c82c16a0
   GOMPLATE_VERSION: 5.2.0
-  SEMVER_MAJOR_MINOR_VERSION: "2.45"
+  SEMVER_MAJOR_MINOR_VERSION: "2.46"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.45.1
+  SEMVER_VERSION: 2.46.0
   SUFFIX: ""
-  VERSION: 2.45.1
+  VERSION: 2.46.0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -37,13 +37,13 @@ contents:
     - '!libgcc-s1'
     - base-files
     - ca-certificates-bundle
-    - dex-docker-entrypoint=2.45.1-14
-    - dex=2.45.1-14
+    - dex-docker-entrypoint=2.46.0-0
+    - dex=2.46.0-0
     - libc6
     - libsqlite3-0
     - tzdata
   files:
-    - url: https://raw.githubusercontent.com/dexidp/dex/11d2eeb52b42e1980e14cb91e69dd9e3faab2076/config.docker.yaml
+    - url: https://raw.githubusercontent.com/dexidp/dex/05a275057112ba93e17db21f600b756f000f1c21/config.docker.yaml
       path: /etc/dex/config.docker.yaml
       uid: 65532
       gid: 65532
@@ -110,15 +110,15 @@ contents:
           - bash
           - coreutils
         files:
-          - url: git+https://github.com/dexidp/dex.git#v2.45.1
-            checksum: 11d2eeb52b42e1980e14cb91e69dd9e3faab2076
+          - url: git+https://github.com/dexidp/dex.git#v2.46.0
+            checksum: 05a275057112ba93e17db21f600b756f000f1c21
             path: /go/src/github.com/dexidp/dex
             spdx:
               name: dex-web
-              version: 2.45.1
+              version: 2.46.0
               packages:
                 - name: dex
-                  purl: pkg:golang/github.com/dexidp/dex@2.45.1
+                  purl: pkg:golang/github.com/dexidp/dex@2.46.0
                   license: Apache-2.0
             uid: 0
             gid: 0
