@@ -4,15 +4,15 @@ image: dhi.io/pkg-kargo
 variant: runtime
 tags:
   - 1.11-alpine3.24
-  - 1.11.7-alpine3.24
-  - 1.11.7-r2-alpine3.24
+  - 1.11.8-alpine3.24
+  - 1.11.8-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-07-24"
 vars:
-  COMMIT_SHA: f183c21d5c215204c9622225475b5c5d7b6db0b7
+  COMMIT_SHA: 3fb04e79b57711c3649c03c1580d3c746cd1a490
   GOLANG_VERSION: 1.27.2-r0
   HELM_COMMIT_SHA: 144ca65f8501953fa8b41cd1d37c7223051c85b7
   HELM_SPDX_VERSION: 3.22.0
@@ -26,12 +26,12 @@ vars:
   NPM_VERSION: 12.2.0-r0
   PACKAGE_NAME: kargo-1.11
   PNPM_VERSION: 9.0.3
-  REL: "2"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.11"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.11.7
+  SEMVER_VERSION: 1.11.8
   SHIP_GRPC_HEALTH_PROBE: "false"
-  VERSION: 1.11.7
+  VERSION: 1.11.8
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -61,15 +61,15 @@ contents:
           - nodejs-26=26.11.1-r0
           - npm-12=12.2.0-r0
         files:
-          - url: git+https://github.com/akuity/kargo.git#v1.11.7
-            checksum: f183c21d5c215204c9622225475b5c5d7b6db0b7
+          - url: git+https://github.com/akuity/kargo.git#v1.11.8
+            checksum: 3fb04e79b57711c3649c03c1580d3c746cd1a490
             path: /go/src/github.com/akuity/kargo
             spdx:
               name: kargo
-              version: 1.11.7
+              version: 1.11.8
               packages:
                 - name: kargo
-                  purl: pkg:golang/github.com/akuity/kargo@1.11.7
+                  purl: pkg:golang/github.com/akuity/kargo@1.11.8
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -114,7 +114,7 @@ contents:
             set -eux -o pipefail
 
             pnpm install --frozen-lockfile
-            NODE_ENV=production VERSION=v1.11.7 pnpm run build
+            NODE_ENV=production VERSION=v1.11.8 pnpm run build
             test -f build/index.html
             rm -rf /go/src/github.com/akuity/kargo/pkg/server/ui
             mkdir -p /go/src/github.com/akuity/kargo/pkg/server/ui
@@ -151,9 +151,9 @@ contents:
             fips: false
             ldflags:
               - -w
-              - -X github.com/akuity/kargo/pkg/x/version.version=v1.11.7
+              - -X github.com/akuity/kargo/pkg/x/version.version=v1.11.8
               - -X github.com/akuity/kargo/pkg/x/version.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/akuity/kargo/pkg/x/version.gitCommit=f183c21d5c215204c9622225475b5c5d7b6db0b7
+              - -X github.com/akuity/kargo/pkg/x/version.gitCommit=3fb04e79b57711c3649c03c1580d3c746cd1a490
               - -X github.com/akuity/kargo/pkg/x/version.gitTreeState=clean
             output: ${target.dir}/usr/bin/kargo
             packages: ./cmd/controlplane
@@ -165,9 +165,9 @@ contents:
             cgo_enabled: 0
             fips: false
             ldflags:
-              - -X github.com/akuity/kargo/pkg/x/version.version=v1.11.7
+              - -X github.com/akuity/kargo/pkg/x/version.version=v1.11.8
               - -X github.com/akuity/kargo/pkg/x/version.buildDate=$(date -ud @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/akuity/kargo/pkg/x/version.gitCommit=f183c21d5c215204c9622225475b5c5d7b6db0b7
+              - -X github.com/akuity/kargo/pkg/x/version.gitCommit=3fb04e79b57711c3649c03c1580d3c746cd1a490
               - -X github.com/akuity/kargo/pkg/x/version.gitTreeState=clean
             output: ${target.dir}/usr/bin/kargo-dev
             packages: ./cmd/controlplane
@@ -230,14 +230,14 @@ contents:
               - usr/bin/helm
             license: Apache-2.0
             name: kargo-1.11
-            rel: 2
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/kargo
                     source: usr/bin/kargo-dev
                 name: kargo-1.11-dev
             url: https://github.com/akuity/kargo
-            version: 1.11.7
+            version: 1.11.8
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
