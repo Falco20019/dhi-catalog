@@ -25,7 +25,7 @@ vars:
   ANSIBLE_OPERATOR_VERSION: 1.42.3-8
   ANSIBLE_RUNNER_VERSION: 2.4.3
   CLOUD_COMMON_COLLECTION_VERSION: 2.1.1
-  COMMIT_SHA: 0319b2876fb4c62a73ad540100c5580e78772fc8
+  COMMIT_SHA: 6939c3813668932229048be13305846dafd9ff3d
   FLAVORED_SUFFIX: -dev
   KUBERNETES_CLIENT_VERSION: 33.1.0
   KUBERNETES_CORE_COLLECTION_VERSION: 2.4.2
@@ -239,7 +239,7 @@ contents:
           - grep
         files:
           - url: git+https://github.com/kubev2v/forklift.git#v2.12.10
-            checksum: 0319b2876fb4c62a73ad540100c5580e78772fc8
+            checksum: 6939c3813668932229048be13305846dafd9ff3d
             path: ${source.dir}/forklift
             spdx:
               name: forklift-operator
