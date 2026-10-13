@@ -22,7 +22,7 @@ vars:
   COMMIT_SHA: e062f251c715f893a9483ddc4045001cee7daf04
   HELM_MAPKUBEAPIS_COMMIT_SHA: afa30453b58395ad8215cfe2c1a1edff50428baa
   HELM_MAPKUBEAPIS_VERSION: 0.6.1
-  HELM_REFERENCE: dhi/helm:4.3.0-debian13@sha256:89280010dd58d1ead7a28dbd34822812d3fb413b2d92d20dfa009fc76873b080
+  HELM_REFERENCE: dhi/helm:4.3.0-debian13@sha256:16a861cd8e5a67ae3a6055c5006e296258bef06afce197252ae3de3d1197ef5c
   HELM_SET_STATUS_COMMIT_SHA: aa683c2b38a34bbd7261c5cd59e8d7c02e9d5c6e
   HELM_SET_STATUS_VERSION: 0.4.0
   HELM_VERSION: 4.3.0
@@ -243,7 +243,7 @@ contents:
           uid: 0
           gid: 0
   artifacts:
-    - name: dhi.io/helm:4.3.0-debian13@sha256:89280010dd58d1ead7a28dbd34822812d3fb413b2d92d20dfa009fc76873b080
+    - name: dhi.io/helm:4.3.0-debian13@sha256:16a861cd8e5a67ae3a6055c5006e296258bef06afce197252ae3de3d1197ef5c
       includes:
         - opt/**
         - usr/**
