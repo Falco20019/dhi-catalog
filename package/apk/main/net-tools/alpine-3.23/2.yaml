@@ -4,14 +4,15 @@ image: dhi.io/pkg-net-tools
 variant: runtime
 tags:
   - 2.10-alpine3.23
-  - 2.10-r3-alpine3.23
+  - 2.10-r4-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
+  _REL: "3"
   COMMIT_SHA: c1a31f720869cac0ede5ac8329abe8ffc6b2b1ca
   PACKAGE_NAME: main/net-tools
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "2.10"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: "2.10"
@@ -43,7 +44,29 @@ contents:
             gid: 0
       pipeline:
         - uses: abuild/setup@v1
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2025-46836-get-name-overflow.patch
+        - uses: abuild/source@v1
+          with:
+            source: dhi-cve-2025-46836-get-name-regression.patch
+        - uses: abuild/bump@v1
+          with:
+            rel: 4
         - uses: abuild/build@v1
+      paths:
+        - type: file
+          path: ${source.dir}/aports/main/net-tools/dhi-cve-2025-46836-get-name-overflow.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/net-tools/patch/dhi-cve-2025-46836-get-name-overflow.patch
+        - type: file
+          path: ${source.dir}/aports/main/net-tools/dhi-cve-2025-46836-get-name-regression.patch
+          uid: 0
+          gid: 0
+          mode: "644"
+          source: package/apk/main/net-tools/patch/dhi-cve-2025-46836-get-name-regression.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
