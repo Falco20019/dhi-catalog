@@ -56,8 +56,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
-              - golang.org/x/text@v0.41.0
-              - golang.org/x/net@v0.56.0
+              - golang.org/x/net@v0.60.0
         - uses: go/hermetic@v1
         - name: test
           runs: |
