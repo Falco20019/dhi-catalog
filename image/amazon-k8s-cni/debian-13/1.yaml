@@ -20,6 +20,7 @@ dates:
   release: "2026-02-24"
 vars:
   COMMIT_SHA: 7bb32b54d7c56f3ee3c5a63bddf97c4af49ea8ec
+  GOLANG_VERSION: 1.26.9-0
   IPTABLES_WRAPPER_COMMIT_SHA: 56100f72197699b5ea2f32376692a1f12482088e
   SEMVER_MAJOR_MINOR_VERSION: "1.23"
   SEMVER_MAJOR_VERSION: "1"
@@ -45,7 +46,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.26=1.26.9-0
           - findutils
           - mawk
           - sed
@@ -97,7 +98,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.26=1.26.9-0
           - findutils
           - mawk
           - sed
