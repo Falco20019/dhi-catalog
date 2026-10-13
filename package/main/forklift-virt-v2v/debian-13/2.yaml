@@ -13,7 +13,7 @@ platforms:
 dates:
   release: "2026-08-24"
 vars:
-  COMMIT_SHA: 0319b2876fb4c62a73ad540100c5580e78772fc8
+  COMMIT_SHA: 6939c3813668932229048be13305846dafd9ff3d
   GOLANG_VERSION: 1.26.9-0
   REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
@@ -46,7 +46,7 @@ contents:
           - pkgconf
         files:
           - url: git+https://github.com/kubev2v/forklift.git#v2.12.10
-            checksum: 0319b2876fb4c62a73ad540100c5580e78772fc8
+            checksum: 6939c3813668932229048be13305846dafd9ff3d
             path: /go/src/github.com/kubev2v/forklift
             spdx:
               name: forklift
