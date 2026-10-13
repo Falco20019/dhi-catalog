@@ -4,7 +4,7 @@ image: dhi.io/pkg-amazon-eks-pod-identity-webhook
 variant: runtime
 tags:
   - 0.6.17-alpine3.24
-  - 0.6.17-r6-alpine3.24
+  - 0.6.17-r7-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: c1be3015c7e629cce846f14d63e77a0ac56ea3bc
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: amazon-eks-pod-identity-webhook
-  REL: "6"
+  REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "0.6"
   SEMVER_MAJOR_VERSION: "0"
   SEMVER_VERSION: 0.6.17
@@ -90,7 +90,7 @@ contents:
               - usr/bin/amazon-eks-pod-identity-webhook
             license: Apache-2.0
             name: amazon-eks-pod-identity-webhook
-            rel: 6
+            rel: 7
             subpackages:
               - files:
                   - path: usr/bin/amazon-eks-pod-identity-webhook
