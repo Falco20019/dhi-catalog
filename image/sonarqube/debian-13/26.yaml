@@ -5,24 +5,24 @@ image: dhi.io/sonarqube
 variant: runtime
 tags:
   - "26"
-  - "26.9"
-  - 26.9.0
+  - "26.10"
+  - 26.10.0
   - 26-debian
   - 26-debian13
-  - 26.9-debian
-  - 26.9-debian13
-  - 26.9.0-debian
-  - 26.9.0-debian13
+  - 26.10-debian
+  - 26.10-debian13
+  - 26.10.0-debian
+  - 26.10.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 55af4e8b2e82479da5933328048a0734e520b171
-  ELASTICSEARCH_AMD64_SHA512: d53f8d3efeb830b73704873d082b940158deb9387937ed817eea89d2bf542ece24dae877548e4b48b0e134d5123704f04c86be23dcd9cb732a2489868a8dd0c5
-  ELASTICSEARCH_ARM64_SHA512: c41f4d33c7ce8fdd0754017755d05a9ba4d6326b4099525f1939cdc12a5c5e7afd1879ee45d56a90c665bdb877da4b553fda13796a60030e214ae1bd2da6fbaa
+  COMMIT_SHA: 55989c640a19aac3cb1c190f97464e59773035c5
+  ELASTICSEARCH_AMD64_SHA512: e846908391081231a1a2ae4d1350dada9b7cc5cc1a3f5a6bb394ee6a83b94f07dc04d99919167f806db0a3b29b682d76dbb858b5bd6598af98abee97e291d3e3
+  ELASTICSEARCH_ARM64_SHA512: 8b7b38b4b8d4049844d550024e58389c8953dfcbc46f6d2edc0def7a5883820b15bf8d73188ba88e4e74e34afbbee6b01bad00836b8da1ed9df0ceaefb556d80
   ELASTICSEARCH_LINUX_ARCH: '#{ target.arch == "arm64" ? "aarch64" : "x86_64" }'
-  ELASTICSEARCH_LINUX_SHA512: '#{ target.arch == "arm64" ? "c41f4d33c7ce8fdd0754017755d05a9ba4d6326b4099525f1939cdc12a5c5e7afd1879ee45d56a90c665bdb877da4b553fda13796a60030e214ae1bd2da6fbaa" : "d53f8d3efeb830b73704873d082b940158deb9387937ed817eea89d2bf542ece24dae877548e4b48b0e134d5123704f04c86be23dcd9cb732a2489868a8dd0c5" }'
-  ELASTICSEARCH_VERSION: 9.4.3
+  ELASTICSEARCH_LINUX_SHA512: '#{ target.arch == "arm64" ? "8b7b38b4b8d4049844d550024e58389c8953dfcbc46f6d2edc0def7a5883820b15bf8d73188ba88e4e74e34afbbee6b01bad00836b8da1ed9df0ceaefb556d80" : "e846908391081231a1a2ae4d1350dada9b7cc5cc1a3f5a6bb394ee6a83b94f07dc04d99919167f806db0a3b29b682d76dbb858b5bd6598af98abee97e291d3e3" }'
+  ELASTICSEARCH_VERSION: 9.4.7
   HTTPCLIENT5_VERSION: 5.6.3
   HTTPCORE5_VERSION: 5.4.3
   JACKSON_CORE_2_VERSION: 2.21.4
@@ -38,15 +38,15 @@ vars:
   MAVEN_VERSION: 3.10.0
   NETTY_VERSION: 4.1.137.Final
   REACTOR_NETTY_VERSION: 1.2.8
-  SEMVER_MAJOR_MINOR_VERSION: "26.9"
+  SEMVER_MAJOR_MINOR_VERSION: "26.10"
   SEMVER_MAJOR_VERSION: "26"
-  SEMVER_VERSION: 26.9.0
-  SONARQUBE_DIST_SHA256: b7306f5ecfa6806753bc0eb0dc4ea11fe0ddd2c5a346592718814d6ec35b88cb
+  SEMVER_VERSION: 26.10.0
+  SONARQUBE_DIST_SHA256: a23716457a73e44fff57c51d8999d97e59f4deee24cefb333918fe6c1ddb62c1
   SONARQUBE_DOCKER_SHA: 8f5ff7b0395d201cbc09dd95f8463eb11c8abc61
   SONARQUBE_DOCKER_VERSION: 26.9.0.129388
   SONARQUBE_HOME: /opt/sonarqube
   SSHD_VERSION: 2.12.0
-  VERSION: 26.9.0.129388
+  VERSION: 26.10.0.133078
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -83,15 +83,15 @@ contents:
           - findutils
           - sed
         files:
-          - url: git+https://github.com/SonarSource/sonarqube.git#26.9.0.129388
-            checksum: 55af4e8b2e82479da5933328048a0734e520b171
+          - url: git+https://github.com/SonarSource/sonarqube.git#26.10.0.133078
+            checksum: 55989c640a19aac3cb1c190f97464e59773035c5
             path: ${source.dir}/sonarqube
             spdx:
               name: sonarqube
-              version: 26.9.0.129388
+              version: 26.10.0.133078
               packages:
                 - name: sonarqube
-                  purl: pkg:dhi/sonarqube@26.9.0.129388
+                  purl: pkg:dhi/sonarqube@26.10.0.133078
                   license: LGPL-3.0-only
             uid: 0
             gid: 0
@@ -238,9 +238,9 @@ contents:
             path: ${source.dir}/patch/deps/log4j-api-2.26.1.jar
             uid: 0
             gid: 0
-          - url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.9.0.129388.zip
-            checksum: sha256:b7306f5ecfa6806753bc0eb0dc4ea11fe0ddd2c5a346592718814d6ec35b88cb
-            path: ${source.dir}/sonarqube-26.9.0.129388.zip
+          - url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.10.0.133078.zip
+            checksum: sha256:a23716457a73e44fff57c51d8999d97e59f4deee24cefb333918fe6c1ddb62c1
+            path: ${source.dir}/sonarqube-26.10.0.133078.zip
             uid: 0
             gid: 0
         artifacts:
@@ -256,8 +256,8 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            unzip -q "${source.dir}/sonarqube-26.9.0.129388.zip" -d "${target.dir}"
-            mv "${target.dir}/sonarqube-26.9.0.129388" "${target.dir}/sonarqube"
+            unzip -q "${source.dir}/sonarqube-26.10.0.133078.zip" -d "${target.dir}"
+            mv "${target.dir}/sonarqube-26.10.0.133078" "${target.dir}/sonarqube"
         - name: patch vulnerable JARs
           runs: |
             set -eux -o pipefail
@@ -908,7 +908,7 @@ environment:
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
-  SONAR_VERSION: 26.9.0.129388
+  SONAR_VERSION: 26.10.0.133078
   SONARQUBE_HOME: /opt/sonarqube
   SQ_DATA_DIR: /opt/sonarqube/data
   SQ_EXTENSIONS_DIR: /opt/sonarqube/extensions
@@ -954,7 +954,7 @@ paths:
     path: /opt/sonarqube/lib/sonarqube.jar
     uid: 0
     gid: 0
-    source: /opt/sonarqube/lib/sonar-application-26.9.0.129388.jar
+    source: /opt/sonarqube/lib/sonar-application-26.10.0.133078.jar
   - type: directory
     path: /opt/java
     uid: 0
