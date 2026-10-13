@@ -19,6 +19,7 @@ platforms:
 dates:
   release: "2026-01-20"
 vars:
+  EFS_UTILS_SUFFIX: ""
   FLAVORED_SUFFIX: -dev
   PACKAGE_NAME: aws-efs-csi-driver-2
   SEMVER_MAJOR_MINOR_VERSION: "2.3"
@@ -35,6 +36,7 @@ contents:
     - '!gawk'
     - '!libelogind0'
     - '!original-awk'
+    - amazon-efs-utils-3
     - apt
     - aws-efs-csi-driver-2-dev=2.3.1-7
     - base-files
@@ -42,6 +44,8 @@ contents:
     - ca-certificates
     - ca-certificates-bundle
     - coreutils
+    - dash
+    - debianutils
     - diffutils
     - dpkg
     - findutils
@@ -50,7 +54,9 @@ contents:
     - mawk
     - mount
     - nfs-common
+    - openssl
     - perl-base
+    - python-3.13
     - sed
     - stunnel4
     - tzdata
@@ -80,6 +86,21 @@ os-release:
   bug-report-url: https://docker.com/support/
 environment:
   DEBIAN_FRONTEND: noninteractive
+paths:
+  - type: delete
+    path: /etc/amazon/efs
+    uid: 0
+    gid: 0
+  - type: symlink
+    path: /etc/amazon/efs-static-files
+    uid: 0
+    gid: 0
+    source: /usr/share/amazon-efs-utils
+  - type: symlink
+    path: /usr/bin/which
+    uid: 0
+    gid: 0
+    source: /usr/bin/which.debianutils
 annotations:
   org.opencontainers.image.description: A minimal AWS EFS CSI Driver image
   org.opencontainers.image.licenses: Apache-2.0

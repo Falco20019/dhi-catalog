@@ -226,8 +226,8 @@ spec:
 
 ### Using the FIPS variant
 
-The `2-fips` tag provides a FIPS 140-validated build of the AWS EFS CSI Driver. Use this variant in environments that
-require FIPS-compliant cryptographic operations, such as US federal government workloads.
+The `2-fips` tag provides a FIPS build of the AWS EFS CSI Driver. Use this variant in environments that require
+FIPS-compliant cryptographic operations, such as US federal government workloads.
 
 Deploy the FIPS variant with Helm:
 
@@ -244,41 +244,40 @@ The `--set useFIPS=true` Helm parameter instructs the driver to use FIPS endpoin
 (`AWS_USE_FIPS_ENDPOINT=true`). FIPS endpoints are only available in US and Canada AWS regions. Do not set
 `useFIPS=true` in regions without FIPS endpoint support, as this will cause invalid endpoint errors.
 
+The FIPS variant also sets `FIPS_ENABLED=true`, so the driver writes `fips_mode_enabled = true` into
+`/etc/amazon/efs/efs-utils.conf` at startup. The EFS mount helper then runs the TLS tunnel of `tls` mounts in FIPS mode
+and sends its own AWS API calls, such as the mount target IP lookup, to FIPS endpoints. In regions without FIPS endpoint
+support, add `FIPS_ENABLED=false` to `node.env` in the Helm values to turn this off.
+
+Each cryptographic path in the FIPS variant runs through one of three modules:
+
+| Component                                                                                                    | Cryptographic module                         |
+| :----------------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| `aws-efs-csi-driver`, for its AWS API calls                                                                  | Go Cryptographic Module                      |
+| EFS mount helper AWS API calls (botocore), the `openssl` CLI that issues each TLS mount's client certificate | OpenSSL FIPS Provider                        |
+| `stunnel`, the TLS tunnel of mounts that use the `stunnel` mount option                                      | OpenSSL FIPS Provider                        |
+| `efs-proxy`, the default TLS tunnel of `tls` mounts                                                          | AWS-LC FIPS 4.2.0, compiled into `efs-proxy` |
+
+The image's FIPS attestation covers the Go Cryptographic Module and the OpenSSL FIPS Provider. AWS-LC FIPS 4.2.0 in
+`efs-proxy` is the AWS-LC-FIPS v4.0 module, which is under NIST review on the Modules In Process list and has no
+validation certificate yet. Check the
+[AWS-LC FIPS validation list](https://github.com/aws/aws-lc/blob/main/crypto/fipsmodule/FIPS.md) for its current status.
+
 ## Non-hardened images vs. Docker Hardened Images
 
 The following table summarizes the key differences between the upstream
 `public.ecr.aws/efs-csi-driver/amazon/aws-efs-csi-driver` image and this Docker Hardened Image.
 
-| Feature                | Upstream image                     | Docker Hardened Image        |
-| :--------------------- | :--------------------------------- | :--------------------------- |
-| Base OS                | Amazon Linux 2023 (minimal)        | Debian 13 (static base)      |
-| Run user               | root (uid 0)                       | nonroot (uid 65532)          |
-| `amazon-efs-utils`     | Included (Amazon Linux RPM)        | Not included                 |
-| Python / botocore      | Included (for cross-account mount) | Not included                 |
-| `stunnel`              | Included                           | Included (`stunnel4`)        |
-| `mount` / `mount.nfs4` | Included                           | Included                     |
-| EFS config directory   | `/etc/amazon/efs-static-files`     | Not present                  |
-| FIPS variant           | Via `useFIPS=true` Helm flag       | Dedicated `2-fips` image tag |
-
-### amazon-efs-utils not included
-
-The upstream image bundles `amazon-efs-utils`, an Amazon Linux-specific package that provides the `mount.efs` helper
-script. This helper orchestrates TLS encryption in transit by managing stunnel connections and EFS-specific
-configuration files under `/etc/amazon/efs/`.
-
-The DHI image is built on Debian 13 and `amazon-efs-utils` is not available in Debian package repositories. The DHI
-image includes `stunnel4`, `mount`, and `mount.nfs4` (from `nfs-common`) directly, which are the underlying tools that
-`amazon-efs-utils` depends on.
-
-**Impact**: EFS mounts that rely on the `mount.efs` helper for TLS encryption in transit will not work with the DHI
-image. Standard NFS4 mounts (without TLS) are fully supported. If your workload requires encryption in transit via the
-EFS mount helper, use the upstream Amazon Linux-based image for the node plugin component.
-
-### Cross-account EFS mounts not supported
-
-The upstream image includes Python 3.11 and the `botocore` library, which `amazon-efs-utils` uses to support
-cross-account EFS mounts. Since neither `amazon-efs-utils` nor Python is included in the DHI image, cross-account EFS
-mounts are not supported.
+| Feature                | Upstream image                     | Docker Hardened Image          |
+| :--------------------- | :--------------------------------- | :----------------------------- |
+| Base OS                | Amazon Linux 2023 (minimal)        | Debian 13 (static base)        |
+| Run user               | root (uid 0)                       | nonroot (uid 65532)            |
+| `amazon-efs-utils`     | Included (Amazon Linux RPM)        | Included (built from source)   |
+| Python / botocore      | Included (for cross-account mount) | Included (Python 3.13)         |
+| `stunnel`              | Included                           | Included (`stunnel4`)          |
+| `mount` / `mount.nfs4` | Included                           | Included                       |
+| EFS config directory   | `/etc/amazon/efs-static-files`     | `/etc/amazon/efs-static-files` |
+| FIPS variant           | Via `useFIPS=true` Helm flag       | Dedicated `2-fips` image tag   |
 
 ### Run user and Kubernetes security context
 
@@ -401,6 +400,10 @@ the host. For example, `docker run -p 80:8080 my-image` will work because the po
 By default, image variants intended for runtime don't contain a shell. Use `dev` images in build stages to run shell
 commands and then copy any necessary artifacts into the runtime stage. In addition, use Docker Debug to debug containers
 with no shell.
+
+**aws-efs-csi-driver is an exception:** the runtime image includes `/bin/sh` (`dash`) and `coreutils`, because the EFS
+mount helper runs `stat`, `df`, `cat` and `sleep`, locates `efs-proxy` with `which`, and tunes NFS read-ahead through a
+shell.
 
 ### Entry point
 

@@ -19,6 +19,7 @@ platforms:
 dates:
   release: "2026-01-20"
 vars:
+  EFS_UTILS_SUFFIX: ""
   FLAVORED_SUFFIX: ""
   PACKAGE_NAME: aws-efs-csi-driver-2
   SEMVER_MAJOR_MINOR_VERSION: "2.3"
@@ -32,14 +33,22 @@ contents:
   keyring:
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
+    - amazon-efs-utils-3
     - aws-efs-csi-driver-2=2.3.1-7
     - base-files
     - ca-certificates-bundle
+    - coreutils
+    - dash
+    - debianutils
     - mount
     - nfs-common
+    - openssl
+    - python-3.13
     - stunnel4
     - tzdata
+    - util-linux
 accounts:
+  root: true
   run-as: nonroot
   users:
     - name: nonroot
@@ -58,6 +67,21 @@ os-release:
   pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
+paths:
+  - type: delete
+    path: /etc/amazon/efs
+    uid: 0
+    gid: 0
+  - type: symlink
+    path: /etc/amazon/efs-static-files
+    uid: 0
+    gid: 0
+    source: /usr/share/amazon-efs-utils
+  - type: symlink
+    path: /usr/bin/which
+    uid: 0
+    gid: 0
+    source: /usr/bin/which.debianutils
 annotations:
   org.opencontainers.image.description: A minimal AWS EFS CSI Driver image
   org.opencontainers.image.licenses: Apache-2.0

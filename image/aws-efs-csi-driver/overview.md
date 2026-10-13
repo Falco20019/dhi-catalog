@@ -7,9 +7,9 @@ storage. It supports both dynamic provisioning (creating EFS access points on de
 existing EFS file systems), making it straightforward to share persistent, scalable NFS-based storage across pods and
 nodes in a Kubernetes cluster.
 
-This Docker Hardened Image provides the `aws-efs-csi-driver` binary built from source on Debian 13, with runtime tools
-for NFS4 mounting (`mount`, `nfs-common`) and encryption in transit (`stunnel4`). A FIPS-compliant variant is also
-available for regulated environments.
+This Docker Hardened Image provides the `aws-efs-csi-driver` binary built from source on Debian 13, with the Amazon EFS
+mount helper (`amazon-efs-utils`), which mounts file systems with encryption in transit through `efs-proxy`, and the NFS
+client tools (`mount`, `nfs-common`). A FIPS-compliant variant is also available for regulated environments.
 
 *Everything below here is boilerplate and should be included verbatim!!!!! Be sure to remove this comment and keep
 everything below this comment exactly as is.*
