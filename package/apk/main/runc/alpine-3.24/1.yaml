@@ -4,7 +4,7 @@ image: dhi.io/pkg-runc
 variant: runtime
 tags:
   - 1.5.2-alpine3.24
-  - 1.5.2-r2-alpine3.24
+  - 1.5.2-r3-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
@@ -13,7 +13,7 @@ vars:
   COMMIT_SHA: b1aa0a865d5dc1208bde10a15a40f720a924d8aa
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: community/runc
-  REL: "2"
+  REL: "3"
   SEMVER_MAJOR_MINOR_VERSION: "1.5"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.5.2
@@ -58,7 +58,7 @@ contents:
         - uses: abuild/setup@v1
         - uses: abuild/bump@v1
           with:
-            rel: 2
+            rel: 3
         - name: patch go dependencies
           runs: |
             set -eux -o pipefail
@@ -68,10 +68,7 @@ contents:
             # and chmod it here (this runs as root, before abuild drops privs).
             install -d -m 0777 "$(go env GOPATH)/pkg/sumdb/sum.golang.org"
 
-            # Inject prepare() to bump golang.org/x/net for:
-            # - CVE-2026-33814 (HIGH, fixed in 0.53.0)
-            # - CVE-2025-58190 (MEDIUM, fixed in 0.45.0)
-            # - CVE-2025-47911 (MEDIUM, fixed in 0.45.0)
+            # Inject prepare() to bump vendored Go modules for open CVEs.
             # $builddir below is an abuild-runtime variable; written literally to APKBUILD.
             # shellcheck disable=SC2154
             cat >> APKBUILD << 'EOF'
@@ -79,7 +76,9 @@ contents:
             prepare() {
                 default_prepare
                 cd "$builddir"
-                go get golang.org/x/net@v0.53.0
+                go get golang.org/x/net@v0.60.0
+                go get github.com/moby/sys/user@v0.4.1
+                go get github.com/cilium/ebpf@v0.22.0
                 go mod tidy
                 go mod vendor
             }
