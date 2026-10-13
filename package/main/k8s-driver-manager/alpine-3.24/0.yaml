@@ -61,7 +61,8 @@ contents:
         - name: update go dependencies
           uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
         - uses: go/hermetic@v1
         - name: test
           runs: |
