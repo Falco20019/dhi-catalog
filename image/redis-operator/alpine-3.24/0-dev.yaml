@@ -4,10 +4,10 @@ name: Redis Operator 0.x (dev)
 image: dhi.io/redis-operator
 variant: dev
 tags:
-  - 0.26-alpine-dev
-  - 0.26.0-alpine-dev
-  - 0.26-alpine3.24-dev
-  - 0.26.0-alpine3.24-dev
+  - 0.27-alpine-dev
+  - 0.27.0-alpine-dev
+  - 0.27-alpine3.24-dev
+  - 0.27.0-alpine3.24-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -15,11 +15,11 @@ dates:
   release: "2021-02-06"
 vars:
   FLAVORED_SUFFIX: -dev
-  SEMVER_MAJOR_MINOR_VERSION: "0.26"
+  SEMVER_MAJOR_MINOR_VERSION: "0.27"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.26.0
+  SEMVER_VERSION: 0.27.0
   SUFFIX: -dev
-  VERSION: 0.26.0-r0
+  VERSION: 0.27.0-r0
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -36,7 +36,7 @@ contents:
     - ca-certificates-bundle
     - coreutils
     - findutils
-    - redis-operator-0-dev=0.26.0-r0
+    - redis-operator-0-dev=0.27.0-r0
     - tzdata
 accounts:
   root: true
