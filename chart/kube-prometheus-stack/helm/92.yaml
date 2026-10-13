@@ -4,19 +4,19 @@ name: Kube Prometheus Stack Helm chart 92.x
 image: dhi.io/kube-prometheus-stack-chart
 variant: helm
 tags:
-  - 92.3.0
+  - 92.3.1
 platforms:
   - linux/amd64
 vars:
   ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-debian13@sha256:b3620c618e4622e1037675820c89a34ef3091fbd2e31552daaae1408a6fa1ee7
-  CHART_COMMIT_SHA: 6e96d8396763c5fafa1c701cf9aed2e5dde27fd6
+  CHART_COMMIT_SHA: c2cb9a0cca70d8a984d898605d0d445cf149ac65
   CHART_HELM_NAME: kube-prometheus-stack-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:2cdaaada6bb2021796896f0da3c0237f593d31f8127c5eba49227e387dae8e48
+  GRAFANA_CHART_REFERENCE: dhi/grafana-chart:12.11.2@sha256:5f8289d9c552f80d13d59884a8dca7303364b7830c941db7fff5df78ceaf1d09
   HELM_VERSION: 4.1.4-2
   KUBE_STATE_METRICS_CHART_REFERENCE: dhi/kube-state-metrics-chart:8.6.0@sha256:1efb453b84c827ae251b081bba1bb3b3be933e384b973e7a919d5feb9f109a4c
   KUBE_WEBHOOK_CERTGEN_REFERENCE: dhi/kube-webhook-certgen:1.8.9-debian13@sha256:5a042275ecac4369a7499ed99fb4b35fdc23f8e9e430714121b38f32b72ecf24
@@ -28,9 +28,9 @@ vars:
   PROMETHEUS_REFERENCE: dhi/prometheus:3.15.0-debian13@sha256:fc689c29d99e5834f3ce1b2e3d02a668516bfe0ab7456d4cccf9d5db1b2368b9
   SEMVER_MAJOR_MINOR_VERSION: "92.3"
   SEMVER_MAJOR_VERSION: "92"
-  SEMVER_VERSION: 92.3.0
+  SEMVER_VERSION: 92.3.1
   THANOS_REFERENCE: dhi/thanos:0.42.4-debian13@sha256:962d50f37c9a47dd1fd0808149f020d1e03244d55d3f0e4138040d38fcdf50ae
-  VERSION: 92.3.0
+  VERSION: 92.3.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -46,8 +46,8 @@ contents:
           - yq-go
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#kube-prometheus-stack-92.3.0
-            checksum: 6e96d8396763c5fafa1c701cf9aed2e5dde27fd6
+          - url: git+https://github.com/prometheus-community/helm-charts.git#kube-prometheus-stack-92.3.1
+            checksum: c2cb9a0cca70d8a984d898605d0d445cf149ac65
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
@@ -73,7 +73,7 @@ contents:
                 - alias: grafana
                   condition: grafana.enabled
                   name: grafana
-                  ref: dhi/grafana-chart:12.11.2@sha256:2cdaaada6bb2021796896f0da3c0237f593d31f8127c5eba49227e387dae8e48
+                  ref: dhi/grafana-chart:12.11.2@sha256:5f8289d9c552f80d13d59884a8dca7303364b7830c941db7fff5df78ceaf1d09
               description: Docker Hardened Images Helm chart for Kube Prometheus Stack
               images:
                 - name: busybox
