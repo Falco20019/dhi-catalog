@@ -195,61 +195,109 @@ paths:
     uid: 0
     gid: 0
     source: /usr/local/bin/virt-chroot
+  - type: delete
+    path: /usr/sbin/iptables
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/iptables
     uid: 0
     gid: 0
     source: /usr/sbin/iptables-nft
+  - type: delete
+    path: /usr/sbin/iptables-restore
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/iptables-restore
     uid: 0
     gid: 0
     source: /usr/sbin/iptables-nft-restore
+  - type: delete
+    path: /usr/sbin/iptables-save
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/iptables-save
     uid: 0
     gid: 0
     source: /usr/sbin/iptables-nft-save
+  - type: delete
+    path: /usr/sbin/ip6tables
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ip6tables
     uid: 0
     gid: 0
     source: /usr/sbin/ip6tables-nft
+  - type: delete
+    path: /usr/sbin/ip6tables-restore
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ip6tables-restore
     uid: 0
     gid: 0
     source: /usr/sbin/ip6tables-nft-restore
+  - type: delete
+    path: /usr/sbin/ip6tables-save
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ip6tables-save
     uid: 0
     gid: 0
     source: /usr/sbin/ip6tables-nft-save
+  - type: delete
+    path: /usr/sbin/arptables
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/arptables
     uid: 0
     gid: 0
     source: /usr/sbin/arptables-nft
+  - type: delete
+    path: /usr/sbin/arptables-restore
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/arptables-restore
     uid: 0
     gid: 0
     source: /usr/sbin/arptables-nft-restore
+  - type: delete
+    path: /usr/sbin/arptables-save
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/arptables-save
     uid: 0
     gid: 0
     source: /usr/sbin/arptables-nft-save
+  - type: delete
+    path: /usr/sbin/ebtables
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ebtables
     uid: 0
     gid: 0
     source: /usr/sbin/ebtables-nft
+  - type: delete
+    path: /usr/sbin/ebtables-restore
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ebtables-restore
     uid: 0
     gid: 0
     source: /usr/sbin/ebtables-nft-restore
+  - type: delete
+    path: /usr/sbin/ebtables-save
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/ebtables-save
     uid: 0
