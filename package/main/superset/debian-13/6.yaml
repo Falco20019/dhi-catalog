@@ -4,9 +4,9 @@ image: dhi.io/pkg-superset
 variant: runtime
 tags:
   - 6.1.0
-  - 6.1.0-r19
+  - 6.1.0-r20
   - 6.1.0-debian13
-  - 6.1.0-r19-debian13
+  - 6.1.0-r20-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -19,7 +19,7 @@ vars:
   PYTHON_MAJOR_MINOR_VERSION: "3.11"
   PYTHON_MINOR: "3.11"
   PYTHON_VERSION: 3.11.17-0
-  REL: "19"
+  REL: "20"
   SEMVER_MAJOR_MINOR_VERSION: "6.1"
   SEMVER_MAJOR_VERSION: "6"
   SEMVER_VERSION: 6.1.0
@@ -217,7 +217,8 @@ contents:
             fi
 
             uv pip install --upgrade 'msgpack>=1.2.1'
-            uv pip install --upgrade 'pyarrow>=17.0.0'
+            uv pip install --upgrade 'pyarrow>=17.0.0,<26' # PyArrow 26 requires NumPy 2; Superset 6.1 pins NumPy 1.26.
+            uv pip install --upgrade 'geopy>=2.5.0,<3'     # CVE-2026-77387
             uv pip install --upgrade 'urllib3>=2.6.3'
             uv pip install --upgrade 'pillow>=12.2.0'
             uv pip install --upgrade 'pyasn1>=0.6.3'
@@ -247,9 +248,22 @@ contents:
             rm -f "${source.dir}/superset/superset/translations"/*/*/*.po
             rm -f "${source.dir}/superset/superset/translations"/*/*/*.json
 
-            python -m compileall -q "${source.dir}/superset/superset" "${root}/.venv/lib"
-
             sed -i '1s|.*|#!/bin/sh|' "${source.dir}/superset/docker/entrypoints/run-server.sh"
+        - name: patch pip vendored urllib3
+          uses: patch@v1
+          work-dir: ${target.dir}/usr/lib/superset/.venv/lib/python3.11/site-packages
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/urllib3-patches/dhi-cve-2026-97687-https-proxy-tls-policy.patch
+              - ${source.dir}/urllib3-patches/dhi-cve-2026-97688-deflate-infinite-loop.patch
+              - ${source.dir}/urllib3-patches/dhi-cve-2026-97689-chunk-line-limit.patch
+        - name: compile patched Python environment
+          runs: |
+            set -eux -o pipefail
+
+            root="${target.dir}/usr/lib/superset"
+            "${root}/.venv/bin/python" -m compileall -q "${source.dir}/superset/superset" "${root}/.venv/lib"
         - name: stage superset payload
           runs: |
             set -eux -o pipefail
@@ -298,7 +312,7 @@ contents:
               - deb
             license: Apache-2.0
             name: superset
-            rel: 19
+            rel: 20
             url: https://superset.apache.org/
             version: 6.1.0
       paths:
@@ -307,6 +321,12 @@ contents:
           uid: 0
           gid: 0
           source: package/main/superset/patch/npm-bumps.json
+        - type: directory
+          path: ${source.dir}/urllib3-patches
+          uid: 0
+          gid: 0
+          source: package/main/superset/patch/urllib3
+          recursive: true
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
