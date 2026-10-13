@@ -4,9 +4,9 @@ image: dhi.io/pkg-notion-mcp
 variant: runtime
 tags:
   - 2.5.2
-  - 2.5.2-r3
+  - 2.5.2-r4
   - 2.5.2-debian13
-  - 2.5.2-r3-debian13
+  - 2.5.2-r4-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ dates:
   release: "2025-12-24"
 vars:
   COMMIT_SHA: 730ae781ba28beeaf0865025a3f2ed4c25ea2387
-  REL: "3"
+  REL: "4"
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
   SEMVER_VERSION: 2.5.2
@@ -89,6 +89,12 @@ contents:
             cp -a bin/cli.mjs "${target.dir}/usr/lib/notion-mcp/bin/cli.mjs"
             cp -a scripts/notion-openapi.json "${target.dir}/usr/lib/notion-mcp/scripts/notion-openapi.json"
             cp -a node_modules "${target.dir}/usr/lib/notion-mcp/node_modules"
+        - name: node_modules sbom
+          uses: sbom@v1
+          with:
+            extra-scanners: javascript-package-cataloger
+            prefix: notion-mcp
+            source: ${source.dir}/notion-mcp/node_modules
         - uses: dhi/build-pkg:0
           with:
             description: Notion MCP server (Model Context Protocol server for Notion API)
@@ -98,7 +104,7 @@ contents:
               - deb
             license: MIT
             name: notion-mcp
-            rel: 3
+            rel: 4
             url: https://github.com/makenotion/notion-mcp-server
             version: 2.5.2
       paths:
