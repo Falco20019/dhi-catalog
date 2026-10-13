@@ -59,26 +59,16 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            # GHSA-4w2j-m93h-cj5j → quinn-proto ≥0.11.15
-            cargo update --package quinn-proto --precise 0.11.15
+            # quinn-proto: upstream Cargo.lock at 0.13.0 already pins 0.11.18 (removed prior --precise 0.11.15 pin that caused GHSA findings)
 
             # RUSTSEC-2026-0186 → memmap2 ≥0.9.11
             cargo update --package memmap2 --precise 0.9.11
-
-            # RUSTSEC-2026-0190 → anyhow ≥1.0.103
-            cargo update --package anyhow --precise 1.0.103
-
-            # RUSTSEC-2026-0204 → crossbeam-epoch ≥0.9.20
-            cargo update --package crossbeam-epoch --precise 0.9.20
 
             # RUSTSEC-2026-0221 → event-listener ≥5.4.2
             cargo update --package event-listener --precise 5.4.2
 
             # GHSA-q83h-524g-xf6h → h2 ≥0.4.16
             cargo update --package h2 --precise 0.4.16
-
-            # GHSA-2mjx-qc3c-rqvc → rustls ≥0.23.45
-            cargo update --package rustls --precise 0.23.45
         - name: build
           work-dir: ${source.dir}/uv-4ecd0eff2a81e3ffdcd7cfee10d08936e4747c17
           privileged: true
