@@ -4,9 +4,9 @@ image: dhi.io/pkg-cloud-sdk-emulators
 variant: runtime
 tags:
   - 588.0.0
-  - 588.0.0-r1
+  - 588.0.0-r2
   - 588.0.0-debian13
-  - 588.0.0-r1-debian13
+  - 588.0.0-r2-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -35,7 +35,7 @@ vars:
   PUBSUB_SHA256: cecdba7a47f302de548d02fd26dd878b62d279c50eeff4c731ed24a682fbbfee
   PUBSUB_TGZ: google-cloud-sdk-pubsub-emulator-20260920154507.tar.gz
   PUBSUB_VERSION: 0.8.36
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "588.0"
   SEMVER_MAJOR_VERSION: "588"
   SEMVER_VERSION: 588.0.0
@@ -62,6 +62,8 @@ contents:
           - git
           - gzip
           - tar
+          - unzip
+          - zip
           - python3
           - golang-1.26=1.26.9-0
           - golang-1.26-oci-config=1.26.9-0
@@ -157,6 +159,42 @@ contents:
             path: ${source.dir}/components-2.json
             uid: 0
             gid: 0
+          - url: https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.21.7/jackson-core-2.21.7.jar
+            checksum: sha256:8c5623b98f32d5f7e1287ff61ed50e08ab7b11381e991fff89327faabba42261
+            path: ${source.dir}/patch/deps/jackson-core-2.21.7.jar
+            spdx:
+              name: jackson-core
+              version: 2.21.7
+              packages:
+                - name: jackson-core
+                  purl: pkg:maven/com.fasterxml.jackson.core/jackson-core@2.21.7
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
+          - url: https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.21.7/jackson-databind-2.21.7.jar
+            checksum: sha256:1290c2795e93e8a6861a6c4d9ff0d844d32f5ea178362cb2721edf5561e828b1
+            path: ${source.dir}/patch/deps/jackson-databind-2.21.7.jar
+            spdx:
+              name: jackson-databind
+              version: 2.21.7
+              packages:
+                - name: jackson-databind
+                  purl: pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.21.7
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
+          - url: https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar
+            checksum: sha256:53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b
+            path: ${source.dir}/patch/deps/jackson-annotations-2.21.jar
+            spdx:
+              name: jackson-annotations
+              version: "2.21"
+              packages:
+                - name: jackson-annotations
+                  purl: pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.21
+                  license: Apache-2.0
+            uid: 0
+            gid: 0
       pipeline:
         - name: assemble SDK tree offline (core + components, FHS /usr/lib)
           runs: |
@@ -171,6 +209,93 @@ contents:
             if [ "${target.arch}" = "amd64" ]; then
               tar -xzf ${source.dir}/comp-spanner.tar.gz -C "$SDK"
             fi
+        - name: patch pubsub emulator embedded jackson
+          runs: |
+            set -eux -o pipefail
+
+            SDK=${target.dir}/usr/lib/google-cloud-sdk
+            fatjar="${SDK}/platform/pubsub-emulator/lib/cloud-pubsub-emulator-0.8.36-all.jar"
+            test -f "${fatjar}"
+
+            PATCH=${source.dir}/patch/deps
+            echo "8c5623b98f32d5f7e1287ff61ed50e08ab7b11381e991fff89327faabba42261  ${PATCH}/jackson-core-2.21.7.jar" | sha256sum -c -
+            echo "1290c2795e93e8a6861a6c4d9ff0d844d32f5ea178362cb2721edf5561e828b1  ${PATCH}/jackson-databind-2.21.7.jar" | sha256sum -c -
+            echo "53ca085f4a150f703f49e1aabd935bd03b43e1ea3d55d135438292af22cef56b  ${PATCH}/jackson-annotations-2.21.jar" | sha256sum -c -
+
+            jackson_pom_version() {
+              unzip -p "${fatjar}" "$1" 2> /dev/null | grep '^version=' | cut -d= -f2 || true
+            }
+            jackson_xyz() {
+              printf '%s\n' "$1" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'
+            }
+            jackson_ge() {
+              printf '%s\n%s\n' "$2" "$1" | sort -C -V
+            }
+
+            core_ver="$(jackson_pom_version 'META-INF/maven/com.fasterxml.jackson.core/jackson-core/pom.properties')"
+            databind_ver="$(jackson_pom_version 'META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.properties')"
+            floor="2.21.7"
+
+            if ! jackson_xyz "${core_ver}" || ! jackson_xyz "${databind_ver}"; then
+              echo "pubsub emulator jackson version is unfamiliar (core=${core_ver} databind=${databind_ver}); refusing to replace it" >&2
+              exit 1
+            fi
+
+            core_ge=0
+            databind_ge=0
+            if jackson_ge "${core_ver}" "${floor}"; then
+              core_ge=1
+            fi
+            if jackson_ge "${databind_ver}" "${floor}"; then
+              databind_ge=1
+            fi
+
+            if [ "${core_ge}" -eq 1 ] || [ "${databind_ge}" -eq 1 ]; then
+              if [ "${core_ge}" -ne 1 ] || [ "${databind_ge}" -ne 1 ]; then
+                echo "pubsub emulator jackson versions are mixed (core=${core_ver} databind=${databind_ver}); refusing to replace a component at or above ${floor}" >&2
+                exit 1
+              fi
+              if ! unzip -l "${fatjar}" | grep -q 'com/fasterxml/jackson/annotation/JsonSerializeAs.class'; then
+                echo "pubsub emulator jackson is at or above ${floor} but jackson-annotations is missing; refusing to downgrade" >&2
+                exit 1
+              fi
+              echo "pubsub emulator jackson core ${core_ver} and databind ${databind_ver} are at or above ${floor}; leaving bundled jars in place"
+              exit 0
+            fi
+
+            tmp=$(mktemp -d)
+            zip -qd "${fatjar}" \
+              'com/fasterxml/jackson/*' \
+              'META-INF/maven/com.fasterxml.jackson.core/*' \
+              'META-INF/maven/com.fasterxml.jackson.core/*/*' \
+              'META-INF/maven/com.fasterxml.jackson.datatype/*' \
+              'META-INF/maven/com.fasterxml.jackson.datatype/*/*' \
+              'META-INF/services/com.fasterxml.jackson.databind.Module' \
+              'META-INF/versions/*/com/fasterxml/jackson/*' 2> /dev/null || true
+
+            unzip -q "${PATCH}/jackson-core-2.21.7.jar" -d "${tmp}/core" \
+              'com/fasterxml/jackson/core/*' \
+              'META-INF/versions/*/com/fasterxml/jackson/core/*'
+            unzip -q "${PATCH}/jackson-databind-2.21.7.jar" -d "${tmp}/databind" 'com/fasterxml/jackson/databind/*'
+            unzip -q "${PATCH}/jackson-annotations-2.21.jar" -d "${tmp}/annotations" \
+              'com/fasterxml/jackson/annotation/*' \
+              'META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/*'
+            (
+              cd "${tmp}/core"
+              zip -r "${fatjar}" com META-INF
+            )
+            (
+              cd "${tmp}/databind"
+              zip -r "${fatjar}" com
+            )
+            (
+              cd "${tmp}/annotations"
+              zip -r "${fatjar}" com META-INF
+            )
+
+            unzip -p "${fatjar}" com/fasterxml/jackson/core/json/PackageVersion.class | grep -aq '2\.21\.7'
+            unzip -p "${fatjar}" com/fasterxml/jackson/databind/cfg/PackageVersion.class | grep -aq '2\.21\.7'
+            test "$(unzip -l "${fatjar}" | grep -c 'com/fasterxml/jackson/annotation/')" -gt 0
         - name: update bigtable emulator go deps
           uses: go/bump@v2
           work-dir: /go/src/google-cloud-go/bigtable
@@ -264,7 +389,7 @@ contents:
               - deb
             license: Apache-2.0
             name: cloud-sdk-emulators
-            rel: 1
+            rel: 2
             url: https://cloud.google.com/sdk
             version: 588.0.0
 os-release:
