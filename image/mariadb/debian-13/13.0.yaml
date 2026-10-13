@@ -4,11 +4,8 @@ name: MariaDB Server 13.0.x
 image: dhi.io/mariadb
 variant: runtime
 tags:
-  - "13"
   - "13.0"
   - 13.0.2
-  - 13-debian
-  - 13-debian13
   - 13.0-debian
   - 13.0-debian13
   - 13.0.2-debian
