@@ -3,19 +3,19 @@
 image: dhi.io/pkg-linux-lts
 variant: runtime
 tags:
-  - 6.18.55-alpine3.24
-  - 6.18.55-r0-alpine3.24
+  - 6.18.56-alpine3.24
+  - 6.18.56-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 52fae6d7d56f3958f32e5bf9121a7536524b9ef4
+  COMMIT_SHA: efc8ddbb20c827d2bd8223c19a2625e754e5cb3c
   PACKAGE_NAME: main/linux-lts
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "6.18"
   SEMVER_MAJOR_VERSION: "6"
-  SEMVER_VERSION: 6.18.55
-  VERSION: 6.18.55
+  SEMVER_VERSION: 6.18.56
+  VERSION: 6.18.56
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/v3.24/main
@@ -51,12 +51,12 @@ contents:
           - gcc
           - bpftool
         files:
-          - url: git+https://github.com/alpinelinux/aports.git#52fae6d7d56f3958f32e5bf9121a7536524b9ef4
+          - url: git+https://github.com/alpinelinux/aports.git#efc8ddbb20c827d2bd8223c19a2625e754e5cb3c
             path: ${source.dir}/aports
             uid: 0
             gid: 0
-          - url: https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.18.55.xz
-            path: /var/cache/distfiles/patch-6.18.55.patch.xz
+          - url: https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.18.56.xz
+            path: /var/cache/distfiles/patch-6.18.56.patch.xz
             uid: 0
             gid: 0
           - url: https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.tar.xz
