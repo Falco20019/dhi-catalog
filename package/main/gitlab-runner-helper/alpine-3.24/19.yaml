@@ -9,8 +9,8 @@ platforms:
   - linux/amd64
   - linux/arm64
 dates:
-  release: "2026-07-16"
-  end-of-life: "2026-10-20"
+  release: "2026-09-17"
+  end-of-life: "2026-12-17"
 vars:
   COMMIT_SHA: 3c39fcebf73d01d464db3dee8a5267155273a6c5
   GOLANG_VERSION: 1.26.9-r0
@@ -73,6 +73,7 @@ contents:
               - github.com/moby/spdystream@v0.5.1
               - golang.org/x/crypto@v0.57.0
               - golang.org/x/mod@v0.41.0
+              - golang.org/x/net@v0.60.0
               - google.golang.org/grpc@v1.83.2
             downgrade: true
             download: true
