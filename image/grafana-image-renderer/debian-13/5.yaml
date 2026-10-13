@@ -6,24 +6,24 @@ variant: runtime
 tags:
   - "5"
   - "5.12"
-  - 5.12.6
+  - 5.12.7
   - 5-debian
   - 5-debian13
   - 5.12-debian
   - 5.12-debian13
-  - 5.12.6-debian
-  - 5.12.6-debian13
+  - 5.12.7-debian
+  - 5.12.7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-03"
 vars:
-  COMMIT_SHA: 743517c4381b425ef01015a364842b62f16e69ef
+  COMMIT_SHA: 9ae20b27e709e7d330cd2bc01fd64a827792187b
   SEMVER_MAJOR_MINOR_VERSION: "5.12"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.12.6
-  VERSION: 5.12.6
+  SEMVER_VERSION: 5.12.7
+  VERSION: 5.12.7
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -67,15 +67,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/grafana/grafana-image-renderer.git#v5.12.6
-            checksum: 743517c4381b425ef01015a364842b62f16e69ef
+          - url: git+https://github.com/grafana/grafana-image-renderer.git#v5.12.7
+            checksum: 9ae20b27e709e7d330cd2bc01fd64a827792187b
             path: /go/src/github.com/grafana/grafana-image-renderer
             spdx:
               name: grafana-image-renderer
-              version: 5.12.6
+              version: 5.12.7
               packages:
                 - name: grafana-image-renderer
-                  purl: pkg:golang/github.com/grafana/grafana-image-renderer@5.12.6
+                  purl: pkg:golang/github.com/grafana/grafana-image-renderer@5.12.7
                   license: Apache-2.0
             uid: 0
             gid: 0
