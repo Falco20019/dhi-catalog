@@ -12,7 +12,7 @@ dates:
   release: "2024-11-08"
 vars:
   COMMIT_SHA: 30890c3959610e0a4687194d22f533dc71c2a766
-  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk17-debian13-dev@sha256:f7357deb854f1eaae64f8a55faeec87b96364362eda418a37f9f5d414d4fad70
+  MAVEN_REFERENCE: dhi/maven:3.10.0-jdk17-debian13-dev@sha256:2d847f7258b55d00a5586ed78eed638344e24c29aa09d84718cbfb3fb7d272ed
   PACKAGE_NAME: janusgraph-1.0
   REL: "8"
   SEMVER_MAJOR_MINOR_VERSION: "1.0"
@@ -31,7 +31,7 @@ contents:
     - alpine-baselayout-data
   builds:
     - name: janusgraph
-      uses: dhi.io/maven:3.10.0-jdk17-debian13-dev@sha256:f7357deb854f1eaae64f8a55faeec87b96364362eda418a37f9f5d414d4fad70
+      uses: dhi.io/maven:3.10.0-jdk17-debian13-dev@sha256:2d847f7258b55d00a5586ed78eed638344e24c29aa09d84718cbfb3fb7d272ed
       work-dir: ${source.dir}/janusgraph
       environment:
         MAVEN_ARGS: --batch-mode --no-transfer-progress
