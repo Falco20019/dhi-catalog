@@ -20,7 +20,7 @@ vars:
   FLUXCD_IMAGE_REFLECTOR_CONTROLLER_REFERENCE: dhi/fluxcd-image-reflector-controller:1.2.5-debian13@sha256:d24a67c90e854c9cc3e910ff41be8661be9ac142ee47e4e3de91b6faf4ee98da
   FLUXCD_KUSTOMIZE_CONTROLLER_REFERENCE: dhi/fluxcd-kustomize-controller:1.9.6-debian13@sha256:33adcc4b69dd83d68d3010b87186fd0c1eefeb6ee0e24e4a6e86ba7c629a817a
   FLUXCD_NOTIFICATION_CONTROLLER_REFERENCE: dhi/fluxcd-notification-controller:1.9.4-debian13@sha256:a249bbbcb754e0d5fe229c4c61d17dddc2adf1c869c1d6e9a637425e85549033
-  FLUXCD_SOURCE_CONTROLLER_REFERENCE: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:8fc8252ebf4d5e1ddc27134928ae6af02e018c9f999ee2fa73d138ce5f645525
+  FLUXCD_SOURCE_CONTROLLER_REFERENCE: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:e51734397f127063d9f6208cca08ef20e8a08643b37a15d77344934de39c82df
   FLUXCD_SOURCE_WATCHER_REFERENCE: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:817f4985620b6963b8a801cc376a8bbb589609833fdb6f56175864d1ba537aba
   HELM_VERSION: 4.1.4-2
   SEMVER_MAJOR_MINOR_VERSION: "2.19"
@@ -68,7 +68,7 @@ contents:
                 - name: fluxcd-notification-controller
                   ref: dhi/fluxcd-notification-controller:1.9.4-debian13@sha256:a249bbbcb754e0d5fe229c4c61d17dddc2adf1c869c1d6e9a637425e85549033
                 - name: fluxcd-source-controller
-                  ref: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:8fc8252ebf4d5e1ddc27134928ae6af02e018c9f999ee2fa73d138ce5f645525
+                  ref: dhi/fluxcd-source-controller:1.9.6-debian13@sha256:e51734397f127063d9f6208cca08ef20e8a08643b37a15d77344934de39c82df
                 - name: fluxcd-source-watcher
                   ref: dhi/fluxcd-source-watcher:2.2.4-debian13@sha256:817f4985620b6963b8a801cc376a8bbb589609833fdb6f56175864d1ba537aba
               name: flux-chart
