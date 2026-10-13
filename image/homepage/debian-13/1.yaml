@@ -124,8 +124,8 @@ contents:
             # CVE-2026-44724, CVE-2026-50289
             yq -Y -i '.overrides."systeminformation" = "5.31.7"' pnpm-workspace.yaml
 
-            # GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c
-            yq -Y -i '.overrides."sharp" = "0.35.4"' pnpm-workspace.yaml
+            # GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w
+            yq -Y -i '.overrides."sharp" = "0.35.5"' pnpm-workspace.yaml
 
             # CVE-2026-45819
             yq -Y -i '.overrides."baseline-browser-mapping" = "2.11.0"' pnpm-workspace.yaml
@@ -133,8 +133,23 @@ contents:
             # CVE-2026-84373
             yq -Y -i '.overrides."vitest" = "4.1.11"' pnpm-workspace.yaml
 
-            # CVE-2026-44578, CVE-2026-44574, CVE-2026-45109, CVE-2026-44579, CVE-2026-44575, CVE-2026-44573, CVE-2026-44580, CVE-2026-44577, CVE-2026-44576, CVE-2026-44581, CVE-2026-44582, CVE-2026-44572, CVE-2026-64641, CVE-2026-64642, CVE-2026-64643, CVE-2026-64644, CVE-2026-64645, CVE-2026-64646, CVE-2026-64647, CVE-2026-64648, CVE-2026-64649, GHSA-2xp9-vwfh-vxw4, CVE-2026-75604
-            pnpm up next@16.3.3
+            # CVE-2026-101910, CVE-2026-101911, CVE-2026-101912, CVE-2026-101913
+            yq -Y -i '.overrides."ip-address" = "10.7.3"' pnpm-workspace.yaml
+
+            # CVE-2026-101915, CVE-2026-101916
+            yq -Y -i '.overrides."@grpc/grpc-js" = "1.14.5"' pnpm-workspace.yaml
+
+            # CVE-2026-93748
+            yq -Y -i '.overrides."http-cache-semantics" = "4.3.0"' pnpm-workspace.yaml
+
+            # CVE-2026-93749
+            yq -Y -i '.overrides."source-map-js" = "1.2.2"' pnpm-workspace.yaml
+
+            # CVE-2026-18149, CVE-2026-18540, CVE-2026-19534, CVE-2026-84890, CVE-2026-84933, CVE-2026-84947, CVE-2026-84961, CVE-2026-85008, CVE-2026-85014, CVE-2026-85024, CVE-2026-85152
+            yq -Y -i '.overrides."undici" = "8.10.2"' pnpm-workspace.yaml
+
+            # CVE-2026-44578, CVE-2026-44574, CVE-2026-45109, CVE-2026-44579, CVE-2026-44575, CVE-2026-44573, CVE-2026-44580, CVE-2026-44577, CVE-2026-44576, CVE-2026-44581, CVE-2026-44582, CVE-2026-44572, CVE-2026-64641, CVE-2026-64642, CVE-2026-64643, CVE-2026-64644, CVE-2026-64645, CVE-2026-64646, CVE-2026-64647, CVE-2026-64648, CVE-2026-64649, GHSA-2xp9-vwfh-vxw4, CVE-2026-75604, CVE-2026-94483, CVE-2026-94484, CVE-2026-94485, CVE-2026-94486, CVE-2026-94543, CVE-2026-94544, GHSA-vcvr-r3jv-pc5j
+            pnpm up next@16.3.8
         - name: build
           privileged: true
           runs: |
