@@ -11,7 +11,7 @@ platforms:
 dates:
   release: "2026-08-10"
 vars:
-  COMMIT_SHA: 0319b2876fb4c62a73ad540100c5580e78772fc8
+  COMMIT_SHA: 6939c3813668932229048be13305846dafd9ff3d
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: populator-controller
@@ -42,7 +42,7 @@ contents:
           - golang-1.26-oci-config=1.26.9-r0
         files:
           - url: git+https://github.com/kubev2v/forklift.git#v2.12.10
-            checksum: 0319b2876fb4c62a73ad540100c5580e78772fc8
+            checksum: 6939c3813668932229048be13305846dafd9ff3d
             path: /go/src/github.com/kubev2v/forklift
             spdx:
               name: populator-controller
