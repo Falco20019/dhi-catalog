@@ -6,20 +6,20 @@ variant: runtime
 tags:
   - "2"
   - "2.12"
-  - 2.12.9
+  - 2.12.10
   - 2-debian
   - 2-debian13
   - 2.12-debian
   - 2.12-debian13
-  - 2.12.9-debian
-  - 2.12.9-debian13
+  - 2.12.10-debian
+  - 2.12.10-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-08-26"
 vars:
-  COMMIT_SHA: 869ab59cb994994764ba42a6bd3e828a93f1d2f1
+  COMMIT_SHA: 2c8d23b26330c32d5eda6341e22214a5b7939778
   FLAVORED_SUFFIX: ""
   GRPC_HEALTH_PROBE_FIPS_VERSION: 0.4.59-0
   GRPC_HEALTH_PROBE_PIN_VERSION: 0.4.59-0
@@ -30,9 +30,9 @@ vars:
   OPM_VERSION: 1.74.0-8
   SEMVER_MAJOR_MINOR_VERSION: "2.12"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.12.9
+  SEMVER_VERSION: 2.12.10
   SUFFIX: ""
-  VERSION: 2.12.9
+  VERSION: 2.12.10
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -56,15 +56,15 @@ contents:
           - coreutils
           - opm=1.74.0-8
         files:
-          - url: git+https://github.com/kubev2v/mtv-fbc.git#869ab59cb994994764ba42a6bd3e828a93f1d2f1
-            checksum: 869ab59cb994994764ba42a6bd3e828a93f1d2f1
+          - url: git+https://github.com/kubev2v/mtv-fbc.git#2c8d23b26330c32d5eda6341e22214a5b7939778
+            checksum: 2c8d23b26330c32d5eda6341e22214a5b7939778
             path: ${source.dir}/mtv-fbc
             spdx:
               name: mtv-fbc
-              version: 2.12.9
+              version: 2.12.10
               packages:
                 - name: mtv-fbc
-                  purl: pkg:github/kubev2v/mtv-fbc@869ab59cb994994764ba42a6bd3e828a93f1d2f1
+                  purl: pkg:github/kubev2v/mtv-fbc@2c8d23b26330c32d5eda6341e22214a5b7939778
                   license: Apache-2.0
             uid: 0
             gid: 0
