@@ -3,24 +3,24 @@
 image: dhi.io/pkg-openscap
 variant: runtime
 tags:
-  - 1.4.4
-  - 1.4.4-r5
-  - 1.4.4-debian13
-  - 1.4.4-r5-debian13
+  - 1.4.5
+  - 1.4.5-r0
+  - 1.4.5-debian13
+  - 1.4.5-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-04-09"
 vars:
-  COMMIT_SHA: 4ac56ce0e6dfdea7215b5ad202b3db20855d2507
+  COMMIT_SHA: c84c8aa5e961b7ba0340a43faf4555dc383af625
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "5"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "1.4"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.4.4
-  VERSION: 1.4.4
+  SEMVER_VERSION: 1.4.5
+  VERSION: 1.4.5
 contents:
   packages:
     - base-files
@@ -78,15 +78,15 @@ contents:
           - python-3.13=3.13.16-0
           - python-3.13-dev=3.13.16-0
         files:
-          - url: git+https://github.com/OpenSCAP/openscap#1.4.4
-            checksum: 4ac56ce0e6dfdea7215b5ad202b3db20855d2507
+          - url: git+https://github.com/OpenSCAP/openscap#1.4.5
+            checksum: c84c8aa5e961b7ba0340a43faf4555dc383af625
             path: ${source.dir}/openscap
             spdx:
               name: openscap
-              version: 1.4.4
+              version: 1.4.5
               packages:
                 - name: openscap
-                  purl: pkg:dhi/openscap@1.4.4
+                  purl: pkg:dhi/openscap@1.4.5
                   license: LGPL-2.1-only
             uid: 0
             gid: 0
@@ -139,7 +139,7 @@ contents:
               - deb
             license: LGPL-2.1-only
             name: openscap
-            rel: 5
+            rel: 0
             subpackages:
               - depends:
                   - openscap
@@ -157,7 +157,7 @@ contents:
                   - path: usr/bin/oscap-podman
                 name: openscap-container-tools
             url: https://github.com/OpenSCAP/openscap
-            version: 1.4.4
+            version: 1.4.5
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
