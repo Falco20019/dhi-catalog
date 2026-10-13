@@ -17,6 +17,8 @@ dates:
   release: "2026-08-28"
 vars:
   COMMIT_SHA: 83fc70c6aced8c99a0a445a872ee891191b98517
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.2-0
   SEMVER_MAJOR_MINOR_VERSION: "1.151"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.151.0
@@ -38,7 +40,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.27=1.27.2-0
           - findutils
           - mawk
           - sed
@@ -57,9 +59,10 @@ contents:
             gid: 0
       pipeline:
         - name: patch
-          uses: go/bump@v1
+          uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
         - uses: go/hermetic@v1
         - name: test
           privileged: true

@@ -4,11 +4,8 @@ name: VictoriaMetrics VMAlert 1.x (dev)
 image: dhi.io/victoriametrics-vmalert
 variant: dev
 tags:
-  - 1-dev
   - 1.152-dev
   - 1.152.0-dev
-  - 1-debian-dev
-  - 1-debian13-dev
   - 1.152-debian-dev
   - 1.152-debian13-dev
   - 1.152.0-debian-dev
@@ -20,6 +17,8 @@ dates:
   release: "2026-09-11"
 vars:
   COMMIT_SHA: 540b91da031aa8b7d53d3784693bb451e2be980a
+  GOLANG_MAJOR_MINOR_VERSION: "1.27"
+  GOLANG_VERSION: 1.27.2-0
   SEMVER_MAJOR_MINOR_VERSION: "1.152"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.152.0
@@ -57,7 +56,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.27=1.27.2-0
           - findutils
           - mawk
           - sed
@@ -76,9 +75,10 @@ contents:
             gid: 0
       pipeline:
         - name: patch
-          uses: go/bump@v1
+          uses: go/bump@v2
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
         - uses: go/hermetic@v1
         - name: test
           privileged: true
