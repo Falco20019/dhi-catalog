@@ -6,24 +6,24 @@ variant: runtime
 tags:
   - "21"
   - "21.1"
-  - 21.1.0
+  - 21.1.1
   - 21-debian
   - 21-debian13
   - 21.1-debian
   - 21.1-debian13
-  - 21.1.0-debian
-  - 21.1.0-debian13
+  - 21.1.1-debian
+  - 21.1.1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-25"
 vars:
-  COMMIT_SHA: f7eb5f7c8097648828a6b31f4590c3ee3661c95a
+  COMMIT_SHA: 40d27be75411bb76e0ba3de6c86970f8bcfb0855
   SEMVER_MAJOR_MINOR_VERSION: "21.1"
   SEMVER_MAJOR_VERSION: "21"
-  SEMVER_VERSION: 21.1.0
-  VERSION: 21.1.0
+  SEMVER_VERSION: 21.1.1
+  VERSION: 21.1.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -224,15 +224,15 @@ contents:
           - xfslibs-dev
           - nasm
         files:
-          - url: git+https://github.com/ceph/ceph.git#v21.1.0
-            checksum: f7eb5f7c8097648828a6b31f4590c3ee3661c95a
+          - url: git+https://github.com/ceph/ceph.git#v21.1.1
+            checksum: 40d27be75411bb76e0ba3de6c86970f8bcfb0855
             path: ${source.dir}/ceph
             spdx:
               name: ceph
-              version: 21.1.0
+              version: 21.1.1
               packages:
                 - name: ceph
-                  purl: pkg:dhi/ceph@21.1.0
+                  purl: pkg:dhi/ceph@21.1.1
                   license: LGPL-2.1
             uid: 0
             gid: 0
