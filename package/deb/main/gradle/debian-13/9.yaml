@@ -3,14 +3,14 @@
 image: dhi.io/pkg-gradle
 variant: runtime
 tags:
-  - 9.8.1-0
-  - 9.8.1-0-debian13
+  - 9.8.1-1
+  - 9.8.1-1-debian13
 platforms:
   - linux/amd64
 vars:
   COMMIT_SHA: 39daf39feb60a18b1b6ddccde53366522fef516f
-  DHI_REL: "0"
-  DHI_VERSION: 9.8.1-0
+  DHI_REL: "1"
+  DHI_VERSION: 9.8.1-1
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 21.0.12.8-0
   PACKAGE_NAME: gradle-9
@@ -63,7 +63,7 @@ contents:
           with:
             changelog:
               - DHI Build
-            version: 9.8.1-0
+            version: 9.8.1-1
         - uses: dpkg/build@v1
           privileged: true
           with:
