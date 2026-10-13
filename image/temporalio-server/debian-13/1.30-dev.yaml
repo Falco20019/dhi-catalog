@@ -5,11 +5,11 @@ image: dhi.io/temporalio-server
 variant: dev
 tags:
   - 1.30-dev
-  - 1.30.7-dev
+  - 1.30.8-dev
   - 1.30-debian-dev
   - 1.30-debian13-dev
-  - 1.30.7-debian-dev
-  - 1.30.7-debian13-dev
+  - 1.30.8-debian-dev
+  - 1.30.8-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -17,12 +17,12 @@ dates:
   release: "2026-04-10"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "amd64" : "arm64" }'
-  COMMIT_SHA: 6263d75ecb887e4b11e67dab867c8af07260f36b
+  COMMIT_SHA: 2710cd3a4d47c6641264b100327342661dc947ed
   GOLANG_REFERENCE: dhi/golang:1.27.2-debian13-dev@sha256:161ddbe786e8efdca83c5218312d1343c6ad84332929f4df4b2b7c4fa66daebf
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.7
-  VERSION: 1.30.7
+  SEMVER_VERSION: 1.30.8
+  VERSION: 1.30.8
 contents:
   packages:
     - '!gawk'
@@ -49,15 +49,15 @@ contents:
         - path: /go/pkg/mod
       contents:
         files:
-          - url: git+https://github.com/temporalio/temporal.git#v1.30.7
-            checksum: 6263d75ecb887e4b11e67dab867c8af07260f36b
+          - url: git+https://github.com/temporalio/temporal.git#v1.30.8
+            checksum: 2710cd3a4d47c6641264b100327342661dc947ed
             path: /go/src/go.temporal.io/server
             spdx:
               name: temporalio-server
-              version: 1.30.7
+              version: 1.30.8
               packages:
                 - name: temporal-server
-                  purl: pkg:golang/go.temporal.io/server@v1.30.7
+                  purl: pkg:golang/go.temporal.io/server@v1.30.8
                   license: MIT
             uid: 0
             gid: 0
@@ -115,8 +115,8 @@ contents:
           - bash
           - coreutils
         files:
-          - url: git+https://github.com/temporalio/temporal.git#v1.30.7
-            checksum: 6263d75ecb887e4b11e67dab867c8af07260f36b
+          - url: git+https://github.com/temporalio/temporal.git#v1.30.8
+            checksum: 2710cd3a4d47c6641264b100327342661dc947ed
             path: /go/src/go.temporal.io/server
             uid: 0
             gid: 0
