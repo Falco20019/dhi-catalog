@@ -4,9 +4,9 @@ image: dhi.io/pkg-matomo
 variant: runtime
 tags:
   - 5.14.1
-  - 5.14.1-r0
+  - 5.14.1-r1
   - 5.14.1-debian13
-  - 5.14.1-r0-debian13
+  - 5.14.1-r1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,8 +14,8 @@ vars:
   COMPOSER_JSON_CHECKSUM: sha256:d485339aa657705cfc089eb5999590b30e182c4ad733fbf8f55f8c1a4bfbb662
   COMPOSER_LOCK_CHECKSUM: sha256:91b224651e867464b99bcc1120e4016c32528ff1ed069671c6c3cb3b1d86ae19
   COMPOSER_VERSION: 2.10.3
+  MATOMO_ARCHIVE_CHECKSUM: sha256:9b0f84a6f4ca707a0675e403cc58382c99cce02c8b40426653f9dd50ef6fb08c
   MATOMO_CLEAN_BUILD_COMMIT_SHA: 7c27210b34cd4e032d93d36df62cf832a4488dcf
-  MATOMO_TARBALL_CHECKSUM: sha256:6e2938c9a482fa715a02cacacc490f2e7d6fb1f4068e45de41181089c129080e
   NPM_CHROMA_JS_CHECKSUM: sha256:c340a3a56f20ad7ca2652acf4c3a4047e50cf0d53c581cd2bd98476825ebef21
   NPM_IFRAME_RESIZER_CHECKSUM: sha256:ad09c82d884977d1cecab69c5ee2bcd5101c2cffbcbb7222ecb2784dd465387b
   NPM_JQUERY_CHECKSUM: sha256:e0a7941d62e473baba3d7e470bbf232d56736a189369674d6353e001a562f33c
@@ -28,7 +28,7 @@ vars:
   NPM_SPRINTF_JS_CHECKSUM: sha256:c97349295cae4e40a6f16a26096330997257c00be67bd8fd0ac3391719e4ee5f
   NPM_VISIBILITYJS_CHECKSUM: sha256:d3032ef8718b173909ba87319ee3b12e3b76af452d709e2de78dea021789f62f
   PACKAGE_HOME: /usr/share/matomo
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "5.14"
   SEMVER_MAJOR_VERSION: "5"
   SEMVER_VERSION: 5.14.1
@@ -60,9 +60,9 @@ contents:
           - tar
           - unzip
         files:
-          - url: https://github.com/matomo-org/matomo/releases/download/5.14.1/matomo-5.14.1.tar.gz
-            checksum: sha256:6e2938c9a482fa715a02cacacc490f2e7d6fb1f4068e45de41181089c129080e
-            path: ${source.dir}/matomo.tar.gz
+          - url: https://builds.matomo.org/matomo-5.14.1.zip
+            checksum: sha256:9b0f84a6f4ca707a0675e403cc58382c99cce02c8b40426653f9dd50ef6fb08c
+            path: ${source.dir}/matomo.zip
             spdx:
               name: matomo
               version: 5.14.1
@@ -72,8 +72,8 @@ contents:
                   license: GPL-3.0-or-later
             uid: 0
             gid: 0
-          - url: https://github.com/matomo-org/matomo/releases/download/5.14.1/matomo-5.14.1.tar.gz.asc
-            path: ${source.dir}/matomo.tar.gz.asc
+          - url: https://builds.matomo.org/matomo-5.14.1.zip.asc
+            path: ${source.dir}/matomo.zip.asc
             uid: 0
             gid: 0
           - url: https://raw.githubusercontent.com/matomo-org/matomo/5.14.1/composer.json
@@ -155,15 +155,15 @@ contents:
         - name: verify gpg signature
           uses: gpg/verify@v1
           with:
-            file: ${source.dir}/matomo.tar.gz
+            file: ${source.dir}/matomo.zip
             keys: ${source.dir}/keys.txt
-            signature: ${source.dir}/matomo.tar.gz.asc
+            signature: ${source.dir}/matomo.zip.asc
         - name: extract matomo source
           runs: |
             set -eux -o pipefail
 
-            mkdir -p "${target.dir}/usr/share/matomo"
-            tar -xzf "${source.dir}/matomo.tar.gz" --strip-components=1 -C "${target.dir}/usr/share/matomo"
+            mkdir -p "${target.dir}/usr/share"
+            unzip -q "${source.dir}/matomo.zip" -d "${target.dir}/usr/share"
         - name: install composer dependencies with twig 3.28.0
           work-dir: ${target.dir}/usr/share/matomo
           privileged: true
@@ -253,7 +253,7 @@ contents:
               - usr/share/matomo
             license: GPL-3.0-or-later
             name: matomo
-            rel: 0
+            rel: 1
             url: https://matomo.org/
             version: 5.14.1
       paths:
