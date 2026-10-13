@@ -545,6 +545,14 @@ environment:
   DEBIAN_FRONTEND: noninteractive
   ISTIO_META_ISTIO_PROXY_SHA: 3bf722f59561ef9747835e543c0b648eb4ab1237
 paths:
+  - type: delete
+    path: /usr/sbin/iptables
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/ip6tables
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/iptables
     uid: 0
