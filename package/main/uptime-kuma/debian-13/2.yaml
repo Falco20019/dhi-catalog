@@ -3,21 +3,21 @@
 image: dhi.io/pkg-uptime-kuma
 variant: runtime
 tags:
-  - 2.5.5
-  - 2.5.5-r1
-  - 2.5.5-debian13
-  - 2.5.5-r1-debian13
+  - 2.5.6
+  - 2.5.6-r0
+  - 2.5.6-debian13
+  - 2.5.6-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: c98982ac60eccb74cdab1d04c30e18057895ce87
+  COMMIT_SHA: 7ca4a3debd76443d8452da95d4040200a1479af4
   PACKAGE_NAME: uptime-kuma-2
-  REL: "1"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.5"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.5.5
-  VERSION: 2.5.5
+  SEMVER_VERSION: 2.5.6
+  VERSION: 2.5.6
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -53,15 +53,15 @@ contents:
           - sed
           - yarn-classic
         files:
-          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.5
-            checksum: c98982ac60eccb74cdab1d04c30e18057895ce87
+          - url: git+https://github.com/louislam/uptime-kuma.git#2.5.6
+            checksum: 7ca4a3debd76443d8452da95d4040200a1479af4
             path: ${source.dir}/uptime-kuma
             spdx:
               name: uptime-kuma
-              version: 2.5.5
+              version: 2.5.6
               packages:
                 - name: uptime-kuma
-                  purl: pkg:npm/uptime-kuma@2.5.5
+                  purl: pkg:npm/uptime-kuma@2.5.6
                   license: MIT
             uid: 0
             gid: 0
@@ -164,7 +164,7 @@ contents:
               from_entries |
               {
                 name: "frontend",
-                version: "2.5.5",
+                version: "2.5.6",
                 dependencies: .
               }' package.json ./hack/exclude-dev-dependencies.json > ./frontend/package.json
             cp package.json package.json.original
@@ -190,9 +190,9 @@ contents:
               - deb
             license: MIT
             name: uptime-kuma-2
-            rel: 1
+            rel: 0
             url: https://github.com/louislam/uptime-kuma
-            version: 2.5.5
+            version: 2.5.6
       paths:
         - type: file
           path: ${source.dir}/patch/npm-bump-2.json
