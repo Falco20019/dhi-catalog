@@ -14,7 +14,7 @@ vars:
   DHI_PREFIX: ""
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
-  ENVOY_GATEWAY_REFERENCE: dhi/envoy-gateway:1.9.2-debian13@sha256:483445429786c1cf8af9e41f57fcd0b7f90ab0c65904532ceec8a9dd539b3f6f
+  ENVOY_GATEWAY_REFERENCE: dhi/envoy-gateway:1.9.2-debian13@sha256:90b6bb86e18ce88eda724c2647270a97ab8394d57b6a695c72b5a7825e096d40
   ENVOY_RATELIMIT_REFERENCE: dhi/envoy-ratelimit:1631871c92e531b5a0c19f1e5661887c0d9bd8f0-debian13@sha256:f0f58a0ea131c19caa1cdd4a4ea568dce36e7755ecc211e48e2031e5bb6a7c81
   ENVOY_REFERENCE: dhi/envoy:1.39.3-debian13@sha256:32d4a14ee837b8dd64a56df6be2bc129446ef196f61865e703708e7e94bffb30
   HELM_VERSION: 4.1.4-2
@@ -52,7 +52,7 @@ contents:
               description: Docker Hardened Images Helm chart for Envoy Gateway
               images:
                 - name: envoy-gateway
-                  ref: dhi/envoy-gateway:1.9.2-debian13@sha256:483445429786c1cf8af9e41f57fcd0b7f90ab0c65904532ceec8a9dd539b3f6f
+                  ref: dhi/envoy-gateway:1.9.2-debian13@sha256:90b6bb86e18ce88eda724c2647270a97ab8394d57b6a695c72b5a7825e096d40
                 - name: envoy-ratelimit
                   ref: dhi/envoy-ratelimit:1631871c92e531b5a0c19f1e5661887c0d9bd8f0-debian13@sha256:f0f58a0ea131c19caa1cdd4a4ea568dce36e7755ecc211e48e2031e5bb6a7c81
                 - name: envoy
