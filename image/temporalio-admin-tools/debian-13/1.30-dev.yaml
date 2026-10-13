@@ -5,14 +5,14 @@ image: dhi.io/temporalio-admin-tools
 variant: dev
 tags:
   - 1.30-dev
-  - 1.30.7-dev
+  - 1.30.8-dev
   - 1.30-debian-dev
   - 1.30-debian13-dev
-  - 1.30.7-debian-dev
-  - 1.30.7-debian13-dev
-  - 1.30.7-cli-1.9.1-dev
-  - 1.30.7-cli-1.9.1-debian-dev
-  - 1.30.7-cli-1.9.1-debian13-dev
+  - 1.30.8-debian-dev
+  - 1.30.8-debian13-dev
+  - 1.30.8-cli-1.9.1-dev
+  - 1.30.8-cli-1.9.1-debian-dev
+  - 1.30.8-cli-1.9.1-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,14 +21,14 @@ dates:
 vars:
   CLI_COMMIT_SHA: 1de87a9f26991bf4f5c0a5ff96f2cea8d7a3cbde
   CLI_VERSION: 1.9.1
-  COMMIT_SHA: 6263d75ecb887e4b11e67dab867c8af07260f36b
+  COMMIT_SHA: 2710cd3a4d47c6641264b100327342661dc947ed
   DEBIAN_EPOCH_MAJOR_MINOR_VERSION: "1.30"
   DEBIAN_EPOCH_MAJOR_VERSION: "1"
-  DEBIAN_EPOCH_VERSION: 1.30.7
+  DEBIAN_EPOCH_VERSION: 1.30.8
   SEMVER_MAJOR_MINOR_VERSION: "1.30"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.30.7
-  VERSION: 1.30.7
+  SEMVER_VERSION: 1.30.8
+  VERSION: 1.30.8
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -69,24 +69,24 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/temporalio/temporal.git#v1.30.7
-            checksum: 6263d75ecb887e4b11e67dab867c8af07260f36b
+          - url: git+https://github.com/temporalio/temporal.git#v1.30.8
+            checksum: 2710cd3a4d47c6641264b100327342661dc947ed
             path: /go/src/go.temporal.io/temporal
             spdx:
               name: temporalio-admin-tools
-              version: 1.30.7
+              version: 1.30.8
               packages:
                 - name: temporal-cassandra-tool
-                  purl: pkg:golang/go.temporal.io/server/cmd/tools/cassandra@1.30.7
+                  purl: pkg:golang/go.temporal.io/server/cmd/tools/cassandra@1.30.8
                   license: MIT
                 - name: temporal-sql-tool
-                  purl: pkg:golang/go.temporal.io/server/cmd/tools/sql@1.30.7
+                  purl: pkg:golang/go.temporal.io/server/cmd/tools/sql@1.30.8
                   license: MIT
                 - name: temporal-elasticsearch-tool
-                  purl: pkg:golang/go.temporal.io/server/cmd/tools/elasticsearch@1.30.7
+                  purl: pkg:golang/go.temporal.io/server/cmd/tools/elasticsearch@1.30.8
                   license: MIT
                 - name: tdbg
-                  purl: pkg:golang/go.temporal.io/server/cmd/tools/tdbg@1.30.7
+                  purl: pkg:golang/go.temporal.io/server/cmd/tools/tdbg@1.30.8
                   license: MIT
             uid: 0
             gid: 0
