@@ -3,22 +3,22 @@
 image: dhi.io/pkg-dockerize
 variant: runtime
 tags:
-  - 0.25.2-alpine3.23
-  - 0.25.2-r6-alpine3.23
+  - 0.25.3-alpine3.23
+  - 0.25.3-r0-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-06-10"
 vars:
-  COMMIT_SHA: 311635aeeeac3869b2550879c856510698d05969
-  GOLANG_VERSION: 1.26.8-r1
+  COMMIT_SHA: 3d7daff8fe0bcdfce5145e619f2712410585979e
+  GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: dockerize
-  REL: "6"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "0.25"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.25.2
-  VERSION: 0.25.2
+  SEMVER_VERSION: 0.25.3
+  VERSION: 0.25.3
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.23/main
@@ -36,18 +36,18 @@ contents:
           - busybox
           - bash
           - ca-certificates-bundle
-          - golang-1.26=1.26.8-r1
-          - golang-1.26-oci-config=1.26.8-r1
+          - golang-1.27=1.27.2-r0
+          - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/powerman/dockerize.git#v0.25.2
-            checksum: 311635aeeeac3869b2550879c856510698d05969
+          - url: git+https://github.com/powerman/dockerize.git#v0.25.3
+            checksum: 3d7daff8fe0bcdfce5145e619f2712410585979e
             path: /go/src/github.com/powerman/dockerize
             spdx:
               name: dockerize
-              version: 0.25.2
+              version: 0.25.3
               packages:
                 - name: dockerize
-                  purl: pkg:golang/github.com/powerman/dockerize@0.25.2
+                  purl: pkg:golang/github.com/powerman/dockerize@0.25.3
                   license: MIT
             uid: 0
             gid: 0
@@ -85,14 +85,14 @@ contents:
               - usr/bin/dockerize
             license: MIT
             name: dockerize
-            rel: 6
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/dockerize
                     source: usr/bin/dockerize-dev
                 name: dockerize-dev
             url: https://github.com/powerman/dockerize
-            version: 0.25.2
+            version: 0.25.3
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
