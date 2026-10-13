@@ -72,8 +72,11 @@ contents:
           work-dir: /go/src/github.com/kedacore/keda
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - google.golang.org/grpc@v1.84.0
             download: true
+            replaces:
+              - github.com/google/cel-go=github.com/google/cel-go@v0.30.0
             tidy: true
         - name: sync vendor directory
           work-dir: /go/src/github.com/kedacore/keda
