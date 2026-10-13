@@ -3,22 +3,22 @@
 image: dhi.io/pkg-fluent-bit
 variant: runtime
 tags:
-  - 5.1.3
-  - 5.1.3-r0
-  - 5.1.3-debian13
-  - 5.1.3-r0-debian13
+  - 5.1.4
+  - 5.1.4-r0
+  - 5.1.4-debian13
+  - 5.1.4-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-24"
 vars:
-  COMMIT_SHA: d1be1ba389a481ea727462e9a4afeb4538f0365a
+  COMMIT_SHA: 3b6ce5cf331a1bec337f54e0c1df958e71829315
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
-  SEMVER_VERSION: 5.1.3
-  VERSION: 5.1.3
+  SEMVER_VERSION: 5.1.4
+  VERSION: 5.1.4
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -48,15 +48,15 @@ contents:
           - sed
           - grep
         files:
-          - url: git+https://github.com/fluent/fluent-bit#v5.1.3
-            checksum: d1be1ba389a481ea727462e9a4afeb4538f0365a
+          - url: git+https://github.com/fluent/fluent-bit#v5.1.4
+            checksum: 3b6ce5cf331a1bec337f54e0c1df958e71829315
             path: ${source.dir}/fluent-bit
             spdx:
               name: fluent-bit
-              version: 5.1.3
+              version: 5.1.4
               packages:
                 - name: fluent-bit
-                  purl: pkg:dhi/fluent-bit@5.1.3
+                  purl: pkg:dhi/fluent-bit@5.1.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -132,7 +132,7 @@ contents:
             name: fluent-bit
             rel: 0
             url: https://fluentbit.io
-            version: 5.1.3
+            version: 5.1.4
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
