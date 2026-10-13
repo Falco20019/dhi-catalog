@@ -3,23 +3,23 @@
 image: dhi.io/pkg-rabbitmqoperator-cluster-operator
 variant: runtime
 tags:
-  - 2.23.0-alpine3.24
-  - 2.23.0-r3-alpine3.24
+  - 2.23.1-alpine3.24
+  - 2.23.1-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2022-09-22"
 vars:
-  COMMIT_SHA: 3ad2b0ec0b43dbeb4b57c1142fc5c813a5716033
+  COMMIT_SHA: 8db765e845443489c643fabc508396d4ef5d31a7
   GOLANG_MAJOR_MINOR_VERSION: "1.27"
   GOLANG_VERSION: 1.27.2-r0
   PACKAGE_NAME: rabbitmqoperator-cluster-operator-2
-  REL: "3"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "2.23"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.23.0
-  VERSION: 2.23.0
+  SEMVER_VERSION: 2.23.1
+  VERSION: 2.23.1
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -44,15 +44,15 @@ contents:
           - golang-1.27=1.27.2-r0
           - golang-1.27-oci-config=1.27.2-r0
         files:
-          - url: git+https://github.com/rabbitmq/cluster-operator.git#v2.23.0
-            checksum: 3ad2b0ec0b43dbeb4b57c1142fc5c813a5716033
+          - url: git+https://github.com/rabbitmq/cluster-operator.git#v2.23.1
+            checksum: 8db765e845443489c643fabc508396d4ef5d31a7
             path: /go/src/github.com/rabbitmq/cluster-operator/v2
             spdx:
               name: rabbitmqoperator-cluster-operator
-              version: 2.23.0
+              version: 2.23.1
               packages:
                 - name: rabbitmqoperator-cluster-operator
-                  purl: pkg:golang/github.com/rabbitmq/cluster-operator/v2@2.23.0
+                  purl: pkg:golang/github.com/rabbitmq/cluster-operator/v2@2.23.1
                   license: MPL-2.0
             uid: 0
             gid: 0
@@ -60,8 +60,7 @@ contents:
         - name: update go dependencies
           uses: go/bump@v2
           with:
-            deps:
-              - golang.org/x/net@v0.60.0
+            deps: []
             download: true
         - uses: go/hermetic@v1
         - name: test
@@ -92,14 +91,14 @@ contents:
               - usr/bin/manager
             license: MPL-2.0
             name: rabbitmqoperator-cluster-operator-2
-            rel: 3
+            rel: 0
             subpackages:
               - files:
                   - path: usr/bin/manager
                     source: usr/bin/manager-dev
                 name: rabbitmqoperator-cluster-operator-2-dev
             url: https://github.com/rabbitmq/cluster-operator
-            version: 2.23.0
+            version: 2.23.1
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
