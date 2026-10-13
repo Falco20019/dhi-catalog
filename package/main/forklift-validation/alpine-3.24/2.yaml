@@ -11,7 +11,7 @@ platforms:
 dates:
   release: "2026-09-22"
 vars:
-  COMMIT_SHA: 0319b2876fb4c62a73ad540100c5580e78772fc8
+  COMMIT_SHA: 6939c3813668932229048be13305846dafd9ff3d
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
   OPA_COMMIT_SHA: 3f7474e6b3c631821d8aac25ca444f7e75a56483
@@ -55,7 +55,7 @@ contents:
             uid: 0
             gid: 0
           - url: git+https://github.com/kubev2v/forklift.git#v2.12.10
-            checksum: 0319b2876fb4c62a73ad540100c5580e78772fc8
+            checksum: 6939c3813668932229048be13305846dafd9ff3d
             path: /src/kubev2v/forklift
             spdx:
               name: forklift-validation
