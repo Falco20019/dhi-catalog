@@ -15,6 +15,7 @@ platforms:
   - linux/arm64
 vars:
   COMMIT_SHA: 94bd1d5b0e04459d4d1c83653e0335a9201248b8
+  GOLANG_VERSION: 1.26.9-0
   SEMVER_MAJOR_MINOR_VERSION: "3.31"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.31.7
@@ -46,6 +47,8 @@ contents:
     - util-linux
   builds:
     - name: calico-kube-controllers
+      environment:
+        GOTOOLCHAIN: local
       caches:
         - path: /go/pkg/mod
       contents:
@@ -53,7 +56,7 @@ contents:
           - bash
           - ca-certificates-bundle
           - coreutils
-          - golang-1.26
+          - golang-1.26=1.26.9-0
           - findutils
           - mawk
           - sed
