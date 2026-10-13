@@ -1,20 +1,20 @@
 # syntax=dhi.io/build:2-debian13
 
-name: Envoy Ratelimit ce84dae4eb644263b19384fd11a1156577160e06
+name: Envoy Ratelimit f4e76690d9ce6590707ffd7d28c33a24b99302da
 image: dhi.io/envoy-ratelimit
 variant: runtime
 tags:
-  - ce84dae4eb644263b19384fd11a1156577160e06
-  - ce84dae4eb644263b19384fd11a1156577160e06-debian
-  - ce84dae4eb644263b19384fd11a1156577160e06-debian13
+  - f4e76690d9ce6590707ffd7d28c33a24b99302da
+  - f4e76690d9ce6590707ffd7d28c33a24b99302da-debian
+  - f4e76690d9ce6590707ffd7d28c33a24b99302da-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: ce84dae4eb644263b19384fd11a1156577160e06
+  COMMIT_SHA: f4e76690d9ce6590707ffd7d28c33a24b99302da
   FLAVORED_SUFFIX: ""
   SUFFIX: ""
-  VERSION: 0+git.ce84dae4eb644263b19384fd11a1156577160e06-0
+  VERSION: 0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da-0
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -23,7 +23,7 @@ contents:
   packages:
     - base-files
     - ca-certificates-bundle
-    - envoy-ratelimit=0+git.ce84dae4eb644263b19384fd11a1156577160e06-0
+    - envoy-ratelimit=0+git.f4e76690d9ce6590707ffd7d28c33a24b99302da-0
     - tzdata
 accounts:
   run-as: nonroot
