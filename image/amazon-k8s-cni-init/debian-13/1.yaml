@@ -83,7 +83,8 @@ contents:
           caches:
             - path: /go/pkg/mod
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             download: true
         - name: unit test
           privileged: true
@@ -149,8 +150,8 @@ contents:
             - path: /go/pkg/mod
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - github.com/insomniacslk/dhcp@v0.0.0-20260719225207-c76316d4aa82
-              - golang.org/x/net@v0.57.0
             download: true
         - name: build bridge
           uses: go/build@v1
