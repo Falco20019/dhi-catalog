@@ -3,8 +3,8 @@
 image: dhi.io/pkg-redis
 variant: runtime
 tags:
-  - 5-8.0.2-3-deb13u3-dhi0
-  - 5-8.0.2-3-deb13u3-dhi0-debian13
+  - 5-8.0.2-3-deb13u3-dhi1
+  - 5-8.0.2-3-deb13u3-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: redis_8.0.2.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian-security/pool/updates/main/r/redis/redis_8.0.2.orig.tar.gz
   DEBIAN_VERSION: 5:8.0.2-3+deb13u3
-  DHI_REL: "0"
-  DHI_VERSION: 5:8.0.2-3+deb13u3+dhi0
-  TAG_VERSION: 5-8.0.2-3-deb13u3-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 5:8.0.2-3+deb13u3+dhi1
+  TAG_VERSION: 5-8.0.2-3-deb13u3-dhi1
   UPSTREAM_VERSION: 8.0.2
 contents:
   packages:
@@ -73,11 +73,13 @@ contents:
             apply: true
             patches:
               - ${source.dir}/patch/CVE-2025-49112.patch
+              - ${source.dir}/patch/CVE-2026-92925.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
               - Backport CVE-2025-49112 Lua script command argument validation fix from Valkey
-            version: 5:8.0.2-3+deb13u3+dhi0
+              - Backport CVE-2026-92925 cluster bus PING extension null-termination validation from upstream Redis
+            version: 5:8.0.2-3+deb13u3+dhi1
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
