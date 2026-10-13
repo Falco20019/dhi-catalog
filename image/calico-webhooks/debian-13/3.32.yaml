@@ -66,6 +66,7 @@ contents:
           uses: go/bump@v2
           with:
             deps:
+              - golang.org/x/net@v0.60.0
               - github.com/google/cel-go@v0.30.0
               - go.opentelemetry.io/otel@v1.44.0
               - google.golang.org/grpc@v1.83.2
