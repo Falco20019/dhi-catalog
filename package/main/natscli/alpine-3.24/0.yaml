@@ -61,7 +61,8 @@ contents:
           uses: go/bump@v1
           work-dir: /go/src/github.com/nats-io/natscli
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             download: true
         - name: patch cluster test port base
           uses: patch@v1
