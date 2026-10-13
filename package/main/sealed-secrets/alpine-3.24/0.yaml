@@ -60,7 +60,7 @@ contents:
           work-dir: /go/src/github.com/bitnami-labs/sealed-secrets
           with:
             deps:
-              - golang.org/x/crypto@v0.56.0
+              - golang.org/x/net@v0.60.0
             tidy: true
         - name: test
           work-dir: /go/src/github.com/bitnami-labs/sealed-secrets
