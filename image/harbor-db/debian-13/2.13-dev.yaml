@@ -16,7 +16,7 @@ platforms:
 dates:
   release: "2025-04-09"
 vars:
-  GOSU_VERSION: 1.19-11
+  GOSU_VERSION: 1.19-12
   PACKAGE_NAME: harbor-db-2.13
   POSTGRES_14_REFERENCE: dhi/postgres:14.24-debian13@sha256:38d38862af19a451ee1c4c910b586d7ba009c1741270c14a071e00bf3199a05b
   POSTGRES_14_VERSION: "14.24"
@@ -50,7 +50,7 @@ contents:
     - diffutils
     - dpkg
     - findutils
-    - gosu=1.19-11
+    - gosu=1.19-12
     - grep
     - gzip
     - harbor-db-2.13=2.13.6-0
