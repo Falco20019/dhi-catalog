@@ -1,31 +1,32 @@
 # syntax=dhi.io/build:2-debian13
 
-name: Calico 3.33.x (dev)
-image: dhi.io/calico
-variant: dev
+name: Calico 3.33.x
+image: dhi.io/calico-calico
+variant: runtime
 tags:
-  - 3-dev
-  - 3.33-dev
-  - 3.33.0-dev
-  - 3-debian-dev
-  - 3-debian13-dev
-  - 3.33-debian-dev
-  - 3.33-debian13-dev
-  - 3.33.0-debian-dev
-  - 3.33.0-debian13-dev
+  - "3"
+  - "3.33"
+  - 3.33.0
+  - v3.33.0
+  - 3-debian
+  - 3-debian13
+  - 3.33-debian
+  - 3.33-debian13
+  - 3.33.0-debian
+  - 3.33.0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-09-28"
 vars:
-  FLAVORED_SUFFIX: -dev
+  FLAVORED_SUFFIX: ""
   NDR_PACKAGE_VERSION: 3.33.0-2
   PACKAGE_VERSION: 3.33.0-2
   SEMVER_MAJOR_MINOR_VERSION: "3.33"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.33.0
-  SUFFIX: -dev
+  SUFFIX: ""
   VERSION: 3.33.0
 contents:
   repositories:
@@ -33,36 +34,16 @@ contents:
   keyring:
     - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
-    - '!gawk'
-    - '!libelogind0'
-    - '!original-awk'
-    - apt
     - base-files
-    - bash
-    - ca-certificates
     - ca-certificates-bundle
-    - calico-3.33-dev=3.33.0-2
-    - calico-node-driver-registrar-3.33-dev=3.33.0-2
-    - coreutils
-    - diffutils
-    - dpkg
-    - findutils
-    - grep
-    - libc-bin
-    - mawk
-    - perl-base
-    - sed
+    - calico-3.33=3.33.0-2
+    - calico-node-driver-registrar-3.33=3.33.0-2
     - tzdata
-    - util-linux
 accounts:
-  root: true
-  run-as: root
+  run-as: nonroot
   users:
     - name: nonroot
       uid: 65532
-      gid: 65532
-    - name: _apt
-      uid: 42
       gid: 65532
   groups:
     - name: nonroot
@@ -77,8 +58,6 @@ os-release:
   pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
-environment:
-  DEBIAN_FRONTEND: noninteractive
 paths:
   - type: symlink
     path: /usr/bin/calicoctl

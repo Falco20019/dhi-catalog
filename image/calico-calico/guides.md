@@ -38,19 +38,19 @@ The image entry point is `/usr/bin/calico`, so you pass the subcommand directly 
 To print the version:
 
 ```bash
-docker run --rm dhi.io/calico:<tag> version
+docker run --rm dhi.io/calico-calico:<tag> version
 ```
 
 To view the available subcommands:
 
 ```bash
-docker run --rm dhi.io/calico:<tag> --help
+docker run --rm dhi.io/calico-calico:<tag> --help
 ```
 
 To run the CSI node driver registrar from the same image, override the entry point:
 
 ```bash
-docker run --rm --entrypoint /usr/bin/node-driver-registrar dhi.io/calico:<tag> --version
+docker run --rm --entrypoint /usr/bin/node-driver-registrar dhi.io/calico-calico:<tag> --version
 ```
 
 ## Deploy Calico in Kubernetes
