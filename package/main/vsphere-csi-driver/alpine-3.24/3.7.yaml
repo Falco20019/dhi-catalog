@@ -3,22 +3,22 @@
 image: dhi.io/pkg-vsphere-csi-driver
 variant: runtime
 tags:
-  - 3.7.3-alpine3.24
-  - 3.7.3-r4-alpine3.24
+  - 3.7.4-alpine3.24
+  - 3.7.4-r0-alpine3.24
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-03-21"
 vars:
-  COMMIT_SHA: 27ec91d0a0fc820724cc5d7a0a2f69d12bc4ff34
+  COMMIT_SHA: 94e8a3d8be8ef2bfd840b91db7402a37bcc125e1
   GOLANG_VERSION: 1.26.9-r0
   PACKAGE_NAME: vsphere-csi-driver-3.7
-  REL: "4"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "3.7"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.7.3
-  VERSION: 3.7.3
+  SEMVER_VERSION: 3.7.4
+  VERSION: 3.7.4
 contents:
   repositories:
     - https://dhi.io/apk/alpine/v3.24/main
@@ -40,15 +40,15 @@ contents:
           - golang-1.26
           - golang-1.26-oci-config
         files:
-          - url: git+https://github.com/kubernetes-sigs/vsphere-csi-driver.git#v3.7.3
-            checksum: 27ec91d0a0fc820724cc5d7a0a2f69d12bc4ff34
+          - url: git+https://github.com/kubernetes-sigs/vsphere-csi-driver.git#v3.7.4
+            checksum: 94e8a3d8be8ef2bfd840b91db7402a37bcc125e1
             path: /go/src/github.com/kubernetes-sigs/vsphere-csi-driver
             spdx:
               name: vsphere-csi-driver
-              version: 3.7.3
+              version: 3.7.4
               packages:
                 - name: vsphere-csi-driver
-                  purl: pkg:golang/sigs.k8s.io/vsphere-csi-driver/v3@3.7.3
+                  purl: pkg:golang/sigs.k8s.io/vsphere-csi-driver/v3@3.7.4
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -110,7 +110,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/csi/service.Version=v3.7.3
+              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/csi/service.Version=v3.7.4
             output: ${target.dir}/usr/bin/vsphere-csi
             packages: ./cmd/vsphere-csi
         - name: build vsphere-csi dev
@@ -118,7 +118,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/csi/service.Version=v3.7.3
+              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/csi/service.Version=v3.7.4
             output: ${target.dir}/usr/bin/vsphere-csi-dev
             packages: ./cmd/vsphere-csi
             strip: false
@@ -127,7 +127,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/syncer.Version=v3.7.3
+              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/syncer.Version=v3.7.4
             output: ${target.dir}/usr/bin/vsphere-syncer
             packages: ./cmd/syncer
         - name: build vsphere-syncer dev
@@ -135,7 +135,7 @@ contents:
           with:
             fips: false
             ldflags:
-              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/syncer.Version=v3.7.3
+              - -X sigs.k8s.io/vsphere-csi-driver/v3/pkg/syncer.Version=v3.7.4
             output: ${target.dir}/usr/bin/vsphere-syncer-dev
             packages: ./cmd/syncer
             strip: false
@@ -146,7 +146,7 @@ contents:
               - usr/bin/vsphere-csi
             license: Apache-2.0
             name: vsphere-csi-driver-3.7
-            rel: 4
+            rel: 0
             subpackages:
               - files:
                   - usr/bin/vsphere-syncer
@@ -160,7 +160,7 @@ contents:
                     source: usr/bin/vsphere-syncer-dev
                 name: vsphere-csi-syncer-3.7-dev
             url: https://github.com/kubernetes-sigs/vsphere-csi-driver
-            version: 3.7.3
+            version: 3.7.4
       paths:
         - type: file
           path: ${source.dir}/patch/dhi-drop-tls-fipsonly-import.patch
