@@ -6,25 +6,25 @@ variant: dev
 tags:
   - 1-dev
   - 1.23-dev
-  - 1.23.1-dev
+  - 1.23.2-dev
   - 1-debian-dev
   - 1-debian13-dev
   - 1.23-debian-dev
   - 1.23-debian13-dev
-  - 1.23.1-debian-dev
-  - 1.23.1-debian13-dev
+  - 1.23.2-debian-dev
+  - 1.23.2-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2026-02-24"
 vars:
-  COMMIT_SHA: abd85a5ca7380e849a85251b24db44fb8fc017d7
-  IPTABLES_WRAPPER_COMMIT_SHA: c80f8abe852c6f64bfa8d1404bdbeaf24f67bc06
+  COMMIT_SHA: 7bb32b54d7c56f3ee3c5a63bddf97c4af49ea8ec
+  IPTABLES_WRAPPER_COMMIT_SHA: 56100f72197699b5ea2f32376692a1f12482088e
   SEMVER_MAJOR_MINOR_VERSION: "1.23"
   SEMVER_MAJOR_VERSION: "1"
-  SEMVER_VERSION: 1.23.1
-  VERSION: 1.23.1
+  SEMVER_VERSION: 1.23.2
+  VERSION: 1.23.2
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -66,15 +66,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/kubernetes-sigs/iptables-wrappers.git#c80f8abe852c6f64bfa8d1404bdbeaf24f67bc06
-            checksum: c80f8abe852c6f64bfa8d1404bdbeaf24f67bc06
+          - url: git+https://github.com/kubernetes-sigs/iptables-wrappers.git#56100f72197699b5ea2f32376692a1f12482088e
+            checksum: 56100f72197699b5ea2f32376692a1f12482088e
             path: /go/src/github.com/kubernetes-sigs/iptables-wrappers
             spdx:
               name: iptables-wrappers
-              version: c80f8abe852c6f64bfa8d1404bdbeaf24f67bc06
+              version: 56100f72197699b5ea2f32376692a1f12482088e
               packages:
                 - name: iptables-wrappers
-                  purl: pkg:github/kubernetes-sigs/iptables-wrappers@c80f8abe852c6f64bfa8d1404bdbeaf24f67bc06
+                  purl: pkg:github/kubernetes-sigs/iptables-wrappers@56100f72197699b5ea2f32376692a1f12482088e
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -118,15 +118,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/aws/amazon-vpc-cni-k8s.git#v1.23.1
-            checksum: abd85a5ca7380e849a85251b24db44fb8fc017d7
+          - url: git+https://github.com/aws/amazon-vpc-cni-k8s.git#v1.23.2
+            checksum: 7bb32b54d7c56f3ee3c5a63bddf97c4af49ea8ec
             path: /go/src/github.com/aws/amazon-vpc-cni-k8s
             spdx:
               name: amazon-vpc-cni-k8s
-              version: 1.23.1
+              version: 1.23.2
               packages:
                 - name: amazon-vpc-cni-k8s
-                  purl: pkg:golang/github.com/aws/amazon-vpc-cni-k8s@1.23.1
+                  purl: pkg:golang/github.com/aws/amazon-vpc-cni-k8s@1.23.2
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -138,6 +138,7 @@ contents:
           with:
             deps:
               - golang.org/x/mod@v0.40.0
+              - golang.org/x/net@v0.60.0
               - google.golang.org/grpc@v1.83.2
             download: true
         - name: test
@@ -150,40 +151,40 @@ contents:
           uses: go/build@v1
           with:
             ldflags:
-              - -X pkg/version/info.Version=1.23.1
-              - -X pkg/awsutils/awssession.version=1.23.1
+              - -X pkg/version/info.Version=1.23.2
+              - -X pkg/awsutils/awssession.version=1.23.2
             output: ${target.dir}/app/aws-cni
             packages: ./cmd/routed-eni-cni-plugin
         - name: build aws-k8s-agent
           uses: go/build@v1
           with:
             ldflags:
-              - -X pkg/version/info.Version=1.23.1
-              - -X pkg/awsutils/awssession.version=1.23.1
+              - -X pkg/version/info.Version=1.23.2
+              - -X pkg/awsutils/awssession.version=1.23.2
             output: ${target.dir}/app/aws-k8s-agent
             packages: ./cmd/aws-k8s-agent
         - name: build grpc-health-probe
           uses: go/build@v1
           with:
             ldflags:
-              - -X pkg/version/info.Version=1.23.1
-              - -X pkg/awsutils/awssession.version=1.23.1
+              - -X pkg/version/info.Version=1.23.2
+              - -X pkg/awsutils/awssession.version=1.23.2
             output: ${target.dir}/app/grpc-health-probe
             packages: ./cmd/grpc-health-probe
         - name: build egress-cni
           uses: go/build@v1
           with:
             ldflags:
-              - -X pkg/version/info.Version=1.23.1
-              - -X pkg/awsutils/awssession.version=1.23.1
+              - -X pkg/version/info.Version=1.23.2
+              - -X pkg/awsutils/awssession.version=1.23.2
             output: ${target.dir}/app/egress-cni
             packages: ./cmd/egress-cni-plugin
         - name: build aws-vpc-cni
           uses: go/build@v1
           with:
             ldflags:
-              - -X pkg/version/info.Version=1.23.1
-              - -X pkg/awsutils/awssession.version=1.23.1
+              - -X pkg/version/info.Version=1.23.2
+              - -X pkg/awsutils/awssession.version=1.23.2
             output: ${target.dir}/app/aws-vpc-cni
             packages: ./cmd/aws-vpc-cni
       outputs:
@@ -246,6 +247,30 @@ work-dir: /app
 environment:
   DEBIAN_FRONTEND: noninteractive
 paths:
+  - type: delete
+    path: /usr/sbin/iptables
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/iptables-restore
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/iptables-save
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/ip6tables
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/ip6tables-restore
+    uid: 0
+    gid: 0
+  - type: delete
+    path: /usr/sbin/ip6tables-save
+    uid: 0
+    gid: 0
   - type: symlink
     path: /usr/sbin/iptables
     uid: 0
