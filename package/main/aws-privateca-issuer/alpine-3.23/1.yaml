@@ -4,7 +4,7 @@ image: dhi.io/pkg-aws-privateca-issuer
 variant: runtime
 tags:
   - 1.10.0-alpine3.23
-  - 1.10.0-r1-alpine3.23
+  - 1.10.0-r2-alpine3.23
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,7 +14,7 @@ vars:
   COMMIT_SHA: 7f6fac6069c9f7d780fcd3d32b49bfd0d1b25e79
   GOLANG_MAJOR_MINOR_VERSION: "1.26"
   GOLANG_VERSION: 1.26.9-r0
-  REL: "1"
+  REL: "2"
   SEMVER_MAJOR_MINOR_VERSION: "1.10"
   SEMVER_MAJOR_VERSION: "1"
   SEMVER_VERSION: 1.10.0
@@ -59,7 +59,8 @@ contents:
         - name: update go dependencies
           uses: go/bump@v1
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             download: true
         - name: test
           privileged: true
@@ -96,7 +97,7 @@ contents:
               - usr/bin/manager
             license: Apache-2.0
             name: aws-privateca-issuer
-            rel: 1
+            rel: 2
             subpackages:
               - files:
                   - path: usr/bin/manager
