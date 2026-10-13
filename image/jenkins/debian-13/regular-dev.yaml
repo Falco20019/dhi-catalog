@@ -4,16 +4,16 @@ name: Jenkins 2.x (weekly) (dev)
 image: dhi.io/jenkins
 variant: dev
 tags:
-  - 2.585-dev
-  - 2.585-debian-dev
-  - 2.585-debian13-dev
+  - 2.586-dev
+  - 2.586-debian-dev
+  - 2.586-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 vars:
-  COMMIT_SHA: 4c33e0a9bdac232a8f1cfc07cedc21cece62de79
-  DOCKER_REPO_COMMIT_SHA: 09d7e42a9e028727434b1d9f0e35b0b11e9f1ab5
-  DOCKER_REPO_VERSION: "2.585"
+  COMMIT_SHA: 8534fcc9125062b7acb0cce78c02d3d7e41c15f8
+  DOCKER_REPO_COMMIT_SHA: a92354bb17c840615bc94baf4c0b8662586dfa76
+  DOCKER_REPO_VERSION: "2.586"
   JAVA_FIPS_SUFFIX: ""
   JAVA_HOME_PATH: /usr/lib/jvm/temurin-21
   JAVA_MAJOR_VERSION: "21"
@@ -21,9 +21,9 @@ vars:
   JDK_MAJOR_VERSION: "21"
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
   MAVEN_VERSION: 3.10.0
-  SEMVER_MAJOR_MINOR_VERSION: "2.585"
+  SEMVER_MAJOR_MINOR_VERSION: "2.586"
   SEMVER_MAJOR_VERSION: "2"
-  VERSION: "2.585"
+  VERSION: "2.586"
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -107,20 +107,20 @@ contents:
           - zip
           - xmlstarlet
         files:
-          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.585
-            checksum: 4c33e0a9bdac232a8f1cfc07cedc21cece62de79
+          - url: git+https://github.com/jenkinsci/jenkins.git#jenkins-2.586
+            checksum: 8534fcc9125062b7acb0cce78c02d3d7e41c15f8
             path: ${source.dir}/jenkins
             spdx:
               name: jenkins
-              version: "2.585"
+              version: "2.586"
               packages:
                 - name: jenkins
-                  purl: pkg:dhi/jenkins@2.585
+                  purl: pkg:dhi/jenkins@2.586
                   license: MIT
             uid: 0
             gid: 0
-          - url: git+https://github.com/jenkinsci/docker.git#09d7e42a9e028727434b1d9f0e35b0b11e9f1ab5
-            checksum: 09d7e42a9e028727434b1d9f0e35b0b11e9f1ab5
+          - url: git+https://github.com/jenkinsci/docker.git#a92354bb17c840615bc94baf4c0b8662586dfa76
+            checksum: a92354bb17c840615bc94baf4c0b8662586dfa76
             path: ${source.dir}/docker-builds
             uid: 0
             gid: 0
@@ -249,7 +249,7 @@ environment:
   JENKINS_SLAVE_AGENT_PORT: "50000"
   JENKINS_UC: https://updates.jenkins.io
   JENKINS_UC_EXPERIMENTAL: https://updates.jenkins.io/experimental
-  JENKINS_VERSION: "2.585"
+  JENKINS_VERSION: "2.586"
   LANG: en_US.UTF-8
   LANGUAGE: en_US:en
   LC_ALL: en_US.UTF-8
