@@ -33,7 +33,7 @@ Operator mounts an emptyDir at `/stage` for the `cni-plugins` init container.
 ```bash
 docker run --rm --user 0 \
   -v cni-plugins-stage:/stage \
-  dhi.io/third-party-cni-plugins:<tag>
+  dhi.io/calico-third-party-cni-plugins:<tag>
 ```
 
 The operator then runs `install-cni`, which reads the staged binaries from `/opt/cni/bin` (the same volume) and copies
@@ -61,7 +61,7 @@ spec:
     - name: dhi-pull-secret
   registry: dhi.io/
   imagePath: <your-namespace>
-  imagePrefix: dhi-
+  imagePrefix: dhi-calico-
   cni:
     type: Calico
 ```
@@ -112,7 +112,7 @@ following table of migration notes.
 | No shell           | By default, non-dev images, intended for runtime, don't contain a shell. Use dev images in build stages to run shell commands and then copy artifacts to the runtime stage.                                                                                                                                                  |
 
 When deploying with the Tigera Operator, configure the `Installation` CR so the operator pulls
-`dhi/third-party-cni-plugins` (and other Calico DHI images) instead of upstream `quay.io/calico/*` references.
+`dhi/calico-third-party-cni-plugins` (and other Calico DHI images) instead of upstream `quay.io/calico/*` references.
 
 ## Troubleshooting migration
 

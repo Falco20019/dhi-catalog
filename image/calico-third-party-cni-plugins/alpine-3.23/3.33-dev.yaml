@@ -1,18 +1,13 @@
-# syntax=dhi.io/build:2-debian13
+# syntax=dhi.io/build:2-alpine3.23
 
 name: Calico Third-Party CNI Plugins 3.33.x (dev)
-image: dhi.io/third-party-cni-plugins
+image: dhi.io/calico-third-party-cni-plugins
 variant: dev
 tags:
-  - 3-dev
-  - 3.33-dev
-  - 3.33.0-dev
-  - 3-debian-dev
-  - 3-debian13-dev
-  - 3.33-debian-dev
-  - 3.33-debian13-dev
-  - 3.33.0-debian-dev
-  - 3.33.0-debian13-dev
+  - 3.33-alpine-dev
+  - 3.33.0-alpine-dev
+  - 3.33-alpine3.23-dev
+  - 3.33.0-alpine3.23-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -21,7 +16,7 @@ dates:
 vars:
   CNI_PLUGINS_VERSION: v1.9.1
   FLAVORED_SUFFIX: -dev
-  PACKAGE_VERSION: 3.33.0-2
+  PACKAGE_VERSION: 3.33.0-r2
   SEMVER_MAJOR_MINOR_VERSION: "3.33"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.33.0
@@ -29,31 +24,20 @@ vars:
   VERSION: 3.33.0
 contents:
   repositories:
-    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+    - https://dhi.io/apk/alpine/v3.23/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.23/main
+    - https://dl-cdn.alpinelinux.org/alpine/v3.23/community
   keyring:
-    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+    - https://dhi.io/keyring/dhi-apk@docker-0F81AD7700D99184.rsa.pub
   packages:
-    - '!gawk'
-    - '!libelogind0'
-    - '!original-awk'
-    - apt
-    - base-files
-    - bash
+    - alpine-baselayout-data
+    - apk-tools
+    - busybox
     - ca-certificates
     - ca-certificates-bundle
-    - calico-third-party-cni-plugins-3.33-dev=3.33.0-2
-    - cni-plugins-3.33-dev=3.33.0-2
-    - coreutils
-    - diffutils
-    - dpkg
-    - findutils
-    - grep
-    - libc-bin
-    - mawk
-    - perl-base
-    - sed
+    - calico-third-party-cni-plugins-3.33-dev=3.33.0-r2
+    - cni-plugins-3.33-dev=3.33.0-r2
     - tzdata
-    - util-linux
 accounts:
   root: true
   run-as: root
@@ -61,24 +45,18 @@ accounts:
     - name: nonroot
       uid: 65532
       gid: 65532
-    - name: _apt
-      uid: 42
-      gid: 65532
   groups:
     - name: nonroot
       gid: 65532
       members:
         - nonroot
 os-release:
-  name: Docker Hardened Images (Debian)
-  id: debian
-  version-id: "13"
-  version-codename: trixie
-  pretty-name: Docker Hardened Images/Debian GNU/Linux 13 (trixie)
+  name: Docker Hardened Images (Alpine)
+  id: alpine
+  version-id: "3.23"
+  pretty-name: Docker Hardened Images/Alpine Linux v3.23
   home-url: https://docker.com/products/hardened-images/
   bug-report-url: https://docker.com/support/
-environment:
-  DEBIAN_FRONTEND: noninteractive
 paths:
   - type: directory
     path: /plugins

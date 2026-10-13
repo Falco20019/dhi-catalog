@@ -1,7 +1,7 @@
 # syntax=dhi.io/build:2-alpine3.23
 
 name: Calico Third-Party CNI Plugins 3.33.x
-image: dhi.io/third-party-cni-plugins
+image: dhi.io/calico-third-party-cni-plugins
 variant: runtime
 tags:
   - 3.33-alpine
