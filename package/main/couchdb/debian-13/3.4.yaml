@@ -5,10 +5,10 @@ variant: runtime
 tags:
   - "3.4"
   - 3.4.3
-  - 3.4.3-r16
+  - 3.4.3-r17
   - 3.4-debian13
   - 3.4.3-debian13
-  - 3.4.3-r16-debian13
+  - 3.4.3-r17-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -32,9 +32,9 @@ vars:
   PACKAGE_NAME: couchdb-3.4
   PYTHON_MINOR: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REBAR_COMMIT_SHA: 15b6dc1d41f1b56bd8a0b7e938a5d5d79ec9e22b
-  REBAR_VERSION: 3.27.2
-  REL: "16"
+  REBAR_COMMIT_SHA: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
+  REBAR_VERSION: 3.27.3
+  REL: "17"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
@@ -139,15 +139,15 @@ contents:
                   license: Apache-2.0
             uid: 0
             gid: 0
-          - url: git+https://github.com/erlang/rebar3.git#3.27.2
-            checksum: 15b6dc1d41f1b56bd8a0b7e938a5d5d79ec9e22b
+          - url: git+https://github.com/erlang/rebar3.git#3.27.3
+            checksum: 8723cb44fddb7ed66809d4dfbfc1da1ba6841456
             path: ${source.dir}/rebar3
             spdx:
               name: rebar3
-              version: 3.27.2
+              version: 3.27.3
               packages:
                 - name: rebar3
-                  purl: pkg:erlang/github.com/erlang/rebar3@3.27.2
+                  purl: pkg:erlang/github.com/erlang/rebar3@3.27.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -331,7 +331,7 @@ contents:
               - deb
             license: Apache-2.0
             name: couchdb-3.4
-            rel: 16
+            rel: 17
             url: https://couchdb.apache.org/
             version: 3.4.3
 os-release:
