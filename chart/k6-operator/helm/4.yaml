@@ -16,7 +16,7 @@ vars:
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
   K6_OPERATOR_REFERENCE: dhi/k6-operator:1.6.0-debian13@sha256:38f18cf0524460800bdfd73fde727b281744e11b43321d9fbee543cb4530d633
-  K6_REFERENCE: dhi/k6:1.8.1-debian13-compat@sha256:5b8362de4ba4a4734d9792b1911c619922d3e944df9d0a63f78e9fddda5d0fba
+  K6_REFERENCE: dhi/k6:1.8.1-debian13-compat@sha256:e323f6ba284ab4d033f7fa9a252dd992fb584ae6053d70433786102077fa8b8b
   SEMVER_MAJOR_MINOR_VERSION: "4.6"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.6.0
@@ -52,7 +52,7 @@ contents:
                 - name: k6-operator
                   ref: dhi/k6-operator:1.6.0-debian13@sha256:38f18cf0524460800bdfd73fde727b281744e11b43321d9fbee543cb4530d633
                 - name: k6
-                  ref: dhi/k6:1.8.1-debian13-compat@sha256:5b8362de4ba4a4734d9792b1911c619922d3e944df9d0a63f78e9fddda5d0fba
+                  ref: dhi/k6:1.8.1-debian13-compat@sha256:e323f6ba284ab4d033f7fa9a252dd992fb584ae6053d70433786102077fa8b8b
               name: k6-operator-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/grafana/k6-operator
