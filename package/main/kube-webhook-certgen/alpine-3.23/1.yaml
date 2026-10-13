@@ -47,7 +47,8 @@ contents:
         - name: update go dependencies
           uses: go/bump@v1
           with:
-            deps: []
+            deps:
+              - golang.org/x/net@v0.60.0
             tidy: true
         - uses: go/hermetic@v1
         - name: build
