@@ -3,8 +3,8 @@
 image: dhi.io/pkg-nfs-ganesha
 variant: runtime
 tags:
-  - 6.5-5-dhi0
-  - 6.5-5-dhi0-debian13
+  - 6.5-5-dhi1
+  - 6.5-5-dhi1-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,9 +20,9 @@ vars:
   DEBIAN_ORIG_FILENAME: nfs-ganesha_6.5.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/n/nfs-ganesha/nfs-ganesha_6.5.orig.tar.gz
   DEBIAN_VERSION: 6.5-5
-  DHI_REL: "0"
-  DHI_VERSION: 6.5-5+dhi0
-  TAG_VERSION: 6.5-5-dhi0
+  DHI_REL: "1"
+  DHI_VERSION: 6.5-5+dhi1
+  TAG_VERSION: 6.5-5-dhi1
   UPSTREAM_VERSION: "6.5"
 contents:
   packages:
@@ -87,14 +87,27 @@ contents:
           with:
             file: nfs-ganesha_6.5-5.dsc
             path: nfs-ganesha
+        - name: disable 9P for CVE-2026-105516 and CVE-2026-105517
+          uses: patch@v1
+          work-dir: ${source.dir}/nfs-ganesha
+          with:
+            options: -p1
+            patches:
+              - ${source.dir}/patch/dhi-cve-2026-105516-105517-disable-9p.patch
         - uses: dpkg/bump@v1
           with:
             changelog:
-              - DHI Rebuild
-            version: 6.5-5+dhi0
+              - Disable 9P and nfs-ganesha-mount-9p for CVE-2026-105516 and CVE-2026-105517
+            version: 6.5-5+dhi1
         - uses: dpkg/build@v1
           with:
             args: -uc -us -d
+      paths:
+        - type: file
+          path: ${source.dir}/patch/dhi-cve-2026-105516-105517-disable-9p.patch
+          uid: 0
+          gid: 0
+          source: package/deb/main/nfs-ganesha/patch/dhi-cve-2026-105516-105517-disable-9p.patch
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
