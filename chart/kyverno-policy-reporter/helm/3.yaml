@@ -15,7 +15,7 @@ vars:
   DHI_REGISTRY: dhi.io
   DHI_SKIP_CONTEXT_COPY: "true"
   HELM_VERSION: 4.1.4-2
-  KYVERNO_POLICY_REPORTER_REFERENCE: dhi/kyverno-policy-reporter:3.11.0-debian13@sha256:9a1caaf7f17dad0d252c74b6b77688a49432191521ed2a956ce06b9dc6765693
+  KYVERNO_POLICY_REPORTER_REFERENCE: dhi/kyverno-policy-reporter:3.11.0-debian13@sha256:353821adcbb66ea40d2615cf275a286d05628a67646874ebd9e7e0eee83d037b
   KYVERNO_POLICY_REPORTER_UI_REFERENCE: dhi/kyverno-policy-reporter-ui:2.9.0-debian13@sha256:f63d8d0bfc8b199b7c1178c29aa44b05b9999c629eeeb51f42359875ceef4087
   POLICY_REPORTER_IMAGE_TAG: 3.11.0
   POLICY_REPORTER_UI_IMAGE_TAG: 2.9.0
@@ -23,7 +23,7 @@ vars:
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.11.0
   TRIVY_IMAGE_TAG: 0.74.0
-  TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:bd2ddb6401b861590b105812769109faf77334ca58d6e95084d78c5ecd856db8
+  TRIVY_REFERENCE: dhi/trivy:0.74.0-debian13@sha256:68177db393fb74d2af7be455d160cc2ea7b17c2010816196af483244f381d74d
   VERSION: 3.11.0
 contents:
   repositories:
@@ -55,11 +55,11 @@ contents:
               description: Docker Hardened Images Helm chart for Kyverno Policy Reporter
               images:
                 - name: kyverno-policy-reporter
-                  ref: dhi/kyverno-policy-reporter:3.11.0-debian13@sha256:9a1caaf7f17dad0d252c74b6b77688a49432191521ed2a956ce06b9dc6765693
+                  ref: dhi/kyverno-policy-reporter:3.11.0-debian13@sha256:353821adcbb66ea40d2615cf275a286d05628a67646874ebd9e7e0eee83d037b
                 - name: kyverno-policy-reporter-ui
                   ref: dhi/kyverno-policy-reporter-ui:2.9.0-debian13@sha256:f63d8d0bfc8b199b7c1178c29aa44b05b9999c629eeeb51f42359875ceef4087
                 - name: trivy
-                  ref: dhi/trivy:0.74.0-debian13@sha256:bd2ddb6401b861590b105812769109faf77334ca58d6e95084d78c5ecd856db8
+                  ref: dhi/trivy:0.74.0-debian13@sha256:68177db393fb74d2af7be455d160cc2ea7b17c2010816196af483244f381d74d
               name: kyverno-policy-reporter-chart
               notes: ${source.dir}/config/NOTES.txt
               sourceUrl: https://github.com/kyverno/policy-reporter
