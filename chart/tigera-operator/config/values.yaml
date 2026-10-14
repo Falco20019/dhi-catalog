@@ -1,4 +1,4 @@
-# Docker Hardened Images configuration for Calico (tigera-operator chart).
+# Docker Hardened Images configuration for Calico 3.33 (tigera-operator chart).
 #
 # Upstream uses tigeraOperator.{registry,image,version} composed via the
 # tigera-operator.image template helper as "<registry>/<image>:<version>".
@@ -9,15 +9,17 @@ tigeraOperator:
   image: ${tigera-operator.repository}
   version: ${tigera-operator.tag}@${tigera-operator.digest}
 
+# Since 3.33 the calicoctl init container (create-initial-resources) runs from the combined calico image
+# (upstream default: quay.io/calico/calico), which ships /usr/bin/calicoctl. calico-ctl is no longer used.
 calicoctl:
-  image: ${calico-ctl.registry}/${calico-ctl.repository}
-  tag: v${calico-ctl.tag}@${calico-ctl.digest}
+  image: ${calico-calico.registry}/${calico-calico.repository}
+  tag: ${calico-calico.tag}@${calico-calico.digest}
 
-# Calico component images (node, webhooks, whisker, goldmane, etc.) are deployed by
-# the operator using installation.{registry,imagePath,imagePrefix}. Public DHI images are flat
-# on dhi.io (dhi.io/calico-<component>:<tag>). imagePath must be "." so the operator does not
-# insert the upstream default path segment "calico/". When mirroring to Docker Hub, set
-# imagePath to your namespace (for example myorg).
+# Calico component images (calico, node, whisker, third-party-cni-plugins) are deployed by the
+# operator using installation.{registry,imagePath,imagePrefix}. The operator builds each reference as
+# <registry>/<imagePath>/<imagePrefix><component>, with components named calico, node, whisker and
+# third-party-cni-plugins. imagePath must be "." so the operator does not insert the upstream default
+# path segment "calico/". When mirroring to Docker Hub, set imagePath to your namespace (for example myorg).
 installation:
   registry: dhi.io/
   imagePath: .

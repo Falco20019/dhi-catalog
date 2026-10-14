@@ -17,6 +17,21 @@ For full upstream reference, see
 [Calico on EKS](https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks) and
 [native v3 CRDs](https://docs.tigera.io/calico/latest/operations/native-v3-crds).
 
+### Calico 3.32 vs 3.33
+
+Two chart lines are published under the same `tigera-operator-chart` repository, and the examples below are written for
+3.32.x. When you install a 3.33.x chart (for example `--version 3.33.0`):
+
+- Use the matching Calico version in the CRD URLs (for example `v3.33.0` instead of `v3.32.1`).
+- The operator deploys four Calico images instead of one image per component: `calico-calico`, `calico-node`,
+  `calico-whisker` and `calico-third-party-cni-plugins`. The combined `calico-calico` image replaces the separate
+  `calico-cni`, `calico-kube-controllers`, `calico-typha`, `calico-webhooks`, `calico-csi`, `calico-goldmane` and other
+  component images, and the `calicoctl` init container of the operator pod runs from it instead of `calico-ctl`.
+- The operator resolves each image as `<registry>/<imagePath>/<imagePrefix><component>`, where the component is
+  `calico`, `node`, `whisker` or `third-party-cni-plugins`. The DHI repository names are not uniform (`calico`,
+  `calico-node`, `calico-whisker`, `third-party-cni-plugins`), so no single `installation.imagePrefix` matches all four.
+  When you mirror the images, publish each one under the name the operator resolves for your `installation.imagePrefix`.
+
 ### When to enable apiServer
 
 The chart value `apiServer.enabled` controls reconciliation of the Calico **APIServer** custom resource. The name is

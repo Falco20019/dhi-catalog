@@ -121,4 +121,4 @@ contents:
           uid: 0
           gid: 0
           mode: "0644"
-          source: chart/tigera-operator/config
+          source: chart/tigera-operator/config-3.32

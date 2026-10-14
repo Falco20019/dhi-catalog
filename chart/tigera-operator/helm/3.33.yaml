@@ -1,0 +1,100 @@
+# syntax=dhi.io/build:2-helm3
+
+name: Tigera Operator Helm chart 3.33.x
+image: dhi.io/tigera-operator-chart
+variant: helm
+tags:
+  - 3.33.0
+platforms:
+  - linux/amd64
+vars:
+  CALICO_CALICO_REFERENCE: dhi/calico-calico:3.33.0-debian13@sha256:075fdc97fe8dbf0fa563435cc4a13f274dc2fbfe736be975b5f9560c87846614
+  CALICO_NODE_REFERENCE: dhi/calico-node:3.33.0-debian13@sha256:6fbb3746203db65d7f9bb5f549b585c571244cf3190626600fa028aa85fd84d4
+  CALICO_THIRD_PARTY_CNI_PLUGINS_REFERENCE: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:8a8a3c9646dd535d9e4c0b7cc436420b5ba7ddec247c67e751712b838cabd7bc
+  CALICO_WHISKER_REFERENCE: dhi/calico-whisker:3.33.0-debian13@sha256:db354b0128b27cc88f49db3fcf6ef4a45c0f4c3912e1682d05169e170092eb35
+  CHART_COMMIT_SHA: fbaa371111636a37ecc82625fce8453064a7fff2
+  CHART_HELM_NAME: tigera-operator-chart
+  DHI_NAMESPACE: dhi
+  DHI_PREFIX: ""
+  DHI_REGISTRY: dhi.io
+  DHI_SKIP_CONTEXT_COPY: "true"
+  HELM_VERSION: 4.1.4-2
+  OPERATOR_VERSION: 1.44.0
+  SEMVER_MAJOR_MINOR_VERSION: "3.33"
+  SEMVER_MAJOR_VERSION: "3"
+  SEMVER_VERSION: 3.33.0
+  TIGERA_OPERATOR_REFERENCE: dhi/tigera-operator:1.44.0-debian13@sha256:19caaee0e0e953863f63c84d4d6ad19071a41c36982f9e2aacf80f2f6eff4ae8
+  VERSION: 3.33.0
+contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
+  builds:
+    - name: tigera-operator
+      work-dir: ${source.dir}/helm-charts/charts/tigera-operator
+      contents:
+        packages:
+          - bash
+          - ca-certificates
+          - coreutils
+          - helm=4.1.4-2
+          - yq-go
+        files:
+          - url: git+https://github.com/projectcalico/calico.git#v3.33.0
+            checksum: fbaa371111636a37ecc82625fce8453064a7fff2
+            path: ${source.dir}/helm-charts
+            uid: 0
+            gid: 0
+      pipeline:
+        - name: prepare chart
+          uses: helm/rudder@v1
+          with:
+            chart:
+              appRef: tigera-operator
+              description: Docker Hardened Images Helm chart for the Tigera operator (installs Calico)
+              images:
+                - name: tigera-operator
+                  ref: dhi/tigera-operator:1.44.0-debian13@sha256:19caaee0e0e953863f63c84d4d6ad19071a41c36982f9e2aacf80f2f6eff4ae8
+                - name: calico-calico
+                  ref: dhi/calico-calico:3.33.0-debian13@sha256:075fdc97fe8dbf0fa563435cc4a13f274dc2fbfe736be975b5f9560c87846614
+                - name: calico-node
+                  ref: dhi/calico-node:3.33.0-debian13@sha256:6fbb3746203db65d7f9bb5f549b585c571244cf3190626600fa028aa85fd84d4
+                - name: calico-whisker
+                  ref: dhi/calico-whisker:3.33.0-debian13@sha256:db354b0128b27cc88f49db3fcf6ef4a45c0f4c3912e1682d05169e170092eb35
+                - name: calico-third-party-cni-plugins
+                  ref: dhi/calico-third-party-cni-plugins:3.33.0-debian13@sha256:8a8a3c9646dd535d9e4c0b7cc436420b5ba7ddec247c67e751712b838cabd7bc
+              name: tigera-operator-chart
+              notes: ${source.dir}/config/NOTES.txt
+              sourceUrl: https://github.com/projectcalico/calico
+            cmd: prepare
+            registry: dhi.io
+        - name: update version
+          uses: yq/patch@v1
+          with:
+            file: Chart.yaml
+            patches:
+              - .version = "3.33.0"
+        - name: relocate chart
+          uses: helm/rudder@v1
+          with:
+            cmd: patch
+            patches:
+              from: ${source.dir}/config
+            registry: dhi.io
+        - name: lint
+          uses: helm/cmd@v1
+          with:
+            chart: .
+            cmd: lint .
+        - name: package
+          uses: helm/package@v1
+          with:
+            chart: .
+      paths:
+        - type: directory
+          path: ${source.dir}/config
+          uid: 0
+          gid: 0
+          mode: "0644"
+          source: chart/tigera-operator/config
