@@ -15,16 +15,22 @@ dates:
 vars:
   COMMIT_SHA: 508459f9f6f9c654fe5be2d686ce7ca045dfe2c0
   FINAL_VERSION: 3.4.3.Final
+  JDBC_MVN_PROPERTIES: jdbc-mvn-properties.json
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
   MAVEN_REFERENCE: dhi/maven:3.10.0-jdk21-debian13-dev@sha256:b427443494e23e141541cf217be2fc0d615e91ce8573b51cdf0bf8b67c1cc0b4
   MAVEN_VERSION: 3.9.16
+  PACKAGE_NAME: debezium-3.4
   REL: "7"
   SEMVER_MAJOR_MINOR_VERSION: "3.4"
   SEMVER_MAJOR_VERSION: "3"
   SEMVER_VERSION: 3.4.3
   VERSION: 3.4.3
 contents:
+  repositories:
+    - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
+  keyring:
+    - https://dhi.io/keyring/dhi-deb-gpg.D46852F6925E9F71.key
   packages:
     - base-files
   builds:
@@ -96,7 +102,7 @@ contents:
       pipeline:
         - uses: mvn/mirror@v1
           environment:
-            MAVEN_MIRROR_OF: central,confluent
+            MAVEN_MIRROR_OF: '*,!confluent,!ossrh'
         - name: use maven central when mirror credentials are absent
           secrets:
             - id: maven_user
@@ -111,31 +117,6 @@ contents:
             if [ -z "${MAVEN_USER:-}" ] || [ -z "${MAVEN_PASSWORD:-}" ]; then
               rm -f /root/.m2/settings.xml
             fi
-        - name: remove unresolvable confluent test dependency
-          runs: |
-            set -eux -o pipefail
-
-            grep -rl "kafka-connect-avro-converter" --include=pom.xml . | while read -r pom; do
-              xq-python -x 'walk(
-                if type == "object" and has("dependency") then
-                  if (.dependency | type) == "array" then
-                    .dependency |= map(select(.groupId != "io.confluent" or .artifactId != "kafka-connect-avro-converter"))
-                  elif .dependency.groupId == "io.confluent" and .dependency.artifactId == "kafka-connect-avro-converter" then
-                    del(.dependency)
-                  else
-                    .
-                  end
-                else
-                  .
-                end
-              )' "$pom" > /tmp/pom.xml.patched
-              mv /tmp/pom.xml.patched "$pom"
-            done
-        - name: remove mongodb test source with unresolvable confluent import
-          runs: |
-            set -eux -o pipefail
-
-            rm -f debezium-connector-mongodb/src/test/java/io/debezium/connector/mongodb/transforms/ToAvroMongoDataConverterTest.java
         - name: remove oracle xstream support from the assembly profile
           runs: |
             set -eux -o pipefail
@@ -207,7 +188,7 @@ contents:
 
             mvn test -B \
               -pl debezium-connector-mysql,debezium-connector-mariadb,debezium-connector-postgres,debezium-connector-mongodb,debezium-connector-sqlserver,debezium-connector-oracle,debezium-connector-jdbc,debezium-scripting/debezium-scripting \
-              -Dtest='!*SourceInfoTest,!*IT,!*EventRouterTest,!*KafkaSchemaHistoryTest' \
+              -Dtest='!*IT,!*EventRouterTest,!*KafkaSchemaHistoryTest' \
               -Dsurefire.failIfNoSpecifiedTests=false \
               -Dmaven.javadoc.skip=true
         - name: build
@@ -272,30 +253,30 @@ contents:
             formats:
               - deb
             license: Apache-2.0
-            name: debezium-connector-mysql
+            name: debezium-3.4-connector-mysql
             rel: 7
             subpackages:
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-mariadb
-                name: debezium-connector-mariadb
+                name: debezium-3.4-connector-mariadb
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-postgres
-                name: debezium-connector-postgres
+                name: debezium-3.4-connector-postgres
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-mongodb
-                name: debezium-connector-mongodb
+                name: debezium-3.4-connector-mongodb
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-sqlserver
-                name: debezium-connector-sqlserver
+                name: debezium-3.4-connector-sqlserver
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-oracle
-                name: debezium-connector-oracle
+                name: debezium-3.4-connector-oracle
               - files:
                   - path: usr/share/kafka/connect/debezium-connector-jdbc
-                name: debezium-connector-jdbc
+                name: debezium-3.4-connector-jdbc
               - files:
                   - path: usr/share/kafka/connect/debezium-scripting
-                name: debezium-scripting
+                name: debezium-3.4-scripting
             url: https://debezium.io/
             version: 3.4.3
       paths:
@@ -314,6 +295,11 @@ contents:
           uid: 0
           gid: 0
           source: package/main/debezium/patch/jdbc-mvn-properties.json
+        - type: file
+          path: ${source.dir}/patch/jdbc-mvn-properties-3.7.json
+          uid: 0
+          gid: 0
+          source: package/main/debezium/patch/jdbc-mvn-properties-3.7.json
 os-release:
   name: Docker Hardened Images (Debian)
   id: debian
