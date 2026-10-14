@@ -4,13 +4,13 @@ name: Prometheus AlertManager Helm chart 2.x
 image: dhi.io/alertmanager-chart
 variant: helm
 tags:
-  - 2.1.0
+  - 2.1.1
 platforms:
   - linux/amd64
 vars:
   ALERTMANAGER_REFERENCE: dhi/alertmanager:0.34.1-debian13@sha256:05ee9e344be36d0f71e1390989320ee36757749f53e509a113efc83a50071551
   BUSYBOX_REFERENCE: dhi/busybox:1.37.0-alpine3.22@sha256:c1011eab944f17e619ce982878ea8d52cc36c67325ab374f4ad2a344a6c03786
-  CHART_COMMIT_SHA: 33b6d8ee9c5f249754c66f4c55f6e8a243afafa3
+  CHART_COMMIT_SHA: 6498f5f4e1efa2b137f4f5687162ce5975d04f7a
   CHART_HELM_NAME: alertmanager-chart
   DHI_NAMESPACE: dhi
   DHI_PREFIX: ""
@@ -20,8 +20,8 @@ vars:
   PROMETHEUS_CONFIG_RELOADER_REFERENCE: dhi/prometheus-config-reloader:0.94.1-debian13@sha256:4007ca42fd123d51378144d90a02d21c60b6c3b7386a863331047f093dea7899
   SEMVER_MAJOR_MINOR_VERSION: "2.1"
   SEMVER_MAJOR_VERSION: "2"
-  SEMVER_VERSION: 2.1.0
-  VERSION: 2.1.0
+  SEMVER_VERSION: 2.1.1
+  VERSION: 2.1.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -35,8 +35,8 @@ contents:
           - coreutils
           - helm=4.1.4-2
         files:
-          - url: git+https://github.com/prometheus-community/helm-charts.git#alertmanager-2.1.0
-            checksum: 33b6d8ee9c5f249754c66f4c55f6e8a243afafa3
+          - url: git+https://github.com/prometheus-community/helm-charts.git#alertmanager-2.1.1
+            checksum: 6498f5f4e1efa2b137f4f5687162ce5975d04f7a
             path: ${source.dir}/helm-charts
             uid: 0
             gid: 0
