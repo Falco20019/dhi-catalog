@@ -4,9 +4,9 @@ image: dhi.io/pkg-piraeus-server
 variant: runtime
 tags:
   - 1.35.2
-  - 1.35.2-r6
+  - 1.35.2-r7
   - 1.35.2-debian13
-  - 1.35.2-r6-debian13
+  - 1.35.2-r7-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -16,7 +16,7 @@ vars:
   CARGO_VERSION: 1.97.1-0
   COMMIT_SHA: 4f9bfb0a395cdd8ae0fc8d99876a286148c30f88
   GOLANG_VERSION: 1.26.9-0
-  GRADLE_VERSION: 8.14.5-1
+  GRADLE_VERSION: 8.14.6-0
   JDK_MAJOR_VERSION: "21"
   JDK_VERSION: 1:21.0.12.1+1-4
   K8S_AWAIT_ELECTION_COMMIT_SHA: 76e9592cdbaefe5da70f3e1ae2aa200a1214797c
@@ -37,7 +37,7 @@ vars:
   PYTHON_LINSTOR_VERSION: 1.27.1
   PYTHON_MAJOR_MINOR_VERSION: "3.13"
   PYTHON_VERSION: 3.13.16-0
-  REL: "6"
+  REL: "7"
   RUSTC_VERSION: 1.97.1-0
   SEMVER_MAJOR_MINOR_VERSION: "1.35"
   SEMVER_MAJOR_VERSION: "1"
@@ -74,7 +74,7 @@ contents:
           - gawk
           - git
           - golang-1.26=1.26.9-0
-          - gradle-8=8.14.5-1
+          - gradle-8=8.14.6-0
           - grep
           - jq
           - libclang-dev
@@ -460,7 +460,7 @@ contents:
               - deb
             license: Apache-2.0
             name: piraeus-server
-            rel: 6
+            rel: 7
             url: https://github.com/piraeusdatastore/piraeus
             version: 1.35.2
       paths:
