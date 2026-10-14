@@ -13,7 +13,7 @@ platforms:
 dates:
   release: "2026-03-24"
 vars:
-  COMMIT_SHA: 3b6ce5cf331a1bec337f54e0c1df958e71829315
+  COMMIT_SHA: eef172226af2879b24ce61d8d73a874567e465c3
   REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "5.1"
   SEMVER_MAJOR_VERSION: "5"
@@ -49,7 +49,7 @@ contents:
           - grep
         files:
           - url: git+https://github.com/fluent/fluent-bit#v5.1.4
-            checksum: 3b6ce5cf331a1bec337f54e0c1df958e71829315
+            checksum: eef172226af2879b24ce61d8d73a874567e465c3
             path: ${source.dir}/fluent-bit
             spdx:
               name: fluent-bit
