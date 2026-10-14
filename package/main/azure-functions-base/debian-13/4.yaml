@@ -4,9 +4,9 @@ image: dhi.io/pkg-azure-functions-base
 variant: runtime
 tags:
   - 4.1055.100
-  - 4.1055.100-r0
+  - 4.1055.100-r1
   - 4.1055.100-debian13
-  - 4.1055.100-r0-debian13
+  - 4.1055.100-r1-debian13
 platforms:
   - linux/amd64
 vars:
@@ -18,13 +18,13 @@ vars:
   EXT_BUNDLE_COMMIT_SHA: 1e67550bb52fdd95787452de913fbe4ec06c1d93
   EXT_BUNDLE_VERSION: 4.40.0
   PACKAGE_NAME: azure-functions-base-4
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "4.1055"
   SEMVER_MAJOR_VERSION: "4"
   SEMVER_VERSION: 4.1055.100
-  TEMPLATES_BUILDID: "308147"
-  TEMPLATES_COMMIT: 4a49cf7174d5c22998d7dd59fe51a148dc5b1e3c
-  TEMPLATES_DOWNLOADURL: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA4MTQ3L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
+  TEMPLATES_BUILDID: "309389"
+  TEMPLATES_COMMIT: eed5195218cd6059e0f96e0e1654c1501047a8c7
+  TEMPLATES_DOWNLOADURL: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA5Mzg5L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
   VERSION: 4.1055.100
 contents:
   repositories:
@@ -79,14 +79,14 @@ contents:
                   license: MIT
             uid: 0
             gid: 0
-          - url: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA4MTQ3L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
+          - url: https://artprodwus21.artifacts.visualstudio.com/Ad1c51fbc-4477-4a0f-b99f-fc9013009a58/ae7e3bf3-d41a-4480-9ac0-b6cf9df9ac24/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2F6ZnVuYy9wcm9qZWN0SWQvYWU3ZTNiZjMtZDQxYS00NDgwLTlhYzAtYjZjZjlkZjlhYzI0L2J1aWxkSWQvMzA5Mzg5L2FydGlmYWN0TmFtZS9kcm9w0/content?format=zip
             path: ${source.dir}/templatesArtifacts.zip
             spdx:
               name: azure-functions-templates
-              version: 4a49cf7174d5c22998d7dd59fe51a148dc5b1e3c
+              version: eed5195218cd6059e0f96e0e1654c1501047a8c7
               packages:
                 - name: azure-functions-templates
-                  purl: pkg:github/Azure/azure-functions-templates@4a49cf7174d5c22998d7dd59fe51a148dc5b1e3c
+                  purl: pkg:github/Azure/azure-functions-templates@eed5195218cd6059e0f96e0e1654c1501047a8c7
                   license: MIT
             uid: 0
             gid: 0
@@ -140,7 +140,7 @@ contents:
           runs: |
             set -eux -o pipefail
 
-            grep -Eq '"commitId" *: *"4a49cf7174d5c22998d7dd59fe51a148dc5b1e3c"' version.json
+            grep -Eq '"commitId" *: *"eed5195218cd6059e0f96e0e1654c1501047a8c7"' version.json
 
             for archive in *.zip *.nupkg; do
               unzip -tq "$archive"
@@ -212,7 +212,7 @@ contents:
               - deb
             license: MIT
             name: azure-functions-base-4
-            rel: 0
+            rel: 1
             url: https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview
             version: 4.1055.100
       paths:
