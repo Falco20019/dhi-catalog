@@ -3,10 +3,10 @@
 image: dhi.io/pkg-netbox
 variant: runtime
 tags:
-  - 4.7.2
-  - 4.7.2-r4
-  - 4.7.2-debian13
-  - 4.7.2-r4-debian13
+  - 4.7.3
+  - 4.7.3-r0
+  - 4.7.3-debian13
+  - 4.7.3-r0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -14,17 +14,17 @@ dates:
   release: "2024-05-06"
 vars:
   ARCH: '#{ target.arch == "amd64" ? "x86_64" : "aarch64" }'
-  COMMIT_SHA: 251458b89a5eb2f5fe0d20ecd1140ba08f141a9c
+  COMMIT_SHA: 3cd2c1d6469caed6c50e80eddd4cde863e0e2cf5
   NETBOX_DOCKER_COMMIT_SHA: 7689fec7a70717f7e72feecb383e7a3f55538b5f
   NETBOX_DOCKER_VERSION: 5.1.1
   PYTHON_MINOR: "3.12"
   PYTHON_VERSION: 3.12.15-0
-  REL: "4"
+  REL: "0"
   SEMVER_MAJOR_MINOR_VERSION: "4.7"
   SEMVER_MAJOR_VERSION: "4"
-  SEMVER_VERSION: 4.7.2
+  SEMVER_VERSION: 4.7.3
   UV_VERSION: 0.13.0
-  VERSION: 4.7.2
+  VERSION: 4.7.3
 contents:
   packages:
     - base-files
@@ -80,15 +80,15 @@ contents:
             path: ${source.dir}/uv-unknown-linux-gnu.tar.gz
             uid: 0
             gid: 0
-          - url: git+https://github.com/netbox-community/netbox.git#v4.7.2
-            checksum: 251458b89a5eb2f5fe0d20ecd1140ba08f141a9c
+          - url: git+https://github.com/netbox-community/netbox.git#v4.7.3
+            checksum: 3cd2c1d6469caed6c50e80eddd4cde863e0e2cf5
             path: ${source.dir}/netbox-src
             spdx:
               name: netbox
-              version: 4.7.2
+              version: 4.7.3
               packages:
                 - name: netbox
-                  purl: pkg:github/netbox-community/netbox@v4.7.2
+                  purl: pkg:github/netbox-community/netbox@v4.7.3
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -145,9 +145,9 @@ contents:
               - deb
             license: Apache-2.0
             name: netbox
-            rel: 4
+            rel: 0
             url: https://github.com/netbox-community/netbox
-            version: 4.7.2
+            version: 4.7.3
       paths:
         - type: file
           path: ${source.dir}/build-netbox.sh
