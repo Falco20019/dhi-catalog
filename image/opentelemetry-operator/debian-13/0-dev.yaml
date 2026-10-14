@@ -5,14 +5,14 @@ image: dhi.io/opentelemetry-operator
 variant: dev
 tags:
   - 0-dev
-  - 0.160-dev
-  - 0.160.0-dev
+  - 0.161-dev
+  - 0.161.0-dev
   - 0-debian-dev
   - 0-debian13-dev
-  - 0.160-debian-dev
-  - 0.160-debian13-dev
-  - 0.160.0-debian-dev
-  - 0.160.0-debian13-dev
+  - 0.161-debian-dev
+  - 0.161-debian13-dev
+  - 0.161.0-debian-dev
+  - 0.161.0-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
@@ -20,19 +20,19 @@ vars:
   AUTOINSTRUMENTATION_APACHE_HTTPD_VERSION: 1.0.4
   AUTOINSTRUMENTATION_DOTNET_VERSION: 1.17.0
   AUTOINSTRUMENTATION_GO_VERSION: v0.24.0
-  AUTOINSTRUMENTATION_JAVA_VERSION: 2.31.1
+  AUTOINSTRUMENTATION_JAVA_VERSION: 2.32.0
   AUTOINSTRUMENTATION_NGINX_VERSION: 1.0.4
   AUTOINSTRUMENTATION_NODEJS_VERSION: 0.78.0
-  AUTOINSTRUMENTATION_PYTHON_VERSION: 0.66b0
-  COLLECTOR_VERSION: 0.160.0
-  COMMIT_SHA: c7cc68b4b4b8e7450315fa22da1a1f23a7664fad
-  OPERATOR_OPAMP_BRIDGE_VERSION: 0.160.0
-  SEMVER_MAJOR_MINOR_VERSION: "0.160"
+  AUTOINSTRUMENTATION_PYTHON_VERSION: 0.66b1
+  COLLECTOR_VERSION: 0.161.0
+  COMMIT_SHA: f3bd3660c30ec57f60b0e9706a14507b747bceb4
+  OPERATOR_OPAMP_BRIDGE_VERSION: 0.161.0
+  SEMVER_MAJOR_MINOR_VERSION: "0.161"
   SEMVER_MAJOR_VERSION: "0"
-  SEMVER_VERSION: 0.160.0
-  TARGET_ALLOCATOR_VERSION: 0.160.0
-  VERSION: 0.160.0
-  VERSION_MAJOR_MINOR: "0.160"
+  SEMVER_VERSION: 0.161.0
+  TARGET_ALLOCATOR_VERSION: 0.161.0
+  VERSION: 0.161.0
+  VERSION_MAJOR_MINOR: "0.161"
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -72,15 +72,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/open-telemetry/opentelemetry-operator.git#v0.160.0
-            checksum: c7cc68b4b4b8e7450315fa22da1a1f23a7664fad
+          - url: git+https://github.com/open-telemetry/opentelemetry-operator.git#v0.161.0
+            checksum: f3bd3660c30ec57f60b0e9706a14507b747bceb4
             path: /go/src/github.com/open-telemetry/opentelemetry-operator
             spdx:
               name: opentelemetry-operator
-              version: 0.160.0
+              version: 0.161.0
               packages:
                 - name: opentelemetry-operator
-                  purl: pkg:golang/github.com/open-telemetry/opentelemetry-operator@0.160.0
+                  purl: pkg:golang/github.com/open-telemetry/opentelemetry-operator@0.161.0
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -90,23 +90,21 @@ contents:
           work-dir: /go/src/github.com/open-telemetry/opentelemetry-operator
           with:
             deps:
-              - golang.org/x/net@v0.60.0
               - github.com/google/cel-go@v0.30.0
-              - google.golang.org/grpc@v1.83.2
             download: true
         - name: build
           uses: go/build@v1
           work-dir: /go/src/github.com/open-telemetry/opentelemetry-operator
           with:
             ldflags:
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.160.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.version=0.161.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.buildDate=$(date -u -d @${SOURCE_DATE_EPOCH} +'%Y-%m-%dT%H:%M:%SZ')
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.160.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.160.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.160.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationJava=2.31.1
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.otelCol=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.targetAllocator=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.operatorOpAMPBridge=0.161.0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationJava=2.32.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationNodeJS=0.78.0
-              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationPython=0.66b0
+              - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationPython=0.66b1
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationDotNet=1.17.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationGo=v0.24.0
               - -X github.com/open-telemetry/opentelemetry-operator/internal/version.autoInstrumentationApacheHttpd=1.0.4
