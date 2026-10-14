@@ -6,24 +6,24 @@ variant: dev
 tags:
   - 3-dev
   - 3.11-dev
-  - 3.11.0-dev
+  - 3.11.1-dev
   - 3-debian-dev
   - 3-debian13-dev
   - 3.11-debian-dev
   - 3.11-debian13-dev
-  - 3.11.0-debian-dev
-  - 3.11.0-debian13-dev
+  - 3.11.1-debian-dev
+  - 3.11.1-debian13-dev
 platforms:
   - linux/amd64
   - linux/arm64
 dates:
   release: "2025-07-31"
 vars:
-  COMMIT_SHA: 430d2d91cb52a023c7151f5f142ff66276ed7f77
+  COMMIT_SHA: b7f5c5291868afbebe7ebc1c6b8865b65c4eb2fa
   SEMVER_MAJOR_MINOR_VERSION: "3.11"
   SEMVER_MAJOR_VERSION: "3"
-  SEMVER_VERSION: 3.11.0
-  VERSION: 3.11.0
+  SEMVER_VERSION: 3.11.1
+  VERSION: 3.11.1
 contents:
   repositories:
     - deb [signed-by=/usr/share/keyrings/dhi-deb-main.gpg] http://dhi.io/deb/debian/main trixie main
@@ -63,15 +63,15 @@ contents:
           - mawk
           - sed
         files:
-          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.0
-            checksum: 430d2d91cb52a023c7151f5f142ff66276ed7f77
+          - url: git+https://github.com/kyverno/policy-reporter.git#v3.11.1
+            checksum: b7f5c5291868afbebe7ebc1c6b8865b65c4eb2fa
             path: /go/src/github.com/kyverno/policy-reporter
             spdx:
               name: kyverno-policy-reporter
-              version: 3.11.0
+              version: 3.11.1
               packages:
                 - name: kyverno-policy-reporter
-                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.0
+                  purl: pkg:golang/github.com/kyverno/policy-reporter@3.11.1
                   license: Apache-2.0
             uid: 0
             gid: 0
@@ -101,7 +101,7 @@ contents:
           with:
             cgo_enabled: 1
             ldflags:
-              - -X github.com/kyverno/policy-reporter/cmd/version.BuildVersion=3.11.0
+              - -X github.com/kyverno/policy-reporter/cmd/version.BuildVersion=3.11.1
             output: ${target.dir}/usr/local/bin/kyverno-policy-reporter
             tags: sqlite_unlock_notify
       outputs:
