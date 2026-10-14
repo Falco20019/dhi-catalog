@@ -3,8 +3,8 @@
 image: dhi.io/pkg-libssh2
 variant: runtime
 tags:
-  - 1.11.1-1-dhi-deb13u2-dhi0
-  - 1.11.1-1-dhi-deb13u2-dhi0-debian13
+  - 1.11.1-1-deb13u2-dhi0
+  - 1.11.1-1-deb13u2-dhi0-debian13
 platforms:
   - linux/amd64
   - linux/arm64
@@ -22,11 +22,9 @@ vars:
   DEBIAN_ORIG_FILENAME: libssh2_1.11.1.orig.tar.gz
   DEBIAN_ORIG_URL: https://deb.debian.org/debian/pool/main/libs/libssh2/libssh2_1.11.1.orig.tar.gz
   DEBIAN_VERSION: 1.11.1-1+deb13u2
-  DEBIAN_VERSION_FIRST_PART: 1.11.1-1
-  DEBIAN_VERSION_SECOND_PART: +deb13u2
   DHI_REL: "0"
-  DHI_VERSION: 1.11.1-1+dhi+deb13u2+dhi0
-  TAG_VERSION: 1.11.1-1-dhi-deb13u2-dhi0
+  DHI_VERSION: 1.11.1-1+deb13u2+dhi0
+  TAG_VERSION: 1.11.1-1-deb13u2-dhi0
   UPSTREAM_VERSION: 1.11.1
 contents:
   packages:
@@ -75,7 +73,7 @@ contents:
           with:
             changelog:
               - DHI Rebuild
-            version: 1.11.1-1+dhi+deb13u2+dhi0
+            version: 1.11.1-1+deb13u2+dhi0
         - uses: dpkg/build@v1
           environment:
             DEB_BUILD_PROFILES: nodoc
