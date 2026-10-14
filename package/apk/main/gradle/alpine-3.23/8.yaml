@@ -4,13 +4,13 @@ image: dhi.io/pkg-gradle
 variant: runtime
 tags:
   - 8.14.6-alpine3.23
-  - 8.14.6-r0-alpine3.23
+  - 8.14.6-r1-alpine3.23
 platforms:
   - linux/amd64
 vars:
   COMMIT_SHA: 88c80c1459b75a6d077d24eebe7905ffa3e1293f
   PACKAGE_NAME: gradle-8
-  REL: "0"
+  REL: "1"
   SEMVER_MAJOR_MINOR_VERSION: "8.14"
   SEMVER_MAJOR_VERSION: "8"
   SEMVER_VERSION: 8.14.6
@@ -95,8 +95,8 @@ contents:
             license: Apache-2.0
             name: gradle-8
             provider_priority: 800
-            provides: gradle=8.14.6-r0
-            rel: 0
+            provides: gradle=8.14.6-r1
+            rel: 1
             replaces: gradle
             replaces_priority: 800
             url: https://gradle.org/
@@ -110,42 +110,6 @@ contents:
 
             mkdir -p /home/abuild/packages/aports/aarch64
             cp -a /home/abuild/packages/aports/x86_64/* /home/abuild/packages/aports/aarch64
-      paths:
-        - type: file
-          path: ${source.dir}/gradle/0002-Update-org.eclipse.jgit-org.eclipse.jgit-7.2.1.2025.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0002-Update-org.eclipse.jgit-org.eclipse.jgit-7.2.1.2025.patch
-        - type: file
-          path: ${source.dir}/gradle/0003-Update-org.apache.commons-commons-lang3-3.18.0.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0003-8-Update-org.apache.commons-commons-lang3-3.18.0.patch
-        - type: file
-          path: ${source.dir}/gradle/0004-Disable-deprecation-warnings.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0004-Disable-deprecation-warnings.patch
-        - type: file
-          path: ${source.dir}/gradle/0007-Update-com.fasterxml.jackson.core-jackson-databind-2.18.9.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0007-8-Update-com.fasterxml.jackson.core-jackson-databind-2.18.9.patch
-        - type: file
-          path: ${source.dir}/gradle/0009-Update-org.jsoup-jsoup-1.23.1.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0009-8-Update-org.jsoup-jsoup-1.23.1.patch
-        - type: file
-          path: ${source.dir}/gradle/0010-Update-org.bouncycastle-bcprov-jdk18on-1.85.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0010-8-Update-org.bouncycastle-bcprov-jdk18on-1.85.patch
-        - type: file
-          path: ${source.dir}/gradle/0006-Update-org.codehaus.plexus.plexus-utils-3.6.1.patch
-          uid: 0
-          gid: 0
-          source: package/apk/main/gradle/patch/0006-8-Update-org.codehaus.plexus.plexus-utils-3.6.1.patch
 os-release:
   name: Docker Hardened Images (Alpine)
   id: alpine
